@@ -1,0 +1,1564 @@
+{
+  "issue_date": "2026-11-24",
+  "executive_takeaway_zh": "跨 X, Reddit, IG, HN, GitHub, arXiv 共 6 個來源彙整；今日焦點集中在 Claude 漲價前退訂潮、逐段 Rust 遷移驗收、Claude 代寫移植專案。",
+  "top1_diagram": {
+    "story_id": "30b5340b789cf329",
+    "title_zh": "Claude 代寫的非官方 PC 移植",
+    "nodes": [
+      {
+        "step": "01 BEFORE",
+        "label_zh": "官方無 PC 版",
+        "detail_zh": "重製版僅於 PS5 執行，無官方 PC 版",
+        "tone": "neutral"
+      },
+      {
+        "step": "02 CHANGE",
+        "label_zh": "Claude 依指示寫程式",
+        "detail_zh": "開發者下指令，Claude 撰寫移植程式碼",
+        "tone": "change"
+      },
+      {
+        "step": "03 IMPACT",
+        "label_zh": "產出 PC 早期公開版",
+        "detail_zh": "含畫質預設、陰影距離與視窗化設定",
+        "tone": "impact"
+      },
+      {
+        "step": "04 DEBATE",
+        "label_zh": "授權與穩定性未明",
+        "detail_zh": "原始資料未附測試數據與授權條款",
+        "tone": "tension"
+      }
+    ]
+  },
+  "items": [
+    {
+      "id": "1ef82d58dab628de2ba",
+      "short_tag": "Claude 漲價前退訂潮",
+      "topic_id": "industry",
+      "topic_name": "AI 產業與新模型發布",
+      "published_at_display": "2026-11-23 12:51",
+      "importance_score": 78,
+      "popularity_score": 91,
+      "rank_reason_zh": "定價風向直接影響團隊 API 成本與模型依賴決策",
+      "headline_zh": "一則 r/AIBubble 貼文指稱，部分公司在 Claude 調價前取消訂閱方案。",
+      "community_consensus_zh": "留言多認為過度綁定單一付費模型有風險，也有人建議改用自架本地 LLM 降低依賴。",
+      "sentiment_tag": "critical",
+      "sources": [
+        {
+          "platform": "reddit",
+          "label": "r/AIBubble 1169▲ / 420則留言",
+          "published_at": "2026-11-23 12:51",
+          "url": "https://www.reddit.com/r/AIBubble/comments/1y39fnh/companies_cancelling_their_claude_subscriptions/"
+        }
+      ],
+      "primary_url": "https://www.reddit.com/r/AIBubble/comments/1y39fnh/companies_cancelling_their_claude_subscriptions/",
+      "wait_what": {
+        "premise_zh": "Claude 是 Anthropic 推出的商用大型語言模型，企業多以訂閱或 API 方式使用。貼文描述部分公司在價格調整前先取消訂閱。原始資料未提供調價幅度或正式公告，只有貼文與留言。",
+        "why_it_matters_to_you_zh": "若團隊程式碼已改寫成只能呼叫單一雲端 API，換模型或降成本的代價會很高。可評估把推論路徑改接本地模型，作為備援或降低成本的選項。",
+        "glossary_notes": [
+          {
+            "term": "Vendor lock-in",
+            "explain_zh": "綁定單一供應商，換平台時要重寫大量程式。"
+          }
+        ]
+      },
+      "community_voices": [
+        {
+          "stance": "con",
+          "platform": "reddit",
+          "author": "u/New_Salamander_4592",
+          "quote_zh": "把程式碼改成只能配合別家付費產品運作，這個決定很糟。",
+          "url": "https://www.reddit.com/r/AIBubble/comments/1y39fnh/comment/19t1y4ohiyrad/"
+        },
+        {
+          "stance": "nuance",
+          "platform": "reddit",
+          "author": "u/CoolStorage4014",
+          "quote_zh": "公司會一直換模型直到價格穩定，長期來看應投資自有算力並用本地 LLM。",
+          "url": "https://www.reddit.com/r/AIBubble/comments/1y39fnh/comment/19t1y31kb6wf4/"
+        },
+        {
+          "stance": "con",
+          "platform": "reddit",
+          "author": "u/fuzzy3158",
+          "quote_zh": "有人認為先讓用戶上癮、削弱寫程式能力，之後再漲價，這是既定計畫。",
+          "url": "https://www.reddit.com/r/AIBubble/comments/1y39fnh/comment/19t255jusscyr/"
+        }
+      ],
+      "composite_score": 84.7,
+      "rank": 1,
+      "source_section": "reddit"
+    },
+    {
+      "id": "8129f68e260304e7",
+      "short_tag": "逐段 Rust 遷移驗收",
+      "topic_id": "models-edge",
+      "topic_name": "Open-Source LLMs / VLM / Edge AI",
+      "published_at_display": "2026-11-24 05:17",
+      "importance_score": 70,
+      "popularity_score": 98,
+      "rank_reason_zh": "行為比對式遷移，工程流程可直接借鏡",
+      "headline_zh": "rust-anything 提供逐段把應用程式改寫成 Rust 的流程，每一步都比對原程式的行為紀錄。",
+      "community_consensus_zh": "目前以轉發分享為主，尚無顯著正反論戰，也缺少實測留言可判斷遷移品質。",
+      "sentiment_tag": "neutral",
+      "sources": [
+        {
+          "platform": "github",
+          "label": "GitHub ★8814 / 713 forks",
+          "published_at": "2026-11-24 05:17",
+          "url": "https://github.com/erkamyaman/rust-anything"
+        }
+      ],
+      "primary_url": "https://github.com/erkamyaman/rust-anything",
+      "wait_what": {
+        "premise_zh": "大型程式改寫成另一種語言時，常見問題是新版本悄悄改掉舊版行為。這個專案每改一小段，就拿原程式的紀錄來比對新版輸出。它支援 TypeScript、Python、C、Go、Ruby 與 Java 等來源語言。",
+        "why_it_matters_to_you_zh": "對 Agent 自動化與日常寫程式很實用。可以把遷移拆成小任務，每段都用獨立驗收條件把關，降低一次重寫的風險。",
+        "glossary_notes": [
+          {
+            "term": "Characterization tests",
+            "explain_zh": "先錄下舊程式的實際行為當基準，再檢查新程式是否一致。"
+          }
+        ]
+      },
+      "community_voices": [],
+      "composite_score": 84.3,
+      "rank": 2,
+      "source_section": "github"
+    },
+    {
+      "id": "30b5340b789cf329",
+      "short_tag": "Claude 代寫移植專案",
+      "topic_id": "agents",
+      "topic_name": "AI Agents & Coding Tools",
+      "published_at_display": "2026-11-23 21:10",
+      "importance_score": 80,
+      "popularity_score": 84,
+      "rank_reason_zh": "真實大型專案由 Claude 代寫，可直接參考 Agent 工作流",
+      "headline_zh": "開發者以 Claude 代寫程式，公開 Demon's Souls 重製版非官方 PC 移植的早期版。",
+      "community_consensus_zh": "目前以轉發分享為主，尚無顯著正反論戰；原始資料未附留言內容，立場無法判讀。",
+      "sentiment_tag": "neutral",
+      "sources": [
+        {
+          "platform": "reddit",
+          "label": "r/decomps 745▲ / 107則留言",
+          "published_at": "2026-11-23 21:10",
+          "url": "https://www.reddit.com/r/decomps/comments/1y3hutu/regaliant_an_unofficial_pc_port_of_demons_souls/"
+        }
+      ],
+      "primary_url": "https://www.reddit.com/r/decomps/comments/1y3hutu/regaliant_an_unofficial_pc_port_of_demons_souls/",
+      "wait_what": {
+        "premise_zh": "Demon's Souls 重製版只在 PS5 推出，官方沒有 PC 版。Regaliant 是非官方的 Windows 移植，加入 PC 設定頁，例如渲染比例、畫質預設與陰影距離。開發者說，自十月起由 Claude 依其指示撰寫程式碼。",
+        "why_it_matters_to_you_zh": "這是以自然語言指揮 Claude 寫大型逆向移植專案的實例，可作為 Agent 派工的參考。貼文提到這是第一個公開的早期版，穩定性與授權風險在原始資料中都沒有評估。",
+        "glossary_notes": [
+          {
+            "term": "PPSA01341",
+            "explain_zh": "PS5 遊戲的版本識別碼，用來指定特定發行版。"
+          }
+        ]
+      },
+      "community_voices": [],
+      "composite_score": 83.8,
+      "rank": 3,
+      "source_section": "reddit"
+    },
+    {
+      "id": "7e689a2455fd0b6d",
+      "short_tag": "形式化 VP≠VNP 結果",
+      "topic_id": "industry",
+      "topic_name": "AI 產業與新模型發布",
+      "published_at_display": "2026-11-24 06:09",
+      "importance_score": 78,
+      "popularity_score": 83,
+      "rank_reason_zh": "AI 組織公開的形式化數學成果，理論意義高，但結論仍待驗證。",
+      "headline_zh": "Anthropic formal-math 倉庫公開 VP ≠ VNP 形式化成果，標題宣稱適用所有體。",
+      "community_consensus_zh": "社群視之為通往 P vs NP 的部分成果，並質疑它與相對化障礙的關係。",
+      "sentiment_tag": "mixed",
+      "sources": [
+        {
+          "platform": "hackernews",
+          "label": "HN 291▲ / 252則留言",
+          "published_at": "2026-11-24 06:09",
+          "url": "https://news.ycombinator.com/item?id=50620102"
+        }
+      ],
+      "primary_url": "https://github.com/anthropics/formal-math/tree/main/vp-vnp",
+      "wait_what": {
+        "premise_zh": "VP 與 VNP 是計算複雜度理論中的兩個類別，VP ≠ VNP 表示兩者不相等。P vs NP 是理論電腦科學最大的開放問題之一，VP vs VNP 常被視為相關但範圍較窄的問題。倉庫名稱顯示內容屬於形式化數學。",
+        "why_it_matters_to_you_zh": "對推論延遲、顯存或日常寫程式的影響很低。它的價值在於觀察 AI 工具能否產出可機器檢查的數學證明。",
+        "glossary_notes": [
+          {
+            "term": "VP / VNP",
+            "explain_zh": "代數複雜度的兩個類別，可想成計算難題的兩個分級。"
+          },
+          {
+            "term": "相對化（relativization）",
+            "explain_zh": "一類證明技巧的已知限制，類似 Eval 中無法覆蓋的偏差。"
+          }
+        ]
+      },
+      "community_voices": [
+        {
+          "stance": "nuance",
+          "platform": "hackernews",
+          "author": "brap",
+          "quote_zh": "此結果對 P=NP 有沒有幫助？多數留言者預期它只是部分結果。",
+          "url": "https://news.ycombinator.com/item?id=50620294"
+        },
+        {
+          "stance": "nuance",
+          "platform": "hackernews",
+          "author": "isomorphic_duck",
+          "quote_zh": "作者把它當成通往 P vs NP 途中值得發表的部分結果。",
+          "url": "https://news.ycombinator.com/item?id=50620360"
+        },
+        {
+          "stance": "con",
+          "platform": "hackernews",
+          "author": "amichail",
+          "quote_zh": "論文承認尚未分析這結果與相對化及代數化的關係。",
+          "url": "https://news.ycombinator.com/item?id=50620390"
+        }
+      ],
+      "composite_score": 81.1,
+      "rank": 4,
+      "source_section": "hackernews"
+    },
+    {
+      "id": "df08ab47e08b1ed0",
+      "short_tag": "NariQ 27B 量化壓縮",
+      "topic_id": "models-edge",
+      "topic_name": "Open-Source LLMs / VLM / Edge AI",
+      "published_at_display": "2026-11-23 21:42",
+      "importance_score": 88,
+      "popularity_score": 69,
+      "rank_reason_zh": "量化格式直接影響記憶體與部署成本，並附 Mac 實測解碼速度。",
+      "headline_zh": "Nari Labs 發布 Qwen3.8-27B 的 NariQ 量化版，GGUF 檔約 10 GB，宣稱品質接近 BF16。",
+      "community_consensus_zh": "社群肯定壓縮效果，但質疑量化資訊損失與 Apple Silicon 解碼速度，留言約 29 則。",
+      "sentiment_tag": "mixed",
+      "sources": [
+        {
+          "platform": "hackernews",
+          "label": "HN 140▲ / 29則留言",
+          "published_at": "2026-11-23 21:42",
+          "url": "https://news.ycombinator.com/item?id=50611402"
+        }
+      ],
+      "primary_url": "https://huggingface.co/nari-labs/Qwen3.8-27B-NariQ-GGUF",
+      "wait_what": {
+        "premise_zh": "Qwen3.8-27B 是 27B 參數的開放權重模型。NariQ 是一種新的量化格式，目標是用低位元權重保留接近全精度的表現。作者以 GGUF 格式發布，檔案約 10 GB。",
+        "why_it_matters_to_you_zh": "3.0bpw 版在 M3 Pro 18 GB 上解碼約 3.8 tok/s，2.0bpw 約 4.9 tok/s，明顯慢於 CUDA。若想在 16 GB Mac 上執行，仍需自行實測。",
+        "glossary_notes": [
+          {
+            "term": "bpw（bits per weight）",
+            "explain_zh": "每個權重平均佔幾個 bit，類似 INT8 的位元預算概念。"
+          },
+          {
+            "term": "GGUF",
+            "explain_zh": "llama.cpp 生態常用的單檔模型格式，可直接在本機推論。"
+          }
+        ]
+      },
+      "community_voices": [
+        {
+          "stance": "nuance",
+          "platform": "hackernews",
+          "author": "jedbrooke",
+          "quote_zh": "M3 Pro 解碼只有 3.8 tok/s，遠慢於 CUDA。作者想知道能否塞進 16GB Mac。",
+          "url": "https://news.ycombinator.com/item?id=50617193"
+        },
+        {
+          "stance": "nuance",
+          "platform": "hackernews",
+          "author": "mmastrac",
+          "quote_zh": "新量化格式若沒清楚說明靈感來源與基礎設計，會讓人起疑。",
+          "url": "https://news.ycombinator.com/item?id=50617252"
+        },
+        {
+          "stance": "nuance",
+          "platform": "hackernews",
+          "author": "Retro_Dev",
+          "quote_zh": "檔案變小時到底丟了什麼資訊？基準測試未必涵蓋訓練資料的全部內容。",
+          "url": "https://news.ycombinator.com/item?id=50617761"
+        }
+      ],
+      "composite_score": 81.0,
+      "rank": 5,
+      "source_section": "hackernews"
+    },
+    {
+      "id": "ba504aec0cf0d0c8",
+      "short_tag": "本地短影音剪輯管線",
+      "topic_id": "models-edge",
+      "topic_name": "Open-Source LLMs / VLM / Edge AI",
+      "published_at_display": "2026-11-24 05:10",
+      "importance_score": 72,
+      "popularity_score": 85,
+      "rank_reason_zh": "本地 LLM 與字幕串接，可當邊緣推論參考",
+      "headline_zh": "開源工具 neonclipping 貼上影片連結，約 2 分鐘輸出附字幕的 9:16 短影音，可全程本地執行。",
+      "community_consensus_zh": "目前以轉發分享為主，尚無顯著正反論戰，也缺少實測留言可判斷效能與限制。",
+      "sentiment_tag": "neutral",
+      "sources": [
+        {
+          "platform": "github",
+          "label": "GitHub ★2322 / 148 forks",
+          "published_at": "2026-11-24 05:10",
+          "url": "https://github.com/iamajmeena/neonclipping"
+        }
+      ],
+      "primary_url": "https://github.com/iamajmeena/neonclipping",
+      "wait_what": {
+        "premise_zh": "短影音剪輯通常要人工找精彩段落、加字幕、再調成直式比例。近年有人用語音處理與本地 LLM 自動完成這些步驟。neonclipping 把整條流程包成單一開源工具。",
+        "why_it_matters_to_you_zh": "若管線真能在本機穩定執行，就等於把語音處理與本地 LLM 的延遲和顯存需求搬到消費級硬體上驗證。它可當作本地多模態工作流的參考實作。",
+        "glossary_notes": [
+          {
+            "term": "audio-first",
+            "explain_zh": "先用音訊決定剪輯重點，類似先聽懂內容再動手剪片。"
+          }
+        ]
+      },
+      "community_voices": [],
+      "composite_score": 79.4,
+      "rank": 6,
+      "source_section": "github"
+    },
+    {
+      "id": "221f3c07256097e5",
+      "short_tag": "System-1 與 MLLM 決策分工",
+      "topic_id": "models-edge",
+      "topic_name": "Open-Source LLMs / VLM / Edge AI",
+      "published_at_display": "2026-11-23 05:08",
+      "importance_score": 84,
+      "popularity_score": 57,
+      "rank_reason_zh": "直接影響邊緣判斷器選型，單次前向與生成式模型的成本取捨",
+      "headline_zh": "S1Arena-MM 基準測試多模態判斷任務，探討哪些決策可交給 System-1 模型處理",
+      "community_consensus_zh": "目前以轉發分享為主，尚無顯著正反論戰，暫無可引用的留言風向。",
+      "sentiment_tag": "neutral",
+      "sources": [
+        {
+          "platform": "arxiv",
+          "label": "arXiv 預印本（無互動數據）",
+          "published_at": "2026-11-23 05:08",
+          "url": "http://arxiv.org/abs/2611.29773v1"
+        }
+      ],
+      "primary_url": "http://arxiv.org/abs/2611.29773v1",
+      "wait_what": {
+        "premise_zh": "多模態模型常見兩種用法。System-1 模型單次前向直接輸出各選項機率，像分類頭。MLLM 則逐字生成文字再得出答案。本文探討哪些感知型判斷適合交給前者。",
+        "why_it_matters_to_you_zh": "若任務可由 System-1 模型承接，邊緣裝置就能省下生成式解碼的 TPOT 開銷與顯存。實際能否替換，需看各任務的評測結果。",
+        "glossary_notes": [
+          {
+            "term": "System-1 model",
+            "explain_zh": "類似單次前向的分類頭，不逐字生成，只輸出選項機率。"
+          }
+        ]
+      },
+      "community_voices": [],
+      "composite_score": 73.3,
+      "rank": 7,
+      "source_section": "arxiv"
+    },
+    {
+      "id": "bad79ba3f89b4e13",
+      "short_tag": "Qiskit 轉 CUDA-Q 微調驗證",
+      "topic_id": "models-edge",
+      "topic_name": "Open-Source LLMs / VLM / Edge AI",
+      "published_at_display": "2026-11-23 05:50",
+      "importance_score": 80,
+      "popularity_score": 57,
+      "rank_reason_zh": "代碼遷移任務以執行結果驗證取代文字比對，可參考於 Agent 評測",
+      "headline_zh": "研究比較小型開源模型微調與提示工程，把 Qiskit 程式翻譯成 CUDA-Q，並以量子態比對驗證正確性",
+      "community_consensus_zh": "目前以轉發分享為主，尚無顯著正反論戰，暫無可引用的留言風向。",
+      "sentiment_tag": "neutral",
+      "sources": [
+        {
+          "platform": "arxiv",
+          "label": "arXiv 預印本（無互動數據）",
+          "published_at": "2026-11-23 05:50",
+          "url": "http://arxiv.org/abs/2611.29793v1"
+        }
+      ],
+      "primary_url": "http://arxiv.org/abs/2611.29793v1",
+      "wait_what": {
+        "premise_zh": "量子程式常以 Qiskit 撰寫，CUDA-Q 則負責 GPU 加速模擬。把舊程式搬到新框架是實際採用成本。本研究以執行結果判斷正確性：兩份程式都要跑完，比對 state vector，數值一致才算正確。",
+        "why_it_matters_to_you_zh": "若小模型經微調就能穩定完成程式翻譯，本地部署的 coding 助理可省下雲端 API 成本。執行驗證的評測方法也能套用到自家 code agent 的驗收流程。",
+        "glossary_notes": [
+          {
+            "term": "CUDA-Q",
+            "explain_zh": "NVIDIA 的量子程式框架，類似 CUDA 之於 GPU 運算。"
+          },
+          {
+            "term": "state vector",
+            "explain_zh": "程式跑完後的完整數值陣列，像逐一比對的輸出快照。"
+          }
+        ]
+      },
+      "community_voices": [],
+      "composite_score": 71.0,
+      "rank": 8,
+      "source_section": "arxiv"
+    }
+  ],
+  "sections": [
+    {
+      "source": "x",
+      "label": "X",
+      "takeaway_zh": "今日訊號：Agent 工具開始直接串接 UI 設計與 Android 開發，但多數案例仍缺獨立實測數據。",
+      "top_diagram": {
+        "story_id": "21bd17a4fa38d338",
+        "title_zh": "MCP 串接 UI 設計到 Android 開發",
+        "nodes": [
+          {
+            "step": "01 BEFORE",
+            "label_zh": "UI 設計到 App 需多工具",
+            "detail_zh": "設計稿與程式碼需人工來回轉換",
+            "tone": "neutral"
+          },
+          {
+            "step": "02 CHANGE",
+            "label_zh": "MCP 接入 M3E Canvas",
+            "detail_zh": "Claude Code 與 Codex 可直接呼叫其功能",
+            "tone": "change"
+          },
+          {
+            "step": "03 IMPACT",
+            "label_zh": "一段指令觸發設計到開發",
+            "detail_zh": "文中宣稱可完成，未附耗時與成功率數據",
+            "tone": "impact"
+          },
+          {
+            "step": "04 DEBATE",
+            "label_zh": "實測與授權細節待確認",
+            "detail_zh": "免費開源，但缺獨立驗證與限制說明",
+            "tone": "tension"
+          }
+        ]
+      },
+      "items": [
+        {
+          "id": "5119506436cca9e8",
+          "short_tag": "Codex 搭配 IKEA 組裝示範",
+          "topic_id": "agents",
+          "topic_name": "AI Agents & Coding Tools",
+          "published_at_display": "2026-11-24 00:55",
+          "importance_score": 58,
+          "popularity_score": 76,
+          "rank_reason_zh": "展示 Agent 產生 3D 模型程式碼，但速度數據僅為作者主觀宣稱。",
+          "headline_zh": "作者展示 Codex 搭配 PICOXR CLI，掃描 IKEA 說明書後產生 3D 組裝引導，宣稱快五倍。",
+          "community_consensus_zh": "目前以轉發分享為主，尚無顯著正反論戰；留言數量少，「快五倍」的說法尚未被獨立驗證。",
+          "sentiment_tag": "neutral",
+          "sources": [
+            {
+              "platform": "x",
+              "label": "X 493 讚 / 48 轉推 / 40 則留言",
+              "published_at": "2026-11-24 00:55",
+              "url": "https://x.com/nigelhartmanxr/status/2124909840791453948"
+            }
+          ],
+          "primary_url": "https://x.com/nigelhartmanxr/status/2124909840791453948",
+          "wait_what": {
+            "premise_zh": "Codex 是 OpenAI 的程式碼 Agent。PICOXR CLI 是搭配使用的命令列工具，來源未說明其來源與授權。作者展示的重點是 Agent 直接產生 3D 模型程式碼。",
+            "why_it_matters_to_you_zh": "此案例示範了 Agent 產生可執行的 3D 內容。若要複製流程，需先確認 CLI 授權與掃描精度，「快五倍」僅為作者宣稱。",
+            "glossary_notes": [
+              {
+                "term": "PICOXR CLI",
+                "explain_zh": "命令列工具，來源未說明細節，僅稱與 Codex 一起產生 3D 模型。"
+              }
+            ]
+          },
+          "community_voices": [],
+          "composite_score": 67.8,
+          "rank": 1,
+          "source_section": "x"
+        },
+        {
+          "id": "b8d42fd4c18b5ac8",
+          "short_tag": "Anthropic 推出 Claude Ship",
+          "topic_id": "industry",
+          "topic_name": "AI 產業與新模型發布",
+          "published_at_display": "2026-11-24 08:50",
+          "importance_score": 70,
+          "popularity_score": 54,
+          "rank_reason_zh": "Anthropic 新產品發布，直接影響 Agent 工具的選擇。",
+          "headline_zh": "Reuters 報導 Anthropic 推出 Claude Ship，目標是幫開發者更快把程式碼交付上線。",
+          "community_consensus_zh": "目前以轉發分享為主，尚無顯著正反論戰；留言數量少，無法判斷產品實測表現。",
+          "sentiment_tag": "neutral",
+          "sources": [
+            {
+              "platform": "x",
+              "label": "X 26 讚 / 6 轉推 / 10 則留言",
+              "published_at": "2026-11-24 08:50",
+              "url": "https://x.com/Reuters/status/2125029185852739790"
+            }
+          ],
+          "primary_url": "https://x.com/Reuters/status/2125029185852739790",
+          "wait_what": {
+            "premise_zh": "來源只有 Reuters 的標題，缺少功能、定價與發布範圍。Claude Code 等 Agent 編碼工具是此類產品的主要競爭對象。",
+            "why_it_matters_to_you_zh": "若 Claude Ship 與 Claude Code 工作流整合，可能影響你的 Agent 派工方式與部署路徑。需等官方文件確認。",
+            "glossary_notes": []
+          },
+          "community_voices": [],
+          "composite_score": 63.4,
+          "rank": 2,
+          "source_section": "x"
+        },
+        {
+          "id": "21bd17a4fa38d338",
+          "short_tag": "M3E Canvas 接入 MCP",
+          "topic_id": "agents",
+          "topic_name": "AI Agents & Coding Tools",
+          "published_at_display": "2026-11-24 11:10",
+          "importance_score": 74,
+          "popularity_score": 25,
+          "rank_reason_zh": "MCP 串接設計與開發流程，且免費開源，可直接評估。",
+          "headline_zh": "M3E Canvas 支援 MCP，讓 Claude Code 或 Codex 從 UI 設計一路做到 Android 應用開發。",
+          "community_consensus_zh": "目前以轉發分享為主，尚無顯著正反論戰；留言極少，無法判斷實際表現。",
+          "sentiment_tag": "neutral",
+          "sources": [
+            {
+              "platform": "x",
+              "label": "X 0 讚 / 0 轉推 / 0 則留言",
+              "published_at": "2026-11-24 11:10",
+              "url": "https://x.com/doppo_ai/status/2125064361521680491"
+            }
+          ],
+          "primary_url": "https://x.com/doppo_ai/status/2125064361521680491",
+          "wait_what": {
+            "premise_zh": "來源未說明 M3E Canvas 的完整功能與版本。此次更新新增 MCP 支援，讓 Claude Code 與 Codex 能直接呼叫它的功能。",
+            "why_it_matters_to_you_zh": "若流程屬實，UI 原型到 Android 原型可在同一 Agent 會話完成，減少切換工具與傳遞 Context 的成本。實際效果需自行驗證。",
+            "glossary_notes": [
+              {
+                "term": "M3E Canvas",
+                "explain_zh": "可類比為 Agent 可呼叫的設計畫布工具，來源僅稱用於 UI 設計。"
+              }
+            ]
+          },
+          "community_voices": [],
+          "composite_score": 53.2,
+          "rank": 3,
+          "source_section": "x"
+        }
+      ]
+    },
+    {
+      "source": "reddit",
+      "label": "Reddit",
+      "takeaway_zh": "單一雲端模型依賴成為社群焦點，訂閱退潮與 Agent 失誤案例同時浮現。",
+      "top_diagram": {
+        "story_id": "30b5340b789cf329",
+        "title_zh": "Claude 代寫的非官方 PC 移植",
+        "nodes": [
+          {
+            "step": "01 BEFORE",
+            "label_zh": "官方無 PC 版",
+            "detail_zh": "重製版僅於 PS5 執行，無官方 PC 版",
+            "tone": "neutral"
+          },
+          {
+            "step": "02 CHANGE",
+            "label_zh": "Claude 依指示寫程式",
+            "detail_zh": "開發者下指令，Claude 撰寫移植程式碼",
+            "tone": "change"
+          },
+          {
+            "step": "03 IMPACT",
+            "label_zh": "產出 PC 早期公開版",
+            "detail_zh": "含畫質預設、陰影距離與視窗化設定",
+            "tone": "impact"
+          },
+          {
+            "step": "04 DEBATE",
+            "label_zh": "授權與穩定性未明",
+            "detail_zh": "原始資料未附測試數據與授權條款",
+            "tone": "tension"
+          }
+        ]
+      },
+      "items": [
+        {
+          "id": "1ef82d58dab628de2ba",
+          "short_tag": "Claude 漲價前退訂潮",
+          "topic_id": "industry",
+          "topic_name": "AI 產業與新模型發布",
+          "published_at_display": "2026-11-23 12:51",
+          "importance_score": 78,
+          "popularity_score": 91,
+          "rank_reason_zh": "定價風向直接影響團隊 API 成本與模型依賴決策",
+          "headline_zh": "一則 r/AIBubble 貼文指稱，部分公司在 Claude 調價前取消訂閱方案。",
+          "community_consensus_zh": "留言多認為過度綁定單一付費模型有風險，也有人建議改用自架本地 LLM 降低依賴。",
+          "sentiment_tag": "critical",
+          "sources": [
+            {
+              "platform": "reddit",
+              "label": "r/AIBubble 1169▲ / 420則留言",
+              "published_at": "2026-11-23 12:51",
+              "url": "https://www.reddit.com/r/AIBubble/comments/1y39fnh/companies_cancelling_their_claude_subscriptions/"
+            }
+          ],
+          "primary_url": "https://www.reddit.com/r/AIBubble/comments/1y39fnh/companies_cancelling_their_claude_subscriptions/",
+          "wait_what": {
+            "premise_zh": "Claude 是 Anthropic 推出的商用大型語言模型，企業多以訂閱或 API 方式使用。貼文描述部分公司在價格調整前先取消訂閱。原始資料未提供調價幅度或正式公告，只有貼文與留言。",
+            "why_it_matters_to_you_zh": "若團隊程式碼已改寫成只能呼叫單一雲端 API，換模型或降成本的代價會很高。可評估把推論路徑改接本地模型，作為備援或降低成本的選項。",
+            "glossary_notes": [
+              {
+                "term": "Vendor lock-in",
+                "explain_zh": "綁定單一供應商，換平台時要重寫大量程式。"
+              }
+            ]
+          },
+          "community_voices": [
+            {
+              "stance": "con",
+              "platform": "reddit",
+              "author": "u/New_Salamander_4592",
+              "quote_zh": "把程式碼改成只能配合別家付費產品運作，這個決定很糟。",
+              "url": "https://www.reddit.com/r/AIBubble/comments/1y39fnh/comment/19t1y4ohiyrad/"
+            },
+            {
+              "stance": "nuance",
+              "platform": "reddit",
+              "author": "u/CoolStorage4014",
+              "quote_zh": "公司會一直換模型直到價格穩定，長期來看應投資自有算力並用本地 LLM。",
+              "url": "https://www.reddit.com/r/AIBubble/comments/1y39fnh/comment/19t1y31kb6wf4/"
+            },
+            {
+              "stance": "con",
+              "platform": "reddit",
+              "author": "u/fuzzy3158",
+              "quote_zh": "有人認為先讓用戶上癮、削弱寫程式能力，之後再漲價，這是既定計畫。",
+              "url": "https://www.reddit.com/r/AIBubble/comments/1y39fnh/comment/19t255jusscyr/"
+            }
+          ],
+          "composite_score": 84.7,
+          "rank": 1,
+          "source_section": "reddit"
+        },
+        {
+          "id": "30b5340b789cf329",
+          "short_tag": "Claude 代寫移植專案",
+          "topic_id": "agents",
+          "topic_name": "AI Agents & Coding Tools",
+          "published_at_display": "2026-11-23 21:10",
+          "importance_score": 80,
+          "popularity_score": 84,
+          "rank_reason_zh": "真實大型專案由 Claude 代寫，可直接參考 Agent 工作流",
+          "headline_zh": "開發者以 Claude 代寫程式，公開 Demon's Souls 重製版非官方 PC 移植的早期版。",
+          "community_consensus_zh": "目前以轉發分享為主，尚無顯著正反論戰；原始資料未附留言內容，立場無法判讀。",
+          "sentiment_tag": "neutral",
+          "sources": [
+            {
+              "platform": "reddit",
+              "label": "r/decomps 745▲ / 107則留言",
+              "published_at": "2026-11-23 21:10",
+              "url": "https://www.reddit.com/r/decomps/comments/1y3hutu/regaliant_an_unofficial_pc_port_of_demons_souls/"
+            }
+          ],
+          "primary_url": "https://www.reddit.com/r/decomps/comments/1y3hutu/regaliant_an_unofficial_pc_port_of_demons_souls/",
+          "wait_what": {
+            "premise_zh": "Demon's Souls 重製版只在 PS5 推出，官方沒有 PC 版。Regaliant 是非官方的 Windows 移植，加入 PC 設定頁，例如渲染比例、畫質預設與陰影距離。開發者說，自十月起由 Claude 依其指示撰寫程式碼。",
+            "why_it_matters_to_you_zh": "這是以自然語言指揮 Claude 寫大型逆向移植專案的實例，可作為 Agent 派工的參考。貼文提到這是第一個公開的早期版，穩定性與授權風險在原始資料中都沒有評估。",
+            "glossary_notes": [
+              {
+                "term": "PPSA01341",
+                "explain_zh": "PS5 遊戲的版本識別碼，用來指定特定發行版。"
+              }
+            ]
+          },
+          "community_voices": [],
+          "composite_score": 83.8,
+          "rank": 2,
+          "source_section": "reddit"
+        },
+        {
+          "id": "3c39bae5426aed85",
+          "short_tag": "社群樂趣流失爭議",
+          "topic_id": "agents",
+          "topic_name": "AI Agents & Coding Tools",
+          "published_at_display": "2026-11-23 12:00",
+          "importance_score": 58,
+          "popularity_score": 91,
+          "rank_reason_zh": "社群對 AI 生成作品的品質與驗收標準出現明顯反彈",
+          "headline_zh": "r/webdev 熱門貼文批評，社群作品多為商用 AI 產品的展示，失去原本的創作樂趣。",
+          "community_consensus_zh": "留言偏負面，多人認為 AI 壓低寫程式樂趣，也有人指出作品缺乏判斷與驗證。",
+          "sentiment_tag": "critical",
+          "sources": [
+            {
+              "platform": "reddit",
+              "label": "r/webdev 1312▲ / 353則留言",
+              "published_at": "2026-11-23 12:00",
+              "url": "https://www.reddit.com/r/webdev/comments/1y38j2p/this_sub_is_dead/"
+            }
+          ],
+          "primary_url": "https://www.reddit.com/r/webdev/comments/1y38j2p/this_sub_is_dead/",
+          "wait_what": {
+            "premise_zh": "r/webdev 是開發者分享網站與工具的社群。貼文作者認為近期分享的專案，多是直接使用 Anthropic 或 OpenAI 產品產生的結果。留言區的討論以主觀感受為主，未附統計數據。",
+            "why_it_matters_to_you_zh": "AI 輸出的品質與驗收標準已成為社群爭議點。若要對外展示成果，應附上自己的判斷與測試紀錄，降低被質疑的風險。",
+            "glossary_notes": [
+              {
+                "term": "AI slop",
+                "explain_zh": "低品質 AI 生成內容，缺乏人工審查與修正。"
+              }
+            ]
+          },
+          "community_voices": [
+            {
+              "stance": "con",
+              "platform": "reddit",
+              "author": "u/Ratstail91",
+              "quote_zh": "AI 已經消磨了寫程式的熱情，沒有理由再感到興奮。",
+              "url": "https://www.reddit.com/r/webdev/comments/1y38j2p/comment/19t1w48htp1q9/"
+            },
+            {
+              "stance": "nuance",
+              "platform": "reddit",
+              "author": "u/Scary_Objective6718",
+              "quote_zh": "若作者自己做判斷，用 AI 不是問題；多數作品只是一兩句提示就直接發布。",
+              "url": "https://www.reddit.com/r/webdev/comments/1y38j2p/comment/19t1w78ivcwea/"
+            },
+            {
+              "stance": "con",
+              "platform": "reddit",
+              "author": "u/Jazqs",
+              "quote_zh": "被 AI 弄得很疲倦，正試著多做戶外活動，遠離螢幕。",
+              "url": "https://www.reddit.com/r/webdev/comments/1y38j2p/comment/19t1w5o41eryd/"
+            }
+          ],
+          "composite_score": 74.7,
+          "rank": 3,
+          "source_section": "reddit"
+        },
+        {
+          "id": "83ee462b64ac9d88",
+          "short_tag": "Claude 改網站致故障",
+          "topic_id": "agents",
+          "topic_name": "AI Agents & Coding Tools",
+          "published_at_display": "2026-11-23 23:49",
+          "importance_score": 60,
+          "popularity_score": 84,
+          "rank_reason_zh": "職場實例顯示 AI 改生產程式的風險與管理壓力",
+          "headline_zh": "員工在 r/antiwork 自述，老闆以 Claude 改寫網站導致故障，並要求無薪學習 AI 工具。",
+          "community_consensus_zh": "目前以轉發分享為主，尚無顯著正反論戰；原始資料未附留言，立場無法判讀。",
+          "sentiment_tag": "critical",
+          "sources": [
+            {
+              "platform": "reddit",
+              "label": "r/antiwork 826▲ / 66則留言",
+              "published_at": "2026-11-23 23:49",
+              "url": "https://www.reddit.com/r/antiwork/comments/1y3lqbp/cool_followup_my_boss_has_ai_psychosis_and_were/"
+            }
+          ],
+          "primary_url": "https://www.reddit.com/r/antiwork/comments/1y3lqbp/cool_followup_my_boss_has_ai_psychosis_and_were/",
+          "wait_what": {
+            "premise_zh": "貼文作者所屬單位改用 Claude 修改既有網站，結果網站壞掉。管理層同時表示，不願無薪留下來學習新 AI 工具的人，未來可能不被看好。內容為單一作者的自述，未附技術細節或其他佐證。",
+            "why_it_matters_to_you_zh": "這說明 AI 直接改生產環境程式的風險。實務上，改動應經過測試與 fresh-context 驗收，再決定是否上線。",
+            "glossary_notes": []
+          },
+          "community_voices": [],
+          "composite_score": 72.6,
+          "rank": 4,
+          "source_section": "reddit"
+        }
+      ]
+    },
+    {
+      "source": "threads",
+      "label": "Threads",
+      "takeaway_zh": "本批次僅 1 筆 Threads 貼文，屬社交趣談，無模型、工具或實測數據，今日不列頭條。",
+      "top_diagram": {
+        "story_id": "none",
+        "title_zh": "今日無符合標準的頭條",
+        "nodes": [
+          {
+            "step": "01 BEFORE",
+            "label_zh": "來源資料不足",
+            "detail_zh": "僅 1 筆 Threads 貼文，無技術細節。",
+            "tone": "neutral"
+          },
+          {
+            "step": "02 CHANGE",
+            "label_zh": "無新模型或工具更新",
+            "detail_zh": "貼文為使用者與 ChatGPT 的對話截圖式分享。",
+            "tone": "change"
+          },
+          {
+            "step": "03 IMPACT",
+            "label_zh": "無可量化的實際影響",
+            "detail_zh": "未提供延遲、顯存、成本或評測數據。",
+            "tone": "impact"
+          },
+          {
+            "step": "04 DEBATE",
+            "label_zh": "僅有個人情緒表達",
+            "detail_zh": "藝術家對 AI 使用的反感，無實證論點。",
+            "tone": "tension"
+          }
+        ]
+      },
+      "items": []
+    },
+    {
+      "source": "instagram",
+      "label": "IG",
+      "takeaway_zh": "單一 IG 來源稱 GPT-6.2 轉向知識工作，但貼文缺實測數據，需待官方資料驗證。",
+      "top_diagram": {
+        "story_id": "b3a8fee96b1c0022",
+        "title_zh": "GPT-6.2 雙版本的知識工作定位",
+        "nodes": [
+          {
+            "step": "01 BEFORE",
+            "label_zh": "程式模型已成標配",
+            "detail_zh": "各大實驗室都有 coding 模型，同質競爭變多",
+            "tone": "neutral"
+          },
+          {
+            "step": "02 CHANGE",
+            "label_zh": "Astra 與 Sol 雙版本",
+            "detail_zh": "主打投影片、試算表與文件，依範本產出內容",
+            "tone": "change"
+          },
+          {
+            "step": "03 IMPACT",
+            "label_zh": "貼文宣稱的效益",
+            "detail_zh": "貼文稱可依範本產出，但未附任何量化數字",
+            "tone": "impact"
+          },
+          {
+            "step": "04 DEBATE",
+            "label_zh": "證據不足",
+            "detail_zh": "來源只有摘要，無基準測試與獨立實測結果",
+            "tone": "tension"
+          }
+        ]
+      },
+      "items": [
+        {
+          "id": "b3a8fee96b1c0022",
+          "short_tag": "GPT-6.2 雙版本策略",
+          "topic_id": "industry",
+          "topic_name": "AI 產業與新模型發布",
+          "published_at_display": "2026-11-18 13:05",
+          "importance_score": 48,
+          "popularity_score": 91,
+          "rank_reason_zh": "屬新模型發布訊號，但僅單則 IG 摘要且缺實測數據",
+          "headline_zh": "IG 貼文稱 OpenAI 推出 GPT-6.2 雙版本 Astra 與 Sol，目標轉向知識工作",
+          "community_consensus_zh": "目前以轉發分享為主，尚無顯著正反論戰。",
+          "sentiment_tag": "neutral",
+          "sources": [
+            {
+              "platform": "instagram",
+              "label": "IG @vaibhavsisinty 3179 likes / 14 則留言 / 126844 觀看",
+              "published_at": "2026-11-18 13:05",
+              "url": "https://www.instagram.com/reel/Df3tfrYgIJR/"
+            }
+          ],
+          "primary_url": "https://www.instagram.com/reel/Df3tfrYgIJR/",
+          "wait_what": {
+            "premise_zh": "貼文表示 OpenAI 推出 GPT-6.2，分成 Astra 與 Sol 兩個版本。作者認為重點是策略，不是功能清單。多數頂尖實驗室已有 coding 模型，OpenAI 因此把這次發布對準所有知識工作。",
+            "why_it_matters_to_you_zh": "若 Astra 真能依範本產出投影片與試算表，可能影響文件自動化流程。但目前沒有延遲、顯存或成本數據，無法評估部署條件。",
+            "glossary_notes": []
+          },
+          "community_voices": [],
+          "composite_score": 68.0,
+          "rank": 1,
+          "source_section": "instagram"
+        }
+      ]
+    },
+    {
+      "source": "hackernews",
+      "label": "HN",
+      "takeaway_zh": "今日 HN 重點是模型量化與 Agent 實測，多數理論與宣稱仍待獨立驗證。",
+      "top_diagram": {
+        "story_id": "df08ab47e08b1ed0",
+        "title_zh": "NariQ：量化後的 27B 模型",
+        "nodes": [
+          {
+            "step": "01 BEFORE",
+            "label_zh": "全精度權重體積大",
+            "detail_zh": "BF16 版 27B 需要大量顯存與磁碟空間",
+            "tone": "neutral"
+          },
+          {
+            "step": "02 CHANGE",
+            "label_zh": "低位元 GGUF 量化",
+            "detail_zh": "以 3.0bpw 或 2.0bpw 壓成約 10 GB 檔案",
+            "tone": "change"
+          },
+          {
+            "step": "03 IMPACT",
+            "label_zh": "Mac 解碼速度實測",
+            "detail_zh": "M3 Pro 解碼 3.8 tok/s（3.0bpw）",
+            "tone": "impact"
+          },
+          {
+            "step": "04 DEBATE",
+            "label_zh": "非 CUDA 速度落後",
+            "detail_zh": "其他 Mac 未測，量化資訊損失仍有人質疑",
+            "tone": "tension"
+          }
+        ]
+      },
+      "items": [
+        {
+          "id": "7e689a2455fd0b6d",
+          "short_tag": "形式化 VP≠VNP 結果",
+          "topic_id": "industry",
+          "topic_name": "AI 產業與新模型發布",
+          "published_at_display": "2026-11-24 06:09",
+          "importance_score": 78,
+          "popularity_score": 83,
+          "rank_reason_zh": "AI 組織公開的形式化數學成果，理論意義高，但結論仍待驗證。",
+          "headline_zh": "Anthropic formal-math 倉庫公開 VP ≠ VNP 形式化成果，標題宣稱適用所有體。",
+          "community_consensus_zh": "社群視之為通往 P vs NP 的部分成果，並質疑它與相對化障礙的關係。",
+          "sentiment_tag": "mixed",
+          "sources": [
+            {
+              "platform": "hackernews",
+              "label": "HN 291▲ / 252則留言",
+              "published_at": "2026-11-24 06:09",
+              "url": "https://news.ycombinator.com/item?id=50620102"
+            }
+          ],
+          "primary_url": "https://github.com/anthropics/formal-math/tree/main/vp-vnp",
+          "wait_what": {
+            "premise_zh": "VP 與 VNP 是計算複雜度理論中的兩個類別，VP ≠ VNP 表示兩者不相等。P vs NP 是理論電腦科學最大的開放問題之一，VP vs VNP 常被視為相關但範圍較窄的問題。倉庫名稱顯示內容屬於形式化數學。",
+            "why_it_matters_to_you_zh": "對推論延遲、顯存或日常寫程式的影響很低。它的價值在於觀察 AI 工具能否產出可機器檢查的數學證明。",
+            "glossary_notes": [
+              {
+                "term": "VP / VNP",
+                "explain_zh": "代數複雜度的兩個類別，可想成計算難題的兩個分級。"
+              },
+              {
+                "term": "相對化（relativization）",
+                "explain_zh": "一類證明技巧的已知限制，類似 Eval 中無法覆蓋的偏差。"
+              }
+            ]
+          },
+          "community_voices": [
+            {
+              "stance": "nuance",
+              "platform": "hackernews",
+              "author": "brap",
+              "quote_zh": "此結果對 P=NP 有沒有幫助？多數留言者預期它只是部分結果。",
+              "url": "https://news.ycombinator.com/item?id=50620294"
+            },
+            {
+              "stance": "nuance",
+              "platform": "hackernews",
+              "author": "isomorphic_duck",
+              "quote_zh": "作者把它當成通往 P vs NP 途中值得發表的部分結果。",
+              "url": "https://news.ycombinator.com/item?id=50620360"
+            },
+            {
+              "stance": "con",
+              "platform": "hackernews",
+              "author": "amichail",
+              "quote_zh": "論文承認尚未分析這結果與相對化及代數化的關係。",
+              "url": "https://news.ycombinator.com/item?id=50620390"
+            }
+          ],
+          "composite_score": 81.1,
+          "rank": 1,
+          "source_section": "hackernews"
+        },
+        {
+          "id": "df08ab47e08b1ed0",
+          "short_tag": "NariQ 27B 量化壓縮",
+          "topic_id": "models-edge",
+          "topic_name": "Open-Source LLMs / VLM / Edge AI",
+          "published_at_display": "2026-11-23 21:42",
+          "importance_score": 88,
+          "popularity_score": 69,
+          "rank_reason_zh": "量化格式直接影響記憶體與部署成本，並附 Mac 實測解碼速度。",
+          "headline_zh": "Nari Labs 發布 Qwen3.8-27B 的 NariQ 量化版，GGUF 檔約 10 GB，宣稱品質接近 BF16。",
+          "community_consensus_zh": "社群肯定壓縮效果，但質疑量化資訊損失與 Apple Silicon 解碼速度，留言約 29 則。",
+          "sentiment_tag": "mixed",
+          "sources": [
+            {
+              "platform": "hackernews",
+              "label": "HN 140▲ / 29則留言",
+              "published_at": "2026-11-23 21:42",
+              "url": "https://news.ycombinator.com/item?id=50611402"
+            }
+          ],
+          "primary_url": "https://huggingface.co/nari-labs/Qwen3.8-27B-NariQ-GGUF",
+          "wait_what": {
+            "premise_zh": "Qwen3.8-27B 是 27B 參數的開放權重模型。NariQ 是一種新的量化格式，目標是用低位元權重保留接近全精度的表現。作者以 GGUF 格式發布，檔案約 10 GB。",
+            "why_it_matters_to_you_zh": "3.0bpw 版在 M3 Pro 18 GB 上解碼約 3.8 tok/s，2.0bpw 約 4.9 tok/s，明顯慢於 CUDA。若想在 16 GB Mac 上執行，仍需自行實測。",
+            "glossary_notes": [
+              {
+                "term": "bpw（bits per weight）",
+                "explain_zh": "每個權重平均佔幾個 bit，類似 INT8 的位元預算概念。"
+              },
+              {
+                "term": "GGUF",
+                "explain_zh": "llama.cpp 生態常用的單檔模型格式，可直接在本機推論。"
+              }
+            ]
+          },
+          "community_voices": [
+            {
+              "stance": "nuance",
+              "platform": "hackernews",
+              "author": "jedbrooke",
+              "quote_zh": "M3 Pro 解碼只有 3.8 tok/s，遠慢於 CUDA。作者想知道能否塞進 16GB Mac。",
+              "url": "https://news.ycombinator.com/item?id=50617193"
+            },
+            {
+              "stance": "nuance",
+              "platform": "hackernews",
+              "author": "mmastrac",
+              "quote_zh": "新量化格式若沒清楚說明靈感來源與基礎設計，會讓人起疑。",
+              "url": "https://news.ycombinator.com/item?id=50617252"
+            },
+            {
+              "stance": "nuance",
+              "platform": "hackernews",
+              "author": "Retro_Dev",
+              "quote_zh": "檔案變小時到底丟了什麼資訊？基準測試未必涵蓋訓練資料的全部內容。",
+              "url": "https://news.ycombinator.com/item?id=50617761"
+            }
+          ],
+          "composite_score": 81.0,
+          "rank": 2,
+          "source_section": "hackernews"
+        },
+        {
+          "id": "d8eff3477af09ca8",
+          "short_tag": "Agent 群挑戰 P vs NP",
+          "topic_id": "agents",
+          "topic_name": "AI Agents & Coding Tools",
+          "published_at_display": "2026-11-23 05:53",
+          "importance_score": 70,
+          "popularity_score": 79,
+          "rank_reason_zh": "多 Agent 協作的公開展示，但主張未經驗證，需保留判斷。",
+          "headline_zh": "pequalnp.com 公開一組 Agent swarm 嘗試解 P vs NP，並以圖表顯示進度。",
+          "community_consensus_zh": "社群肯定過程公開的做法，但質疑圖表不完整，並提醒多項式時間的常數可能極大。",
+          "sentiment_tag": "mixed",
+          "sources": [
+            {
+              "platform": "hackernews",
+              "label": "HN 190▲ / 170則留言",
+              "published_at": "2026-11-23 05:53",
+              "url": "https://news.ycombinator.com/item?id=50604314"
+            }
+          ],
+          "primary_url": "https://pequalnp.com/",
+          "wait_what": {
+            "premise_zh": "Agent swarm 指多個 AI Agent 同時分工執行任務。P vs NP 是理論電腦科學最著名的未解問題，核心是能快速驗證的問題是否也能快速求解。此網站公開各 Agent 的工作進度。",
+            "why_it_matters_to_you_zh": "對日常 Agent 工作流的參考價值在於多 Agent 協作與進度可視化的設計。本例沒有公開實證成果，不應當作研究進展。",
+            "glossary_notes": [
+              {
+                "term": "P vs NP",
+                "explain_zh": "快速解題與快速驗證解答是否等價，類似出題與閱卷的差別。"
+              },
+              {
+                "term": "多項式時間",
+                "explain_zh": "演算法耗時隨輸入成長的速率可接受，但常數可能非常大。"
+              }
+            ]
+          },
+          "community_voices": [
+            {
+              "stance": "pro",
+              "platform": "hackernews",
+              "author": "goodmythical",
+              "quote_zh": "公開整個過程，比只丟一篇論文加上祝你好運更好，但圖表應顯示所有 Agent。",
+              "url": "https://news.ycombinator.com/item?id=50604680"
+            },
+            {
+              "stance": "nuance",
+              "platform": "hackernews",
+              "author": "ComplexSystems",
+              "quote_zh": "若證明多項式解法，常數與指數可能極大，實際威脅不確定。",
+              "url": "https://news.ycombinator.com/item?id=50604830"
+            },
+            {
+              "stance": "pro",
+              "platform": "hackernews",
+              "author": "freecodeio",
+              "quote_zh": "希望能讓大家用自己的 Agent 一起貢獻，形成協作。",
+              "url": "https://news.ycombinator.com/item?id=50604840"
+            }
+          ],
+          "composite_score": 75.9,
+          "rank": 3,
+          "source_section": "hackernews"
+        },
+        {
+          "id": "5cc0b3bf0f56557a",
+          "short_tag": "AI 供應鏈 canary 偵測",
+          "topic_id": "industry",
+          "topic_name": "AI 產業與新模型發布",
+          "published_at_display": "2026-11-22 13:11",
+          "importance_score": 74,
+          "popularity_score": 67,
+          "rank_reason_zh": "AI 供應鏈安全主題，偵測思路可直接拿來檢查第三方來源。",
+          "headline_zh": "Dragos 發布 AI 供應鏈安全文章，主題為以 canary tokens 進行的偵測與發現。",
+          "community_consensus_zh": "目前以轉發分享為主，尚無顯著正反論戰，留言區暫無實質討論內容。",
+          "sentiment_tag": "neutral",
+          "sources": [
+            {
+              "platform": "hackernews",
+              "label": "HN 104▲ / 22則留言",
+              "published_at": "2026-11-22 13:11",
+              "url": "https://news.ycombinator.com/item?id=50596511"
+            }
+          ],
+          "primary_url": "https://www.dragos.com/blog/ai-supply-chain-security-canary-tokens",
+          "wait_what": {
+            "premise_zh": "供應鏈攻擊指攻擊者從上游的套件、模型或資料植入惡意內容。Canary token 是埋在檔案或資料中的誘餌，被存取時會發出通知。原文細節需點開閱讀，本摘要未取得全文。",
+            "why_it_matters_to_you_zh": "若你的 Agent 會拉取第三方模型或 MCP 工具，這類偵測思路可用於檢查來源。目前沒有可核對的實測數據。",
+            "glossary_notes": [
+              {
+                "term": "Canary token",
+                "explain_zh": "埋在資料裡的警報器，被碰到就回報，像門口的感應鈴。"
+              },
+              {
+                "term": "供應鏈攻擊",
+                "explain_zh": "從上游套件或模型下手，像偷偷換掉供應商的零件。"
+              }
+            ]
+          },
+          "community_voices": [],
+          "composite_score": 71.6,
+          "rank": 4,
+          "source_section": "hackernews"
+        },
+        {
+          "id": "77bc9c5c53f0bd7e",
+          "short_tag": "LLM 性別框架偏差",
+          "topic_id": "models-edge",
+          "topic_name": "Open-Source LLMs / VLM / Edge AI",
+          "published_at_display": "2026-11-22 17:18",
+          "importance_score": 66,
+          "popularity_score": 72,
+          "rank_reason_zh": "Eval 設計可參考，直接涉及偏差與評測集的控制變因。",
+          "headline_zh": "arXiv 論文評測 LLM 在衝突情境中，對男性與女性的道德語氣是否不對稱。",
+          "community_consensus_zh": "社群多半認為偏差反映訓練資料，討論集中在資料來源與社會偏見。",
+          "sentiment_tag": "neutral",
+          "sources": [
+            {
+              "platform": "hackernews",
+              "label": "HN 94▲ / 78則留言",
+              "published_at": "2026-11-22 17:18",
+              "url": "https://news.ycombinator.com/item?id=50597743"
+            }
+          ],
+          "primary_url": "https://arxiv.org/abs/2606.14068",
+          "wait_what": {
+            "premise_zh": "研究者設計衝突情境，只改變角色性別，再觀察模型給出的道德判斷與語氣是否不同。這屬於 Eval 設計中的控制變因方法。論文細節與完整結果需點開原文確認。",
+            "why_it_matters_to_you_zh": "若你用 LLM 做評審或分類，這類性別偏差會直接影響結果。Eval 集應加入性別互換的對照組。",
+            "glossary_notes": [
+              {
+                "term": "Gender-asymmetric framing",
+                "explain_zh": "同一情境只換性別，比較輸出差異，類似 A/B 對照測試。"
+              }
+            ]
+          },
+          "community_voices": [
+            {
+              "stance": "nuance",
+              "platform": "hackernews",
+              "author": "cyanydeez",
+              "quote_zh": "LLM 本身就是西方文明資料的原始傾印，偏差來自資料而非模型。",
+              "url": "https://news.ycombinator.com/item?id=50598631"
+            },
+            {
+              "stance": "nuance",
+              "platform": "hackernews",
+              "author": "notenchange",
+              "quote_zh": "懂訓練流程的人應該不意外，模型反映訓練資料與訓練者的偏好。",
+              "url": "https://news.ycombinator.com/item?id=50598688"
+            },
+            {
+              "stance": "nuance",
+              "platform": "hackernews",
+              "author": "jrrc_dev",
+              "quote_zh": "LLM 很會複製人類行為，這個結果本身不令人意外。",
+              "url": "https://news.ycombinator.com/item?id=50598659"
+            }
+          ],
+          "composite_score": 70.1,
+          "rank": 5,
+          "source_section": "hackernews"
+        }
+      ]
+    },
+    {
+      "source": "github",
+      "label": "GitHub",
+      "takeaway_zh": "本地化短影音管線與逐段 Rust 遷移工具同日上榜，兩者都以可驗證的小步流程取代一次到位。",
+      "top_diagram": {
+        "story_id": "ba504aec0cf0d0c8",
+        "title_zh": "本地短影音管線的流程改動",
+        "nodes": [
+          {
+            "step": "01 BEFORE",
+            "label_zh": "人工剪短影音",
+            "detail_zh": "需手動找段落、加字幕、改成直式比例",
+            "tone": "neutral"
+          },
+          {
+            "step": "02 CHANGE",
+            "label_zh": "本地語音與 LLM 串接",
+            "detail_zh": "音訊優先，結合 YouTube 字幕與本地 LLM",
+            "tone": "change"
+          },
+          {
+            "step": "03 IMPACT",
+            "label_zh": "約 2 分鐘輸出成品",
+            "detail_zh": "宣稱產出 9:16 附字幕短影音，免費開源",
+            "tone": "impact"
+          },
+          {
+            "step": "04 DEBATE",
+            "label_zh": "實測數據尚缺",
+            "detail_zh": "無留言，效能與剪輯品質仍待獨立驗證",
+            "tone": "tension"
+          }
+        ]
+      },
+      "items": [
+        {
+          "id": "8129f68e260304e7",
+          "short_tag": "逐段 Rust 遷移驗收",
+          "topic_id": "models-edge",
+          "topic_name": "Open-Source LLMs / VLM / Edge AI",
+          "published_at_display": "2026-11-24 05:17",
+          "importance_score": 70,
+          "popularity_score": 98,
+          "rank_reason_zh": "行為比對式遷移，工程流程可直接借鏡",
+          "headline_zh": "rust-anything 提供逐段把應用程式改寫成 Rust 的流程，每一步都比對原程式的行為紀錄。",
+          "community_consensus_zh": "目前以轉發分享為主，尚無顯著正反論戰，也缺少實測留言可判斷遷移品質。",
+          "sentiment_tag": "neutral",
+          "sources": [
+            {
+              "platform": "github",
+              "label": "GitHub ★8814 / 713 forks",
+              "published_at": "2026-11-24 05:17",
+              "url": "https://github.com/erkamyaman/rust-anything"
+            }
+          ],
+          "primary_url": "https://github.com/erkamyaman/rust-anything",
+          "wait_what": {
+            "premise_zh": "大型程式改寫成另一種語言時，常見問題是新版本悄悄改掉舊版行為。這個專案每改一小段，就拿原程式的紀錄來比對新版輸出。它支援 TypeScript、Python、C、Go、Ruby 與 Java 等來源語言。",
+            "why_it_matters_to_you_zh": "對 Agent 自動化與日常寫程式很實用。可以把遷移拆成小任務，每段都用獨立驗收條件把關，降低一次重寫的風險。",
+            "glossary_notes": [
+              {
+                "term": "Characterization tests",
+                "explain_zh": "先錄下舊程式的實際行為當基準，再檢查新程式是否一致。"
+              }
+            ]
+          },
+          "community_voices": [],
+          "composite_score": 84.3,
+          "rank": 1,
+          "source_section": "github"
+        },
+        {
+          "id": "ba504aec0cf0d0c8",
+          "short_tag": "本地短影音剪輯管線",
+          "topic_id": "models-edge",
+          "topic_name": "Open-Source LLMs / VLM / Edge AI",
+          "published_at_display": "2026-11-24 05:10",
+          "importance_score": 72,
+          "popularity_score": 85,
+          "rank_reason_zh": "本地 LLM 與字幕串接，可當邊緣推論參考",
+          "headline_zh": "開源工具 neonclipping 貼上影片連結，約 2 分鐘輸出附字幕的 9:16 短影音，可全程本地執行。",
+          "community_consensus_zh": "目前以轉發分享為主，尚無顯著正反論戰，也缺少實測留言可判斷效能與限制。",
+          "sentiment_tag": "neutral",
+          "sources": [
+            {
+              "platform": "github",
+              "label": "GitHub ★2322 / 148 forks",
+              "published_at": "2026-11-24 05:10",
+              "url": "https://github.com/iamajmeena/neonclipping"
+            }
+          ],
+          "primary_url": "https://github.com/iamajmeena/neonclipping",
+          "wait_what": {
+            "premise_zh": "短影音剪輯通常要人工找精彩段落、加字幕、再調成直式比例。近年有人用語音處理與本地 LLM 自動完成這些步驟。neonclipping 把整條流程包成單一開源工具。",
+            "why_it_matters_to_you_zh": "若管線真能在本機穩定執行，就等於把語音處理與本地 LLM 的延遲和顯存需求搬到消費級硬體上驗證。它可當作本地多模態工作流的參考實作。",
+            "glossary_notes": [
+              {
+                "term": "audio-first",
+                "explain_zh": "先用音訊決定剪輯重點，類似先聽懂內容再動手剪片。"
+              }
+            ]
+          },
+          "community_voices": [],
+          "composite_score": 79.4,
+          "rank": 2,
+          "source_section": "github"
+        },
+        {
+          "id": "24041392dda2073f",
+          "short_tag": "離線知識 AI 工具",
+          "topic_id": "models-edge",
+          "topic_name": "Open-Source LLMs / VLM / Edge AI",
+          "published_at_display": "2026-11-24 10:08",
+          "importance_score": 40,
+          "popularity_score": 88,
+          "rank_reason_zh": "離線 AI 題材相關，但資訊量偏少",
+          "headline_zh": "lastbook 開源專案提供離線知識 AI，附地圖與影片，目標用於緊急求生與重建情境。",
+          "community_consensus_zh": "目前以轉發分享為主，尚無顯著正反論戰，也缺少實測留言可判斷內容品質與模型表現。",
+          "sentiment_tag": "neutral",
+          "sources": [
+            {
+              "platform": "github",
+              "label": "GitHub ★3008 / 368 forks",
+              "published_at": "2026-11-24 10:08",
+              "url": "https://github.com/Immortal-Protocols/lastbook"
+            }
+          ],
+          "primary_url": "https://github.com/Immortal-Protocols/lastbook",
+          "wait_what": {
+            "premise_zh": "離線 AI 指的是模型與資料都存在本機，不依賴網路連線。這類工具常用於網路不穩或無網路的場景。專案描述只有一句，未列出模型大小或硬體需求。",
+            "why_it_matters_to_you_zh": "若內部模型能在低算力裝置上跑，實際會牽涉量化精度與記憶體預算。需要先讀 repo 內容，才能判斷它是否真的有可部署的推論設計。",
+            "glossary_notes": []
+          },
+          "community_voices": [],
+          "composite_score": 62.8,
+          "rank": 3,
+          "source_section": "github"
+        }
+      ]
+    },
+    {
+      "source": "arxiv",
+      "label": "arXiv",
+      "takeaway_zh": "多模態判斷與代碼遷移評測，正轉向單次前向輸出與可執行結果驗證。",
+      "top_diagram": {
+        "story_id": "221f3c07256097e5",
+        "title_zh": "System-1 與 MLLM 的決策分工",
+        "nodes": [
+          {
+            "step": "01 BEFORE",
+            "label_zh": "全部交給 MLLM",
+            "detail_zh": "逐字生成文字才得出答案，延遲較高",
+            "tone": "neutral"
+          },
+          {
+            "step": "02 CHANGE",
+            "label_zh": "判斷任務分流",
+            "detail_zh": "依任務切到 System-1 單次前向模型",
+            "tone": "change"
+          },
+          {
+            "step": "03 IMPACT",
+            "label_zh": "省去逐 token 解碼",
+            "detail_zh": "理論上可降低延遲，適合邊緣裝置",
+            "tone": "impact"
+          },
+          {
+            "step": "04 DEBATE",
+            "label_zh": "哪些任務可安全分流",
+            "detail_zh": "需看基準結果，摘要未提供實測數值",
+            "tone": "tension"
+          }
+        ]
+      },
+      "items": [
+        {
+          "id": "221f3c07256097e5",
+          "short_tag": "System-1 與 MLLM 決策分工",
+          "topic_id": "models-edge",
+          "topic_name": "Open-Source LLMs / VLM / Edge AI",
+          "published_at_display": "2026-11-23 05:08",
+          "importance_score": 84,
+          "popularity_score": 57,
+          "rank_reason_zh": "直接影響邊緣判斷器選型，單次前向與生成式模型的成本取捨",
+          "headline_zh": "S1Arena-MM 基準測試多模態判斷任務，探討哪些決策可交給 System-1 模型處理",
+          "community_consensus_zh": "目前以轉發分享為主，尚無顯著正反論戰，暫無可引用的留言風向。",
+          "sentiment_tag": "neutral",
+          "sources": [
+            {
+              "platform": "arxiv",
+              "label": "arXiv 預印本（無互動數據）",
+              "published_at": "2026-11-23 05:08",
+              "url": "http://arxiv.org/abs/2611.29773v1"
+            }
+          ],
+          "primary_url": "http://arxiv.org/abs/2611.29773v1",
+          "wait_what": {
+            "premise_zh": "多模態模型常見兩種用法。System-1 模型單次前向直接輸出各選項機率，像分類頭。MLLM 則逐字生成文字再得出答案。本文探討哪些感知型判斷適合交給前者。",
+            "why_it_matters_to_you_zh": "若任務可由 System-1 模型承接，邊緣裝置就能省下生成式解碼的 TPOT 開銷與顯存。實際能否替換，需看各任務的評測結果。",
+            "glossary_notes": [
+              {
+                "term": "System-1 model",
+                "explain_zh": "類似單次前向的分類頭，不逐字生成，只輸出選項機率。"
+              }
+            ]
+          },
+          "community_voices": [],
+          "composite_score": 73.3,
+          "rank": 1,
+          "source_section": "arxiv"
+        },
+        {
+          "id": "bad79ba3f89b4e13",
+          "short_tag": "Qiskit 轉 CUDA-Q 微調驗證",
+          "topic_id": "models-edge",
+          "topic_name": "Open-Source LLMs / VLM / Edge AI",
+          "published_at_display": "2026-11-23 05:50",
+          "importance_score": 80,
+          "popularity_score": 57,
+          "rank_reason_zh": "代碼遷移任務以執行結果驗證取代文字比對，可參考於 Agent 評測",
+          "headline_zh": "研究比較小型開源模型微調與提示工程，把 Qiskit 程式翻譯成 CUDA-Q，並以量子態比對驗證正確性",
+          "community_consensus_zh": "目前以轉發分享為主，尚無顯著正反論戰，暫無可引用的留言風向。",
+          "sentiment_tag": "neutral",
+          "sources": [
+            {
+              "platform": "arxiv",
+              "label": "arXiv 預印本（無互動數據）",
+              "published_at": "2026-11-23 05:50",
+              "url": "http://arxiv.org/abs/2611.29793v1"
+            }
+          ],
+          "primary_url": "http://arxiv.org/abs/2611.29793v1",
+          "wait_what": {
+            "premise_zh": "量子程式常以 Qiskit 撰寫，CUDA-Q 則負責 GPU 加速模擬。把舊程式搬到新框架是實際採用成本。本研究以執行結果判斷正確性：兩份程式都要跑完，比對 state vector，數值一致才算正確。",
+            "why_it_matters_to_you_zh": "若小模型經微調就能穩定完成程式翻譯，本地部署的 coding 助理可省下雲端 API 成本。執行驗證的評測方法也能套用到自家 code agent 的驗收流程。",
+            "glossary_notes": [
+              {
+                "term": "CUDA-Q",
+                "explain_zh": "NVIDIA 的量子程式框架，類似 CUDA 之於 GPU 運算。"
+              },
+              {
+                "term": "state vector",
+                "explain_zh": "程式跑完後的完整數值陣列，像逐一比對的輸出快照。"
+              }
+            ]
+          },
+          "community_voices": [],
+          "composite_score": 71.0,
+          "rank": 2,
+          "source_section": "arxiv"
+        },
+        {
+          "id": "5bbf15bfd07b4747",
+          "short_tag": "多輪多約束指令遵循基準",
+          "topic_id": "models-edge",
+          "topic_name": "Open-Source LLMs / VLM / Edge AI",
+          "published_at_display": "2026-11-23 05:16",
+          "importance_score": 78,
+          "popularity_score": 57,
+          "rank_reason_zh": "前沿模型已接近飽和舊基準，新測試更貼近真實多輪使用情境",
+          "headline_zh": "ComplexIF 推出多輪、多約束指令遵循基準，要求同一回應同時滿足分散於不同輪次的限制",
+          "community_consensus_zh": "目前以轉發分享為主，尚無顯著正反論戰，暫無可引用的留言風向。",
+          "sentiment_tag": "neutral",
+          "sources": [
+            {
+              "platform": "arxiv",
+              "label": "arXiv 預印本（無互動數據）",
+              "published_at": "2026-11-23 05:16",
+              "url": "http://arxiv.org/abs/2611.29775v1"
+            }
+          ],
+          "primary_url": "http://arxiv.org/abs/2611.29775v1",
+          "wait_what": {
+            "premise_zh": "指令遵循測試常用來評估 LLM。現有基準多半為單輪、單一約束，前沿模型已接近滿分。ComplexIF 把多個限制分散到對話不同輪次，要求回應全部成立。",
+            "why_it_matters_to_you_zh": "若你的 Agent 會在多輪對話中累積系統指令，單輪分數無法反映真實表現。可用此類基準檢查自家 prompt 與 Skills 在長對話中是否失效。",
+            "glossary_notes": []
+          },
+          "community_voices": [],
+          "composite_score": 69.9,
+          "rank": 3,
+          "source_section": "arxiv"
+        },
+        {
+          "id": "3a594339a6d9f15b",
+          "short_tag": "放射報告視覺表徵補強",
+          "topic_id": "models-edge",
+          "topic_name": "Open-Source LLMs / VLM / Edge AI",
+          "published_at_display": "2026-11-23 05:32",
+          "importance_score": 74,
+          "popularity_score": 57,
+          "rank_reason_zh": "醫療 VLM 場景指出 GRPO 只改語言端，視覺表徵仍是瓶頸",
+          "headline_zh": "研究指出 GRPO 對胸部 X 光報告生成的影像異常辨識提升有限，提出強化視覺表徵的方法",
+          "community_consensus_zh": "目前以轉發分享為主，尚無顯著正反論戰，暫無可引用的留言風向。",
+          "sentiment_tag": "neutral",
+          "sources": [
+            {
+              "platform": "arxiv",
+              "label": "arXiv 預印本（無互動數據）",
+              "published_at": "2026-11-23 05:32",
+              "url": "http://arxiv.org/abs/2611.29783v1"
+            }
+          ],
+          "primary_url": "http://arxiv.org/abs/2611.29783v1",
+          "wait_what": {
+            "premise_zh": "胸部 X 光報告生成多採用視覺語言模型，先看影像再寫文字。GRPO 是一種強化學習方法，常用來提升報告的臨床正確性。作者分析發現，它對影像異常的辨識能力幫助有限。",
+            "why_it_matters_to_you_zh": "若你的 VLM 在視覺判斷上卡關，單靠後段 RL 微調未必有效，應先檢查 vision encoder 的表徵品質。",
+            "glossary_notes": [
+              {
+                "term": "GRPO",
+                "explain_zh": "群組內互相比較獎勵的強化學習法，不另訓練價值模型，類似班內排名評分。"
+              }
+            ]
+          },
+          "community_voices": [],
+          "composite_score": 67.7,
+          "rank": 4,
+          "source_section": "arxiv"
+        },
+        {
+          "id": "a432c3d9bf2d7b02",
+          "short_tag": "膠質瘤術前術後分割",
+          "topic_id": "models-edge",
+          "topic_name": "Open-Source LLMs / VLM / Edge AI",
+          "published_at_display": "2026-11-23 05:50",
+          "importance_score": 66,
+          "popularity_score": 57,
+          "rank_reason_zh": "醫療影像分割，CNN 與 Mamba 混合架構，對 VLM 工程借鑑度有限",
+          "headline_zh": "研究提出級聯架構，結合交叉注意力引導的 Mamba 與 CNN，分割膠質瘤術前與術後影像",
+          "community_consensus_zh": "目前以轉發分享為主，尚無顯著正反論戰，暫無可引用的留言風向。",
+          "sentiment_tag": "neutral",
+          "sources": [
+            {
+              "platform": "arxiv",
+              "label": "arXiv 預印本（無互動數據）",
+              "published_at": "2026-11-23 05:50",
+              "url": "http://arxiv.org/abs/2611.29792v1"
+            }
+          ],
+          "primary_url": "http://arxiv.org/abs/2611.29792v1",
+          "wait_what": {
+            "premise_zh": "膠質瘤分割需要在腦部影像上圈出腫瘤範圍。CNN 擅長局部特徵，但對長距離關聯較弱。本文以交叉注意力結合 Mamba 與 CNN，並同時涵蓋術前與術後影像。",
+            "why_it_matters_to_you_zh": "若你的邊緣裝置要跑醫療影像模型，Mamba 類架構的推論延遲與顯存需求值得比較。本摘要未提供實測速度數據，需看全文確認。",
+            "glossary_notes": [
+              {
+                "term": "Mamba",
+                "explain_zh": "狀態空間模型，像逐格讀取的串流處理器，長序列不必做全域比對。"
+              }
+            ]
+          },
+          "community_voices": [],
+          "composite_score": 63.2,
+          "rank": 5,
+          "source_section": "arxiv"
+        }
+      ]
+    }
+  ],
+  "meta": {
+    "generated_at": "2026-11-24T12:26+08:00",
+    "llm_provider": "claude",
+    "llm_model": "claude-haiku-5-5",
+    "failover_count": 7,
+    "source_status": {
+      "hackernews": "ok",
+      "reddit": "ok",
+      "threads": "ok",
+      "instagram": "ok",
+      "github": "ok",
+      "arxiv": "ok",
+      "x": "ok",
+      "xiaohongshu": "optional-off"
+    },
+    "section_errors": [],
+    "raw_candidate_count": 42,
+    "total_curated_count": 21
+  }
+}

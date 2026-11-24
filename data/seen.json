@@ -4,6 +4,31 @@
     "first_seen": "2026-11-23",
     "headline": "發文團隊宣稱在 AMD GPU 真實生產流量下，P90 輸出達 1,129 tps。"
   },
+  "1ef82d58dab628de2ba": {
+    "engagement": 100.0,
+    "first_seen": "2026-11-24",
+    "headline": "一則 r/AIBubble 貼文指稱，部分公司在 Claude 調價前取消訂閱方案。"
+  },
+  "21bd17a4fa38d338": {
+    "engagement": 1.0,
+    "first_seen": "2026-11-24",
+    "headline": "M3E Canvas 支援 MCP，讓 Claude Code 或 Codex 從 UI 設計一路做到 Android 應用開發。"
+  },
+  "221f3c07256097e5": {
+    "engagement": 55.0,
+    "first_seen": "2026-11-24",
+    "headline": "S1Arena-MM 基準測試多模態判斷任務，探討哪些決策可交給 System-1 模型處理"
+  },
+  "24041392dda2073f": {
+    "engagement": 1504.0,
+    "first_seen": "2026-11-24",
+    "headline": "lastbook 開源專案提供離線知識 AI，附地圖與影片，目標用於緊急求生與重建情境。"
+  },
+  "30b5340b789cf329": {
+    "engagement": 1012.5,
+    "first_seen": "2026-11-24",
+    "headline": "開發者以 Claude 代寫程式，公開 Demon's Souls 重製版非官方 PC 移植的早期版。"
+  },
   "30ca3e0fc9a07f6b": {
     "engagement": 1263.5,
     "first_seen": "2026-11-23",
@@ -13,6 +38,16 @@
     "engagement": 3352.0,
     "first_seen": "2026-11-23",
     "headline": "分析估算 2028 年 Anthropic 供電 87% 來自天然氣、11% 來自煤"
+  },
+  "3a594339a6d9f15b": {
+    "engagement": 55.0,
+    "first_seen": "2026-11-24",
+    "headline": "研究指出 GRPO 對胸部 X 光報告生成的影像異常辨識提升有限，提出強化視覺表徵的方法"
+  },
+  "3c39bae5426aed85": {
+    "engagement": 2194.5,
+    "first_seen": "2026-11-24",
+    "headline": "r/webdev 熱門貼文批評，社群作品多為商用 AI 產品的展示，失去原本的創作樂趣。"
   },
   "41743dc9b9a9d596": {
     "engagement": 2436.5,
@@ -29,10 +64,25 @@
     "first_seen": "2026-11-23",
     "headline": "GPU 廠商發布本地 AI 入門指南，以 Inkling、Qwen 與 Unsloth 為例"
   },
+  "5119506436cca9e8": {
+    "engagement": 447.85,
+    "first_seen": "2026-11-24",
+    "headline": "作者展示 Codex 搭配 PICOXR CLI，掃描 IKEA 說明書後產生 3D 組裝引導，宣稱快五倍。"
+  },
   "53d8dd111677ab55": {
     "engagement": 55.0,
     "first_seen": "2026-11-23",
     "headline": "MemOnce 論文提出可擴展記憶架構，目標是讓長時程 LLM 互動不必持續累積逐層 KV Cache。"
+  },
+  "5bbf15bfd07b4747": {
+    "engagement": 55.0,
+    "first_seen": "2026-11-24",
+    "headline": "ComplexIF 推出多輪、多約束指令遵循基準，要求同一回應同時滿足分散於不同輪次的限制"
+  },
+  "5cc0b3bf0f56557a": {
+    "engagement": 159.0,
+    "first_seen": "2026-11-24",
+    "headline": "Dragos 發布 AI 供應鏈安全文章，主題為以 canary tokens 進行的偵測與發現。"
   },
   "61b42f71d21332e8": {
     "engagement": 55.0,
@@ -54,15 +104,40 @@
     "first_seen": "2026-11-23",
     "headline": "MR Office 是開源瀏覽器辦公套件，Copilot 可直接編輯真實 Word、Excel、PowerPoint 檔案，並提供 MCP 接口。"
   },
+  "77bc9c5c53f0bd7e": {
+    "engagement": 289.0,
+    "first_seen": "2026-11-24",
+    "headline": "arXiv 論文評測 LLM 在衝突情境中，對男性與女性的道德語氣是否不對稱。"
+  },
   "7ca87966dc1bdeb4": {
     "engagement": 1549.6000000000001,
     "first_seen": "2026-11-23",
     "headline": "AirLLM 宣稱可用 4GB 顯卡執行 70B 模型，以逐層載入計算取代整模型載入。"
   },
+  "7e689a2455fd0b6d": {
+    "engagement": 921.0,
+    "first_seen": "2026-11-24",
+    "headline": "Anthropic formal-math 倉庫公開 VP ≠ VNP 形式化成果，標題宣稱適用所有體。"
+  },
+  "8129f68e260304e7": {
+    "engagement": 4407.0,
+    "first_seen": "2026-11-24",
+    "headline": "rust-anything 提供逐段把應用程式改寫成 Rust 的流程，每一步都比對原程式的行為紀錄。"
+  },
+  "83ee462b64ac9d88": {
+    "engagement": 991.0,
+    "first_seen": "2026-11-24",
+    "headline": "員工在 r/antiwork 自述，老闆以 Claude 改寫網站導致故障，並要求無薪學習 AI 工具。"
+  },
   "8b3d60b749c5568d": {
     "engagement": 55.0,
     "first_seen": "2026-11-23",
     "headline": "研究團隊推出 NoPeBench，測試互動影片世界模型能否阻止物體穿透障礙，摘要指出開源模型都不可靠。"
+  },
+  "a432c3d9bf2d7b02": {
+    "engagement": 55.0,
+    "first_seen": "2026-11-24",
+    "headline": "研究提出級聯架構，結合交叉注意力引導的 Mamba 與 CNN，分割膠質瘤術前與術後影像"
   },
   "aa1d58e13b83257c": {
     "engagement": 1618.5,
@@ -78,6 +153,26 @@
     "engagement": 1506.5,
     "first_seen": "2026-11-23",
     "headline": "Yogurt 是免費開源的會議筆記工具，不派會議機器人，筆記內容留在使用者電腦上，支援 Mac、Windows、Linux。"
+  },
+  "b3a8fee96b1c0022": {
+    "engagement": 2089.1,
+    "first_seen": "2026-11-24",
+    "headline": "IG 貼文稱 OpenAI 推出 GPT-6.2 雙版本 Astra 與 Sol，目標轉向知識工作"
+  },
+  "b8d42fd4c18b5ac8": {
+    "engagement": 40.95,
+    "first_seen": "2026-11-24",
+    "headline": "Reuters 報導 Anthropic 推出 Claude Ship，目標是幫開發者更快把程式碼交付上線。"
+  },
+  "ba504aec0cf0d0c8": {
+    "engagement": 1161.0,
+    "first_seen": "2026-11-24",
+    "headline": "開源工具 neonclipping 貼上影片連結，約 2 分鐘輸出附字幕的 9:16 短影音，可全程本地執行。"
+  },
+  "bad79ba3f89b4e13": {
+    "engagement": 55.0,
+    "first_seen": "2026-11-24",
+    "headline": "研究比較小型開源模型微調與提示工程，把 Qiskit 程式翻譯成 CUDA-Q，並以量子態比對驗證正確性"
   },
   "bb692de3a987abcc": {
     "engagement": 2452.0,
@@ -99,10 +194,20 @@
     "first_seen": "2026-11-23",
     "headline": "Alessandro Masullo 手稿的 Lean 形式化進度圖公開上線"
   },
+  "d8eff3477af09ca8": {
+    "engagement": 615.0,
+    "first_seen": "2026-11-24",
+    "headline": "pequalnp.com 公開一組 Agent swarm 嘗試解 P vs NP，並以圖表顯示進度。"
+  },
   "de5cd1a6d51dc917": {
     "engagement": 1589.0,
     "first_seen": "2026-11-23",
     "headline": "OpenAI 發文談 Perplexity 與智能，評測數字取自內部程式碼快照"
+  },
+  "df08ab47e08b1ed0": {
+    "engagement": 212.5,
+    "first_seen": "2026-11-24",
+    "headline": "Nari Labs 發布 Qwen3.8-27B 的 NariQ 量化版，GGUF 檔約 10 GB，宣稱品質接近 BF16。"
   },
   "e5c7e54028737f43": {
     "engagement": 1557.5,
