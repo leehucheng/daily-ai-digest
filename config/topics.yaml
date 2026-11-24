@@ -1,0 +1,76 @@
+# 每日新知主題設定檔（隨時修改，隔天自動生效）
+site:
+  title: "AI 晨間特刊"
+  subtitle: "跨社群 AI 科技情報與輿論風向"
+  timezone: "Asia/Taipei"
+  site_url: "https://leehucheng.github.io/daily-ai-digest/"
+  max_items: 8
+  per_source_max_items: 5
+  lookback_days: 2
+  social_max_age_days: 7
+  dedup_window_days: 14
+
+# LLM 路由策略：auto（依 priority_order 自動備援）/ gemini / claude
+llm:
+  provider: "auto"
+  priority_order:
+    - "gemini"
+    - "claude"
+  gemini_model: "gemini-2.5-flash"
+  claude_model: "claude-sonnet-5-5"
+  claude_fast_model: "claude-haiku-5-5"
+  max_tokens: 16384
+
+# 排序權重：總分 = popularity * popularity_weight + importance * importance_weight
+ranking:
+  popularity_weight: 0.45
+  importance_weight: 0.55
+
+# 啟用的 SNS 來源（缺少對應 API key 時自動降級並記錄於頁尾，不會整包失敗）
+sources:
+  reddit: true           # 免費免 key（有 SCRAPECREATORS_API_KEY 自動補抓）
+  hackernews: true       # 免費免 key
+  github: true           # 免費免 key
+  arxiv: true            # 免費免 key
+  x: true                # 有 APIFY_API_TOKEN 走 Apify；否則若本機有 cookie 則可選走 last30days
+  instagram: true        # 有 SCRAPECREATORS_API_KEY 抓 Reels + 留言
+  threads: true          # 有 SCRAPECREATORS_API_KEY 抓 Threads
+  xiaohongshu: false     # 選配開關（對應 ENABLE_XHS=true）
+
+# 追蹤主題（可隨時增刪、調整 weight 1.0~1.5）
+topics:
+  - id: "agents"
+    name: "AI Agents & Coding Tools"
+    query: "AI coding agents Claude Code Codex MCP agent harness"
+    weight: 1.25
+    x_queries:
+      - "Claude Code OR Codex OR MCP server AI agent min_faves:50"
+  - id: "models-edge"
+    name: "Open-Source LLMs / VLM / Edge AI"
+    query: "open source LLM VLM vision language model quantization inference edge AI"
+    weight: 1.20
+    x_queries:
+      - "open source LLM OR VLM OR vLLM OR quantization min_faves:50"
+  - id: "industry"
+    name: "AI 產業與新模型發布"
+    query: "OpenAI Anthropic Google Gemini DeepSeek new AI model release"
+    weight: 1.10
+    x_queries:
+      - "(OpenAI OR Anthropic OR Gemini OR DeepSeek) (release OR launch OR benchmark) min_faves:100"
+
+# 重要度評分準則（提供給 LLM 排序使用）
+importance_rubric:
+  boost:
+    - "新模型發布、開源權重釋出、實測效能/記憶體/成本大幅突破"
+    - "實戰工程工具（Agent harness、MCP、推論引擎、開發者工作流）重大更新"
+    - "具實證數據的安全性、評測基準翻盤或產業格局轉折"
+  penalize:
+    - "純情緒口水戰、無實測數據的炒作貼文、單純股價短期波動新聞"
+    - "重複轉發的舊聞（除非有重大後續更新或社群風向大逆轉）"
+
+# 排除關鍵字（大小寫不敏感）
+exclude_keywords:
+  - "sponsored"
+  - "giveaway"
+  - "crypto airdrop"
+  - "memecoin"

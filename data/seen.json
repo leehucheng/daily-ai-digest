@@ -1,0 +1,122 @@
+{
+  "020ffbf7d0681286": {
+    "engagement": 154.05,
+    "first_seen": "2026-11-23",
+    "headline": "發文團隊宣稱在 AMD GPU 真實生產流量下，P90 輸出達 1,129 tps。"
+  },
+  "30ca3e0fc9a07f6b": {
+    "engagement": 1263.5,
+    "first_seen": "2026-11-23",
+    "headline": "fast-anything 開源工具剖析 Python、Node、Ruby 熱點，請 coding agent 改寫成 Rust 並驗證行為一致。"
+  },
+  "38c61351fe0dc3e7": {
+    "engagement": 3352.0,
+    "first_seen": "2026-11-23",
+    "headline": "分析估算 2028 年 Anthropic 供電 87% 來自天然氣、11% 來自煤"
+  },
+  "41743dc9b9a9d596": {
+    "engagement": 2436.5,
+    "first_seen": "2026-11-23",
+    "headline": "一家約 400 人的科技公司收到通知，Anthropic 方案漲約 10 倍，一週內要改用其他模型。"
+  },
+  "4eebbb4ad21ab769": {
+    "engagement": 2029.0,
+    "first_seen": "2026-11-23",
+    "headline": "Linger 是開源個人 Agent，透過模型與 harness 協同設計，讓強大本機 AI 能在一般電腦上執行。"
+  },
+  "4f0ed76760ef2783": {
+    "engagement": 1046.5,
+    "first_seen": "2026-11-23",
+    "headline": "GPU 廠商發布本地 AI 入門指南，以 Inkling、Qwen 與 Unsloth 為例"
+  },
+  "53d8dd111677ab55": {
+    "engagement": 55.0,
+    "first_seen": "2026-11-23",
+    "headline": "MemOnce 論文提出可擴展記憶架構，目標是讓長時程 LLM 互動不必持續累積逐層 KV Cache。"
+  },
+  "61b42f71d21332e8": {
+    "engagement": 55.0,
+    "first_seen": "2026-11-23",
+    "headline": "論文研究無限變異數條件下的高機率線性迴歸，並提出黑箱轉換，讓有限變異數的迴歸程序可用於此情境。"
+  },
+  "6b20a453be132eaa": {
+    "engagement": 115.375,
+    "first_seen": "2026-11-23",
+    "headline": "作者 @leyladaulet 在 Threads 徵詢真實用過的 AI Agent 經驗，問題涵蓋用途、平台與新手建議。"
+  },
+  "6c55e5d040f758d6": {
+    "engagement": 55.0,
+    "first_seen": "2026-11-23",
+    "headline": "Model Carving 提出讓 Transformer 在訓練中自行優化層內結構，質疑固定注意力與 MLP 排列的慣例。"
+  },
+  "7679c60c5d1ac888": {
+    "engagement": 1302.5,
+    "first_seen": "2026-11-23",
+    "headline": "MR Office 是開源瀏覽器辦公套件，Copilot 可直接編輯真實 Word、Excel、PowerPoint 檔案，並提供 MCP 接口。"
+  },
+  "7ca87966dc1bdeb4": {
+    "engagement": 1549.6000000000001,
+    "first_seen": "2026-11-23",
+    "headline": "AirLLM 宣稱可用 4GB 顯卡執行 70B 模型，以逐層載入計算取代整模型載入。"
+  },
+  "8b3d60b749c5568d": {
+    "engagement": 55.0,
+    "first_seen": "2026-11-23",
+    "headline": "研究團隊推出 NoPeBench，測試互動影片世界模型能否阻止物體穿透障礙，摘要指出開源模型都不可靠。"
+  },
+  "aa1d58e13b83257c": {
+    "engagement": 1618.5,
+    "first_seen": "2026-11-23",
+    "headline": "一家新創聲稱 AI Agent 從零設計出新 CPU 架構，矽晶片前模擬顯示能效比高 4.59 倍。"
+  },
+  "ac6cc1e459d7d719": {
+    "engagement": 584.6750000000001,
+    "first_seen": "2026-11-23",
+    "headline": "Z.ai 發表 GLM-5.4，以循環既有層的 Loop Transformer 強化推理，並加入視覺與 CAD 建模能力。"
+  },
+  "afe51a94bdd1588f": {
+    "engagement": 1506.5,
+    "first_seen": "2026-11-23",
+    "headline": "Yogurt 是免費開源的會議筆記工具，不派會議機器人，筆記內容留在使用者電腦上，支援 Mac、Windows、Linux。"
+  },
+  "bb692de3a987abcc": {
+    "engagement": 2452.0,
+    "first_seen": "2026-11-23",
+    "headline": "Satya Nadella 承認 VS Code 六個月內失勢，部分開發者因 Claude Code 已不再開啟它。"
+  },
+  "c6dd162721f82348": {
+    "engagement": 1221.0,
+    "first_seen": "2026-11-23",
+    "headline": "一位使用者讓不懂程式的母親操作 Claude Code，測試她能否獨立完成一款應用程式。"
+  },
+  "ca408644a8ccaa66": {
+    "engagement": 3740.75,
+    "first_seen": "2026-11-23",
+    "headline": "中國團隊開源 3B 參數 OCR 模型 Unlimited-OCR，可在本機單次解析長達 100 頁的 PDF。"
+  },
+  "d7077896ac5b1c60": {
+    "engagement": 664.0,
+    "first_seen": "2026-11-23",
+    "headline": "Alessandro Masullo 手稿的 Lean 形式化進度圖公開上線"
+  },
+  "de5cd1a6d51dc917": {
+    "engagement": 1589.0,
+    "first_seen": "2026-11-23",
+    "headline": "OpenAI 發文談 Perplexity 與智能，評測數字取自內部程式碼快照"
+  },
+  "e5c7e54028737f43": {
+    "engagement": 1557.5,
+    "first_seen": "2026-11-23",
+    "headline": "一位使用者以 hub 架構協調數百個 Agent，公開直播嘗試求解 P = NP 並開放眾人參與。"
+  },
+  "e7b5c71acc2e3898": {
+    "engagement": 43799.275,
+    "first_seen": "2026-11-23",
+    "headline": "OpenAI 推出 dots，由 GPT-6 Astra 驅動的常駐 Agent，可背景執行目標並串接 4,000+ 應用"
+  },
+  "ff57b46864701ebe": {
+    "engagement": 132.925,
+    "first_seen": "2026-11-23",
+    "headline": "作者 @itsabrarhussains 在 Threads 主張 Hermes Agent 適合想完全掌控的使用者，未附實測數據。"
+  }
+}

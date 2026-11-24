@@ -1,0 +1,1676 @@
+{
+  "issue_date": "2026-11-23",
+  "executive_takeaway_zh": "跨 X, Reddit, Threads, IG, HN, GitHub, arXiv 共 7 個來源彙整；今日焦點集中在 OpenAI dots 常駐 Agent、3B 本機長文件 OCR、Anthropic 企業定價 10 倍。",
+  "top1_diagram": {
+    "story_id": "e7b5c71acc2e3898",
+    "title_zh": "dots 常駐 Agent 運作流程",
+    "nodes": [
+      {
+        "step": "01 BEFORE",
+        "label_zh": "需人工持續追單",
+        "detail_zh": "聊天式助理需每次下指令才動作，無法背景長跑",
+        "tone": "neutral"
+      },
+      {
+        "step": "02 CHANGE",
+        "label_zh": "每個 dot 獨立雲端電腦",
+        "detail_zh": "獨立雲端電腦與瀏覽器，接收目標後持續背景執行",
+        "tone": "change"
+      },
+      {
+        "step": "03 IMPACT",
+        "label_zh": "串接 4,000+ 應用程式",
+        "detail_zh": "透過 ChatGPT 外掛連接已選應用，可同時處理多專案",
+        "tone": "impact"
+      },
+      {
+        "step": "04 DEBATE",
+        "label_zh": "實測數據尚未公開",
+        "detail_zh": "原文無實測與留言原文，主動性與可靠度待獨立驗證",
+        "tone": "tension"
+      }
+    ]
+  },
+  "items": [
+    {
+      "id": "e7b5c71acc2e3898",
+      "short_tag": "OpenAI dots 常駐 Agent",
+      "topic_id": "agents",
+      "topic_name": "AI Agents & Coding Tools",
+      "published_at_display": "2026-09-30 01:14",
+      "importance_score": 80,
+      "popularity_score": 94,
+      "rank_reason_zh": "常駐 Agent 產品發布，但僅見宣傳影片，缺實測數據",
+      "headline_zh": "OpenAI 推出 dots，由 GPT-6 Astra 驅動的常駐 Agent，可背景執行目標並串接 4,000+ 應用",
+      "community_consensus_zh": "原始資料無留言原文，目前以轉發分享為主，尚無顯著正反論戰",
+      "sentiment_tag": "neutral",
+      "sources": [
+        {
+          "platform": "instagram",
+          "label": "instagram @openai 65,436 讚 / 779 則留言 / 452,071 次觀看",
+          "published_at": "2026-09-30 01:14",
+          "url": "https://www.instagram.com/reel/Dd4RMfMJ7kO/"
+        },
+        {
+          "platform": "instagram",
+          "label": "instagram @rpn 20,854 讚 / 305 則留言 / 259,061 次觀看",
+          "published_at": "2026-09-30 02:04",
+          "url": "https://www.instagram.com/reel/Dd4WsE-Pd43/"
+        }
+      ],
+      "primary_url": "https://www.instagram.com/reel/Dd4RMfMJ7kO/",
+      "wait_what": {
+        "premise_zh": "OpenAI 發布 dots，定位為常駐型 Agent。使用者可交付一個目標，系統會在背景持續處理。官方表示每個 dot 有自己的雲端電腦，並可透過 ChatGPT 連接的外掛操作 4,000 個以上應用程式。",
+        "why_it_matters_to_you_zh": "若常駐 Agent 能穩定背景跑長任務，你的 Harness 需補上權限控管、狀態持久化與用量計費。官方未公開底層部署規格，無法從此貼文判斷推論延遲、顯存或單次成本。",
+        "glossary_notes": [
+          {
+            "term": "dots",
+            "explain_zh": "OpenAI 的常駐 Agent 產品名，像每人一台掛機的值班助理"
+          }
+        ]
+      },
+      "community_voices": [],
+      "composite_score": 88.5,
+      "rank": 1,
+      "source_section": "instagram"
+    },
+    {
+      "id": "ca408644a8ccaa66",
+      "short_tag": "3B 本機長文件 OCR",
+      "topic_id": "models-edge",
+      "topic_name": "Open-Source LLMs / VLM / Edge AI",
+      "published_at_display": "2026-11-21 23:29",
+      "importance_score": 85,
+      "popularity_score": 69,
+      "rank_reason_zh": "開源且 3B 可本機執行，直接影響文件解析的部署成本。",
+      "headline_zh": "中國團隊開源 3B 參數 OCR 模型 Unlimited-OCR，可在本機單次解析長達 100 頁的 PDF。",
+      "community_consensus_zh": "目前以轉發分享為主，尚無顯著正反論戰，無留言可判讀實測體感。",
+      "sentiment_tag": "neutral",
+      "sources": [
+        {
+          "platform": "x",
+          "label": "X 4725 讚 / 440 轉推 / 60 則回覆",
+          "published_at": "2026-11-21 23:29",
+          "url": "https://x.com/byteonai/status/2124163291157008857"
+        }
+      ],
+      "primary_url": "https://x.com/byteonai/status/2124163291157008857",
+      "wait_what": {
+        "premise_zh": "多數 OCR 工具會先把文件切成單頁再逐頁辨識，跨頁的脈絡容易斷掉。此模型宣稱以單次處理讀完整份長文件，上下文窗口為 32K。原文截斷，未附完整基準數字。",
+        "why_it_matters_to_you_zh": "若實測成立，你可用單一本機模型處理整本 PDF，省去分頁與跨頁對齊的後處理。顯存與 KV-Cache 的實際用量仍需以 32K 長度實測確認。",
+        "glossary_notes": [
+          {
+            "term": "Long-horizon parsing",
+            "explain_zh": "一次讀完整份文件，像整本書通讀而非逐頁翻閱"
+          }
+        ]
+      },
+      "community_voices": [],
+      "composite_score": 79.4,
+      "rank": 2,
+      "source_section": "x"
+    },
+    {
+      "id": "41743dc9b9a9d596",
+      "short_tag": "Anthropic 企業定價 10 倍",
+      "topic_id": "industry",
+      "topic_name": "AI 產業與新模型發布",
+      "published_at_display": "2026-11-23 00:33",
+      "importance_score": 88,
+      "popularity_score": 64,
+      "rank_reason_zh": "企業採購成本劇變，直接影響團隊工具選型與 Agent 遷移",
+      "headline_zh": "一家約 400 人的科技公司收到通知，Anthropic 方案漲約 10 倍，一週內要改用其他模型。",
+      "community_consensus_zh": "社群多認為這是舊折扣合約到期所致，也質疑團隊過度依賴單一模型的架構。",
+      "sentiment_tag": "critical",
+      "sources": [
+        {
+          "platform": "reddit",
+          "label": "r/cscareerquestions 1409▲ / 411則留言",
+          "published_at": "2026-11-23 00:33",
+          "url": "https://www.reddit.com/r/cscareerquestions/comments/1y2tg08/anthropic_increased_prices_10x_for_the_company_im/"
+        }
+      ],
+      "primary_url": "https://www.reddit.com/r/cscareerquestions/comments/1y2tg08/anthropic_increased_prices_10x_for_the_company_im/",
+      "wait_what": {
+        "premise_zh": "作者稱，所屬公司約 400 名工程師收到通知，Anthropic 合約價格相較前一期漲約 10 倍，一週後停用。貼文未附合約或帳單，數字屬作者自述。留言者指出，舊合約是依零售 API 價格打折的企業方案。",
+        "why_it_matters_to_you_zh": "若團隊把 Claude 綁進內部框架，換模型就要重測 Prompt、Tool Calling 與 Eval 基準。先算每 token 成本，再決定是否改走開源模型或多供應商路由。",
+        "glossary_notes": [
+          {
+            "term": "Per-seat 授權",
+            "explain_zh": "按使用者人數收費，像照座位數買票，不論用量多寡。"
+          }
+        ]
+      },
+      "community_voices": [
+        {
+          "stance": "con",
+          "platform": "reddit",
+          "author": "u/deejeycris",
+          "quote_zh": "質疑：內部框架若綁死單一模型，才會這麼難切換，問題在設計而非供應商。",
+          "url": "https://www.reddit.com/r/cscareerquestions/comments/1y2tg08/comment/19t117ny3zz2a/"
+        },
+        {
+          "stance": "nuance",
+          "platform": "reddit",
+          "author": "u/TRO_KIK",
+          "quote_zh": "留言指出，舊企業折扣合約退場後，改為 API 全價 token 加每席位收費。",
+          "url": "https://www.reddit.com/r/cscareerquestions/comments/1y2tg08/comment/19t11cfviejb7/"
+        },
+        {
+          "stance": "con",
+          "platform": "reddit",
+          "author": "u/PeachScary413",
+          "quote_zh": "多數人認為這是常見的鎖定後加價手法，SaaS 平台長年如此操作。",
+          "url": "https://www.reddit.com/r/cscareerquestions/comments/1y2tg08/comment/19t123qfosmyq/"
+        }
+      ],
+      "composite_score": 78.0,
+      "rank": 3,
+      "source_section": "reddit"
+    },
+    {
+      "id": "bb692de3a987abcc",
+      "short_tag": "VS Code 被 Claude Code 擠壓",
+      "topic_id": "agents",
+      "topic_name": "AI Agents & Coding Tools",
+      "published_at_display": "2026-11-23 13:35",
+      "importance_score": 86,
+      "popularity_score": 64,
+      "rank_reason_zh": "高層公開承認開發工具格局變動，直接影響日常寫程式工作流",
+      "headline_zh": "Satya Nadella 承認 VS Code 六個月內失勢，部分開發者因 Claude Code 已不再開啟它。",
+      "community_consensus_zh": "社群分兩派：有人轉向可換模型的 Copilot 避開高價，也有人仍在 VS Code 內搭配 Claude 使用。",
+      "sentiment_tag": "mixed",
+      "sources": [
+        {
+          "platform": "reddit",
+          "label": "r/technology 1337▲ / 446則留言",
+          "published_at": "2026-11-23 13:35",
+          "url": "https://www.reddit.com/r/technology/comments/1y3a9c3/the_thing_that_hit_us_satya_nadella_admits_vs/"
+        }
+      ],
+      "primary_url": "https://www.reddit.com/r/technology/comments/1y3a9c3/the_thing_that_hit_us_satya_nadella_admits_vs/",
+      "wait_what": {
+        "premise_zh": "VS Code 過去十年是主流程式編輯器。Claude Code 在終端機直接讀寫專案，讓部分人不必再切回編輯器工作。Nadella 公開承認這項轉變的影響。",
+        "why_it_matters_to_you_zh": "當 Agent 直接改檔，編輯器就從主戰場變成輔助角色。若你的流程已依賴 Agent，應比較不同 Agent CLI 的 MCP 支援與模型選擇彈性。",
+        "glossary_notes": [
+          {
+            "term": "Agent CLI",
+            "explain_zh": "在終端機直接執行 Agent 的工具，像把助理搬到命令列。"
+          }
+        ]
+      },
+      "community_voices": [
+        {
+          "stance": "pro",
+          "platform": "reddit",
+          "author": "u/KidGold",
+          "quote_zh": "有人覺得在 VS Code 內使用 Claude，同時保有編輯器與 Agent 的優點。",
+          "url": "https://www.reddit.com/r/technology/comments/1y3a9c3/comment/19t2166eixqmd/"
+        },
+        {
+          "stance": "nuance",
+          "platform": "reddit",
+          "author": "u/sosthaboss",
+          "quote_zh": "GitHub Copilot 可自由選模型，能避免被單一供應商的高價綁定。",
+          "url": "https://www.reddit.com/r/technology/comments/1y3a9c3/comment/19t20ajmqe490/"
+        },
+        {
+          "stance": "nuance",
+          "platform": "reddit",
+          "author": "u/Sufficient-Science71",
+          "quote_zh": "仍有人只把 AI 當輔助、不離開編輯器，也有人擔心自己跟不上趨勢。",
+          "url": "https://www.reddit.com/r/technology/comments/1y3a9c3/comment/19t21up8xr11d/"
+        }
+      ],
+      "composite_score": 78.0,
+      "rank": 4,
+      "source_section": "reddit"
+    },
+    {
+      "id": "de5cd1a6d51dc917",
+      "short_tag": "內部評測數字存疑",
+      "topic_id": "industry",
+      "topic_name": "AI 產業與新模型發布",
+      "published_at_display": "2026-11-23 01:06",
+      "importance_score": 86,
+      "popularity_score": 60,
+      "rank_reason_zh": "直接影響如何解讀廠商發布的模型評測數字",
+      "headline_zh": "OpenAI 發文談 Perplexity 與智能，評測數字取自內部程式碼快照",
+      "community_consensus_zh": "社群質疑內部 held-out 資料能否證明泛化，另有人將新內部模型與 Anthropic 模型比較。",
+      "sentiment_tag": "critical",
+      "sources": [
+        {
+          "platform": "hackernews",
+          "label": "HN 589▲ / 400則留言",
+          "published_at": "2026-11-23 01:06",
+          "url": "https://news.ycombinator.com/item?id=50601525"
+        }
+      ],
+      "primary_url": "https://openai.com/index/perplexity-and-intelligence/",
+      "wait_what": {
+        "premise_zh": "OpenAI 發表題為 Perplexity and Intelligence 的文章。Perplexity 是語言模型預測下一個 token 的困惑度指標，數值越低代表預測越準。依留言引述，文中數字來自 OpenAI 內部程式碼的 held-out 資料集，且自 GPT-3.5 起持續沿用。",
+        "why_it_matters_to_you_zh": "若內部評測集無法外部驗證，選模型時就不能只看廠商發布的 perplexity 數字。建議用自家 Eval 集與 Bootstrap CI 重跑比較。",
+        "glossary_notes": [
+          {
+            "term": "Perplexity（困惑度）",
+            "explain_zh": "衡量模型猜下一個 token 的失準程度，像考試猜題的命中率反向指標"
+          }
+        ]
+      },
+      "community_voices": [
+        {
+          "stance": "con",
+          "platform": "hackernews",
+          "author": "amluto",
+          "quote_zh": "用來當 held-out 的資料來自內部程式碼庫，外界很難相信它能代表模型在未知資料上的表現。",
+          "url": "https://news.ycombinator.com/item?id=50601957"
+        },
+        {
+          "stance": "nuance",
+          "platform": "hackernews",
+          "author": "Leary",
+          "quote_zh": "有人認為內部新模型的表現，和 Anthropic 的 model 4 相當接近。",
+          "url": "https://news.ycombinator.com/item?id=50601855"
+        }
+      ],
+      "composite_score": 75.0,
+      "rank": 5,
+      "source_section": "hackernews"
+    },
+    {
+      "id": "30ca3e0fc9a07f6b",
+      "short_tag": "只改熱點 5% 的 Rust 移植",
+      "topic_id": "agents",
+      "topic_name": "AI Agents & Coding Tools",
+      "published_at_display": "2026-11-23 09:28",
+      "importance_score": 82,
+      "popularity_score": 57,
+      "rank_reason_zh": "Agent 工作流實用：只重寫慢的 5%，並以行為比對驗證。",
+      "headline_zh": "fast-anything 開源工具剖析 Python、Node、Ruby 熱點，請 coding agent 改寫成 Rust 並驗證行為一致。",
+      "community_consensus_zh": "目前以轉發分享為主，尚無顯著正反論戰；來源無留言資料，社群風向待觀察。",
+      "sentiment_tag": "neutral",
+      "sources": [
+        {
+          "platform": "github",
+          "label": "GitHub 2527★ / 157 forks / Rust",
+          "published_at": "2026-11-23 09:28",
+          "url": "https://github.com/EL4CTEO/fast-anything"
+        }
+      ],
+      "primary_url": "https://github.com/EL4CTEO/fast-anything",
+      "wait_what": {
+        "premise_zh": "很多團隊想把慢的程式換成 Rust，但整包重寫風險高且耗時。fast-anything 先用 profiler 找出最耗時的函式，只移植這一小部分。移植後比對原版與新版的輸出，確認行為相同。",
+        "why_it_matters_to_you_zh": "若 Agent 能自動比對原版行為，這套流程就能當成 Agent 改寫程式的驗收關卡。摘要未附加速倍數，導入前需用自己的基準測試確認效益。",
+        "glossary_notes": [
+          {
+            "term": "Profiler",
+            "explain_zh": "像體檢儀器，量出程式哪一段最耗時間。"
+          }
+        ]
+      },
+      "community_voices": [],
+      "composite_score": 72.5,
+      "rank": 6,
+      "source_section": "github"
+    },
+    {
+      "id": "4eebbb4ad21ab769",
+      "short_tag": "本機執行的個人 Agent",
+      "topic_id": "models-edge",
+      "topic_name": "Open-Source LLMs / VLM / Edge AI",
+      "published_at_display": "2026-11-23 18:10",
+      "importance_score": 78,
+      "popularity_score": 62,
+      "rank_reason_zh": "本地 Agent 與 harness 協同設計，直接對應邊緣部署。",
+      "headline_zh": "Linger 是開源個人 Agent，透過模型與 harness 協同設計，讓強大本機 AI 能在一般電腦上執行。",
+      "community_consensus_zh": "目前以轉發分享為主，尚無顯著正反論戰；來源無留言資料，社群風向待觀察。",
+      "sentiment_tag": "neutral",
+      "sources": [
+        {
+          "platform": "github",
+          "label": "GitHub 4058★ / 383 forks / TypeScript",
+          "published_at": "2026-11-23 18:10",
+          "url": "https://github.com/simplexai-labs/linger"
+        }
+      ],
+      "primary_url": "https://github.com/simplexai-labs/linger",
+      "wait_what": {
+        "premise_zh": "多數個人 Agent 會呼叫雲端大模型 API。Linger 的方向相反，讓模型與 harness 在個人 PC 上本地執行。摘要未提供支援的模型規格與效能數字。",
+        "why_it_matters_to_you_zh": "推論延遲與顯存需求取決於採用的本地模型大小，摘要沒有附 VRAM 或 token 速度數據。若 harness 能離線運作，就能減少 API 成本與資料外流風險。",
+        "glossary_notes": []
+      },
+      "community_voices": [],
+      "composite_score": 72.2,
+      "rank": 7,
+      "source_section": "github"
+    },
+    {
+      "id": "4f0ed76760ef2783",
+      "short_tag": "本地跑 35B 的顯存門檻",
+      "topic_id": "models-edge",
+      "topic_name": "Open-Source LLMs / VLM / Edge AI",
+      "published_at_display": "2026-11-23 05:01",
+      "importance_score": 76,
+      "popularity_score": 55,
+      "rank_reason_zh": "直接談本地部署的顯存門檻，但內容偏入門教學",
+      "headline_zh": "GPU 廠商發布本地 AI 入門指南，以 Inkling、Qwen 與 Unsloth 為例",
+      "community_consensus_zh": "留言聚焦 VRAM 門檻，有人質疑 Qwen3.6-35B q4 需要 32GB 以上顯存的說法。",
+      "sentiment_tag": "mixed",
+      "sources": [
+        {
+          "platform": "hackernews",
+          "label": "HN 509▲ / 215則留言",
+          "published_at": "2026-11-23 05:01",
+          "url": "https://news.ycombinator.com/item?id=50603845"
+        }
+      ],
+      "primary_url": "https://www.gpupartner.com/blog/beginners-guide-local-ai-inkling-qwen-unsloth",
+      "wait_what": {
+        "premise_zh": "這是 GPU 廠商部落格的新手教學，示範如何在本地用 Qwen 與 Unsloth 跑模型。討論區集中在顯存門檻，有留言者質疑文中 Qwen3.6-35B 在 q4 量化下需要 32GB 以上 VRAM 的說法。",
+        "why_it_matters_to_you_zh": "q4 量化後的實際顯存需求，決定你的筆電或工作站能否跑 35B 級模型。部署前請實測，不要只信教學文的數字。",
+        "glossary_notes": [
+          {
+            "term": "Unsloth",
+            "explain_zh": "開源微調與量化加速框架，主打省顯存、加快訓練"
+          }
+        ]
+      },
+      "community_voices": [
+        {
+          "stance": "con",
+          "platform": "hackernews",
+          "author": "IsTom",
+          "quote_zh": "文中說 Qwen3.6-35B@q4 需要 32GB 以上 VRAM，這個說法值得再查證。",
+          "url": "https://news.ycombinator.com/item?id=50604479"
+        },
+        {
+          "stance": "nuance",
+          "platform": "hackernews",
+          "author": "bashhq_r",
+          "quote_zh": "一般筆電要跑到什麼顯存量，Qwen 才不會感覺很卡？這是多數入門者的真實問題。",
+          "url": "https://news.ycombinator.com/item?id=50604455"
+        }
+      ],
+      "composite_score": 67.9,
+      "rank": 8,
+      "source_section": "hackernews"
+    }
+  ],
+  "sections": [
+    {
+      "source": "x",
+      "label": "X",
+      "takeaway_zh": "小參數模型與推論硬體同時下探本機與高吞吐場景，但多數數字仍待獨立實測。",
+      "top_diagram": {
+        "story_id": "ca408644a8ccaa66",
+        "title_zh": "3B 模型單次解析長文件的架構改動",
+        "nodes": [
+          {
+            "step": "01 BEFORE",
+            "label_zh": "逐頁切割辨識",
+            "detail_zh": "切頁後跨頁脈絡斷裂，長文件易失去上下文",
+            "tone": "neutral"
+          },
+          {
+            "step": "02 CHANGE",
+            "label_zh": "3B 單次長文解析",
+            "detail_zh": "32K 上下文一次讀入整份文件，可本機執行",
+            "tone": "change"
+          },
+          {
+            "step": "03 IMPACT",
+            "label_zh": "單次完成整本解析",
+            "detail_zh": "省去分頁後處理；原文提到 93% 指標但內容截斷",
+            "tone": "impact"
+          },
+          {
+            "step": "04 DEBATE",
+            "label_zh": "數據與實測待驗證",
+            "detail_zh": "無留言可讀；93% 對應的基準名稱與條件未見",
+            "tone": "tension"
+          }
+        ]
+      },
+      "items": [
+        {
+          "id": "ca408644a8ccaa66",
+          "short_tag": "3B 本機長文件 OCR",
+          "topic_id": "models-edge",
+          "topic_name": "Open-Source LLMs / VLM / Edge AI",
+          "published_at_display": "2026-11-21 23:29",
+          "importance_score": 85,
+          "popularity_score": 69,
+          "rank_reason_zh": "開源且 3B 可本機執行，直接影響文件解析的部署成本。",
+          "headline_zh": "中國團隊開源 3B 參數 OCR 模型 Unlimited-OCR，可在本機單次解析長達 100 頁的 PDF。",
+          "community_consensus_zh": "目前以轉發分享為主，尚無顯著正反論戰，無留言可判讀實測體感。",
+          "sentiment_tag": "neutral",
+          "sources": [
+            {
+              "platform": "x",
+              "label": "X 4725 讚 / 440 轉推 / 60 則回覆",
+              "published_at": "2026-11-21 23:29",
+              "url": "https://x.com/byteonai/status/2124163291157008857"
+            }
+          ],
+          "primary_url": "https://x.com/byteonai/status/2124163291157008857",
+          "wait_what": {
+            "premise_zh": "多數 OCR 工具會先把文件切成單頁再逐頁辨識，跨頁的脈絡容易斷掉。此模型宣稱以單次處理讀完整份長文件，上下文窗口為 32K。原文截斷，未附完整基準數字。",
+            "why_it_matters_to_you_zh": "若實測成立，你可用單一本機模型處理整本 PDF，省去分頁與跨頁對齊的後處理。顯存與 KV-Cache 的實際用量仍需以 32K 長度實測確認。",
+            "glossary_notes": [
+              {
+                "term": "Long-horizon parsing",
+                "explain_zh": "一次讀完整份文件，像整本書通讀而非逐頁翻閱"
+              }
+            ]
+          },
+          "community_voices": [],
+          "composite_score": 79.4,
+          "rank": 1,
+          "source_section": "x"
+        },
+        {
+          "id": "ac6cc1e459d7d719",
+          "short_tag": "GLM-5.4 循環 Transformer",
+          "topic_id": "agents",
+          "topic_name": "AI Agents & Coding Tools",
+          "published_at_display": "2026-11-23 18:01",
+          "importance_score": 74,
+          "popularity_score": 49,
+          "rank_reason_zh": "新架構加新模態，但未見權重釋出與實測數據。",
+          "headline_zh": "Z.ai 發表 GLM-5.4，以循環既有層的 Loop Transformer 強化推理，並加入視覺與 CAD 建模能力。",
+          "community_consensus_zh": "目前以轉發分享為主，尚無顯著正反論戰，無留言可判讀實測體感。",
+          "sentiment_tag": "neutral",
+          "sources": [
+            {
+              "platform": "x",
+              "label": "X 591 讚 / 73 轉推 / 65 則回覆",
+              "published_at": "2026-11-23 18:01",
+              "url": "https://x.com/Zai_org/status/2124805514722771349"
+            }
+          ],
+          "primary_url": "https://x.com/Zai_org/status/2124805514722771349",
+          "wait_what": {
+            "premise_zh": "Loop Transformer 指重複使用同一組層多次計算，用計算深度換取推理能力，而不是堆疊更多獨立層。GLM-5.4 在 GLM-5 基礎模型上套用此設計，並主打 coding 與視覺能力。",
+            "why_it_matters_to_you_zh": "若循環層能在相同推理深度下減少參數或顯存，部署成本可能下降。循環會增加前向計算次數，實際 TPOT 仍需實測，且目前未見開放權重說明。",
+            "glossary_notes": [
+              {
+                "term": "Loop Transformer",
+                "explain_zh": "同一組層重複跑數輪，像反覆校稿同一頁"
+              }
+            ]
+          },
+          "community_voices": [],
+          "composite_score": 64.3,
+          "rank": 2,
+          "source_section": "x"
+        },
+        {
+          "id": "020ffbf7d0681286",
+          "short_tag": "AMD GPU 生產級吞吐",
+          "topic_id": "models-edge",
+          "topic_name": "Open-Source LLMs / VLM / Edge AI",
+          "published_at_display": "2026-11-18 03:41",
+          "importance_score": 80,
+          "popularity_score": 36,
+          "rank_reason_zh": "真實流量吞吐數據，可換算推論單位成本與硬體選型。",
+          "headline_zh": "發文團隊宣稱在 AMD GPU 真實生產流量下，P90 輸出達 1,129 tps。",
+          "community_consensus_zh": "目前以轉發分享為主，尚無顯著正反論戰，無留言可判讀實測體感。",
+          "sentiment_tag": "neutral",
+          "sources": [
+            {
+              "platform": "x",
+              "label": "X 86 讚 / 18 轉推 / 46 則回覆",
+              "published_at": "2026-11-18 03:41",
+              "url": "https://x.com/hassanience/status/2122777279004827921"
+            }
+          ],
+          "primary_url": "https://x.com/hassanience/status/2122777279004827921",
+          "wait_what": {
+            "premise_zh": "文中數字取 P90 統計值，代表大多數時段的穩定水準，而非單次峰值。Output tps 指每秒輸出的 token 數，屬於 decode 階段的速度指標。原文未附模型名稱、批次大小與 TTFT。",
+            "why_it_matters_to_you_zh": "若數字可重現，AMD GPU 在高併發推論服務的成本競爭力會被重新評估。缺少模型與批次條件，目前無法直接換算你的部署成本。",
+            "glossary_notes": [
+              {
+                "term": "P90 output tps",
+                "explain_zh": "第 90 百分位的每秒輸出 token 數，取穩定值而非峰值"
+              }
+            ]
+          },
+          "community_voices": [],
+          "composite_score": 61.4,
+          "rank": 3,
+          "source_section": "x"
+        },
+        {
+          "id": "7ca87966dc1bdeb4",
+          "short_tag": "4GB 顯卡跑 70B 宣稱",
+          "topic_id": "models-edge",
+          "topic_name": "Open-Source LLMs / VLM / Edge AI",
+          "published_at_display": "2026-11-23 04:00",
+          "importance_score": 60,
+          "popularity_score": 60,
+          "rank_reason_zh": "逐層推論若成立有參考價值，但貼文未附任何實測數據。",
+          "headline_zh": "AirLLM 宣稱可用 4GB 顯卡執行 70B 模型，以逐層載入計算取代整模型載入。",
+          "community_consensus_zh": "目前以轉發分享為主，尚無顯著正反論戰；貼文未附實測數據，可信度待驗證。",
+          "sentiment_tag": "neutral",
+          "sources": [
+            {
+              "platform": "x",
+              "label": "X 1832 讚 / 156 轉推 / 96 則回覆",
+              "published_at": "2026-11-23 04:00",
+              "url": "https://x.com/byteonai/status/2124594005161943437"
+            }
+          ],
+          "primary_url": "https://x.com/byteonai/status/2124594005161943437",
+          "wait_what": {
+            "premise_zh": "大型模型通常需要整包載入顯存，70B 模型遠超一般 4GB 顯卡的容量。AirLLM 的 layer-wise inference 改為每次只載入一層、計算後即釋放，以速度換取顯存。原文未提供 tokens/s 或延遲數字。",
+            "why_it_matters_to_you_zh": "顯存省下的代價通常是反覆讀寫權重，延遲會明顯增加，互動式 Agent 工作流未必可用。請先實測 TTFT 與 TPOT，再判斷是否適合本機部署。",
+            "glossary_notes": [
+              {
+                "term": "Layer-wise inference",
+                "explain_zh": "像流水線一次只搬一台機器進工廠，用時間換空間"
+              }
+            ]
+          },
+          "community_voices": [],
+          "composite_score": 61.2,
+          "rank": 4,
+          "source_section": "x"
+        }
+      ]
+    },
+    {
+      "source": "reddit",
+      "label": "Reddit",
+      "takeaway_zh": "Agent 工具鏈的模型供應商綁定正變成成本風險，團隊開始評估可替換的架構。",
+      "top_diagram": {
+        "story_id": "41743dc9b9a9d596",
+        "title_zh": "企業方案從折扣轉為全額 token 計價",
+        "nodes": [
+          {
+            "step": "01 BEFORE",
+            "label_zh": "舊折扣合約",
+            "detail_zh": "企業方案依零售 API 價格打折，費率較低",
+            "tone": "neutral"
+          },
+          {
+            "step": "02 CHANGE",
+            "label_zh": "改為全額 token 計價",
+            "detail_zh": "每 token 全價計費，外加每席位授權費",
+            "tone": "change"
+          },
+          {
+            "step": "03 IMPACT",
+            "label_zh": "單價約漲 10 倍",
+            "detail_zh": "約 400 人團隊需在一週內改用其他模型",
+            "tone": "impact"
+          },
+          {
+            "step": "04 DEBATE",
+            "label_zh": "鎖定風險被質疑",
+            "detail_zh": "社群認為過度依賴單一模型是工程設計問題",
+            "tone": "tension"
+          }
+        ]
+      },
+      "items": [
+        {
+          "id": "41743dc9b9a9d596",
+          "short_tag": "Anthropic 企業定價 10 倍",
+          "topic_id": "industry",
+          "topic_name": "AI 產業與新模型發布",
+          "published_at_display": "2026-11-23 00:33",
+          "importance_score": 88,
+          "popularity_score": 64,
+          "rank_reason_zh": "企業採購成本劇變，直接影響團隊工具選型與 Agent 遷移",
+          "headline_zh": "一家約 400 人的科技公司收到通知，Anthropic 方案漲約 10 倍，一週內要改用其他模型。",
+          "community_consensus_zh": "社群多認為這是舊折扣合約到期所致，也質疑團隊過度依賴單一模型的架構。",
+          "sentiment_tag": "critical",
+          "sources": [
+            {
+              "platform": "reddit",
+              "label": "r/cscareerquestions 1409▲ / 411則留言",
+              "published_at": "2026-11-23 00:33",
+              "url": "https://www.reddit.com/r/cscareerquestions/comments/1y2tg08/anthropic_increased_prices_10x_for_the_company_im/"
+            }
+          ],
+          "primary_url": "https://www.reddit.com/r/cscareerquestions/comments/1y2tg08/anthropic_increased_prices_10x_for_the_company_im/",
+          "wait_what": {
+            "premise_zh": "作者稱，所屬公司約 400 名工程師收到通知，Anthropic 合約價格相較前一期漲約 10 倍，一週後停用。貼文未附合約或帳單，數字屬作者自述。留言者指出，舊合約是依零售 API 價格打折的企業方案。",
+            "why_it_matters_to_you_zh": "若團隊把 Claude 綁進內部框架，換模型就要重測 Prompt、Tool Calling 與 Eval 基準。先算每 token 成本，再決定是否改走開源模型或多供應商路由。",
+            "glossary_notes": [
+              {
+                "term": "Per-seat 授權",
+                "explain_zh": "按使用者人數收費，像照座位數買票，不論用量多寡。"
+              }
+            ]
+          },
+          "community_voices": [
+            {
+              "stance": "con",
+              "platform": "reddit",
+              "author": "u/deejeycris",
+              "quote_zh": "質疑：內部框架若綁死單一模型，才會這麼難切換，問題在設計而非供應商。",
+              "url": "https://www.reddit.com/r/cscareerquestions/comments/1y2tg08/comment/19t117ny3zz2a/"
+            },
+            {
+              "stance": "nuance",
+              "platform": "reddit",
+              "author": "u/TRO_KIK",
+              "quote_zh": "留言指出，舊企業折扣合約退場後，改為 API 全價 token 加每席位收費。",
+              "url": "https://www.reddit.com/r/cscareerquestions/comments/1y2tg08/comment/19t11cfviejb7/"
+            },
+            {
+              "stance": "con",
+              "platform": "reddit",
+              "author": "u/PeachScary413",
+              "quote_zh": "多數人認為這是常見的鎖定後加價手法，SaaS 平台長年如此操作。",
+              "url": "https://www.reddit.com/r/cscareerquestions/comments/1y2tg08/comment/19t123qfosmyq/"
+            }
+          ],
+          "composite_score": 78.0,
+          "rank": 1,
+          "source_section": "reddit"
+        },
+        {
+          "id": "bb692de3a987abcc",
+          "short_tag": "VS Code 被 Claude Code 擠壓",
+          "topic_id": "agents",
+          "topic_name": "AI Agents & Coding Tools",
+          "published_at_display": "2026-11-23 13:35",
+          "importance_score": 86,
+          "popularity_score": 64,
+          "rank_reason_zh": "高層公開承認開發工具格局變動，直接影響日常寫程式工作流",
+          "headline_zh": "Satya Nadella 承認 VS Code 六個月內失勢，部分開發者因 Claude Code 已不再開啟它。",
+          "community_consensus_zh": "社群分兩派：有人轉向可換模型的 Copilot 避開高價，也有人仍在 VS Code 內搭配 Claude 使用。",
+          "sentiment_tag": "mixed",
+          "sources": [
+            {
+              "platform": "reddit",
+              "label": "r/technology 1337▲ / 446則留言",
+              "published_at": "2026-11-23 13:35",
+              "url": "https://www.reddit.com/r/technology/comments/1y3a9c3/the_thing_that_hit_us_satya_nadella_admits_vs/"
+            }
+          ],
+          "primary_url": "https://www.reddit.com/r/technology/comments/1y3a9c3/the_thing_that_hit_us_satya_nadella_admits_vs/",
+          "wait_what": {
+            "premise_zh": "VS Code 過去十年是主流程式編輯器。Claude Code 在終端機直接讀寫專案，讓部分人不必再切回編輯器工作。Nadella 公開承認這項轉變的影響。",
+            "why_it_matters_to_you_zh": "當 Agent 直接改檔，編輯器就從主戰場變成輔助角色。若你的流程已依賴 Agent，應比較不同 Agent CLI 的 MCP 支援與模型選擇彈性。",
+            "glossary_notes": [
+              {
+                "term": "Agent CLI",
+                "explain_zh": "在終端機直接執行 Agent 的工具，像把助理搬到命令列。"
+              }
+            ]
+          },
+          "community_voices": [
+            {
+              "stance": "pro",
+              "platform": "reddit",
+              "author": "u/KidGold",
+              "quote_zh": "有人覺得在 VS Code 內使用 Claude，同時保有編輯器與 Agent 的優點。",
+              "url": "https://www.reddit.com/r/technology/comments/1y3a9c3/comment/19t2166eixqmd/"
+            },
+            {
+              "stance": "nuance",
+              "platform": "reddit",
+              "author": "u/sosthaboss",
+              "quote_zh": "GitHub Copilot 可自由選模型，能避免被單一供應商的高價綁定。",
+              "url": "https://www.reddit.com/r/technology/comments/1y3a9c3/comment/19t20ajmqe490/"
+            },
+            {
+              "stance": "nuance",
+              "platform": "reddit",
+              "author": "u/Sufficient-Science71",
+              "quote_zh": "仍有人只把 AI 當輔助、不離開編輯器，也有人擔心自己跟不上趨勢。",
+              "url": "https://www.reddit.com/r/technology/comments/1y3a9c3/comment/19t21up8xr11d/"
+            }
+          ],
+          "composite_score": 78.0,
+          "rank": 2,
+          "source_section": "reddit"
+        },
+        {
+          "id": "aa1d58e13b83257c",
+          "short_tag": "AI Agent 設計 CPU 架構",
+          "topic_id": "agents",
+          "topic_name": "AI Agents & Coding Tools",
+          "published_at_display": "2026-11-22 21:55",
+          "importance_score": 78,
+          "popularity_score": 60,
+          "rank_reason_zh": "Agent 參與硬體設計的新案例，但數據仍停留在模擬階段",
+          "headline_zh": "一家新創聲稱 AI Agent 從零設計出新 CPU 架構，矽晶片前模擬顯示能效比高 4.59 倍。",
+          "community_consensus_zh": "社群多數質疑：矽前模擬與實際量產晶片差距大，且比較基準不夠透明。",
+          "sentiment_tag": "critical",
+          "sources": [
+            {
+              "platform": "reddit",
+              "label": "r/technology 1206▲ / 165則留言",
+              "published_at": "2026-11-22 21:55",
+              "url": "https://www.reddit.com/r/technology/comments/1y2pvu2/ai_agents_design_an_entirely_new_cpu_architecture/"
+            }
+          ],
+          "primary_url": "https://www.reddit.com/r/technology/comments/1y2pvu2/ai_agents_design_an_entirely_new_cpu_architecture/",
+          "wait_what": {
+            "premise_zh": "Frostbite 是一家新創公司宣稱由 AI Agent 完成設計的 CPU 架構。測試來自 pre-silicon 階段，也就是尚未製成實體晶片前的模擬。比較對象是結構簡單的 in-order core。",
+            "why_it_matters_to_you_zh": "若最終數據成立，Agent 可能縮短晶片設計迭代時間，未來邊緣裝置的能效選擇也會改變。目前尚不影響你的推論延遲或部署成本，需等實體晶片與獨立評測。",
+            "glossary_notes": [
+              {
+                "term": "Pre-silicon",
+                "explain_zh": "流片前的模擬驗證，像造車前先在電腦裡跑風洞測試。"
+              },
+              {
+                "term": "In-order core",
+                "explain_zh": "依指令順序執行的簡單核心，像單車道依序放行車輛。"
+              }
+            ]
+          },
+          "community_voices": [
+            {
+              "stance": "con",
+              "platform": "reddit",
+              "author": "u/TheseCashews",
+              "quote_zh": "設計再漂亮的架構，若無法製造與量產，對使用者等同不存在。",
+              "url": "https://www.reddit.com/r/technology/comments/1y2pvu2/comment/19t0umavvnjgg/"
+            },
+            {
+              "stance": "nuance",
+              "platform": "reddit",
+              "author": "u/omniuni",
+              "quote_zh": "質疑以 in-order core 當對照組，會讓效能比數字看起來特別亮眼。",
+              "url": "https://www.reddit.com/r/technology/comments/1y2pvu2/comment/19t0xoyumcq4j/"
+            },
+            {
+              "stance": "con",
+              "platform": "reddit",
+              "author": "u/GamingIndustryIsFcck",
+              "quote_zh": "Sony Cell 架構失敗的例子顯示，新架構若無人採用，註定難以成功。",
+              "url": "https://www.reddit.com/r/technology/comments/1y2pvu2/comment/19t0v7id25b2b/"
+            }
+          ],
+          "composite_score": 71.6,
+          "rank": 3,
+          "source_section": "reddit"
+        },
+        {
+          "id": "c6dd162721f82348",
+          "short_tag": "非技術人員試用 Claude Code",
+          "topic_id": "agents",
+          "topic_name": "AI Agents & Coding Tools",
+          "published_at_display": "2026-11-23 00:43",
+          "importance_score": 72,
+          "popularity_score": 57,
+          "rank_reason_zh": "個人實驗測試非技術使用者能否獨立開發，具工作流參考價值",
+          "headline_zh": "一位使用者讓不懂程式的母親操作 Claude Code，測試她能否獨立完成一款應用程式。",
+          "community_consensus_zh": "目前以轉發分享為主，尚無顯著正反論戰。",
+          "sentiment_tag": "neutral",
+          "sources": [
+            {
+              "platform": "reddit",
+              "label": "r/ItaliaCareerAdvice 741▲ / 192則留言",
+              "published_at": "2026-11-23 00:43",
+              "url": "https://www.reddit.com/r/ItaliaCareerAdvice/comments/1y2top5/ho_lasciato_claude_code_nelle_mani_di_mia_madre/"
+            }
+          ],
+          "primary_url": "https://www.reddit.com/r/ItaliaCareerAdvice/comments/1y2top5/ho_lasciato_claude_code_nelle_mani_di_mia_madre/",
+          "wait_what": {
+            "premise_zh": "Claude Code 是可在終端機讀取與修改專案的 AI 編碼 Agent。作者起因是母親在辦公室要重複閱讀大量文件，因而設計這項實驗。摘要未完整呈現最終成果，原文為義大利文。",
+            "why_it_matters_to_you_zh": "此案例指出，Agent 的實際門檻常在需求描述與驗收標準，而非語法。若要把任務交給非工程師，應先定義 Spec 與獨立的驗收步驟。",
+            "glossary_notes": []
+          },
+          "community_voices": [],
+          "composite_score": 66.9,
+          "rank": 4,
+          "source_section": "reddit"
+        },
+        {
+          "id": "e5c7e54028737f43",
+          "short_tag": "多 Agent 直播挑戰 P=NP",
+          "topic_id": "agents",
+          "topic_name": "AI Agents & Coding Tools",
+          "published_at_display": "2026-11-23 05:35",
+          "importance_score": 55,
+          "popularity_score": 60,
+          "rank_reason_zh": "多 Agent 協作直播實驗，但缺乏可驗證的成果與算力數據",
+          "headline_zh": "一位使用者以 hub 架構協調數百個 Agent，公開直播嘗試求解 P = NP 並開放眾人參與。",
+          "community_consensus_zh": "留言多質疑個人算力比不上 OpenAI、Anthropic 的內部投入，也擔心前沿模型取得受限。",
+          "sentiment_tag": "critical",
+          "sources": [
+            {
+              "platform": "reddit",
+              "label": "r/singularity 1000▲ / 223則留言",
+              "published_at": "2026-11-23 05:35",
+              "url": "https://www.reddit.com/r/singularity/comments/1y30m1o/a_coordinated_army_of_agents_is_trying_to_solve_p/"
+            }
+          ],
+          "primary_url": "https://www.reddit.com/r/singularity/comments/1y30m1o/a_coordinated_army_of_agents_is_trying_to_solve_p/",
+          "wait_what": {
+            "premise_zh": "P = NP 是計算理論最有名的未解問題之一，多數研究者認為兩類問題並不相同。作者建立 pequalnp.com 網站，讓參與者提交 Agent 的運算工作。摘要未附可驗證的證明或中間結果。",
+            "why_it_matters_to_you_zh": "若此類多 Agent 派工實驗成功，能展示長週期任務的協作上限。目前只說明協作架構，尚不影響你的推論成本或日常 Agent 工作流。",
+            "glossary_notes": [
+              {
+                "term": "P = NP",
+                "explain_zh": "問題能否快速驗證與快速求解等價的難題，懸賞百萬美元。"
+              }
+            ]
+          },
+          "community_voices": [
+            {
+              "stance": "con",
+              "platform": "reddit",
+              "author": "u/BlastingFonda",
+              "quote_zh": "若真能這麼容易解題，Amodei 或 Altman 早該投入大量 token 嘗試。",
+              "url": "https://www.reddit.com/r/singularity/comments/1y30m1o/comment/19t1etudptqw4/"
+            },
+            {
+              "stance": "nuance",
+              "platform": "reddit",
+              "author": "u/-batab-",
+              "quote_zh": "多人合併算力或有競爭力，真正瓶頸是能否取得最前沿且無限制的模型。",
+              "url": "https://www.reddit.com/r/singularity/comments/1y30m1o/comment/19t1fhzjco5lx/"
+            }
+          ],
+          "composite_score": 58.7,
+          "rank": 5,
+          "source_section": "reddit"
+        }
+      ]
+    },
+    {
+      "source": "threads",
+      "label": "Threads",
+      "takeaway_zh": "本批次無高訊號項目，僅見 Agent 工具推薦與使用經驗提問，缺實測數據。",
+      "top_diagram": {
+        "story_id": "ff57b46864701ebe",
+        "title_zh": "Hermes Agent 掌控度主張（未驗證）",
+        "nodes": [
+          {
+            "step": "01 BEFORE",
+            "label_zh": "掌控度落差假設",
+            "detail_zh": "作者假設多數工具掌控度不足，未列比較對象",
+            "tone": "neutral"
+          },
+          {
+            "step": "02 CHANGE",
+            "label_zh": "Hermes Agent 作為主選項",
+            "detail_zh": "貼文主張其為 2026 年掌控度最高的選擇",
+            "tone": "change"
+          },
+          {
+            "step": "03 IMPACT",
+            "label_zh": "效能數字缺席",
+            "detail_zh": "未附延遲、顯存或成本的實測數據",
+            "tone": "impact"
+          },
+          {
+            "step": "04 DEBATE",
+            "label_zh": "社群正反尚未成形",
+            "detail_zh": "17 則留言未提供內容，無法判斷反對點",
+            "tone": "tension"
+          }
+        ]
+      },
+      "items": [
+        {
+          "id": "ff57b46864701ebe",
+          "short_tag": "Hermes Agent 掌控度主張",
+          "topic_id": "agents",
+          "topic_name": "AI Agents & Coding Tools",
+          "published_at_display": "2026-10-29 23:00",
+          "importance_score": 40,
+          "popularity_score": 34,
+          "rank_reason_zh": "工具名明確，但貼文只有主張，缺實測數據。",
+          "headline_zh": "作者 @itsabrarhussains 在 Threads 主張 Hermes Agent 適合想完全掌控的使用者，未附實測數據。",
+          "community_consensus_zh": "目前僅有 17 則留言數據，留言內容未提供，無法判斷正反風向。",
+          "sentiment_tag": "neutral",
+          "sources": [
+            {
+              "platform": "threads",
+              "label": "Threads 144 likes / 17 則留言 / 9 轉發",
+              "published_at": "2026-10-29 23:00",
+              "url": "https://www.threads.com/@itsabrarhussains/post/DfFR8ILDFPa"
+            }
+          ],
+          "primary_url": "https://www.threads.com/@itsabrarhussains/post/DfFR8ILDFPa",
+          "wait_what": {
+            "premise_zh": "Hermes Agent 是一個被推薦的 AI Agent 工具。貼文以「完全掌控」為主要賣點。貼文未說明其架構、授權或部署方式。",
+            "why_it_matters_to_you_zh": "若掌控度屬實，可評估能否接入你現有的 MCP 與 Skills 工作流。貼文未提供延遲、顯存或成本數字，目前無法判斷部署價值。",
+            "glossary_notes": []
+          },
+          "community_voices": [],
+          "composite_score": 38.2,
+          "rank": 1,
+          "source_section": "threads"
+        },
+        {
+          "id": "6b20a453be132eaa",
+          "short_tag": "徵詢真實 Agent 使用經驗",
+          "topic_id": "agents",
+          "topic_name": "AI Agents & Coding Tools",
+          "published_at_display": "2026-09-27 22:34",
+          "importance_score": 28,
+          "popularity_score": 33,
+          "rank_reason_zh": "討論有 59 則回覆，可觀察實戰體感，但原文無具體數據。",
+          "headline_zh": "作者 @leyladaulet 在 Threads 徵詢真實用過的 AI Agent 經驗，問題涵蓋用途、平台與新手建議。",
+          "community_consensus_zh": "目前僅有 59 則留言數據，留言內容未提供，尚無可引用的正反觀點。",
+          "sentiment_tag": "neutral",
+          "sources": [
+            {
+              "platform": "threads",
+              "label": "Threads 30 likes / 59 則留言 / 0 轉發",
+              "published_at": "2026-09-27 22:34",
+              "url": "https://www.threads.com/@leyladaulet/post/Ddy1g3ECDIX"
+            }
+          ],
+          "primary_url": "https://www.threads.com/@leyladaulet/post/Ddy1g3ECDIX",
+          "wait_what": {
+            "premise_zh": "作者想知道他人實際用 AI Agent 做什麼。問題包含所用平台、踩過的坑與新手建議。原文只是提問，沒有提供技術結論。",
+            "why_it_matters_to_you_zh": "留言若能回收，可用來對照真實落地場景與官方宣傳的落差。目前留言內容未提供，無法直接用於工作流決策。",
+            "glossary_notes": []
+          },
+          "community_voices": [],
+          "composite_score": 31.0,
+          "rank": 2,
+          "source_section": "threads"
+        }
+      ]
+    },
+    {
+      "source": "instagram",
+      "label": "IG",
+      "takeaway_zh": "OpenAI 以 dots 主打常駐型 Agent，但原文未附實測規格，落地前需先驗證",
+      "top_diagram": {
+        "story_id": "e7b5c71acc2e3898",
+        "title_zh": "dots 常駐 Agent 運作流程",
+        "nodes": [
+          {
+            "step": "01 BEFORE",
+            "label_zh": "需人工持續追單",
+            "detail_zh": "聊天式助理需每次下指令才動作，無法背景長跑",
+            "tone": "neutral"
+          },
+          {
+            "step": "02 CHANGE",
+            "label_zh": "每個 dot 獨立雲端電腦",
+            "detail_zh": "獨立雲端電腦與瀏覽器，接收目標後持續背景執行",
+            "tone": "change"
+          },
+          {
+            "step": "03 IMPACT",
+            "label_zh": "串接 4,000+ 應用程式",
+            "detail_zh": "透過 ChatGPT 外掛連接已選應用，可同時處理多專案",
+            "tone": "impact"
+          },
+          {
+            "step": "04 DEBATE",
+            "label_zh": "實測數據尚未公開",
+            "detail_zh": "原文無實測與留言原文，主動性與可靠度待獨立驗證",
+            "tone": "tension"
+          }
+        ]
+      },
+      "items": [
+        {
+          "id": "e7b5c71acc2e3898",
+          "short_tag": "OpenAI dots 常駐 Agent",
+          "topic_id": "agents",
+          "topic_name": "AI Agents & Coding Tools",
+          "published_at_display": "2026-09-30 01:14",
+          "importance_score": 80,
+          "popularity_score": 94,
+          "rank_reason_zh": "常駐 Agent 產品發布，但僅見宣傳影片，缺實測數據",
+          "headline_zh": "OpenAI 推出 dots，由 GPT-6 Astra 驅動的常駐 Agent，可背景執行目標並串接 4,000+ 應用",
+          "community_consensus_zh": "原始資料無留言原文，目前以轉發分享為主，尚無顯著正反論戰",
+          "sentiment_tag": "neutral",
+          "sources": [
+            {
+              "platform": "instagram",
+              "label": "instagram @openai 65,436 讚 / 779 則留言 / 452,071 次觀看",
+              "published_at": "2026-09-30 01:14",
+              "url": "https://www.instagram.com/reel/Dd4RMfMJ7kO/"
+            },
+            {
+              "platform": "instagram",
+              "label": "instagram @rpn 20,854 讚 / 305 則留言 / 259,061 次觀看",
+              "published_at": "2026-09-30 02:04",
+              "url": "https://www.instagram.com/reel/Dd4WsE-Pd43/"
+            }
+          ],
+          "primary_url": "https://www.instagram.com/reel/Dd4RMfMJ7kO/",
+          "wait_what": {
+            "premise_zh": "OpenAI 發布 dots，定位為常駐型 Agent。使用者可交付一個目標，系統會在背景持續處理。官方表示每個 dot 有自己的雲端電腦，並可透過 ChatGPT 連接的外掛操作 4,000 個以上應用程式。",
+            "why_it_matters_to_you_zh": "若常駐 Agent 能穩定背景跑長任務，你的 Harness 需補上權限控管、狀態持久化與用量計費。官方未公開底層部署規格，無法從此貼文判斷推論延遲、顯存或單次成本。",
+            "glossary_notes": [
+              {
+                "term": "dots",
+                "explain_zh": "OpenAI 的常駐 Agent 產品名，像每人一台掛機的值班助理"
+              }
+            ]
+          },
+          "community_voices": [],
+          "composite_score": 88.5,
+          "rank": 1,
+          "source_section": "instagram"
+        }
+      ]
+    },
+    {
+      "source": "hackernews",
+      "label": "HN",
+      "takeaway_zh": "評測數字取自內部程式碼，外界難以獨立驗證模型表現",
+      "top_diagram": {
+        "story_id": "de5cd1a6d51dc917",
+        "title_zh": "內部 held-out 資料的評測數字",
+        "nodes": [
+          {
+            "step": "01 BEFORE",
+            "label_zh": "內部資料評測",
+            "detail_zh": "held-out 資料自 GPT-3.5 起即取自內部程式碼庫",
+            "tone": "neutral"
+          },
+          {
+            "step": "02 CHANGE",
+            "label_zh": "固定快照報告數字",
+            "detail_zh": "以固定快照公開報告 perplexity 數字",
+            "tone": "change"
+          },
+          {
+            "step": "03 IMPACT",
+            "label_zh": "可見內部指標",
+            "detail_zh": "外界可見數字，但無外部資料可獨立驗證",
+            "tone": "impact"
+          },
+          {
+            "step": "04 DEBATE",
+            "label_zh": "泛化能力存疑",
+            "detail_zh": "留言質疑內部資料能否證明下一詞預測泛化",
+            "tone": "tension"
+          }
+        ]
+      },
+      "items": [
+        {
+          "id": "de5cd1a6d51dc917",
+          "short_tag": "內部評測數字存疑",
+          "topic_id": "industry",
+          "topic_name": "AI 產業與新模型發布",
+          "published_at_display": "2026-11-23 01:06",
+          "importance_score": 86,
+          "popularity_score": 60,
+          "rank_reason_zh": "直接影響如何解讀廠商發布的模型評測數字",
+          "headline_zh": "OpenAI 發文談 Perplexity 與智能，評測數字取自內部程式碼快照",
+          "community_consensus_zh": "社群質疑內部 held-out 資料能否證明泛化，另有人將新內部模型與 Anthropic 模型比較。",
+          "sentiment_tag": "critical",
+          "sources": [
+            {
+              "platform": "hackernews",
+              "label": "HN 589▲ / 400則留言",
+              "published_at": "2026-11-23 01:06",
+              "url": "https://news.ycombinator.com/item?id=50601525"
+            }
+          ],
+          "primary_url": "https://openai.com/index/perplexity-and-intelligence/",
+          "wait_what": {
+            "premise_zh": "OpenAI 發表題為 Perplexity and Intelligence 的文章。Perplexity 是語言模型預測下一個 token 的困惑度指標，數值越低代表預測越準。依留言引述，文中數字來自 OpenAI 內部程式碼的 held-out 資料集，且自 GPT-3.5 起持續沿用。",
+            "why_it_matters_to_you_zh": "若內部評測集無法外部驗證，選模型時就不能只看廠商發布的 perplexity 數字。建議用自家 Eval 集與 Bootstrap CI 重跑比較。",
+            "glossary_notes": [
+              {
+                "term": "Perplexity（困惑度）",
+                "explain_zh": "衡量模型猜下一個 token 的失準程度，像考試猜題的命中率反向指標"
+              }
+            ]
+          },
+          "community_voices": [
+            {
+              "stance": "con",
+              "platform": "hackernews",
+              "author": "amluto",
+              "quote_zh": "用來當 held-out 的資料來自內部程式碼庫，外界很難相信它能代表模型在未知資料上的表現。",
+              "url": "https://news.ycombinator.com/item?id=50601957"
+            },
+            {
+              "stance": "nuance",
+              "platform": "hackernews",
+              "author": "Leary",
+              "quote_zh": "有人認為內部新模型的表現，和 Anthropic 的 model 4 相當接近。",
+              "url": "https://news.ycombinator.com/item?id=50601855"
+            }
+          ],
+          "composite_score": 75.0,
+          "rank": 1,
+          "source_section": "hackernews"
+        },
+        {
+          "id": "4f0ed76760ef2783",
+          "short_tag": "本地跑 35B 的顯存門檻",
+          "topic_id": "models-edge",
+          "topic_name": "Open-Source LLMs / VLM / Edge AI",
+          "published_at_display": "2026-11-23 05:01",
+          "importance_score": 76,
+          "popularity_score": 55,
+          "rank_reason_zh": "直接談本地部署的顯存門檻，但內容偏入門教學",
+          "headline_zh": "GPU 廠商發布本地 AI 入門指南，以 Inkling、Qwen 與 Unsloth 為例",
+          "community_consensus_zh": "留言聚焦 VRAM 門檻，有人質疑 Qwen3.6-35B q4 需要 32GB 以上顯存的說法。",
+          "sentiment_tag": "mixed",
+          "sources": [
+            {
+              "platform": "hackernews",
+              "label": "HN 509▲ / 215則留言",
+              "published_at": "2026-11-23 05:01",
+              "url": "https://news.ycombinator.com/item?id=50603845"
+            }
+          ],
+          "primary_url": "https://www.gpupartner.com/blog/beginners-guide-local-ai-inkling-qwen-unsloth",
+          "wait_what": {
+            "premise_zh": "這是 GPU 廠商部落格的新手教學，示範如何在本地用 Qwen 與 Unsloth 跑模型。討論區集中在顯存門檻，有留言者質疑文中 Qwen3.6-35B 在 q4 量化下需要 32GB 以上 VRAM 的說法。",
+            "why_it_matters_to_you_zh": "q4 量化後的實際顯存需求，決定你的筆電或工作站能否跑 35B 級模型。部署前請實測，不要只信教學文的數字。",
+            "glossary_notes": [
+              {
+                "term": "Unsloth",
+                "explain_zh": "開源微調與量化加速框架，主打省顯存、加快訓練"
+              }
+            ]
+          },
+          "community_voices": [
+            {
+              "stance": "con",
+              "platform": "hackernews",
+              "author": "IsTom",
+              "quote_zh": "文中說 Qwen3.6-35B@q4 需要 32GB 以上 VRAM，這個說法值得再查證。",
+              "url": "https://news.ycombinator.com/item?id=50604479"
+            },
+            {
+              "stance": "nuance",
+              "platform": "hackernews",
+              "author": "bashhq_r",
+              "quote_zh": "一般筆電要跑到什麼顯存量，Qwen 才不會感覺很卡？這是多數入門者的真實問題。",
+              "url": "https://news.ycombinator.com/item?id=50604455"
+            }
+          ],
+          "composite_score": 67.9,
+          "rank": 2,
+          "source_section": "hackernews"
+        },
+        {
+          "id": "38c61351fe0dc3e7",
+          "short_tag": "AI 供電 87% 來自天然氣",
+          "topic_id": "industry",
+          "topic_name": "AI 產業與新模型發布",
+          "published_at_display": "2026-11-22 16:57",
+          "importance_score": 66,
+          "popularity_score": 68,
+          "rank_reason_zh": "揭示 AI 算力背後的電力來源與成本結構",
+          "headline_zh": "分析估算 2028 年 Anthropic 供電 87% 來自天然氣、11% 來自煤",
+          "community_consensus_zh": "社群聚焦能源與環境代價，也有人認為每兆瓦產出的 tokens 會持續改善。",
+          "sentiment_tag": "critical",
+          "sources": [
+            {
+              "platform": "hackernews",
+              "label": "HN 972▲ / 952則留言",
+              "published_at": "2026-11-22 16:57",
+              "url": "https://news.ycombinator.com/item?id=50597612"
+            }
+          ],
+          "primary_url": "https://betterdatacenterproject.com/2026/11/16/how-ai-is-powered-a-breakdown-of-byop-and-grid-power/",
+          "wait_what": {
+            "premise_zh": "BYOP 指資料中心自帶發電設施，不完全依賴公共電網。這篇文章是預測與估算，不是 Anthropic 的正式揭露。它推估 2028 年供電組合中，天然氣占 87%，煤占 11%。",
+            "why_it_matters_to_you_zh": "這對你的影響是間接的：電力來源與電價會影響推論成本與區域算力的可用性。引用這類數字前，請先確認它是預測而非實際數據。",
+            "glossary_notes": [
+              {
+                "term": "BYOP（自帶電力）",
+                "explain_zh": "資料中心自建發電，不走公共電網，像自己裝發電機"
+              }
+            ]
+          },
+          "community_voices": [
+            {
+              "stance": "con",
+              "platform": "hackernews",
+              "author": "vrganj",
+              "quote_zh": "少數人為了減少對多數人的依賴，正在燃燒地球，這種做法為何還會被允許？",
+              "url": "https://news.ycombinator.com/item?id=50597746"
+            },
+            {
+              "stance": "nuance",
+              "platform": "hackernews",
+              "author": "NeuralOracle",
+              "quote_zh": "社群總是討論哪個模型最強，卻很少討論跑這些模型燒掉了什麼資源。",
+              "url": "https://news.ycombinator.com/item?id=50597892"
+            },
+            {
+              "stance": "pro",
+              "platform": "hackernews",
+              "author": "bob1029",
+              "quote_zh": "分散式推論很快就會讓每兆瓦產出的 tokens 大幅提升，用電量的擔憂可能會下降。",
+              "url": "https://news.ycombinator.com/item?id=50597894"
+            }
+          ],
+          "composite_score": 67.6,
+          "rank": 3,
+          "source_section": "hackernews"
+        },
+        {
+          "id": "d7077896ac5b1c60",
+          "short_tag": "Lean 形式化進度儀表板",
+          "topic_id": "agents",
+          "topic_name": "AI Agents & Coding Tools",
+          "published_at_display": "2026-11-23 07:12",
+          "importance_score": 72,
+          "popularity_score": 51,
+          "rank_reason_zh": "公開追蹤 AI 參與證明工作的進展，具實證價值",
+          "headline_zh": "Alessandro Masullo 手稿的 Lean 形式化進度圖公開上線",
+          "community_consensus_zh": "留言分兩派：一派期待公開追蹤 AI 證明進展，另一派要求有人類能理解解法。",
+          "sentiment_tag": "mixed",
+          "sources": [
+            {
+              "platform": "hackernews",
+              "label": "HN 234▲ / 172則留言",
+              "published_at": "2026-11-23 07:12",
+              "url": "https://news.ycombinator.com/item?id=50605045"
+            }
+          ],
+          "primary_url": "https://claude.ai/artifact/CtQyX8qfYAF822bgHJHHE3",
+          "wait_what": {
+            "premise_zh": "這是 Alessandro Masullo 手稿的 Lean 形式化進度圖，以 Claude artifact 呈現。Lean 是可以機器檢查證明的程式語言。HN 首頁同時有一則 P=NP 相關貼文，留言把兩者並列討論。",
+            "why_it_matters_to_you_zh": "若 AI 輔助的形式化證明能穩定運作，Agent 驗收就能從跑單元測試延伸到機器可檢查的證明。目前公開細節仍少，正確性需要自行查證。",
+            "glossary_notes": [
+              {
+                "term": "Lean 形式化",
+                "explain_zh": "用 Lean 把數學證明寫成可機器驗證的程式，像單元測試驗證推導"
+              }
+            ]
+          },
+          "community_voices": [
+            {
+              "stance": "pro",
+              "platform": "hackernews",
+              "author": "baoooooooooooo",
+              "quote_zh": "公開儀表板讓這類進展在社群透明可見，而不只藏在大型實驗室內部，這讓人感到樂觀。",
+              "url": "https://news.ycombinator.com/item?id=50605267"
+            },
+            {
+              "stance": "nuance",
+              "platform": "hackernews",
+              "author": "taimurshasan",
+              "quote_zh": "機器給出解法後，下一步仍需要人類理解這個解法，這一點還沒完成。",
+              "url": "https://news.ycombinator.com/item?id=50605250"
+            }
+          ],
+          "composite_score": 64.1,
+          "rank": 4,
+          "source_section": "hackernews"
+        }
+      ]
+    },
+    {
+      "source": "github",
+      "label": "GitHub",
+      "takeaway_zh": "本批重點是 Agent 工作流：只改寫慢的熱點程式並以行為比對驗證，但摘要未附實測加速數據。",
+      "top_diagram": {
+        "story_id": "30ca3e0fc9a07f6b",
+        "title_zh": "只移植熱點程式的漸進式改寫流程",
+        "nodes": [
+          {
+            "step": "01 BEFORE",
+            "label_zh": "整包重寫風險高",
+            "detail_zh": "全 app 改寫後，難逐步確認行為是否一致",
+            "tone": "neutral"
+          },
+          {
+            "step": "02 CHANGE",
+            "label_zh": "只移植熱點 5%",
+            "detail_zh": "Profiler 找出慢函式，coding agent 移植到 Rust",
+            "tone": "change"
+          },
+          {
+            "step": "03 IMPACT",
+            "label_zh": "改動範圍大幅縮小",
+            "detail_zh": "摘要未附加速倍數，效益需自行實測",
+            "tone": "impact"
+          },
+          {
+            "step": "04 DEBATE",
+            "label_zh": "行為一致性待驗證",
+            "detail_zh": "比對依賴原始紀錄，覆蓋率與邊界案例未知",
+            "tone": "tension"
+          }
+        ]
+      },
+      "items": [
+        {
+          "id": "30ca3e0fc9a07f6b",
+          "short_tag": "只改熱點 5% 的 Rust 移植",
+          "topic_id": "agents",
+          "topic_name": "AI Agents & Coding Tools",
+          "published_at_display": "2026-11-23 09:28",
+          "importance_score": 82,
+          "popularity_score": 57,
+          "rank_reason_zh": "Agent 工作流實用：只重寫慢的 5%，並以行為比對驗證。",
+          "headline_zh": "fast-anything 開源工具剖析 Python、Node、Ruby 熱點，請 coding agent 改寫成 Rust 並驗證行為一致。",
+          "community_consensus_zh": "目前以轉發分享為主，尚無顯著正反論戰；來源無留言資料，社群風向待觀察。",
+          "sentiment_tag": "neutral",
+          "sources": [
+            {
+              "platform": "github",
+              "label": "GitHub 2527★ / 157 forks / Rust",
+              "published_at": "2026-11-23 09:28",
+              "url": "https://github.com/EL4CTEO/fast-anything"
+            }
+          ],
+          "primary_url": "https://github.com/EL4CTEO/fast-anything",
+          "wait_what": {
+            "premise_zh": "很多團隊想把慢的程式換成 Rust，但整包重寫風險高且耗時。fast-anything 先用 profiler 找出最耗時的函式，只移植這一小部分。移植後比對原版與新版的輸出，確認行為相同。",
+            "why_it_matters_to_you_zh": "若 Agent 能自動比對原版行為，這套流程就能當成 Agent 改寫程式的驗收關卡。摘要未附加速倍數，導入前需用自己的基準測試確認效益。",
+            "glossary_notes": [
+              {
+                "term": "Profiler",
+                "explain_zh": "像體檢儀器，量出程式哪一段最耗時間。"
+              }
+            ]
+          },
+          "community_voices": [],
+          "composite_score": 72.5,
+          "rank": 1,
+          "source_section": "github"
+        },
+        {
+          "id": "4eebbb4ad21ab769",
+          "short_tag": "本機執行的個人 Agent",
+          "topic_id": "models-edge",
+          "topic_name": "Open-Source LLMs / VLM / Edge AI",
+          "published_at_display": "2026-11-23 18:10",
+          "importance_score": 78,
+          "popularity_score": 62,
+          "rank_reason_zh": "本地 Agent 與 harness 協同設計，直接對應邊緣部署。",
+          "headline_zh": "Linger 是開源個人 Agent，透過模型與 harness 協同設計，讓強大本機 AI 能在一般電腦上執行。",
+          "community_consensus_zh": "目前以轉發分享為主，尚無顯著正反論戰；來源無留言資料，社群風向待觀察。",
+          "sentiment_tag": "neutral",
+          "sources": [
+            {
+              "platform": "github",
+              "label": "GitHub 4058★ / 383 forks / TypeScript",
+              "published_at": "2026-11-23 18:10",
+              "url": "https://github.com/simplexai-labs/linger"
+            }
+          ],
+          "primary_url": "https://github.com/simplexai-labs/linger",
+          "wait_what": {
+            "premise_zh": "多數個人 Agent 會呼叫雲端大模型 API。Linger 的方向相反，讓模型與 harness 在個人 PC 上本地執行。摘要未提供支援的模型規格與效能數字。",
+            "why_it_matters_to_you_zh": "推論延遲與顯存需求取決於採用的本地模型大小，摘要沒有附 VRAM 或 token 速度數據。若 harness 能離線運作，就能減少 API 成本與資料外流風險。",
+            "glossary_notes": []
+          },
+          "community_voices": [],
+          "composite_score": 72.2,
+          "rank": 2,
+          "source_section": "github"
+        },
+        {
+          "id": "7679c60c5d1ac888",
+          "short_tag": "瀏覽器版開源辦公套件加 MCP",
+          "topic_id": "agents",
+          "topic_name": "AI Agents & Coding Tools",
+          "published_at_display": "2026-11-23 10:37",
+          "importance_score": 74,
+          "popularity_score": 58,
+          "rank_reason_zh": "MCP 接口讓 Claude、Cursor 等 Agent 直接編輯 Office 檔案。",
+          "headline_zh": "MR Office 是開源瀏覽器辦公套件，Copilot 可直接編輯真實 Word、Excel、PowerPoint 檔案，並提供 MCP 接口。",
+          "community_consensus_zh": "目前以轉發分享為主，尚無顯著正反論戰；來源無留言資料，社群風向待觀察。",
+          "sentiment_tag": "neutral",
+          "sources": [
+            {
+              "platform": "github",
+              "label": "GitHub 2605★ / 301 forks / TypeScript",
+              "published_at": "2026-11-23 10:37",
+              "url": "https://github.com/XinaTian/MROffice"
+            }
+          ],
+          "primary_url": "https://github.com/XinaTian/MROffice",
+          "wait_what": {
+            "premise_zh": "專案把文件、試算表、簡報、PDF 與程式碼編輯器放進瀏覽器。內建 Copilot 可直接改寫真實 Office 格式檔案。另有 MCP server，讓外部 Agent 建立與修改這些文件。",
+            "why_it_matters_to_you_zh": "對 Agent 工作流而言，文件修改可以當成 MCP 工具呼叫，省去自行處理 Office 格式的工作。摘要未說明授權條款與格式相容度，導入前需先測試。",
+            "glossary_notes": [
+              {
+                "term": "OOXML",
+                "explain_zh": "Office 檔案的底層 XML 格式，類似網頁的 HTML。"
+              }
+            ]
+          },
+          "community_voices": [],
+          "composite_score": 68.5,
+          "rank": 3,
+          "source_section": "github"
+        },
+        {
+          "id": "afe51a94bdd1588f",
+          "short_tag": "本機會議筆記，無會議機器人",
+          "topic_id": "models-edge",
+          "topic_name": "Open-Source LLMs / VLM / Edge AI",
+          "published_at_display": "2026-11-23 17:35",
+          "importance_score": 66,
+          "popularity_score": 59,
+          "rank_reason_zh": "本地 AI 應用實例，可參考隱私與離線處理的做法。",
+          "headline_zh": "Yogurt 是免費開源的會議筆記工具，不派會議機器人，筆記內容留在使用者電腦上，支援 Mac、Windows、Linux。",
+          "community_consensus_zh": "目前以轉發分享為主，尚無顯著正反論戰；來源無留言資料，社群風向待觀察。",
+          "sentiment_tag": "neutral",
+          "sources": [
+            {
+              "platform": "github",
+              "label": "GitHub 3013★ / 258 forks / TypeScript",
+              "published_at": "2026-11-23 17:35",
+              "url": "https://github.com/FrigadeHQ/yogurt"
+            }
+          ],
+          "primary_url": "https://github.com/FrigadeHQ/yogurt",
+          "wait_what": {
+            "premise_zh": "多數會議 AI 工具會派機器人進入會議，或把錄音送到雲端處理。Yogurt 不派機器人，宣稱筆記留在本機。它定位為 Granola、Otter、Fireflies 的替代品。",
+            "why_it_matters_to_you_zh": "本機運行表示推論與顯存負擔落在使用者電腦上。摘要未說明使用哪個模型，若要日常使用，需自行確認本地轉錄與摘要的品質。",
+            "glossary_notes": []
+          },
+          "community_voices": [],
+          "composite_score": 64.1,
+          "rank": 4,
+          "source_section": "github"
+        }
+      ]
+    },
+    {
+      "source": "arxiv",
+      "label": "arXiv",
+      "takeaway_zh": "今日 arXiv 僅 4 筆可用，MemOnce 記憶架構最貼近推論顯存與部署成本需求。",
+      "top_diagram": {
+        "story_id": "53d8dd111677ab55",
+        "title_zh": "MemOnce：KV Cache 記憶架構",
+        "nodes": [
+          {
+            "step": "01 BEFORE",
+            "label_zh": "KV Cache 線性增長",
+            "detail_zh": "上下文變長時，每層 token 級 KV Cache 持續累積",
+            "tone": "neutral"
+          },
+          {
+            "step": "02 CHANGE",
+            "label_zh": "可重用記憶狀態",
+            "detail_zh": "摘要提出可重用 memory state 的架構，細節待原文確認",
+            "tone": "change"
+          },
+          {
+            "step": "03 IMPACT",
+            "label_zh": "成效數字未在摘要",
+            "detail_zh": "摘要未給量化結果，省多少顯存需讀全文與實測",
+            "tone": "impact"
+          },
+          {
+            "step": "04 DEBATE",
+            "label_zh": "尚無社群實測",
+            "detail_zh": "arXiv 頁面無留言，尚無獨立復現或社群驗證",
+            "tone": "tension"
+          }
+        ]
+      },
+      "items": [
+        {
+          "id": "53d8dd111677ab55",
+          "short_tag": "KV Cache 記憶架構",
+          "topic_id": "models-edge",
+          "topic_name": "Open-Source LLMs / VLM / Edge AI",
+          "published_at_display": "2026-11-21 02:51",
+          "importance_score": 82,
+          "popularity_score": 25,
+          "rank_reason_zh": "直接針對長上下文顯存成長問題，與推論部署成本相關。",
+          "headline_zh": "MemOnce 論文提出可擴展記憶架構，目標是讓長時程 LLM 互動不必持續累積逐層 KV Cache。",
+          "community_consensus_zh": "目前以轉發分享為主，尚無顯著正反論戰；arXiv 頁面無留言，體感需等實測與復現回饋。",
+          "sentiment_tag": "neutral",
+          "sources": [
+            {
+              "platform": "arxiv",
+              "label": "arXiv 論文頁（無留言資料）",
+              "published_at": "2026-11-21 02:51",
+              "url": "http://arxiv.org/abs/2611.27973v1"
+            }
+          ],
+          "primary_url": "http://arxiv.org/abs/2611.27973v1",
+          "wait_what": {
+            "premise_zh": "標準 Transformer 每一層都保存每個 token 的 KV Cache。對話或任務拉長後，GPU 記憶體隨上下文線性成長，計算量也隨之上升。這篇論文想改成可長期保存並重用的記憶狀態，讓後續推論不必從頭承擔全部累積成本。",
+            "why_it_matters_to_you_zh": "若方法成立，長上下文 Agent 的顯存曲線會變得較平。摘要未給實測數字，目前無法判斷實際能省多少顯存或延遲。",
+            "glossary_notes": [
+              {
+                "term": "Reusable memory state（可重用記憶狀態）",
+                "explain_zh": "像把對話先存成檔案，下次直接載入，不必整段重算"
+              }
+            ]
+          },
+          "community_voices": [],
+          "composite_score": 57.5,
+          "rank": 1,
+          "source_section": "arxiv"
+        },
+        {
+          "id": "8b3d60b749c5568d",
+          "short_tag": "世界模型穿模評測",
+          "topic_id": "models-edge",
+          "topic_name": "Open-Source LLMs / VLM / Edge AI",
+          "published_at_display": "2026-11-21 02:44",
+          "importance_score": 70,
+          "popularity_score": 25,
+          "rank_reason_zh": "提出新評測 NoPeBench，指出開源世界模型的可靠性缺口。",
+          "headline_zh": "研究團隊推出 NoPeBench，測試互動影片世界模型能否阻止物體穿透障礙，摘要指出開源模型都不可靠。",
+          "community_consensus_zh": "目前以轉發分享為主，尚無顯著正反論戰；arXiv 頁面無留言，尚無社群實測回饋。",
+          "sentiment_tag": "neutral",
+          "sources": [
+            {
+              "platform": "arxiv",
+              "label": "arXiv 論文頁（無留言資料）",
+              "published_at": "2026-11-21 02:44",
+              "url": "http://arxiv.org/abs/2611.27963v1"
+            }
+          ],
+          "primary_url": "http://arxiv.org/abs/2611.27963v1",
+          "wait_what": {
+            "premise_zh": "世界模型是會預測環境下一步變化的生成模型，常用於機器人與模擬場景。這篇論文關注的問題是物體會不會穿過牆或障礙物。作者提出 NoPeBench 評測基準，檢查現有模型在遇到實體障礙時的反應。",
+            "why_it_matters_to_you_zh": "對你目前的 LLM 推論與 Agent 工作流影響有限。若未來要把影片世界模型接入模擬或機器人流程，物理一致性會成為必須驗證的項目。",
+            "glossary_notes": [
+              {
+                "term": "World Model（世界模型）",
+                "explain_zh": "像在腦中先模擬下一步會發生什麼，例如手推杯子會不會穿過桌面"
+              }
+            ]
+          },
+          "community_voices": [],
+          "composite_score": 50.7,
+          "rank": 2,
+          "source_section": "arxiv"
+        },
+        {
+          "id": "6c55e5d040f758d6",
+          "short_tag": "訓練時自動調整拓撲",
+          "topic_id": "models-edge",
+          "topic_name": "Open-Source LLMs / VLM / Edge AI",
+          "published_at_display": "2026-11-21 02:41",
+          "importance_score": 65,
+          "popularity_score": 25,
+          "rank_reason_zh": "挑戰固定 Transformer 層結構的慣例，屬架構層級的新方向。",
+          "headline_zh": "Model Carving 提出讓 Transformer 在訓練中自行優化層內結構，質疑固定注意力與 MLP 排列的慣例。",
+          "community_consensus_zh": "目前以轉發分享為主，尚無顯著正反論戰；arXiv 頁面無留言，尚無社群對方法可行性的討論。",
+          "sentiment_tag": "neutral",
+          "sources": [
+            {
+              "platform": "arxiv",
+              "label": "arXiv 論文頁（無留言資料）",
+              "published_at": "2026-11-21 02:41",
+              "url": "http://arxiv.org/abs/2611.27962v1"
+            }
+          ],
+          "primary_url": "http://arxiv.org/abs/2611.27962v1",
+          "wait_what": {
+            "premise_zh": "一般 Transformer 每一層都以相同順序排列注意力與 MLP 子層，權重在這個固定結構內訓練。作者認為這種統一排列是慣例，不是經過證明的最佳設計。這篇論文嘗試讓結構本身也能在訓練中被優化。",
+            "why_it_matters_to_you_zh": "若結構不再固定，推論引擎與 Edge 編譯器可能需要支援新的算子組合，部署適配工作量會上升（推測）。目前摘要未提供效能數字。",
+            "glossary_notes": [
+              {
+                "term": "Topology（拓撲）",
+                "explain_zh": "層與層之間怎麼接線的圖，類似電路板的走線方式"
+              }
+            ]
+          },
+          "community_voices": [],
+          "composite_score": 47.9,
+          "rank": 3,
+          "source_section": "arxiv"
+        },
+        {
+          "id": "61b42f71d21332e8",
+          "short_tag": "無變異數線性迴歸",
+          "topic_id": "models-edge",
+          "topic_name": "Open-Source LLMs / VLM / Edge AI",
+          "published_at_display": "2026-11-21 02:58",
+          "importance_score": 40,
+          "popularity_score": 25,
+          "rank_reason_zh": "純統計理論，與部署或 Agent 工作流的關聯低。",
+          "headline_zh": "論文研究無限變異數條件下的高機率線性迴歸，並提出黑箱轉換，讓有限變異數的迴歸程序可用於此情境。",
+          "community_consensus_zh": "目前以轉發分享為主，尚無顯著正反論戰；arXiv 頁面無留言，尚無社群討論。",
+          "sentiment_tag": "neutral",
+          "sources": [
+            {
+              "platform": "arxiv",
+              "label": "arXiv 論文頁（無留言資料）",
+              "published_at": "2026-11-21 02:58",
+              "url": "http://arxiv.org/abs/2611.27983v1"
+            }
+          ],
+          "primary_url": "http://arxiv.org/abs/2611.27983v1",
+          "wait_what": {
+            "premise_zh": "一般線性迴歸假設雜訊的變異數有限。這篇論文處理的情況是雜訊只有有限的條件 α 階矩，α 介於 1 與 2 之間，因此變異數可能無限。作者提出黑箱轉換，把原本假設有限變異數的迴歸程序改成適用於此情境。",
+            "why_it_matters_to_you_zh": "目前對推論延遲、顯存與部署成本沒有直接影響。只有在你處理重尾資料的評測統計時，這類方法才可能用得上。",
+            "glossary_notes": [
+              {
+                "term": "Heavy-tailed noise（重尾雜訊）",
+                "explain_zh": "偶爾出現極端離群值，像網路延遲偶爾飆到很高"
+              }
+            ]
+          },
+          "community_voices": [],
+          "composite_score": 33.9,
+          "rank": 4,
+          "source_section": "arxiv"
+        }
+      ]
+    }
+  ],
+  "meta": {
+    "generated_at": "2026-11-23T18:56+08:00",
+    "llm_provider": "claude",
+    "llm_model": "claude-haiku-5-5",
+    "failover_count": 7,
+    "source_status": {
+      "hackernews": "ok",
+      "reddit": "ok",
+      "threads": "ok",
+      "instagram": "ok",
+      "github": "ok",
+      "arxiv": "ok",
+      "x": "ok",
+      "xiaohongshu": "optional-off"
+    },
+    "section_errors": [],
+    "raw_candidate_count": 48,
+    "total_curated_count": 24
+  }
+}

@@ -1,0 +1,2565 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#F7F6F3" />
+  <title>AI 晨間特刊 · 2026-11-23</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Newsreader:opsz,wght@6..72,500;6..72,600&family=Noto+Sans+TC:wght@400;500;600;700&family=Noto+Serif+TC:wght@600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --canvas: #F7F6F3;
+      --surface: #FFFFFF;
+      --surface-soft: #FAF8F5;
+      --border: #EAEAEA;
+      --border-strong: #D6D3CD;
+      --ink: #111111;
+      --body: #2F3437;
+      --muted: #787774;
+      --red-bg: #FDEBEC; --red-fg: #9F2F2D;
+      --blue-bg: #E1F3FE; --blue-fg: #1F6C9F;
+      --green-bg: #EDF3EC; --green-fg: #346538;
+      --yellow-bg: #FBF3DB; --yellow-fg: #956400;
+      --font-serif: 'Newsreader', 'Noto Serif TC', Georgia, serif;
+      --font-sans: 'SF Pro Display', 'Noto Sans TC', -apple-system, BlinkMacSystemFont, sans-serif;
+      --font-mono: 'JetBrains Mono', 'SF Mono', ui-monospace, monospace;
+    }
+    * { box-sizing: border-box; }
+    html, body {
+      margin: 0;
+      padding: 0;
+      background: var(--canvas);
+      color: var(--body);
+      font-family: var(--font-sans);
+      -webkit-font-smoothing: antialiased;
+      line-height: 1.65;
+    }
+    .progress-track {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: var(--border);
+      z-index: 40;
+    }
+    .progress-fill {
+      height: 100%;
+      width: 0%;
+      background: var(--ink);
+      transition: width 220ms cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .page-shell {
+      max-width: 880px;
+      margin: 0 auto;
+      padding: 20px 16px 104px;
+    }
+    @media (min-width: 768px) {
+      .page-shell { padding: 48px 28px 80px; }
+    }
+    .masthead {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 16px;
+      margin-bottom: 14px;
+    }
+    .masthead-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-bottom: 10px;
+    }
+    .brand-kicker {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-decoration: none;
+    }
+    .masthead-controls {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .archive-select {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      color: var(--body);
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 5px 8px;
+    }
+    .mode-switch {
+      display: inline-flex;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 2px;
+    }
+    .mode-btn {
+      border: 0;
+      background: transparent;
+      color: var(--muted);
+      font-family: var(--font-sans);
+      font-size: 12px;
+      font-weight: 500;
+      padding: 4px 10px;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    .mode-btn.is-active {
+      background: var(--ink);
+      color: #FFFFFF;
+    }
+    .masthead-title {
+      margin: 0 0 8px;
+      font-family: var(--font-serif);
+      font-size: clamp(26px, 5vw, 38px);
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+      color: var(--ink);
+    }
+    .takeaway {
+      margin: 0;
+      font-size: 15px;
+      color: var(--body);
+      max-width: 68ch;
+    }
+
+    /* Platform source tabs (Overview + per-source Top 5) */
+    .source-tabs {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      overflow-x: auto;
+      padding: 4px 0 12px;
+      margin-bottom: 8px;
+      border-bottom: 1px solid var(--border);
+      scrollbar-width: none;
+    }
+    .source-tabs::-webkit-scrollbar { display: none; }
+    .source-tab {
+      flex: 0 0 auto;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      border: 1px solid var(--border);
+      background: var(--surface);
+      color: var(--body);
+      border-radius: 6px;
+      font-family: var(--font-sans);
+      font-size: 13px;
+      font-weight: 600;
+      padding: 7px 12px;
+      cursor: pointer;
+    }
+    .source-tab.is-active {
+      background: var(--ink);
+      border-color: var(--ink);
+      color: #FFFFFF;
+    }
+    .tab-count {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      opacity: 0.72;
+    }
+    .section-takeaway {
+      margin: 0 0 14px;
+      font-size: 14px;
+      color: var(--muted);
+    }
+
+    .filter-bar {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      overflow-x: auto;
+      padding: 4px 0 14px;
+      scrollbar-width: none;
+    }
+    .filter-bar::-webkit-scrollbar { display: none; }
+    .filter-bar[hidden] { display: none; }
+    .filter-pill {
+      flex: 0 0 auto;
+      border: 1px solid var(--border);
+      background: var(--surface);
+      color: var(--muted);
+      border-radius: 9999px;
+      font-size: 12px;
+      font-weight: 500;
+      padding: 5px 12px;
+      cursor: pointer;
+    }
+    .filter-pill.is-active {
+      background: var(--ink);
+      border-color: var(--ink);
+      color: #FFFFFF;
+    }
+    .quadrant-panel {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 16px;
+      margin-bottom: 20px;
+    }
+    .panel-head {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 8px;
+      margin-bottom: 10px;
+    }
+    .panel-kicker {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      letter-spacing: 0.08em;
+      color: var(--muted);
+    }
+    .panel-hint {
+      font-size: 12px;
+      color: var(--muted);
+    }
+    .editorial-svg {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+    .q-dot { cursor: pointer; }
+    .q-dot:hover circle { stroke-width: 2.5; }
+
+    .cards-stage {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .story-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 20px 18px;
+      transition: box-shadow 200ms ease;
+    }
+    @media (min-width: 768px) {
+      .story-card { padding: 26px 28px; }
+      .story-card:hover { box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04); }
+    }
+    .card-meta-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-bottom: 12px;
+    }
+    .card-rank-group {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .rank-num {
+      font-family: var(--font-mono);
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--ink);
+    }
+    .topic-label {
+      font-size: 12px;
+      color: var(--muted);
+    }
+    .pub-time-badge {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--muted);
+      background: var(--canvas);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 1px 6px;
+    }
+    .score-strip {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      color: var(--muted);
+    }
+    .score-strip strong { color: var(--ink); font-weight: 600; }
+    .dot-sep { margin: 0 4px; }
+    .card-headline {
+      margin: 0 0 8px;
+      font-family: var(--font-serif);
+      font-size: clamp(20px, 4.5vw, 24px);
+      line-height: 1.32;
+      letter-spacing: -0.015em;
+      color: var(--ink);
+      font-weight: 600;
+    }
+    .rank-reason {
+      margin: 0 0 14px;
+      font-size: 13px;
+      color: var(--muted);
+    }
+    .consensus-box {
+      background: var(--surface-soft);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 12px 14px;
+      margin-bottom: 14px;
+    }
+    .consensus-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      margin-bottom: 6px;
+    }
+    .consensus-kicker {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      letter-spacing: 0.06em;
+      color: var(--muted);
+    }
+    .consensus-text {
+      margin: 0;
+      font-size: 14.5px;
+      color: var(--body);
+    }
+    .pill {
+      display: inline-block;
+      border-radius: 9999px;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      padding: 2px 9px;
+      line-height: 1.5;
+    }
+    .pill-green { background: var(--green-bg); color: var(--green-fg); }
+    .pill-yellow { background: var(--yellow-bg); color: var(--yellow-fg); }
+    .pill-red { background: var(--red-bg); color: var(--red-fg); }
+    .pill-blue { background: var(--blue-bg); color: var(--blue-fg); }
+
+    .top1-diagram-wrap { margin: 14px 0; }
+    .sources-panel { margin: 12px 0; }
+    .sources-kicker {
+      font-family: var(--font-mono);
+      font-size: 10.5px;
+      letter-spacing: 0.06em;
+      color: var(--muted);
+      margin-bottom: 6px;
+    }
+    .sources-list {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .source-link-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 7px 10px;
+      background: var(--canvas);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      text-decoration: none;
+      color: var(--body);
+      font-size: 12.5px;
+      transition: border-color 150ms ease, background 150ms ease;
+    }
+    .source-link-item:hover {
+      border-color: var(--border-strong);
+      background: var(--surface-soft);
+    }
+    .source-link-item.is-primary-src {
+      background: var(--surface);
+      border-color: var(--border-strong);
+    }
+    .source-plat {
+      flex: 0 0 auto;
+      font-family: var(--font-mono);
+      font-size: 10.5px;
+      font-weight: 600;
+      color: var(--ink);
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 1px 6px;
+    }
+    .source-label {
+      flex: 1 1 auto;
+      min-width: 0;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      font-weight: 500;
+    }
+    .source-time {
+      flex: 0 0 auto;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--muted);
+    }
+    .source-arrow {
+      flex: 0 0 auto;
+      display: inline-flex;
+      color: var(--muted);
+    }
+
+    .waitwhat-wrap {
+      border-top: 1px solid var(--border);
+      margin-top: 10px;
+      padding-top: 8px;
+    }
+    .waitwhat-toggle {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      background: transparent;
+      border: 0;
+      padding: 8px 0;
+      cursor: pointer;
+      color: var(--ink);
+      font-family: var(--font-sans);
+      font-size: 13.5px;
+      font-weight: 600;
+      text-align: left;
+    }
+    .toggle-sign {
+      font-family: var(--font-mono);
+      font-size: 18px;
+      font-weight: 400;
+      color: var(--muted);
+      line-height: 1;
+    }
+    .waitwhat-drawer { padding: 8px 0 4px; }
+    .drawer-block { padding: 10px 0; border-top: 1px dashed var(--border); }
+    .drawer-block:first-child { border-top: 0; padding-top: 2px; }
+    .drawer-kicker {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      letter-spacing: 0.06em;
+      color: var(--muted);
+      margin-bottom: 5px;
+    }
+    .drawer-text { margin: 0; font-size: 14px; color: var(--body); }
+    .gloss-list, .voice-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .gloss-list li { font-size: 13.5px; }
+    .gloss-term { font-family: var(--font-mono); font-weight: 600; color: var(--ink); }
+    .voice-item {
+      padding: 8px 10px;
+      background: var(--surface-soft);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+    }
+    .voice-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      margin-bottom: 4px;
+    }
+    .voice-meta {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--muted);
+      text-decoration: none;
+    }
+    .voice-meta:hover { text-decoration: underline; }
+    .voice-quote { margin: 0; font-size: 13.5px; color: var(--body); }
+    .card-footer-counter {
+      display: none;
+      margin-top: 12px;
+      text-align: right;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--muted);
+    }
+
+    /* Focus single-card mode (default on mobile) */
+    body.mode-focus .quadrant-panel { display: none; }
+    body.mode-focus .quadrant-panel.is-open { display: block; }
+    body.mode-focus .story-card { display: none; }
+    body.mode-focus .story-card.is-active { display: block; }
+    body.mode-focus .card-footer-counter { display: block; }
+
+    .thumb-bar {
+      position: fixed;
+      left: 0; right: 0; bottom: 0;
+      z-index: 30;
+      background: rgba(247, 246, 243, 0.94);
+      backdrop-filter: blur(10px);
+      border-top: 1px solid var(--border);
+      padding: 10px 14px calc(10px + env(safe-area-inset-bottom));
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+    }
+    body.mode-overview .thumb-nav-only { opacity: 0.45; }
+    .thumb-btn {
+      flex: 1;
+      border: 1px solid var(--border);
+      background: var(--surface);
+      color: var(--ink);
+      border-radius: 6px;
+      padding: 10px 8px;
+      font-family: var(--font-sans);
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      text-align: center;
+    }
+    .thumb-btn:active { transform: scale(0.98); }
+    .thumb-btn.is-primary {
+      background: var(--ink);
+      border-color: var(--ink);
+      color: #FFFFFF;
+    }
+    @media (min-width: 768px) {
+      .thumb-bar { display: none; }
+    }
+
+    .kbd-hint {
+      display: none;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--muted);
+      margin-top: 10px;
+    }
+    @media (min-width: 768px) {
+      .kbd-hint { display: block; }
+    }
+    kbd {
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      background: var(--surface);
+      padding: 1px 5px;
+      font-family: var(--font-mono);
+      font-size: 11px;
+    }
+
+    .digest-footer {
+      margin-top: 40px;
+      padding-top: 18px;
+      border-top: 1px solid var(--border);
+      font-size: 12px;
+      color: var(--muted);
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .status-row { display: flex; flex-wrap: wrap; gap: 6px; }
+    .status-tag {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      padding: 2px 7px;
+      border-radius: 4px;
+      border: 1px solid var(--border);
+      background: var(--surface);
+    }
+    .status-tag.st-ok { color: var(--green-fg); background: var(--green-bg); border-color: transparent; }
+    .status-tag.st-muted { color: var(--muted); }
+    .empty-state {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 36px 24px;
+      text-align: center;
+      color: var(--muted);
+    }
+  </style>
+</head>
+<body class="mode-overview">
+  <div class="progress-track" aria-hidden="true"><div class="progress-fill" id="progressFill"></div></div>
+
+  <main class="page-shell">
+    <header class="masthead">
+      <div class="masthead-top">
+        <a class="brand-kicker" href="../index.html">AI 晨間特刊 · 2026-11-23</a>
+        <div class="masthead-controls">
+          <select class="archive-select" id="archiveSelect" aria-label="切換歷史期數"><option value="2026-11-23.html" selected>2026-11-23</option></select>
+          <div class="mode-switch" role="group" aria-label="切換閱讀視角">
+            <button class="mode-btn" type="button" id="btnModeFocus">滑卡</button>
+            <button class="mode-btn is-active" type="button" id="btnModeOverview">全景</button>
+          </div>
+        </div>
+      </div>
+      <h1 class="masthead-title">AI 晨間特刊</h1>
+      <p class="takeaway">跨 X, Reddit, Threads, IG, HN, GitHub, arXiv 共 7 個來源彙整；今日焦點集中在 OpenAI dots 常駐 Agent、3B 本機長文件 OCR、Anthropic 企業定價 10 倍。</p>
+      <div class="kbd-hint">快捷鍵：<kbd>←</kbd> <kbd>→</kbd> 切換滑卡 · <kbd>W</kbd> 展開 Wait, what? · <kbd>G</kbd> 切換全景／滑卡</div>
+    </header>
+
+    <nav class="source-tabs" id="sourceTabs" role="tablist" aria-label="切換資料來源分頁"><button class="source-tab is-active" type="button" data-tab="overview" role="tab" aria-selected="true">總覽 <span class="tab-count">8</span></button><button class="source-tab" type="button" data-tab="x" role="tab" aria-selected="false">X <span class="tab-count">4</span></button><button class="source-tab" type="button" data-tab="reddit" role="tab" aria-selected="false">Reddit <span class="tab-count">5</span></button><button class="source-tab" type="button" data-tab="threads" role="tab" aria-selected="false">Threads <span class="tab-count">2</span></button><button class="source-tab" type="button" data-tab="instagram" role="tab" aria-selected="false">IG <span class="tab-count">1</span></button><button class="source-tab" type="button" data-tab="hackernews" role="tab" aria-selected="false">HN <span class="tab-count">4</span></button><button class="source-tab" type="button" data-tab="github" role="tab" aria-selected="false">GitHub <span class="tab-count">4</span></button><button class="source-tab" type="button" data-tab="arxiv" role="tab" aria-selected="false">arXiv <span class="tab-count">4</span></button></nav>
+
+    <nav class="filter-bar" id="topicFilterBar" aria-label="依主題篩選">
+      <button class="filter-pill is-active" type="button" data-filter="all">全部主題</button><button class="filter-pill" type="button" data-filter="agents">AI Agents &amp; Coding Tools</button><button class="filter-pill" type="button" data-filter="models-edge">Open-Source LLMs / VLM / Edge AI</button><button class="filter-pill" type="button" data-filter="industry">AI 產業與新模型發布</button>
+    </nav>
+
+    <div id="panelsRoot">
+      <div class="tab-panel is-active" data-tab-panel="overview"><section class="quadrant-panel" aria-label="重要度與熱門度四象限"><div class="panel-head"><span class="panel-kicker">SIGNAL MAP</span><span class="panel-hint">點圓點直達該則卡片</span></div><svg class="editorial-svg quadrant-svg" viewBox="0 0 680 420" role="img" aria-label="今日 AI 消息重要度與熱門度四象限圖" xmlns="http://www.w3.org/2000/svg">
+  <rect x="0" y="0" width="680" height="420" rx="8" fill="#FAF8F5" stroke="#EAEAEA" stroke-width="1"/>
+  <!-- Highlight top-right quadrant (must-read) -->
+  <rect x="355.0" y="40" width="291.0" height="162.0" fill="#FBF3DB" fill-opacity="0.38"/>
+  <!-- Outer frame -->
+  <rect x="64" y="40" width="582" height="324" fill="none" stroke="#D8D6D0" stroke-width="1"/>
+  <!-- Midpoint hairlines -->
+  <line x1="355.0" y1="40" x2="355.0" y2="364" stroke="#D8D6D0" stroke-width="1" stroke-dasharray="4 4"/>
+  <line x1="64" y1="202.0" x2="646" y2="202.0" stroke="#D8D6D0" stroke-width="1" stroke-dasharray="4 4"/>
+  <!-- Quadrant titles -->
+  <text x="636" y="60" text-anchor="end" font-family="SF Pro Display, Noto Sans TC, sans-serif" font-size="11" font-weight="600" fill="#956400">必看突破（高重要 · 高熱門）</text>
+  <text x="74" y="60" text-anchor="start" font-family="SF Pro Display, Noto Sans TC, sans-serif" font-size="11" fill="#787774">低調硬核（高重要 · 低討論）</text>
+  <text x="636" y="354" text-anchor="end" font-family="SF Pro Display, Noto Sans TC, sans-serif" font-size="11" fill="#787774">社群熱議（討論兇 · 實質影響待觀察）</text>
+  <text x="74" y="354" text-anchor="start" font-family="SF Pro Display, Noto Sans TC, sans-serif" font-size="11" fill="#787774">背景動態</text>
+  <!-- Axis labels -->
+  <text x="355.0" y="404" text-anchor="middle" font-family="JetBrains Mono, SF Mono, monospace" font-size="11" fill="#55524C">熱門度 POPULARITY（跨社群真實互動） →</text>
+  <text x="20" y="202.0" text-anchor="middle" transform="rotate(-90 20 202.0)" font-family="JetBrains Mono, SF Mono, monospace" font-size="11" fill="#55524C">重要度 IMPORTANCE →</text>
+  <!-- Tick marks -->
+  <text x="64" y="380" font-family="JetBrains Mono, monospace" font-size="10" fill="#787774">0</text>
+  <text x="355.0" y="380" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="10" fill="#787774">50</text>
+  <text x="646" y="380" text-anchor="end" font-family="JetBrains Mono, monospace" font-size="10" fill="#787774">100</text>
+  <text x="56" y="48" text-anchor="end" font-family="JetBrains Mono, monospace" font-size="10" fill="#787774">100</text>
+  <text x="56" y="206.0" text-anchor="end" font-family="JetBrains Mono, monospace" font-size="10" fill="#787774">50</text>
+  <!-- Story nodes -->
+  <g class="q-dot" data-story-index="0" role="button" tabindex="0" aria-label="前往第 1 則：OpenAI dots 常駐"><circle cx="611.1" cy="104.8" r="16" fill="#111111" stroke="#111111" stroke-width="1.5"/><text x="611.1" y="108.8" text-anchor="middle" font-family="JetBrains Mono, SF Mono, monospace" font-size="11" font-weight="600" fill="#FFFFFF">1</text><text x="611.1" y="81.8" text-anchor="middle" font-family="SF Pro Display, Noto Sans TC, sans-serif" font-size="10.5" fill="#2F3437">OpenAI dots 常駐</text></g><g class="q-dot" data-story-index="1" role="button" tabindex="0" aria-label="前往第 2 則：3B 本機長文件 OCR"><circle cx="465.6" cy="88.6" r="13" fill="#EDF3EC" stroke="#346538" stroke-width="1.5"/><text x="465.6" y="92.6" text-anchor="middle" font-family="JetBrains Mono, SF Mono, monospace" font-size="11" font-weight="600" fill="#346538">2</text><text x="465.6" y="68.6" text-anchor="middle" font-family="SF Pro Display, Noto Sans TC, sans-serif" font-size="10.5" fill="#2F3437">3B 本機長文件 OCR</text></g><g class="q-dot" data-story-index="2" role="button" tabindex="0" aria-label="前往第 3 則：Anthropic 企業定價"><circle cx="436.5" cy="78.9" r="13" fill="#E1F3FE" stroke="#1F6C9F" stroke-width="1.5"/><text x="436.5" y="82.9" text-anchor="middle" font-family="JetBrains Mono, SF Mono, monospace" font-size="11" font-weight="600" fill="#1F6C9F">3</text><text x="436.5" y="105.9" text-anchor="middle" font-family="SF Pro Display, Noto Sans TC, sans-serif" font-size="10.5" fill="#2F3437">Anthropic 企業定價</text></g><g class="q-dot" data-story-index="3" role="button" tabindex="0" aria-label="前往第 4 則：VS Code 被 Clau"><circle cx="454.5" cy="71.4" r="13" fill="#FDEBEC" stroke="#9F2F2D" stroke-width="1.5"/><text x="454.5" y="75.4" text-anchor="middle" font-family="JetBrains Mono, SF Mono, monospace" font-size="11" font-weight="600" fill="#9F2F2D">4</text><text x="454.5" y="98.4" text-anchor="middle" font-family="SF Pro Display, Noto Sans TC, sans-serif" font-size="10.5" fill="#2F3437">VS Code 被 Clau</text></g><g class="q-dot" data-story-index="4" role="button" tabindex="0" aria-label="前往第 5 則：內部評測數字存疑"><circle cx="413.2" cy="85.4" r="13" fill="#E1F3FE" stroke="#1F6C9F" stroke-width="1.5"/><text x="413.2" y="89.4" text-anchor="middle" font-family="JetBrains Mono, SF Mono, monospace" font-size="11" font-weight="600" fill="#1F6C9F">5</text><text x="413.2" y="65.4" text-anchor="middle" font-family="SF Pro Display, Noto Sans TC, sans-serif" font-size="10.5" fill="#2F3437">內部評測數字存疑</text></g><g class="q-dot" data-story-index="5" role="button" tabindex="0" aria-label="前往第 6 則：只改熱點 5% 的 Rust"><circle cx="413.7" cy="84.3" r="13" fill="#FDEBEC" stroke="#9F2F2D" stroke-width="1.5"/><text x="413.7" y="88.3" text-anchor="middle" font-family="JetBrains Mono, SF Mono, monospace" font-size="11" font-weight="600" fill="#9F2F2D">6</text><text x="413.7" y="64.3" text-anchor="middle" font-family="SF Pro Display, Noto Sans TC, sans-serif" font-size="10.5" fill="#2F3437">只改熱點 5% 的 Rust</text></g><g class="q-dot" data-story-index="6" role="button" tabindex="0" aria-label="前往第 7 則：本機執行的個人 Agent"><circle cx="424.8" cy="111.3" r="13" fill="#EDF3EC" stroke="#346538" stroke-width="1.5"/><text x="424.8" y="115.3" text-anchor="middle" font-family="JetBrains Mono, SF Mono, monospace" font-size="11" font-weight="600" fill="#346538">7</text><text x="424.8" y="91.3" text-anchor="middle" font-family="SF Pro Display, Noto Sans TC, sans-serif" font-size="10.5" fill="#2F3437">本機執行的個人 Agent</text></g><g class="q-dot" data-story-index="7" role="button" tabindex="0" aria-label="前往第 8 則：本地跑 35B 的顯存門檻"><circle cx="384.1" cy="117.8" r="13" fill="#EDF3EC" stroke="#346538" stroke-width="1.5"/><text x="384.1" y="121.8" text-anchor="middle" font-family="JetBrains Mono, SF Mono, monospace" font-size="11" font-weight="600" fill="#346538">8</text><text x="384.1" y="97.8" text-anchor="middle" font-family="SF Pro Display, Noto Sans TC, sans-serif" font-size="10.5" fill="#2F3437">本地跑 35B 的顯存門檻</text></g>
+</svg></section><section class="cards-stage" aria-live="polite"><article class="story-card is-active" id="story-0" data-index="0" data-topic="agents">
+  <header class="card-meta-row">
+    <div class="card-rank-group">
+      <span class="rank-num">#01</span>
+      <span class="topic-label">AI Agents &amp; Coding Tools</span>
+      <span class="pub-time-badge">2026-09-30 01:14</span>
+    </div>
+    <div class="score-strip" title="綜合排序分 88.5">
+      <span>重要 <strong>80</strong></span>
+      <span class="dot-sep">·</span>
+      <span>熱門 <strong>94</strong></span>
+    </div>
+  </header>
+
+  <h2 class="card-headline">OpenAI 推出 dots，由 GPT-6 Astra 驅動的常駐 Agent，可背景執行目標並串接 4,000+ 應用</h2>
+  <p class="rank-reason">常駐 Agent 產品發布，但僅見宣傳影片，缺實測數據</p>
+
+  <section class="consensus-box" aria-label="社群討論風向">
+    <div class="consensus-head">
+      <span class="consensus-kicker">社群風向</span>
+      <span class="pill pill-blue">資訊觀察</span>
+    </div>
+    <p class="consensus-text">原始資料無留言原文，目前以轉發分享為主，尚無顯著正反論戰</p>
+  </section>
+
+  <div class="top1-diagram-wrap"><svg class="editorial-svg flow-svg" viewBox="0 0 640 190" role="img" aria-label="dots 常駐 Agent 運作流程" xmlns="http://www.w3.org/2000/svg">
+  <rect x="0" y="0" width="640" height="190" rx="8" fill="#FAF8F5" stroke="#EAEAEA" stroke-width="1"/>
+  <text x="24" y="30" font-family="JetBrains Mono, monospace" font-size="10" letter-spacing="0.08em" fill="#787774">TOP #1 ARCHITECTURE &amp; IMPACT</text>
+  <text x="24" y="47" font-family="SF Pro Display, Noto Sans TC, sans-serif" font-size="13" font-weight="600" fill="#111111">dots 常駐 Agent 運作流程</text>
+  <g><rect x="24.0" y="60" width="127.0" height="92" rx="6" fill="#FFFFFF" stroke="#D8D6D0" stroke-width="1"/><text x="36.0" y="80" font-family="JetBrains Mono, monospace" font-size="9.5" letter-spacing="0.06em" fill="#787774">01 BEFORE</text><text x="36.0" y="102" font-family="SF Pro Display, Noto Sans TC, sans-serif" font-size="13" font-weight="600" fill="#2F3437">需人工持續追單</text><text x="36.0" y="122" font-family="SF Pro Display, Noto Sans TC, sans-serif" font-size="10.5" fill="#55524C">聊天式助理需每次下指令才動作</text><text x="36.0" y="137" font-family="SF Pro Display, Noto Sans TC, sans-serif" font-size="10.5" fill="#55524C">，無法背景長跑</text></g><line x1="155.0" y1="106.0" x2="174.0" y2="106.0" stroke="#787774" stroke-width="1.25"/><polyline points="169.0,102.0 174.0,106.0 169.0,110.0" fill="none" stroke="#787774" stroke-width="1.25"/><g><rect x="179.0" y="60" width="127.0" height="92" rx="6" fill="#FBF3DB" stroke="#D4B36A" stroke-width="1"/><text x="191.0" y="80" font-family="JetBrains Mono, monospace" font-size="9.5" letter-spacing="0.06em" fill="#956400">02 CHANGE</text><text x="191.0" y="102" font-family="SF Pro Display, Noto Sans TC, sans-serif" font-size="13" font-weight="600" fill="#111111">每個 dot 獨立雲端電腦</text><text x="191.0" y="122" font-family="SF Pro Display, Noto Sans TC, sans-serif" font-size="10.5" fill="#55524C">獨立雲端電腦與瀏覽器，接收目</text><text x="191.0" y="137" font-family="SF Pro Display, Noto Sans TC, sans-serif" font-size="10.5" fill="#55524C">標後持續背景執行</text></g><line x1="310.0" y1="106.0" x2="329.0" y2="106.0" stroke="#787774" stroke-width="1.25"/><polyline points="324.0,102.0 329.0,106.0 324.0,110.0" fill="none" stroke="#787774" stroke-width="1.25"/><g><rect x="334.0" y="60" width="127.0" height="92" rx="6" fill="#EDF3EC" stroke="#8EB492" stroke-width="1"/><text x="346.0" y="80" font-family="JetBrains Mono, monospace" font-size="9.5" letter-spacing="0.06em" fill="#346538">03 IMPACT</text><text x="346.0" y="102" font-family="SF Pro Display, Noto Sans TC, sans-serif" font-size="13" font-weight="600" fill="#111111">串接 4,000+ 應用程式</text><text x="346.0" y="122" font-family="SF Pro Display, Noto Sans TC, sans-serif" font-size="10.5" fill="#55524C">透過 ChatGPT 外掛連</text><text x="346.0" y="137" font-family="SF Pro Display, Noto Sans TC, sans-serif" font-size="10.5" fill="#55524C">接已選應用，可同時處理多專案</text></g><line x1="465.0" y1="106.0" x2="484.0" y2="106.0" stroke="#787774" stroke-width="1.25"/><polyline points="479.0,102.0 484.0,106.0 479.0,110.0" fill="none" stroke="#787774" stroke-width="1.25"/><g><rect x="489.0" y="60" width="127.0" height="92" rx="6" fill="#FDEBEC" stroke="#D99A98" stroke-width="1"/><text x="501.0" y="80" font-family="JetBrains Mono, monospace" font-size="9.5" letter-spacing="0.06em" fill="#9F2F2D">04 DEBATE</text><text x="501.0" y="102" font-family="SF Pro Display, Noto Sans TC, sans-serif" font-size="13" font-weight="600" fill="#111111">實測數據尚未公開</text><text x="501.0" y="122" font-family="SF Pro Display, Noto Sans TC, sans-serif" font-size="10.5" fill="#55524C">原文無實測與留言原文，主動性</text><text x="501.0" y="137" font-family="SF Pro Display, Noto Sans TC, sans-serif" font-size="10.5" fill="#55524C">與可靠度待獨立驗證</text></g>
+</svg></div>
+
+  <section class="sources-panel" aria-label="資料來源與原始連結">
+    <div class="sources-kicker">資料來源與原始連結</div>
+    <div class="sources-list"><a class="source-link-item" href="https://www.instagram.com/reel/Dd4RMfMJ7kO/" target="_blank" rel="noopener noreferrer"><span class="source-plat">IG</span><span class="source-label">instagram @openai 65,436 讚 / 779 則留言 / 452,071 次觀看</span><span class="source-time">2026-09-30 01:14</span><span class="source-arrow"><svg width="11" height="11" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M3.5 8.5L8.5 3.5M8.5 3.5H4.5M8.5 3.5V7.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="square"/></svg></span></a><a class="source-link-item" href="https://www.instagram.com/reel/Dd4WsE-Pd43/" target="_blank" rel="noopener noreferrer"><span class="source-plat">IG</span><span class="source-label">instagram @rpn 20,854 讚 / 305 則留言 / 259,061 次觀看</span><span class="source-time">2026-09-30 02:04</span><span class="source-arrow"><svg width="11" height="11" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M3.5 8.5L8.5 3.5M8.5 3.5H4.5M8.5 3.5V7.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="square"/></svg></span></a></div>
+  </section>
+
+  <div class="waitwhat-wrap">
+    <button class="waitwhat-toggle" type="button" aria-expanded="false" aria-controls="drawer-overview-0">
+      <span class="waitwhat-label">Wait, what? 補前情提要與社群正反留言</span>
+      <span class="toggle-sign" aria-hidden="true">+</span>
+    </button>
+    <div class="waitwhat-drawer" id="drawer-overview-0" hidden>
+      <div class="drawer-block"><div class="drawer-kicker">前情提要（白話脈絡）</div><p class="drawer-text">OpenAI 發布 dots，定位為常駐型 Agent。使用者可交付一個目標，系統會在背景持續處理。官方表示每個 dot 有自己的雲端電腦，並可透過 ChatGPT 連接的外掛操作 4,000 個以上應用程式。</p></div>
+      <div class="drawer-block"><div class="drawer-kicker">對你的意義</div><p class="drawer-text">若常駐 Agent 能穩定背景跑長任務，你的 Harness 需補上權限控管、狀態持久化與用量計費。官方未公開底層部署規格，無法從此貼文判斷推論延遲、顯存或單次成本。</p></div>
+      <div class="drawer-block"><div class="drawer-kicker">新詞快查（對照 GLOSSARY）</div><ul class="gloss-list"><li><span class="gloss-term">dots</span><span class="gloss-sep">：</span>OpenAI 的常駐 Agent 產品名，像每人一台掛機的值班助理</li></ul></div>
+      
+    </div>
+  </div>
+
+  <div class="card-footer-counter">1 / 8</div>
+</article>
+<article class="story-card" id="story-1" data-index="1" data-topic="models-edge">
+  <header class="card-meta-row">
+    <div class="card-rank-group">
+      <span class="rank-num">#02</span>
+      <span class="topic-label">Open-Source LLMs / VLM / Edge AI</span>
+      <span class="pub-time-badge">2026-11-21 23:29</span>
+    </div>
+    <div class="score-strip" title="綜合排序分 79.4">
+      <span>重要 <strong>85</strong></span>
+      <span class="dot-sep">·</span>
+      <span>熱門 <strong>69</strong></span>
+    </div>
+  </header>
+
+  <h2 class="card-headline">中國團隊開源 3B 參數 OCR 模型 Unlimited-OCR，可在本機單次解析長達 100 頁的 PDF。</h2>
+  <p class="rank-reason">開源且 3B 可本機執行，直接影響文件解析的部署成本。</p>
+
+  <section class="consensus-box" aria-label="社群討論風向">
+    <div class="consensus-head">
+      <span class="consensus-kicker">社群風向</span>
+      <span class="pill pill-blue">資訊觀察</span>
+    </div>
+    <p class="consensus-text">目前以轉發分享為主，尚無顯著正反論戰，無留言可判讀實測體感。</p>
+  </section>
+
+  
+
+  <section class="sources-panel" aria-label="資料來源與原始連結">
+    <div class="sources-kicker">資料來源與原始連結</div>
+    <div class="sources-list"><a class="source-link-item" href="https://x.com/byteonai/status/2124163291157008857" target="_blank" rel="noopener noreferrer"><span class="source-plat">X</span><span class="source-label">X 4725 讚 / 440 轉推 / 60 則回覆</span><span class="source-time">2026-11-21 23:29</span><span class="source-arrow"><svg width="11" height="11" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M3.5 8.5L8.5 3.5M8.5 3.5H4.5M8.5 3.5V7.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="square"/></svg></span></a></div>
+  </section>
+
+  <div class="waitwhat-wrap">
+    <button class="waitwhat-toggle" type="button" aria-expanded="false" aria-controls="drawer-overview-1">
+      <span class="waitwhat-label">Wait, what? 補前情提要與社群正反留言</span>
+      <span class="toggle-sign" aria-hidden="true">+</span>
+    </button>
+    <div class="waitwhat-drawer" id="drawer-overview-1" hidden>
+      <div class="drawer-block"><div class="drawer-kicker">前情提要（白話脈絡）</div><p class="drawer-text">多數 OCR 工具會先把文件切成單頁再逐頁辨識，跨頁的脈絡容易斷掉。此模型宣稱以單次處理讀完整份長文件，上下文窗口為 32K。原文截斷，未附完整基準數字。</p></div>
+      <div class="drawer-block"><div class="drawer-kicker">對你的意義</div><p class="drawer-text">若實測成立，你可用單一本機模型處理整本 PDF，省去分頁與跨頁對齊的後處理。顯存與 KV-Cache 的實際用量仍需以 32K 長度實測確認。</p></div>
+      <div class="drawer-block"><div class="drawer-kicker">新詞快查（對照 GLOSSARY）</div><ul class="gloss-list"><li><span class="gloss-term">Long-horizon parsing</span><span class="gloss-sep">：</span>一次讀完整份文件，像整本書通讀而非逐頁翻閱</li></ul></div>
+      
+    </div>
+  </div>
+
+  <div class="card-footer-counter">2 / 8</div>
+</article>
+<article class="story-card" id="story-2" data-index="2" data-topic="industry">
+  <header class="card-meta-row">
+    <div class="card-rank-group">
+      <span class="rank-num">#03</span>
+      <span class="topic-label">AI 產業與新模型發布</span>
+      <span class="pub-time-badge">2026-11-23 00:33</span>
+    </div>
+    <div class="score-strip" title="綜合排序分 78.0">
+      <span>重要 <strong>88</strong></span>
+      <span class="dot-sep">·</span>
+      <span>熱門 <strong>64</strong></span>
+    </div>
+  </header>
+
+  <h2 class="card-headline">一家約 400 人的科技公司收到通知，Anthropic 方案漲約 10 倍，一週內要改用其他模型。</h2>
+  <p class="rank-reason">企業採購成本劇變，直接影響團隊工具選型與 Agent 遷移</p>
+
+  <section class="consensus-box" aria-label="社群討論風向">
+    <div class="consensus-head">
+      <span class="consensus-kicker">社群風向</span>
+      <span class="pill pill-red">多數質疑</span>
+    </div>
+    <p class="consensus-text">社群多認為這是舊折扣合約到期所致，也質疑團隊過度依賴單一模型的架構。</p>
+  </section>
+
+  
+
+  <section class="sources-panel" aria-label="資料來源與原始連結">
+    <div class="sources-kicker">資料來源與原始連結</div>
+    <div class="sources-list"><a class="source-link-item" href="https://www.reddit.com/r/cscareerquestions/comments/1y2tg08/anthropic_increased_prices_10x_for_the_company_im/" target="_blank" rel="noopener noreferrer"><span class="source-plat">Reddit</span><span class="source-label">r/cscareerquestions 1409▲ / 411則留言</span><span class="source-time">2026-11-23 00:33</span><span class="source-arrow"><svg width="11" height="11" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M3.5 8.5L8.5 3.5M8.5 3.5H4.5M8.5 3.5V7.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="square"/></svg></span></a></div>
+  </section>
+
+  <div class="waitwhat-wrap">
+    <button class="waitwhat-toggle" type="button" aria-expanded="false" aria-controls="drawer-overview-2">
+      <span class="waitwhat-label">Wait, what? 補前情提要與社群正反留言</span>
+      <span class="toggle-sign" aria-hidden="true">+</span>
+    </button>
+    <div class="waitwhat-drawer" id="drawer-overview-2" hidden>
+      <div class="drawer-block"><div class="drawer-kicker">前情提要（白話脈絡）</div><p class="drawer-text">作者稱，所屬公司約 400 名工程師收到通知，Anthropic 合約價格相較前一期漲約 10 倍，一週後停用。貼文未附合約或帳單，數字屬作者自述。留言者指出，舊合約是依零售 API 價格打折的企業方案。</p></div>
+      <div class="drawer-block"><div class="drawer-kicker">對你的意義</div><p class="drawer-text">若團隊把 Claude 綁進內部框架，換模型就要重測 Prompt、Tool Calling 與 Eval 基準。先算每 token 成本，再決定是否改走開源模型或多供應商路由。</p></div>
+      <div class="drawer-block"><div class="drawer-kicker">新詞快查（對照 GLOSSARY）</div><ul class="gloss-list"><li><span class="gloss-term">Per-seat 授權</span><span class="gloss-sep">：</span>按使用者人數收費，像照座位數買票，不論用量多寡。</li></ul></div>
+      <div class="drawer-block"><div class="drawer-kicker">社群代表聲音</div><ul class="voice-list"><li class="voice-item"><div class="voice-head"><span class="pill pill-red">質疑</span><a class="voice-meta" href="https://www.reddit.com/r/cscareerquestions/comments/1y2tg08/comment/19t117ny3zz2a/" target="_blank" rel="noopener noreferrer">Reddit · u/deejeycris</a></div><p class="voice-quote">質疑：內部框架若綁死單一模型，才會這麼難切換，問題在設計而非供應商。</p></li><li class="voice-item"><div class="voice-head"><span class="pill pill-blue">實測</span><a class="voice-meta" href="https://www.reddit.com/r/cscareerquestions/comments/1y2tg08/comment/19t11cfviejb7/" target="_blank" rel="noopener noreferrer">Reddit · u/TRO_KIK</a></div><p class="voice-quote">留言指出，舊企業折扣合約退場後，改為 API 全價 token 加每席位收費。</p></li><li class="voice-item"><div class="voice-head"><span class="pill pill-red">質疑</span><a class="voice-meta" href="https://www.reddit.com/r/cscareerquestions/comments/1y2tg08/comment/19t123qfosmyq/" target="_blank" rel="noopener noreferrer">Reddit · u/PeachScary413</a></div><p class="voice-quote">多數人認為這是常見的鎖定後加價手法，SaaS 平台長年如此操作。</p></li></ul></div>
+    </div>
+  </div>
+
+  <div class="card-footer-counter">3 / 8</div>
+</article>
+<article class="story-card" id="story-3" data-index="3" data-topic="agents">
+  <header class="card-meta-row">
+    <div class="card-rank-group">
+      <span class="rank-num">#04</span>
+      <span class="topic-label">AI Agents &amp; Coding Tools</span>
+      <span class="pub-time-badge">2026-11-23 13:35</span>
+    </div>
+    <div class="score-strip" title="綜合排序分 78.0">
+      <span>重要 <strong>86</strong></span>
+      <span class="dot-sep">·</span>
+      <span>熱門 <strong>64</strong></span>
+    </div>
+  </header>
+
+  <h2 class="card-headline">Satya Nadella 承認 VS Code 六個月內失勢，部分開發者因 Claude Code 已不再開啟它。</h2>
+  <p class="rank-reason">高層公開承認開發工具格局變動，直接影響日常寫程式工作流</p>
+
+  <section class="consensus-box" aria-label="社群討論風向">
+    <div class="consensus-head">
+      <span class="consensus-kicker">社群風向</span>
+      <span class="pill pill-yellow">正反分歧</span>
+    </div>
+    <p class="consensus-text">社群分兩派：有人轉向可換模型的 Copilot 避開高價，也有人仍在 VS Code 內搭配 Claude 使用。</p>
+  </section>
+
+  
+
+  <section class="sources-panel" aria-label="資料來源與原始連結">
+    <div class="sources-kicker">資料來源與原始連結</div>
+    <div class="sources-list"><a class="source-link-item" href="https://www.reddit.com/r/technology/comments/1y3a9c3/the_thing_that_hit_us_satya_nadella_admits_vs/" target="_blank" rel="noopener noreferrer"><span class="source-plat">Reddit</span><span class="source-label">r/technology 1337▲ / 446則留言</span><span class="source-time">2026-11-23 13:35</span><span class="source-arrow"><svg width="11" height="11" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M3.5 8.5L8.5 3.5M8.5 3.5H4.5M8.5 3.5V7.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="square"/></svg></span></a></div>
+  </section>
+
+  <div class="waitwhat-wrap">
+    <button class="waitwhat-toggle" type="button" aria-expanded="false" aria-controls="drawer-overview-3">
+      <span class="waitwhat-label">Wait, what? 補前情提要與社群正反留言</span>
+      <span class="toggle-sign" aria-hidden="true">+</span>
+    </button>
+    <div class="waitwhat-drawer" id="drawer-overview-3" hidden>
+      <div class="drawer-block"><div class="drawer-kicker">前情提要（白話脈絡）</div><p class="drawer-text">VS Code 過去十年是主流程式編輯器。Claude Code 在終端機直接讀寫專案，讓部分人不必再切回編輯器工作。Nadella 公開承認這項轉變的影響。</p></div>
+      <div class="drawer-block"><div class="drawer-kicker">對你的意義</div><p class="drawer-text">當 Agent 直接改檔，編輯器就從主戰場變成輔助角色。若你的流程已依賴 Agent，應比較不同 Agent CLI 的 MCP 支援與模型選擇彈性。</p></div>
+      <div class="drawer-block"><div class="drawer-kicker">新詞快查（對照 GLOSSARY）</div><ul class="gloss-list"><li><span class="gloss-term">Agent CLI</span><span class="gloss-sep">：</span>在終端機直接執行 Agent 的工具，像把助理搬到命令列。</li></ul></div>
+      <div class="drawer-block"><div class="drawer-kicker">社群代表聲音</div><ul class="voice-list"><li class="voice-item"><div class="voice-head"><span class="pill pill-green">支持</span><a class="voice-meta" href="https://www.reddit.com/r/technology/comments/1y3a9c3/comment/19t2166eixqmd/" target="_blank" rel="noopener noreferrer">Reddit · u/KidGold</a></div><p class="voice-quote">有人覺得在 VS Code 內使用 Claude，同時保有編輯器與 Agent 的優點。</p></li><li class="voice-item"><div class="voice-head"><span class="pill pill-blue">實測</span><a class="voice-meta" href="https://www.reddit.com/r/technology/comments/1y3a9c3/comment/19t20ajmqe490/" target="_blank" rel="noopener noreferrer">Reddit · u/sosthaboss</a></div><p class="voice-quote">GitHub Copilot 可自由選模型，能避免被單一供應商的高價綁定。</p></li><li class="voice-item"><div class="voice-head"><span class="pill pill-blue">實測</span><a class="voice-meta" href="https://www.reddit.com/r/technology/comments/1y3a9c3/comment/19t21up8xr11d/" target="_blank" rel="noopener noreferrer">Reddit · u/Sufficient-Science71</a></div><p class="voice-quote">仍有人只把 AI 當輔助、不離開編輯器，也有人擔心自己跟不上趨勢。</p></li></ul></div>
+    </div>
+  </div>
+
+  <div class="card-footer-counter">4 / 8</div>
+</article>
+<article class="story-card" id="story-4" data-index="4" data-topic="industry">
+  <header class="card-meta-row">
+    <div class="card-rank-group">
+      <span class="rank-num">#05</span>
+      <span class="topic-label">AI 產業與新模型發布</span>
+      <span class="pub-time-badge">2026-11-23 01:06</span>
+    </div>
+    <div class="score-strip" title="綜合排序分 75.0">
+      <span>重要 <strong>86</strong></span>
+      <span class="dot-sep">·</span>
+      <span>熱門 <strong>60</strong></span>
+    </div>
+  </header>
+
+  <h2 class="card-headline">OpenAI 發文談 Perplexity 與智能，評測數字取自內部程式碼快照</h2>
+  <p class="rank-reason">直接影響如何解讀廠商發布的模型評測數字</p>
+
+  <section class="consensus-box" aria-label="社群討論風向">
+    <div class="consensus-head">
+      <span class="consensus-kicker">社群風向</span>
+      <span class="pill pill-red">多數質疑</span>
+    </div>
+    <p class="consensus-text">社群質疑內部 held-out 資料能否證明泛化，另有人將新內部模型與 Anthropic 模型比較。</p>
+  </section>
+
+  
+
+  <section class="sources-panel" aria-label="資料來源與原始連結">
+    <div class="sources-kicker">資料來源與原始連結</div>
+    <div class="sources-list"><a class="source-link-item is-primary-src" href="https://openai.com/index/perplexity-and-intelligence/" target="_blank" rel="noopener noreferrer"><span class="source-plat">原文</span><span class="source-label">openai.com</span><span class="source-time">2026-11-23 01:06</span><span class="source-arrow"><svg width="11" height="11" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M3.5 8.5L8.5 3.5M8.5 3.5H4.5M8.5 3.5V7.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="square"/></svg></span></a><a class="source-link-item" href="https://news.ycombinator.com/item?id=50601525" target="_blank" rel="noopener noreferrer"><span class="source-plat">HN</span><span class="source-label">HN 589▲ / 400則留言</span><span class="source-time">2026-11-23 01:06</span><span class="source-arrow"><svg width="11" height="11" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M3.5 8.5L8.5 3.5M8.5 3.5H4.5M8.5 3.5V7.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="square"/></svg></span></a></div>
+  </section>
+
+  <div class="waitwhat-wrap">
+    <button class="waitwhat-toggle" type="button" aria-expanded="false" aria-controls="drawer-overview-4">
+      <span class="waitwhat-label">Wait, what? 補前情提要與社群正反留言</span>
+      <span class="toggle-sign" aria-hidden="true">+</span>
+    </button>
+    <div class="waitwhat-drawer" id="drawer-overview-4" hidden>
+      <div class="drawer-block"><div class="drawer-kicker">前情提要（白話脈絡）</div><p class="drawer-text">OpenAI 發表題為 Perplexity and Intelligence 的文章。Perplexity 是語言模型預測下一個 token 的困惑度指標，數值越低代表預測越準。依留言引述，文中數字來自 OpenAI 內部程式碼的 held-out 資料集，且自 GPT-3.5 起持續沿用。</p></div>
+      <div class="drawer-block"><div class="drawer-kicker">對你的意義</div><p class="drawer-text">若內部評測集無法外部驗證，選模型時就不能只看廠商發布的 perplexity 數字。建議用自家 Eval 集與 Bootstrap CI 重跑比較。</p></div>
+      <div class="drawer-block"><div class="drawer-kicker">新詞快查（對照 GLOSSARY）</div><ul class="gloss-list"><li><span class="gloss-term">Perplexity（困惑度）</span><span class="gloss-sep">：</span>衡量模型猜下一個 token 的失準程度，像考試猜題的命中率反向指標</li></ul></div>
+      <div class="drawer-block"><div class="drawer-kicker">社群代表聲音</div><ul class="voice-list"><li class="voice-item"><div class="voice-head"><span class="pill pill-red">質疑</span><a class="voice-meta" href="https://news.ycombinator.com/item?id=50601957" target="_blank" rel="noopener noreferrer">HN · amluto</a></div><p class="voice-quote">用來當 held-out 的資料來自內部程式碼庫，外界很難相信它能代表模型在未知資料上的表現。</p></li><li class="voice-item"><div class="voice-head"><span class="pill pill-blue">實測</span><a class="voice-meta" href="https://news.ycombinator.com/item?id=50601855" target="_blank" rel="noopener noreferrer">HN · Leary</a></div><p class="voice-quote">有人認為內部新模型的表現，和 Anthropic 的 model 4 相當接近。</p></li></ul></div>
+    </div>
+  </div>
+
+  <div class="card-footer-counter">5 / 8</div>
+</article>
+<article class="story-card" id="story-5" data-index="5" data-topic="agents">
+  <header class="card-meta-row">
+    <div class="card-rank-group">
+      <span class="rank-num">#06</span>
+      <span class="topic-label">AI Agents &amp; Coding Tools</span>
+      <span class="pub-time-badge">2026-11-23 09:28</span>
+    </div>
+    <div class="score-strip" title="綜合排序分 72.5">
+      <span>重要 <strong>82</strong></span>
+      <span class="dot-sep">·</span>
+      <span>熱門 <strong>57</strong></span>
+    </div>
+  </header>
+
+  <h2 class="card-headline">fast-anything 開源工具剖析 Python、Node、Ruby 熱點，請 coding agent 改寫成 Rust 並驗證行為一致。</h2>
+  <p class="rank-reason">Agent 工作流實用：只重寫慢的 5%，並以行為比對驗證。</p>
+
+  <section class="consensus-box" aria-label="社群討論風向">
+    <div class="consensus-head">
+      <span class="consensus-kicker">社群風向</span>
+      <span class="pill pill-blue">資訊觀察</span>
+    </div>
+    <p class="consensus-text">目前以轉發分享為主，尚無顯著正反論戰；來源無留言資料，社群風向待觀察。</p>
+  </section>
+
+  
+
+  <section class="sources-panel" aria-label="資料來源與原始連結">
+    <div class="sources-kicker">資料來源與原始連結</div>
+    <div class="sources-list"><a class="source-link-item" href="https://github.com/EL4CTEO/fast-anything" target="_blank" rel="noopener noreferrer"><span class="source-plat">GitHub</span><span class="source-label">GitHub 2527★ / 157 forks / Rust</span><span class="source-time">2026-11-23 09:28</span><span class="source-arrow"><svg width="11" height="11" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M3.5 8.5L8.5 3.5M8.5 3.5H4.5M8.5 3.5V7.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="square"/></svg></span></a></div>
+  </section>
+
+  <div class="waitwhat-wrap">
+    <button class="waitwhat-toggle" type="button" aria-expanded="false" aria-controls="drawer-overview-5">
+      <span class="waitwhat-label">Wait, what? 補前情提要與社群正反留言</span>
+      <span class="toggle-sign" aria-hidden="true">+</span>
+    </button>
+    <div class="waitwhat-drawer" id="drawer-overview-5" hidden>
+      <div class="drawer-block"><div class="drawer-kicker">前情提要（白話脈絡）</div><p class="drawer-text">很多團隊想把慢的程式換成 Rust，但整包重寫風險高且耗時。fast-anything 先用 profiler 找出最耗時的函式，只移植這一小部分。移植後比對原版與新版的輸出，確認行為相同。</p></div>
+      <div class="drawer-block"><div class="drawer-kicker">對你的意義</div><p class="drawer-text">若 Agent 能自動比對原版行為，這套流程就能當成 Agent 改寫程式的驗收關卡。摘要未附加速倍數，導入前需用自己的基準測試確認效益。</p></div>
+      <div class="drawer-block"><div class="drawer-kicker">新詞快查（對照 GLOSSARY）</div><ul class="gloss-list"><li><span class="gloss-term">Profiler</span><span class="gloss-sep">：</span>像體檢儀器，量出程式哪一段最耗時間。</li></ul></div>
+      
+    </div>
+  </div>
+
+  <div class="card-footer-counter">6 / 8</div>
+</article>
+<article class="story-card" id="story-6" data-index="6" data-topic="models-edge">
+  <header class="card-meta-row">
+    <div class="card-rank-group">
+      <span class="rank-num">#07</span>
+      <span class="topic-label">Open-Source LLMs / VLM / Edge AI</span>
+      <span class="pub-time-badge">2026-11-23 18:10</span>
+    </div>
+    <div class="score-strip" title="綜合排序分 72.2">
+      <span>重要 <strong>78</strong></span>
+      <span class="dot-sep">·</span>
+      <span>熱門 <strong>62</strong></span>
+    </div>
+  </header>
+
+  <h2 class="card-headline">Linger 是開源個人 Agent，透過模型與 harness 協同設計，讓強大本機 AI 能在一般電腦上執行。</h2>
+  <p class="rank-reason">本地 Agent 與 harness 協同設計，直接對應邊緣部署。</p>
+
+  <section class="consensus-box" aria-label="社群討論風向">
+    <div class="consensus-head">
+      <span class="consensus-kicker">社群風向</span>
+      <span class="pill pill-blue">資訊觀察</span>
+    </div>
+    <p class="consensus-text">目前以轉發分享為主，尚無顯著正反論戰；來源無留言資料，社群風向待觀察。</p>
+  </section>
+
+  
+
+  <section class="sources-panel" aria-label="資料來源與原始連結">
+    <div class="sources-kicker">資料來源與原始連結</div>
+    <div class="sources-list"><a class="source-link-item" href="https://github.com/simplexai-labs/linger" target="_blank" rel="noopener noreferrer"><span class="source-plat">GitHub</span><span class="source-label">GitHub 4058★ / 383 forks / TypeScript</span><span class="source-time">2026-11-23 18:10</span><span class="source-arrow"><svg width="11" height="11" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M3.5 8.5L8.5 3.5M8.5 3.5H4.5M8.5 3.5V7.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="square"/></svg></span></a></div>
+  </section>
+
+  <div class="waitwhat-wrap">
+    <button class="waitwhat-toggle" type="button" aria-expanded="false" aria-controls="drawer-overview-6">
+      <span class="waitwhat-label">Wait, what? 補前情提要與社群正反留言</span>
+      <span class="toggle-sign" aria-hidden="true">+</span>
+    </button>
+    <div class="waitwhat-drawer" id="drawer-overview-6" hidden>
+      <div class="drawer-block"><div class="drawer-kicker">前情提要（白話脈絡）</div><p class="drawer-text">多數個人 Agent 會呼叫雲端大模型 API。Linger 的方向相反，讓模型與 harness 在個人 PC 上本地執行。摘要未提供支援的模型規格與效能數字。</p></div>
+      <div class="drawer-block"><div class="drawer-kicker">對你的意義</div><p class="drawer-text">推論延遲與顯存需求取決於採用的本地模型大小，摘要沒有附 VRAM 或 token 速度數據。若 harness 能離線運作，就能減少 API 成本與資料外流風險。</p></div>
+      
+      
+    </div>
+  </div>
+
+  <div class="card-footer-counter">7 / 8</div>
+</article>
+<article class="story-card" id="story-7" data-index="7" data-topic="models-edge">
+  <header class="card-meta-row">
+    <div class="card-rank-group">
+      <span class="rank-num">#08</span>
+      <span class="topic-label">Open-Source LLMs / VLM / Edge AI</span>
+      <span class="pub-time-badge">2026-11-23 05:01</span>
+    </div>
+    <div class="score-strip" title="綜合排序分 67.9">
+      <span>重要 <strong>76</strong></span>
+      <span class="dot-sep">·</span>
+      <span>熱門 <strong>55</strong></span>
+    </div>
+  </header>
+
+  <h2 class="card-headline">GPU 廠商發布本地 AI 入門指南，以 Inkling、Qwen 與 Unsloth 為例</h2>
+  <p class="rank-reason">直接談本地部署的顯存門檻，但內容偏入門教學</p>
+
+  <section class="consensus-box" aria-label="社群討論風向">
+    <div class="consensus-head">
+      <span class="consensus-kicker">社群風向</span>
+      <span class="pill pill-yellow">正反分歧</span>
+    </div>
+    <p class="consensus-text">留言聚焦 VRAM 門檻，有人質疑 Qwen3.6-35B q4 需要 32GB 以上顯存的說法。</p>
+  </section>
+
+  
+
+  <section class="sources-panel" aria-label="資料來源與原始連結">
+    <div class="sources-kicker">資料來源與原始連結</div>
+    <div class="sources-list"><a class="source-link-item is-primary-src" href="https://www.gpupartner.com/blog/beginners-guide-local-ai-inkling-qwen-unsloth" target="_blank" rel="noopener noreferrer"><span class="source-plat">原文</span><span class="source-label">gpupartner.com</span><span class="source-time">2026-11-23 05:01</span><span class="source-arrow"><svg width="11" height="11" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M3.5 8.5L8.5 3.5M8.5 3.5H4.5M8.5 3.5V7.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="square"/></svg></span></a><a class="source-link-item" href="https://news.ycombinator.com/item?id=50603845" target="_blank" rel="noopener noreferrer"><span class="source-plat">HN</span><span class="source-label">HN 509▲ / 215則留言</span><span class="source-time">2026-11-23 05:01</span><span class="source-arrow"><svg width="11" height="11" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M3.5 8.5L8.5 3.5M8.5 3.5H4.5M8.5 3.5V7.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="square"/></svg></span></a></div>
+  </section>
+
+  <div class="waitwhat-wrap">
+    <button class="waitwhat-toggle" type="button" aria-expanded="false" aria-controls="drawer-overview-7">
+      <span class="waitwhat-label">Wait, what? 補前情提要與社群正反留言</span>
+      <span class="toggle-sign" aria-hidden="true">+</span>
+    </button>
+    <div class="waitwhat-drawer" id="drawer-overview-7" hidden>
+      <div class="drawer-block"><div class="drawer-kicker">前情提要（白話脈絡）</div><p class="drawer-text">這是 GPU 廠商部落格的新手教學，示範如何在本地用 Qwen 與 Unsloth 跑模型。討論區集中在顯存門檻，有留言者質疑文中 Qwen3.6-35B 在 q4 量化下需要 32GB 以上 VRAM 的說法。</p></div>
+      <div class="drawer-block"><div class="drawer-kicker">對你的意義</div><p class="drawer-text">q4 量化後的實際顯存需求，決定你的筆電或工作站能否跑 35B 級模型。部署前請實測，不要只信教學文的數字。</p></div>
+      <div class="drawer-block"><div class="drawer-kicker">新詞快查（對照 GLOSSARY）</div><ul class="gloss-list"><li><span class="gloss-term">Unsloth</span><span class="gloss-sep">：</span>開源微調與量化加速框架，主打省顯存、加快訓練</li></ul></div>
+      <div class="drawer-block"><div class="drawer-kicker">社群代表聲音</div><ul class="voice-list"><li class="voice-item"><div class="voice-head"><span class="pill pill-red">質疑</span><a class="voice-meta" href="https://news.ycombinator.com/item?id=50604479" target="_blank" rel="noopener noreferrer">HN · IsTom</a></div><p class="voice-quote">文中說 Qwen3.6-35B@q4 需要 32GB 以上 VRAM，這個說法值得再查證。</p></li><li class="voice-item"><div class="voice-head"><span class="pill pill-blue">實測</span><a class="voice-meta" href="https://news.ycombinator.com/item?id=50604455" target="_blank" rel="noopener noreferrer">HN · bashhq_r</a></div><p class="voice-quote">一般筆電要跑到什麼顯存量，Qwen 才不會感覺很卡？這是多數入門者的真實問題。</p></li></ul></div>
+    </div>
+  </div>
+
+  <div class="card-footer-counter">8 / 8</div>
+</article></section></div><div class="tab-panel" data-tab-panel="x" hidden><p class="section-takeaway">小參數模型與推論硬體同時下探本機與高吞吐場景，但多數數字仍待獨立實測。</p><section class="quadrant-panel" aria-label="重要度與熱門度四象限"><div class="panel-head"><span class="panel-kicker">SIGNAL MAP</span><span class="panel-hint">點圓點直達該則卡片</span></div><svg class="editorial-svg quadrant-svg" viewBox="0 0 680 420" role="img" aria-label="今日 AI 消息重要度與熱門度四象限圖" xmlns="http://www.w3.org/2000/svg">
+  <rect x="0" y="0" width="680" height="420" rx="8" fill="#FAF8F5" stroke="#EAEAEA" stroke-width="1"/>
+  <!-- Highlight top-right quadrant (must-read) -->
+  <rect x="355.0" y="40" width="291.0" height="162.0" fill="#FBF3DB" fill-opacity="0.38"/>
+  <!-- Outer frame -->
+  <rect x="64" y="40" width="582" height="324" fill="none" stroke="#D8D6D0" stroke-width="1"/>
+  <!-- Midpoint hairlines -->
+  <line x1="355.0" y1="40" x2="355.0" y2="364" stroke="#D8D6D0" stroke-width="1" stroke-dasharray="4 4"/>
+  <line x1="64" y1="202.0" x2="646" y2="202.0" stroke="#D8D6D0" stroke-width="1" stroke-dasharray="4 4"/>
+  <!-- Quadrant titles -->
+  <text x="636" y="60" text-anchor="end" font-family="SF Pro Display, Noto Sans TC, sans-serif" font-size="11" font-weight="600" fill="#956400">必看突破（高重要 · 高熱門）</text>
+  <text x="74" y="60" text-anchor="start" font-family="SF Pro Display, Noto Sans TC, sans-serif" font-size="11" fill="#787774">低調硬核（高重要 · 低討論）</text>
+  <text x="636" y="354" text-anchor="end" font-family="SF Pro Display, Noto Sans TC, sans-serif" font-size="11" fill="#787774">社群熱議（討論兇 · 實質影響待觀察）</text>
+  <text x="74" y="354" text-anchor="start" font-family="SF Pro Display, Noto Sans TC, sans-serif" font-size="11" fill="#787774">背景動態</text>
+  <!-- Axis labels -->
+  <text x="355.0" y="404" text-anchor="middle" font-family="JetBrains Mono, SF Mono, monospace" font-size="11" fill="#55524C">熱門度 POPULARITY（跨社群真實互動） →</text>
+  <text x="20" y="202.0" text-anchor="middle" transform="rotate(-90 20 202.0)" font-family="JetBrains Mono, SF Mono, monospace" font-size="11" fill="#55524C">重要度 IMPORTANCE →</text>
+  <!-- Tick marks -->
+  <text x="64" y="380" font-family="JetBrains Mono, monospace" font-size="10" fill="#787774">0</text>
+  <text x="355.0" y="380" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="10" fill="#787774">50</text>
+  <text x="646" y="380" text-anchor="end" font-family="JetBrains Mono, monospace" font-size="10" fill="#787774">100</text>
+  <text x="56" y="48" text-anchor="end" font-family="JetBrains Mono, monospace" font-size="10" fill="#787774">100</text>
+  <text x="56" y="206.0" text-anchor="end" font-family="JetBrains Mono, monospace" font-size="10" fill="#787774">50</text>
+  <!-- Story nodes -->
+  <g class="q-dot" data-story-index="0" role="button" tabindex="0" aria-label="前往第 1 則：3B 本機長文件 OCR"><circle cx="465.6" cy="88.6" r="16" fill="#111111" stroke="#111111" stroke-width="1.5"/><text x="465.6" y="92.6" text-anchor="middle" font-family="JetBrains Mono, SF Mono, monospace" font-size="11" font-weight="600" fill="#FFFFFF">1</text><text x="465.6" y="65.6" text-anchor="middle" font-family="SF Pro Display, Noto Sans TC, sans-serif" font-size="10.5" fill="#2F3437">3B 本機長文件 OCR</text></g><g class="q-dot" data-story-index="1" role="button" tabindex="0" aria-label="前往第 2 則：GLM-5.4 循環 Tra"><circle cx="349.2" cy="124.2" r="13" fill="#FDEBEC" stroke="#9F2F2D" stroke-width="1.5"/><text x="349.2" y="128.2" text-anchor="middle" font-family="JetBrains Mono, SF Mono, monospace" font-size="11" font-weight="600" fill="#9F2F2D">2</text><text x="349.2" y="104.2" text-anchor="middle" font-family="SF Pro Display, Noto Sans TC, sans-serif" font-size="10.5" fill="#2F3437">GLM-5.4 循環 Tra</text></g><g class="q-dot" data-story-index="2" role="button" tabindex="0" aria-label="前往第 3 則：AMD GPU 生產級吞吐"><circle cx="273.5" cy="104.8" r="13" fill="#EDF3EC" stroke="#346538" stroke-width="1.5"/><text x="273.5" y="108.8" text-anchor="middle" font-family="JetBrains Mono, SF Mono, monospace" font-size="11" font-weight="600" fill="#346538">3</text><text x="273.5" y="84.8" text-anchor="middle" font-family="SF Pro Display, Noto Sans TC, sans-serif" font-size="10.5" fill="#2F3437">AMD GPU 生產級吞吐</text></g><g class="q-dot" data-story-index="3" role="button" tabindex="0" aria-label="前往第 4 則：4GB 顯卡跑 70B 宣稱"><circle cx="413.2" cy="169.6" r="13" fill="#EDF3EC" stroke="#346538" stroke-width="1.5"/><text x="413.2" y="173.6" text-anchor="middle" font-family="JetBrains Mono, SF Mono, monospace" font-size="11" font-weight="600" fill="#346538">4</text><text x="413.2" y="149.6" text-anchor="middle" font-family="SF Pro Display, Noto Sans TC, sans-serif" font-size="10.5" fill="#2F3437">4GB 顯卡跑 70B 宣稱</text></g>
+</svg></section><section class="cards-stage" aria-live="polite"><article class="story-card is-active" id="story-x-0" data-index="0" data-topic="models-edge">
+  <header class="card-meta-row">
+    <div class="card-rank-group">
+      <span class="rank-num">#01</span>
+      <span class="topic-label">Open-Source LLMs / VLM / Edge AI</span>
+      <span class="pub-time-badge">2026-11-21 23:29</span>
+    </div>
+    <div class="score-strip" title="綜合排序分 79.4">
+      <span>重要 <strong>85</strong></span>
+      <span class="dot-sep">·</span>
+      <span>熱門 <strong>69</strong></span>
+    </div>
+  </header>
+
+  <h2 class="card-headline">中國團隊開源 3B 參數 OCR 模型 Unlimited-OCR，可在本機單次解析長達 100 頁的 PDF。</h2>
+  <p class="rank-reason">開源且 3B 可本機執行，直接影響文件解析的部署成本。</p>
+
+  <section class="consensus-box" aria-label="社群討論風向">
+    <div class="consensus-head">
+      <span class="consensus-kicker">社群風向</span>
+      <span class="pill pill-blue">資訊觀察</span>
+    </div>
+    <p class="consensus-text">目前以轉發分享為主，尚無顯著正反論戰，無留言可判讀實測體感。</p>
+  </section>
+
+  <div class="top1-diagram-wrap"><svg class="editorial-svg flow-svg" viewBox="0 0 640 190" role="img" aria-label="3B 模型單次解析長文件的架構改動" xmlns="http://www.w3.org/2000/svg">
+  <rect x="0" y="0" width="640" height="190" rx="8" fill="#FAF8F5" stroke="#EAEAEA" stroke-width="1"/>
+  <text x="24" y="30" font-family="JetBrains Mono, monospace" font-size="10" letter-spacing="0.08em" fill="#787774">TOP #1 ARCHITECTURE &amp; IMPACT</text>
+  <text x="24" y="47" font-family="SF Pro Display, Noto Sans TC, sans-serif" font-size="13" font-weight="600" fill="#111111">3B 模型單次解析長文件的架構改動</text>
+  <g><rect x="24.0" y="60" width="127.0" height="92" rx="6" fill="#FFFFFF" stroke="#D8D6D0" stroke-width="1"/><text x="36.0" y="80" font-family="JetBrains Mono, monospace" font-size="9.5" letter-spacing="0.06em" fill="#787774">01 BEFORE</text><text x="36.0" y="102" font-family="SF Pro Display, Noto Sans TC, sans-serif" font-size="13" font-weight="600" fill="#2F3437">逐頁切割辨識</text><text x="36.0" y="122" font-family="SF Pro Display, Noto Sans TC, sans-serif" font-size="10.5" fill="#55524C">切頁後跨頁脈絡斷裂，長文件易</text><text x="36.0" y="137" font-family="SF Pro Display, Noto Sans TC, sans-serif" font-size="10.5" fill="#55524C">失去上下文</text></g><line x1="155.0" y1="106.0" x2="174.0" y2="106.0" stroke="#787774" stroke-width="1.25"/><polyline points="169.0,102.0 174.0,106.0 169.0,110.0" fill="none" stroke="#787774" stroke-width="1.25"/><g><rect x="179.0" y="60" width="127.0" height="92" rx="6" fill="#FBF3DB" stroke="#D4B36A" stroke-width="1"/><text x="191.0" y="80" font-family="JetBrains Mono, monospace" font-size="9.5" letter-spacing="0.06em" fill="#956400">02 CHANGE</text><text x="191.0" y="102" font-family="SF Pro Display, Noto Sans TC, sans-serif" font-size="13" font-weight="600" fill="#111111">3B 單次長文解析</text><text x="191.0" y="122" font-family="SF Pro Display, Noto Sans TC, sans-serif" font-size="10.5" fill="#55524C">32K 上下文一次讀入整份文</text><text x="191.0" y="137" font-family="SF Pro Display, Noto Sans TC, sans-serif" font-size="10.5" fill="#55524C">件，可本機執行</text></g><line x1="310.0" y1="106.0" x2="329.0" y2="106.0" stroke="#787774" stroke-width="1.25"/><polyline points="324.0,102.0 329.0,106.0 324.0,110.0" fill="none" stroke="#787774" stroke-width="1.25"/><g><rect x="334.0" y="60" width="127.0" height="92" rx="6" fill="#EDF3EC" stroke="#8EB492" stroke-width="1"/><text x="346.0" y="80" font-family="JetBrains Mono, monospace" font-size="9.5" letter-spacing="0.06em" fill="#346538">03 IMPACT</text><text x="346.0" y="102" font-family="SF Pro Display, Noto Sans TC, sans-serif" font-size="13" font-weight="600" fill="#111111">單次完成整本解析</text><text x="346.0" y="122" font-family="SF Pro Display, Noto Sans TC, sans-serif" font-size="10.5" fill="#55524C">省去分頁後處理；原文提到 9</text><text x="346.0" y="137" font-family="SF Pro Display, Noto Sans TC, sans-serif" font-size="10.5" fill="#55524C">3% 指標但內容截斷</text></g><line x1="465.0" y1="106.0" x2="484.0" y2="106.0" stroke="#787774" stroke-width="1.25"/><polyline points="479.0,102.0 484.0,106.0 479.0,110.0" fill="none" stroke="#787774" stroke-width="1.25"/><g><rect x="489.0" y="60" width="127.0" height="92" rx="6" fill="#FDEBEC" stroke="#D99A98" stroke-width="1"/><text x="501.0" y="80" font-family="JetBrains Mono, monospace" font-size="9.5" letter-spacing="0.06em" fill="#9F2F2D">04 DEBATE</text><text x="501.0" y="102" font-family="SF Pro Display, Noto Sans TC, sans-serif" font-size="13" font-weight="600" fill="#111111">數據與實測待驗證</text><text x="501.0" y="122" font-family="SF Pro Display, Noto Sans TC, sans-serif" font-size="10.5" fill="#55524C">無留言可讀；93% 對應的基</text><text x="501.0" y="137" font-family="SF Pro Display, Noto Sans TC, sans-serif" font-size="10.5" fill="#55524C">準名稱與條件未見</text></g>
+</svg></div>
+
+  <section class="sources-panel" aria-label="資料來源與原始連結">
+    <div class="sources-kicker">資料來源與原始連結</div>
+    <div class="sources-list"><a class="source-link-item" href="https://x.com/byteonai/status/2124163291157008857" target="_blank" rel="noopener noreferrer"><span class="source-plat">X</span><span class="source-label">X 4725 讚 / 440 轉推 / 60 則回覆</span><span class="source-time">2026-11-21 23:29</span><span class="source-arrow"><svg width="11" height="11" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M3.5 8.5L8.5 3.5M8.5 3.5H4.5M8.5 3.5V7.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="square"/></svg></span></a></div>
+  </section>
+
+  <div class="waitwhat-wrap">
+    <button class="waitwhat-toggle" type="button" aria-expanded="false" aria-controls="drawer-x-0">
+      <span class="waitwhat-label">Wait, what? 補前情提要與社群正反留言</span>
+      <span class="toggle-sign" aria-hidden="true">+</span>
+    </button>
+    <div class="waitwhat-drawer" id="drawer-x-0" hidden>
+      <div class="drawer-block"><div class="drawer-kicker">前情提要（白話脈絡）</div><p class="drawer-text">多數 OCR 工具會先把文件切成單頁再逐頁辨識，跨頁的脈絡容易斷掉。此模型宣稱以單次處理讀完整份長文件，上下文窗口為 32K。原文截斷，未附完整基準數字。</p></div>
+      <div class="drawer-block"><div class="drawer-kicker">對你的意義</div><p class="drawer-text">若實測成立，你可用單一本機模型處理整本 PDF，省去分頁與跨頁對齊的後處理。顯存與 KV-Cache 的實際用量仍需以 32K 長度實測確認。</p></div>
+      <div class="drawer-block"><div class="drawer-kicker">新詞快查（對照 GLOSSARY）</div><ul class="gloss-list"><li><span class="gloss-term">Long-horizon parsing</span><span class="gloss-sep">：</span>一次讀完整份文件，像整本書通讀而非逐頁翻閱</li></ul></div>
+      
+    </div>
+  </div>
+
+  <div class="card-footer-counter">1 / 4</div>
+</article>
+<article class="story-card" id="story-x-1" data-index="1" data-topic="agents">
+  <header class="card-meta-row">
+    <div class="card-rank-group">
+      <span class="rank-num">#02</span>
+      <span class="topic-label">AI Agents &amp; Coding Tools</span>
+      <span class="pub-time-badge">2026-11-23 18:01</span>
+    </div>
+    <div class="score-strip" title="綜合排序分 64.3">
+      <span>重要 <strong>74</strong></span>
+      <span class="dot-sep">·</span>
+      <span>熱門 <strong>49</strong></span>
+    </div>
+  </header>
+
+  <h2 class="card-headline">Z.ai 發表 GLM-5.4，以循環既有層的 Loop Transformer 強化推理，並加入視覺與 CAD 建模能力。</h2>
+  <p class="rank-reason">新架構加新模態，但未見權重釋出與實測數據。</p>
+
+  <section class="consensus-box" aria-label="社群討論風向">
+    <div class="consensus-head">
+      <span class="consensus-kicker">社群風向</span>
+      <span class="pill pill-blue">資訊觀察</span>
+    </div>
+    <p class="consensus-text">目前以轉發分享為主，尚無顯著正反論戰，無留言可判讀實測體感。</p>
+  </section>
+
+  
+
+  <section class="sources-panel" aria-label="資料來源與原始連結">
+    <div class="sources-kicker">資料來源與原始連結</div>
+    <div class="sources-list"><a class="source-link-item" href="https://x.com/Zai_org/status/2124805514722771349" target="_blank" rel="noopener noreferrer"><span class="source-plat">X</span><span class="source-label">X 591 讚 / 73 轉推 / 65 則回覆</span><span class="source-time">2026-11-23 18:01</span><span class="source-arrow"><svg width="11" height="11" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M3.5 8.5L8.5 3.5M8.5 3.5H4.5M8.5 3.5V7.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="square"/></svg></span></a></div>
+  </section>
+
+  <div class="waitwhat-wrap">
+    <button class="waitwhat-toggle" type="button" aria-expanded="false" aria-controls="drawer-x-1">
+      <span class="waitwhat-label">Wait, what? 補前情提要與社群正反留言</span>
+      <span class="toggle-sign" aria-hidden="true">+</span>
+    </button>
+    <div class="waitwhat-drawer" id="drawer-x-1" hidden>
+      <div class="drawer-block"><div class="drawer-kicker">前情提要（白話脈絡）</div><p class="drawer-text">Loop Transformer 指重複使用同一組層多次計算，用計算深度換取推理能力，而不是堆疊更多獨立層。GLM-5.4 在 GLM-5 基礎模型上套用此設計，並主打 coding 與視覺能力。</p></div>
+      <div class="drawer-block"><div class="drawer-kicker">對你的意義</div><p class="drawer-text">若循環層能在相同推理深度下減少參數或顯存，部署成本可能下降。循環會增加前向計算次數，實際 TPOT 仍需實測，且目前未見開放權重說明。</p></div>
+      <div class="drawer-block"><div class="drawer-kicker">新詞快查（對照 GLOSSARY）</div><ul class="gloss-list"><li><span class="gloss-term">Loop Transformer</span><span class="gloss-sep">：</span>同一組層重複跑數輪，像反覆校稿同一頁</li></ul></div>
+      
+    </div>
+  </div>
+
+  <div class="card-footer-counter">2 / 4</div>
+</article>
+<article class="story-card" id="story-x-2" data-index="2" data-topic="models-edge">
+  <header class="card-meta-row">
+    <div class="card-rank-group">
+      <span class="rank-num">#03</span>
+      <span class="topic-label">Open-Source LLMs / VLM / Edge AI</span>
+      <span class="pub-time-badge">2026-11-18 03:41</span>
+    </div>
+    <div class="score-strip" title="綜合排序分 61.4">
+      <span>重要 <strong>80</strong></span>
+      <span class="dot-sep">·</span>
+      <span>熱門 <strong>36</strong></span>
+    </div>
+  </header>
+
+  <h2 class="card-headline">發文團隊宣稱在 AMD GPU 真實生產流量下，P90 輸出達 1,129 tps。</h2>
+  <p class="rank-reason">真實流量吞吐數據，可換算推論單位成本與硬體選型。</p>
+
+  <section class="consensus-box" aria-label="社群討論風向">
+    <div class="consensus-head">
+      <span class="consensus-kicker">社群風向</span>
+      <span class="pill pill-blue">資訊觀察</span>
+    </div>
+    <p class="consensus-text">目前以轉發分享為主，尚無顯著正反論戰，無留言可判讀實測體感。</p>
+  </section>
+
+  
+
+  <section class="sources-panel" aria-label="資料來源與原始連結">
+    <div class="sources-kicker">資料來源與原始連結</div>
+    <div class="sources-list"><a class="source-link-item" href="https://x.com/hassanience/status/2122777279004827921" target="_blank" rel="noopener noreferrer"><span class="source-plat">X</span><span class="source-label">X 86 讚 / 18 轉推 / 46 則回覆</span><span class="source-time">2026-11-18 03:41</span><span class="source-arrow"><svg width="11" height="11" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M3.5 8.5L8.5 3.5M8.5 3.5H4.5M8.5 3.5V7.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="square"/></svg></span></a></div>
+  </section>
+
+  <div class="waitwhat-wrap">
+    <button class="waitwhat-toggle" type="button" aria-expanded="false" aria-controls="drawer-x-2">
+      <span class="waitwhat-label">Wait, what? 補前情提要與社群正反留言</span>
+      <span class="toggle-sign" aria-hidden="true">+</span>
+    </button>
+    <div class="waitwhat-drawer" id="drawer-x-2" hidden>
+      <div class="drawer-block"><div class="drawer-kicker">前情提要（白話脈絡）</div><p class="drawer-text">文中數字取 P90 統計值，代表大多數時段的穩定水準，而非單次峰值。Output tps 指每秒輸出的 token 數，屬於 decode 階段的速度指標。原文未附模型名稱、批次大小與 TTFT。</p></div>
+      <div class="drawer-block"><div class="drawer-kicker">對你的意義</div><p class="drawer-text">若數字可重現，AMD GPU 在高併發推論服務的成本競爭力會被重新評估。缺少模型與批次條件，目前無法直接換算你的部署成本。</p></div>
+      <div class="drawer-block"><div class="drawer-kicker">新詞快查（對照 GLOSSARY）</div><ul class="gloss-list"><li><span class="gloss-term">P90 output tps</span><span class="gloss-sep">：</span>第 90 百分位的每秒輸出 token 數，取穩定值而非峰值</li></ul></div>
+      
+    </div>
+  </div>
+
+  <div class="card-footer-counter">3 / 4</div>
+</article>
+<article class="story-card" id="story-x-3" data-index="3" data-topic="models-edge">
+  <header class="card-meta-row">
+    <div class="card-rank-group">
+      <span class="rank-num">#04</span>
+      <span class="topic-label">Open-Source LLMs / VLM / Edge AI</span>
+      <span class="pub-time-badge">2026-11-23 04:00</span>
+    </div>
+    <div class="score-strip" title="綜合排序分 61.2">
+      <span>重要 <strong>60</strong></span>
+      <span class="dot-sep">·</span>
+      <span>熱門 <strong>60</strong></span>
+    </div>
+  </header>
+
+  <h2 class="card-headline">AirLLM 宣稱可用 4GB 顯卡執行 70B 模型，以逐層載入計算取代整模型載入。</h2>
+  <p class="rank-reason">逐層推論若成立有參考價值，但貼文未附任何實測數據。</p>
+
+  <section class="consensus-box" aria-label="社群討論風向">
+    <div class="consensus-head">
+      <span class="consensus-kicker">社群風向</span>
+      <span class="pill pill-blue">資訊觀察</span>
+    </div>
+    <p class="consensus-text">目前以轉發分享為主，尚無顯著正反論戰；貼文未附實測數據，可信度待驗證。</p>
+  </section>
+
+  
+
+  <section class="sources-panel" aria-label="資料來源與原始連結">
+    <div class="sources-kicker">資料來源與原始連結</div>
+    <div class="sources-list"><a class="source-link-item" href="https://x.com/byteonai/status/2124594005161943437" target="_blank" rel="noopener noreferrer"><span class="source-plat">X</span><span class="source-label">X 1832 讚 / 156 轉推 / 96 則回覆</span><span class="source-time">2026-11-23 04:00</span><span class="source-arrow"><svg width="11" height="11" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M3.5 8.5L8.5 3.5M8.5 3.5H4.5M8.5 3.5V7.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="square"/></svg></span></a></div>
+  </section>
+
+  <div class="waitwhat-wrap">
+    <button class="waitwhat-toggle" type="button" aria-expanded="false" aria-controls="drawer-x-3">
+      <span class="waitwhat-label">Wait, what? 補前情提要與社群正反留言</span>
+      <span class="toggle-sign" aria-hidden="true">+</span>
+    </button>
+    <div class="waitwhat-drawer" id="drawer-x-3" hidden>
+      <div class="drawer-block"><div class="drawer-kicker">前情提要（白話脈絡）</div><p class="drawer-text">大型模型通常需要整包載入顯存，70B 模型遠超一般 4GB 顯卡的容量。AirLLM 的 layer-wise inference 改為每次只載入一層、計算後即釋放，以速度換取顯存。原文未提供 tokens/s 或延遲數字。</p></div>
+      <div class="drawer-block"><div class="drawer-kicker">對你的意義</div><p class="drawer-text">顯存省下的代價通常是反覆讀寫權重，延遲會明顯增加，互動式 Agent 工作流未必可用。請先實測 TTFT 與 TPOT，再判斷是否適合本機部署。</p></div>
+      <div class="drawer-block"><div class="drawer-kicker">新詞快查（對照 GLOSSARY）</div><ul class="gloss-list"><li><span class="gloss-term">Layer-wise inference</span><span class="gloss-sep">：</span>像流水線一次只搬一台機器進工廠，用時間換空間</li></ul></div>
+      
+    </div>
+  </div>
+
+  <div class="card-footer-counter">4 / 4</div>
+</article></section></div><div class="tab-panel" data-tab-panel="reddit" hidden><p class="section-takeaway">Agent 工具鏈的模型供應商綁定正變成成本風險，團隊開始評估可替換的架構。</p><section class="quadrant-panel" aria-label="重要度與熱門度四象限"><div class="panel-head"><span class="panel-kicker">SIGNAL MAP</span><span class="panel-hint">點圓點直達該則卡片</span></div><svg class="editorial-svg quadrant-svg" viewBox="0 0 680 420" role="img" aria-label="今日 AI 消息重要度與熱門度四象限圖" xmlns="http://www.w3.org/2000/svg">
+  <rect x="0" y="0" width="680" height="420" rx="8" fill="#FAF8F5" stroke="#EAEAEA" stroke-width="1"/>
+  <!-- Highlight top-right quadrant (must-read) -->
+  <rect x="355.0" y="40" width="291.0" height="162.0" fill="#FBF3DB" fill-opacity="0.38"/>
+  <!-- Outer frame -->
+  <rect x="64" y="40" width="582" height="324" fill="none" stroke="#D8D6D0" stroke-width="1"/>
+  <!-- Midpoint hairlines -->
+  <line x1="355.0" y1="40" x2="355.0" y2="364" stroke="#D8D6D0" stroke-width="1" stroke-dasharray="4 4"/>
+  <line x1="64" y1="202.0" x2="646" y2="202.0" stroke="#D8D6D0" stroke-width="1" stroke-dasharray="4 4"/>
+  <!-- Quadrant titles -->
+  <text x="636" y="60" text-anchor="end" font-family="SF Pro Display, Noto Sans TC, sans-serif" font-size="11" font-weight="600" fill="#956400">必看突破（高重要 · 高熱門）</text>
+  <text x="74" y="60" text-anchor="start" font-family="SF Pro Display, Noto Sans TC, sans-serif" font-size="11" fill="#787774">低調硬核（高重要 · 低討論）</text>
+  <text x="636" y="354" text-anchor="end" font-family="SF Pro Display, Noto Sans TC, sans-serif" font-size="11" fill="#787774">社群熱議（討論兇 · 實質影響待觀察）</text>
+  <text x="74" y="354" text-anchor="start" font-family="SF Pro Display, Noto Sans TC, sans-serif" font-size="11" fill="#787774">背景動態</text>
+  <!-- Axis labels -->
+  <text x="355.0" y="404" text-anchor="middle" font-family="JetBrains Mono, SF Mono, monospace" font-size="11" fill="#55524C">熱門度 POPULARITY（跨社群真實互動） →</text>
+  <text x="20" y="202.0" text-anchor="middle" transform="rotate(-90 20 202.0)" font-family="JetBrains Mono, SF Mono, monospace" font-size="11" fill="#55524C">重要度 IMPORTANCE →</text>
+  <!-- Tick marks -->
+  <text x="64" y="380" font-family="JetBrains Mono, monospace" font-size="10" fill="#787774">0</text>
+  <text x="355.0" y="380" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="10" fill="#787774">50</text>
+  <text x="646" y="380" text-anchor="end" font-family="JetBrains Mono, monospace" font-size="10" fill="#787774">100</text>
+  <text x="56" y="48" text-anchor="end" font-family="JetBrains Mono, monospace" font-size="10" fill="#787774">100</text>
+  <text x="56" y="206.0" text-anchor="end" font-family="JetBrains Mono, monospace" font-size="10" fill="#787774">50</text>
+  <!-- Story nodes -->
+  <g class="q-dot" data-story-index="0" role="button" tabindex="0" aria-label="前往第 1 則：Anthropic 企業定價"><circle cx="436.5" cy="78.9" r="16" fill="#111111" stroke="#111111" stroke-width="1.5"/><text x="436.5" y="82.9" text-anchor="middle" font-family="JetBrains Mono, SF Mono, monospace" font-size="11" font-weight="600" fill="#FFFFFF">1</text><text x="436.5" y="108.9" text-anchor="middle" font-family="SF Pro Display, Noto Sans TC, sans-serif" font-size="10.5" fill="#2F3437">Anthropic 企業定價</text></g><g class="q-dot" data-story-index="1" role="button" tabindex="0" aria-label="前往第 2 則：VS Code 被 Clau"><circle cx="454.5" cy="71.4" r="13" fill="#FDEBEC" stroke="#9F2F2D" stroke-width="1.5"/><text x="454.5" y="75.4" text-anchor="middle" font-family="JetBrains Mono, SF Mono, monospace" font-size="11" font-weight="600" fill="#9F2F2D">2</text><text x="454.5" y="98.4" text-anchor="middle" font-family="SF Pro Display, Noto Sans TC, sans-serif" font-size="10.5" fill="#2F3437">VS Code 被 Clau</text></g><g class="q-dot" data-story-index="2" role="button" tabindex="0" aria-label="前往第 3 則：AI Agent 設計 CP"><circle cx="413.2" cy="111.3" r="13" fill="#FDEBEC" stroke="#9F2F2D" stroke-width="1.5"/><text x="413.2" y="115.3" text-anchor="middle" font-family="JetBrains Mono, SF Mono, monospace" font-size="11" font-weight="600" fill="#9F2F2D">3</text><text x="413.2" y="91.3" text-anchor="middle" font-family="SF Pro Display, Noto Sans TC, sans-serif" font-size="10.5" fill="#2F3437">AI Agent 設計 CP</text></g><g class="q-dot" data-story-index="3" role="button" tabindex="0" aria-label="前往第 4 則：非技術人員試用 Claude"><circle cx="413.7" cy="116.7" r="13" fill="#FDEBEC" stroke="#9F2F2D" stroke-width="1.5"/><text x="413.7" y="120.7" text-anchor="middle" font-family="JetBrains Mono, SF Mono, monospace" font-size="11" font-weight="600" fill="#9F2F2D">4</text><text x="413.7" y="96.7" text-anchor="middle" font-family="SF Pro Display, Noto Sans TC, sans-serif" font-size="10.5" fill="#2F3437">非技術人員試用 Claude</text></g><g class="q-dot" data-story-index="4" role="button" tabindex="0" aria-label="前往第 5 則：多 Agent 直播挑戰 P"><circle cx="413.2" cy="185.8" r="13" fill="#FDEBEC" stroke="#9F2F2D" stroke-width="1.5"/><text x="413.2" y="189.8" text-anchor="middle" font-family="JetBrains Mono, SF Mono, monospace" font-size="11" font-weight="600" fill="#9F2F2D">5</text><text x="413.2" y="165.8" text-anchor="middle" font-family="SF Pro Display, Noto Sans TC, sans-serif" font-size="10.5" fill="#2F3437">多 Agent 直播挑戰 P</text></g>
+</svg></section><section class="cards-stage" aria-live="polite"><article class="story-card is-active" id="story-reddit-0" data-index="0" data-topic="industry">
+  <header class="card-meta-row">
+    <div class="card-rank-group">
+      <span class="rank-num">#01</span>
+      <span class="topic-label">AI 產業與新模型發布</span>
+      <span class="pub-time-badge">2026-11-23 00:33</span>
+    </div>
+    <div class="score-strip" title="綜合排序分 78.0">
+      <span>重要 <strong>88</strong></span>
+      <span class="dot-sep">·</span>
+      <span>熱門 <strong>64</strong></span>
+    </div>
+  </header>
+
+  <h2 class="card-headline">一家約 400 人的科技公司收到通知，Anthropic 方案漲約 10 倍，一週內要改用其他模型。</h2>
+  <p class="rank-reason">企業採購成本劇變，直接影響團隊工具選型與 Agent 遷移</p>
+
+  <section class="consensus-box" aria-label="社群討論風向">
+    <div class="consensus-head">
+      <span class="consensus-kicker">社群風向</span>
+      <span class="pill pill-red">多數質疑</span>
+    </div>
+    <p class="consensus-text">社群多認為這是舊折扣合約到期所致，也質疑團隊過度依賴單一模型的架構。</p>
+  </section>
+
+  <div class="top1-diagram-wrap"><svg class="editorial-svg flow-svg" viewBox="0 0 640 190" role="img" aria-label="企業方案從折扣轉為全額 token 計價" xmlns="http://www.w3.org/2000/svg">
+  <rect x="0" y="0" width="640" height="190" rx="8" fill="#FAF8F5" stroke="#EAEAEA" stroke-width="1"/>
+  <text x="24" y="30" font-family="JetBrains Mono, monospace" font-size="10" letter-spacing="0.08em" fill="#787774">TOP #1 ARCHITECTURE &amp; IMPACT</text>
+  <text x="24" y="47" font-family="SF Pro Display, Noto Sans TC, sans-serif" font-size="13" font-weight="600" fill="#111111">企業方案從折扣轉為全額 token 計價</text>
+  <g><rect x="24.0" y="60" width="127.0" height="92" rx="6" fill="#FFFFFF" stroke="#D8D6D0" stroke-width="1"/><text x="36.0" y="80" font-family="JetBrains Mono, monospace" font-size="9.5" letter-spacing="0.06em" fill="#787774">01 BEFORE</text><text x="36.0" y="102" font-family="SF Pro Display, Noto Sans TC, sans-serif" font-size="13" font-weight="600" fill="#2F3437">舊折扣合約</text><text x="36.0" y="122" font-family="SF Pro Display, Noto Sans TC, sans-serif" font-size="10.5" fill="#55524C">企業方案依零售 API 價格</text><text x="36.0" y="137" font-family="SF Pro Display, Noto Sans TC, sans-serif" font-size="10.5" fill="#55524C">打折，費率較低</text></g><line x1="155.0" y1="106.0" x2="174.0" y2="106.0" stroke="#787774" stroke-width="1.25"/><polyline points="169.0,102.0 174.0,106.0 169.0,110.0" fill="none" stroke="#787774" stroke-width="1.25"/><g><rect x="179.0" y="60" width="127.0" height="92" rx="6" fill="#FBF3DB" stroke="#D4B36A" stroke-width="1"/><text x="191.0" y="80" font-family="JetBrains Mono, monospace" font-size="9.5" letter-spacing="0.06em" fill="#956400">02 CHANGE</text><text x="191.0" y="102" font-family="SF Pro Display, Noto Sans TC, sans-serif" font-size="13" font-weight="600" fill="#111111">改為全額 token 計價</text><text x="191.0" y="122" font-family="SF Pro Display, Noto Sans TC, sans-serif" font-size="10.5" fill="#55524C">每 token 全價計費，外</text><text x="191.0" y="137" font-family="SF Pro Display, Noto Sans TC, sans-serif" font-size="10.5" fill="#55524C">加每席位授權費</text></g><line x1="310.0" y1="106.0" x2="329.0" y2="106.0" stroke="#787774" stroke-width="1.25"/><polyline points="324.0,102.0 329.0,106.0 324.0,110.0" fill="none" stroke="#787774" stroke-width="1.25"/><g><rect x="334.0" y="60" width="127.0" height="92" rx="6" fill="#EDF3EC" stroke="#8EB492" stroke-width="1"/><text x="346.0" y="80" font-family="JetBrains Mono, monospace" font-size="9.5" letter-spacing="0.06em" fill="#346538">03 IMPACT</text><text x="346.0" y="102" font-family="SF Pro Display, Noto Sans TC, sans-serif" font-size="13" font-weight="600" fill="#111111">單價約漲 10 倍</text><text x="346.0" y="122" font-family="SF Pro Display, Noto Sans TC, sans-serif" font-size="10.5" fill="#55524C">約 400 人團隊需在一週內</text><text x="346.0" y="137" font-family="SF Pro Display, Noto Sans TC, sans-serif" font-size="10.5" fill="#55524C">改用其他模型</text></g><line x1="465.0" y1="106.0" x2="484.0" y2="106.0" stroke="#787774" stroke-width="1.25"/><polyline points="479.0,102.0 484.0,106.0 479.0,110.0" fill="none" stroke="#787774" stroke-width="1.25"/><g><rect x="489.0" y="60" width="127.0" height="92" rx="6" fill="#FDEBEC" stroke="#D99A98" stroke-width="1"/><text x="501.0" y="80" font-family="JetBrains Mono, monospace" font-size="9.5" letter-spacing="0.06em" fill="#9F2F2D">04 DEBATE</text><text x="501.0" y="102" font-family="SF Pro Display, Noto Sans TC, sans-serif" font-size="13" font-weight="600" fill="#111111">鎖定風險被質疑</text><text x="501.0" y="122" font-family="SF Pro Display, Noto Sans TC, sans-serif" font-size="10.5" fill="#55524C">社群認為過度依賴單一模型是工</text><text x="501.0" y="137" font-family="SF Pro Display, Noto Sans TC, sans-serif" font-size="10.5" fill="#55524C">程設計問題</text></g>
+</svg></div>
+
+  <section class="sources-panel" aria-label="資料來源與原始連結">
+    <div class="sources-kicker">資料來源與原始連結</div>
+    <div class="sources-list"><a class="source-link-item" href="https://www.reddit.com/r/cscareerquestions/comments/1y2tg08/anthropic_increased_prices_10x_for_the_company_im/" target="_blank" rel="noopener noreferrer"><span class="source-plat">Reddit</span><span class="source-label">r/cscareerquestions 1409▲ / 411則留言</span><span class="source-time">2026-11-23 00:33</span><span class="source-arrow"><svg width="11" height="11" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M3.5 8.5L8.5 3.5M8.5 3.5H4.5M8.5 3.5V7.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="square"/></svg></span></a></div>
+  </section>
+
+  <div class="waitwhat-wrap">
+    <button class="waitwhat-toggle" type="button" aria-expanded="false" aria-controls="drawer-reddit-0">
+      <span class="waitwhat-label">Wait, what? 補前情提要與社群正反留言</span>
+      <span class="toggle-sign" aria-hidden="true">+</span>
+    </button>
+    <div class="waitwhat-drawer" id="drawer-reddit-0" hidden>
+      <div class="drawer-block"><div class="drawer-kicker">前情提要（白話脈絡）</div><p class="drawer-text">作者稱，所屬公司約 400 名工程師收到通知，Anthropic 合約價格相較前一期漲約 10 倍，一週後停用。貼文未附合約或帳單，數字屬作者自述。留言者指出，舊合約是依零售 API 價格打折的企業方案。</p></div>
+      <div class="drawer-block"><div class="drawer-kicker">對你的意義</div><p class="drawer-text">若團隊把 Claude 綁進內部框架，換模型就要重測 Prompt、Tool Calling 與 Eval 基準。先算每 token 成本，再決定是否改走開源模型或多供應商路由。</p></div>
+      <div class="drawer-block"><div class="drawer-kicker">新詞快查（對照 GLOSSARY）</div><ul class="gloss-list"><li><span class="gloss-term">Per-seat 授權</span><span class="gloss-sep">：</span>按使用者人數收費，像照座位數買票，不論用量多寡。</li></ul></div>
+      <div class="drawer-block"><div class="drawer-kicker">社群代表聲音</div><ul class="voice-list"><li class="voice-item"><div class="voice-head"><span class="pill pill-red">質疑</span><a class="voice-meta" href="https://www.reddit.com/r/cscareerquestions/comments/1y2tg08/comment/19t117ny3zz2a/" target="_blank" rel="noopener noreferrer">Reddit · u/deejeycris</a></div><p class="voice-quote">質疑：內部框架若綁死單一模型，才會這麼難切換，問題在設計而非供應商。</p></li><li class="voice-item"><div class="voice-head"><span class="pill pill-blue">實測</span><a class="voice-meta" href="https://www.reddit.com/r/cscareerquestions/comments/1y2tg08/comment/19t11cfviejb7/" target="_blank" rel="noopener noreferrer">Reddit · u/TRO_KIK</a></div><p class="voice-quote">留言指出，舊企業折扣合約退場後，改為 API 全價 token 加每席位收費。</p></li><li class="voice-item"><div class="voice-head"><span class="pill pill-red">質疑</span><a class="voice-meta" href="https://www.reddit.com/r/cscareerquestions/comments/1y2tg08/comment/19t123qfosmyq/" target="_blank" rel="noopener noreferrer">Reddit · u/PeachScary413</a></div><p class="voice-quote">多數人認為這是常見的鎖定後加價手法，SaaS 平台長年如此操作。</p></li></ul></div>
+    </div>
+  </div>
+
+  <div class="card-footer-counter">1 / 5</div>
+</article>
+<article class="story-card" id="story-reddit-1" data-index="1" data-topic="agents">
+  <header class="card-meta-row">
+    <div class="card-rank-group">
+      <span class="rank-num">#02</span>
+      <span class="topic-label">AI Agents &amp; Coding Tools</span>
+      <span class="pub-time-badge">2026-11-23 13:35</span>
+    </div>
+    <div class="score-strip" title="綜合排序分 78.0">
+      <span>重要 <strong>86</strong></span>
+      <span class="dot-sep">·</span>
+      <span>熱門 <strong>64</strong></span>
+    </div>
+  </header>
+
+  <h2 class="card-headline">Satya Nadella 承認 VS Code 六個月內失勢，部分開發者因 Claude Code 已不再開啟它。</h2>
+  <p class="rank-reason">高層公開承認開發工具格局變動，直接影響日常寫程式工作流</p>
+
+  <section class="consensus-box" aria-label="社群討論風向">
+    <div class="consensus-head">
+      <span class="consensus-kicker">社群風向</span>
+      <span class="pill pill-yellow">正反分歧</span>
+    </div>
+    <p class="consensus-text">社群分兩派：有人轉向可換模型的 Copilot 避開高價，也有人仍在 VS Code 內搭配 Claude 使用。</p>
+  </section>
+
+  
+
+  <section class="sources-panel" aria-label="資料來源與原始連結">
+    <div class="sources-kicker">資料來源與原始連結</div>
+    <div class="sources-list"><a class="source-link-item" href="https://www.reddit.com/r/technology/comments/1y3a9c3/the_thing_that_hit_us_satya_nadella_admits_vs/" target="_blank" rel="noopener noreferrer"><span class="source-plat">Reddit</span><span class="source-label">r/technology 1337▲ / 446則留言</span><span class="source-time">2026-11-23 13:35</span><span class="source-arrow"><svg width="11" height="11" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M3.5 8.5L8.5 3.5M8.5 3.5H4.5M8.5 3.5V7.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="square"/></svg></span></a></div>
+  </section>
+
+  <div class="waitwhat-wrap">
+    <button class="waitwhat-toggle" type="button" aria-expanded="false" aria-controls="drawer-reddit-1">
+      <span class="waitwhat-label">Wait, what? 補前情提要與社群正反留言</span>
+      <span class="toggle-sign" aria-hidden="true">+</span>
+    </button>
+    <div class="waitwhat-drawer" id="drawer-reddit-1" hidden>
+      <div class="drawer-block"><div class="drawer-kicker">前情提要（白話脈絡）</div><p class="drawer-text">VS Code 過去十年是主流程式編輯器。Claude Code 在終端機直接讀寫專案，讓部分人不必再切回編輯器工作。Nadella 公開承認這項轉變的影響。</p></div>
+      <div class="drawer-block"><div class="drawer-kicker">對你的意義</div><p class="drawer-text">當 Agent 直接改檔，編輯器就從主戰場變成輔助角色。若你的流程已依賴 Agent，應比較不同 Agent CLI 的 MCP 支援與模型選擇彈性。</p></div>
+      <div class="drawer-block"><div class="drawer-kicker">新詞快查（對照 GLOSSARY）</div><ul class="gloss-list"><li><span class="gloss-term">Agent CLI</span><span class="gloss-sep">：</span>在終端機直接執行 Agent 的工具，像把助理搬到命令列。</li></ul></div>
+      <div class="drawer-block"><div class="drawer-kicker">社群代表聲音</div><ul class="voice-list"><li class="voice-item"><div class="voice-head"><span class="pill pill-green">支持</span><a class="voice-meta" href="https://www.reddit.com/r/technology/comments/1y3a9c3/comment/19t2166eixqmd/" target="_blank" rel="noopener noreferrer">Reddit · u/KidGold</a></div><p class="voice-quote">有人覺得在 VS Code 內使用 Claude，同時保有編輯器與 Agent 的優點。</p></li><li class="voice-item"><div class="voice-head"><span class="pill pill-blue">實測</span><a class="voice-meta" href="https://www.reddit.com/r/technology/comments/1y3a9c3/comment/19t20ajmqe490/" target="_blank" rel="noopener noreferrer">Reddit · u/sosthaboss</a></div><p class="voice-quote">GitHub Copilot 可自由選模型，能避免被單一供應商的高價綁定。</p></li><li class="voice-item"><div class="voice-head"><span class="pill pill-blue">實測</span><a class="voice-meta" href="https://www.reddit.com/r/technology/comments/1y3a9c3/comment/19t21up8xr11d/" target="_blank" rel="noopener noreferrer">Reddit · u/Sufficient-Science71</a></div><p class="voice-quote">仍有人只把 AI 當輔助、不離開編輯器，也有人擔心自己跟不上趨勢。</p></li></ul></div>
+    </div>
+  </div>
+
+  <div class="card-footer-counter">2 / 5</div>
+</article>
+<article class="story-card" id="story-reddit-2" data-index="2" data-topic="agents">
+  <header class="card-meta-row">
+    <div class="card-rank-group">
+      <span class="rank-num">#03</span>
+      <span class="topic-label">AI Agents &amp; Coding Tools</span>
+      <span class="pub-time-badge">2026-11-22 21:55</span>
+    </div>
+    <div class="score-strip" title="綜合排序分 71.6">
+      <span>重要 <strong>78</strong></span>
+      <span class="dot-sep">·</span>
+      <span>熱門 <strong>60</strong></span>
+    </div>
+  </header>
+
+  <h2 class="card-headline">一家新創聲稱 AI Agent 從零設計出新 CPU 架構，矽晶片前模擬顯示能效比高 4.59 倍。</h2>
+  <p class="rank-reason">Agent 參與硬體設計的新案例，但數據仍停留在模擬階段</p>
+
+  <section class="consensus-box" aria-label="社群討論風向">
+    <div class="consensus-head">
+      <span class="consensus-kicker">社群風向</span>
+      <span class="pill pill-red">多數質疑</span>
+    </div>
+    <p class="consensus-text">社群多數質疑：矽前模擬與實際量產晶片差距大，且比較基準不夠透明。</p>
+  </section>
+
+  
+
+  <section class="sources-panel" aria-label="資料來源與原始連結">
+    <div class="sources-kicker">資料來源與原始連結</div>
+    <div class="sources-list"><a class="source-link-item" href="https://www.reddit.com/r/technology/comments/1y2pvu2/ai_agents_design_an_entirely_new_cpu_architecture/" target="_blank" rel="noopener noreferrer"><span class="source-plat">Reddit</span><span class="source-label">r/technology 1206▲ / 165則留言</span><span class="source-time">2026-11-22 21:55</span><span class="source-arrow"><svg width="11" height="11" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M3.5 8.5L8.5 3.5M8.5 3.5H4.5M8.5 3.5V7.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="square"/></svg></span></a></div>
+  </section>
+
+  <div class="waitwhat-wrap">
+    <button class="waitwhat-toggle" type="button" aria-expanded="false" aria-controls="drawer-reddit-2">
+      <span class="waitwhat-label">Wait, what? 補前情提要與社群正反留言</span>
+      <span class="toggle-sign" aria-hidden="true">+</span>
+    </button>
+    <div class="waitwhat-drawer" id="drawer-reddit-2" hidden>
+      <div class="drawer-block"><div class="drawer-kicker">前情提要（白話脈絡）</div><p class="drawer-text">Frostbite 是一家新創公司宣稱由 AI Agent 完成設計的 CPU 架構。測試來自 pre-silicon 階段，也就是尚未製成實體晶片前的模擬。比較對象是結構簡單的 in-order core。</p></div>
+      <div class="drawer-block"><div class="drawer-kicker">對你的意義</div><p class="drawer-text">若最終數據成立，Agent 可能縮短晶片設計迭代時間，未來邊緣裝置的能效選擇也會改變。目前尚不影響你的推論延遲或部署成本，需等實體晶片與獨立評測。</p></div>
+      <div class="drawer-block"><div class="drawer-kicker">新詞快查（對照 GLOSSARY）</div><ul class="gloss-list"><li><span class="gloss-term">Pre-silicon</span><span class="gloss-sep">：</span>流片前的模擬驗證，像造車前先在電腦裡跑風洞測試。</li><li><span class="gloss-term">In-order core</span><span class="gloss-sep">：</span>依指令順序執行的簡單核心，像單車道依序放行車輛。</li></ul></div>
+      <div class="drawer-block"><div class="drawer-kicker">社群代表聲音</div><ul class="voice-list"><li class="voice-item"><div class="voice-head"><span class="pill pill-red">質疑</span><a class="voice-meta" href="https://www.reddit.com/r/technology/comments/1y2pvu2/comment/19t0umavvnjgg/" target="_blank" rel="noopener noreferrer">Reddit · u/TheseCashews</a></div><p class="voice-quote">設計再漂亮的架構，若無法製造與量產，對使用者等同不存在。</p></li><li class="voice-item"><div class="voice-head"><span class="pill pill-blue">實測</span><a class="voice-meta" href="https://www.reddit.com/r/technology/comments/1y2pvu2/comment/19t0xoyumcq4j/" target="_blank" rel="noopener noreferrer">Reddit · u/omniuni</a></div><p class="voice-quote">質疑以 in-order core 當對照組，會讓效能比數字看起來特別亮眼。</p></li><li class="voice-item"><div class="voice-head"><span class="pill pill-red">質疑</span><a class="voice-meta" href="https://www.reddit.com/r/technology/comments/1y2pvu2/comment/19t0v7id25b2b/" target="_blank" rel="noopener noreferrer">Reddit · u/GamingIndustryIsFcck</a></div><p class="voice-quote">Sony Cell 架構失敗的例子顯示，新架構若無人採用，註定難以成功。</p></li></ul></div>
+    </div>
+  </div>
+
+  <div class="card-footer-counter">3 / 5</div>
+</article>
+<article class="story-card" id="story-reddit-3" data-index="3" data-topic="agents">
+  <header class="card-meta-row">
+    <div class="card-rank-group">
+      <span class="rank-num">#04</span>
+      <span class="topic-label">AI Agents &amp; Coding Tools</span>
+      <span class="pub-time-badge">2026-11-23 00:43</span>
+    </div>
+    <div class="score-strip" title="綜合排序分 66.9">
+      <span>重要 <strong>72</strong></span>
+      <span class="dot-sep">·</span>
+      <span>熱門 <strong>57</strong></span>
+    </div>
+  </header>
+
+  <h2 class="card-headline">一位使用者讓不懂程式的母親操作 Claude Code，測試她能否獨立完成一款應用程式。</h2>
+  <p class="rank-reason">個人實驗測試非技術使用者能否獨立開發，具工作流參考價值</p>
+
+  <section class="consensus-box" aria-label="社群討論風向">
+    <div class="consensus-head">
+      <span class="consensus-kicker">社群風向</span>
+      <span class="pill pill-blue">資訊觀察</span>
+    </div>
+    <p class="consensus-text">目前以轉發分享為主，尚無顯著正反論戰。</p>
+  </section>
+
+  
+
+  <section class="sources-panel" aria-label="資料來源與原始連結">
+    <div class="sources-kicker">資料來源與原始連結</div>
+    <div class="sources-list"><a class="source-link-item" href="https://www.reddit.com/r/ItaliaCareerAdvice/comments/1y2top5/ho_lasciato_claude_code_nelle_mani_di_mia_madre/" target="_blank" rel="noopener noreferrer"><span class="source-plat">Reddit</span><span class="source-label">r/ItaliaCareerAdvice 741▲ / 192則留言</span><span class="source-time">2026-11-23 00:43</span><span class="source-arrow"><svg width="11" height="11" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M3.5 8.5L8.5 3.5M8.5 3.5H4.5M8.5 3.5V7.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="square"/></svg></span></a></div>
+  </section>
+
+  <div class="waitwhat-wrap">
+    <button class="waitwhat-toggle" type="button" aria-expanded="false" aria-controls="drawer-reddit-3">
+      <span class="waitwhat-label">Wait, what? 補前情提要與社群正反留言</span>
+      <span class="toggle-sign" aria-hidden="true">+</span>
+    </button>
+    <div class="waitwhat-drawer" id="drawer-reddit-3" hidden>
+      <div class="drawer-block"><div class="drawer-kicker">前情提要（白話脈絡）</div><p class="drawer-text">Claude Code 是可在終端機讀取與修改專案的 AI 編碼 Agent。作者起因是母親在辦公室要重複閱讀大量文件，因而設計這項實驗。摘要未完整呈現最終成果，原文為義大利文。</p></div>
+      <div class="drawer-block"><div class="drawer-kicker">對你的意義</div><p class="drawer-text">此案例指出，Agent 的實際門檻常在需求描述與驗收標準，而非語法。若要把任務交給非工程師，應先定義 Spec 與獨立的驗收步驟。</p></div>
+      
+      
+    </div>
+  </div>
+
+  <div class="card-footer-counter">4 / 5</div>
+</article>
+<article class="story-card" id="story-reddit-4" data-index="4" data-topic="agents">
+  <header class="card-meta-row">
+    <div class="card-rank-group">
+      <span class="rank-num">#05</span>
+      <span class="topic-label">AI Agents &amp; Coding Tools</span>
+      <span class="pub-time-badge">2026-11-23 05:35</span>
+    </div>
+    <div class="score-strip" title="綜合排序分 58.7">
+      <span>重要 <strong>55</strong></span>
+      <span class="dot-sep">·</span>
+      <span>熱門 <strong>60</strong></span>
+    </div>
+  </header>
+
+  <h2 class="card-headline">一位使用者以 hub 架構協調數百個 Agent，公開直播嘗試求解 P = NP 並開放眾人參與。</h2>
+  <p class="rank-reason">多 Agent 協作直播實驗，但缺乏可驗證的成果與算力數據</p>
+
+  <section class="consensus-box" aria-label="社群討論風向">
+    <div class="consensus-head">
+      <span class="consensus-kicker">社群風向</span>
+      <span class="pill pill-red">多數質疑</span>
+    </div>
+    <p class="consensus-text">留言多質疑個人算力比不上 OpenAI、Anthropic 的內部投入，也擔心前沿模型取得受限。</p>
+  </section>
+
+  
+
+  <section class="sources-panel" aria-label="資料來源與原始連結">
+    <div class="sources-kicker">資料來源與原始連結</div>
+    <div class="sources-list"><a class="source-link-item" href="https://www.reddit.com/r/singularity/comments/1y30m1o/a_coordinated_army_of_agents_is_trying_to_solve_p/" target="_blank" rel="noopener noreferrer"><span class="source-plat">Reddit</span><span class="source-label">r/singularity 1000▲ / 223則留言</span><span class="source-time">2026-11-23 05:35</span><span class="source-arrow"><svg width="11" height="11" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M3.5 8.5L8.5 3.5M8.5 3.5H4.5M8.5 3.5V7.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="square"/></svg></span></a></div>
+  </section>
+
+  <div class="waitwhat-wrap">
+    <button class="waitwhat-toggle" type="button" aria-expanded="false" aria-controls="drawer-reddit-4">
+      <span class="waitwhat-label">Wait, what? 補前情提要與社群正反留言</span>
+      <span class="toggle-sign" aria-hidden="true">+</span>
+    </button>
+    <div class="waitwhat-drawer" id="drawer-reddit-4" hidden>
+      <div class="drawer-block"><div class="drawer-kicker">前情提要（白話脈絡）</div><p class="drawer-text">P = NP 是計算理論最有名的未解問題之一，多數研究者認為兩類問題並不相同。作者建立 pequalnp.com 網站，讓參與者提交 Agent 的運算工作。摘要未附可驗證的證明或中間結果。</p></div>
+      <div class="drawer-block"><div class="drawer-kicker">對你的意義</div><p class="drawer-text">若此類多 Agent 派工實驗成功，能展示長週期任務的協作上限。目前只說明協作架構，尚不影響你的推論成本或日常 Agent 工作流。</p></div>
+      <div class="drawer-block"><div class="drawer-kicker">新詞快查（對照 GLOSSARY）</div><ul class="gloss-list"><li><span class="gloss-term">P = NP</span><span class="gloss-sep">：</span>問題能否快速驗證與快速求解等價的難題，懸賞百萬美元。</li></ul></div>
+      <div class="drawer-block"><div class="drawer-kicker">社群代表聲音</div><ul class="voice-list"><li class="voice-item"><div class="voice-head"><span class="pill pill-red">質疑</span><a class="voice-meta" href="https://www.reddit.com/r/singularity/comments/1y30m1o/comment/19t1etudptqw4/" target="_blank" rel="noopener noreferrer">Reddit · u/BlastingFonda</a></div><p class="voice-quote">若真能這麼容易解題，Amodei 或 Altman 早該投入大量 token 嘗試。</p></li><li class="voice-item"><div class="voice-head"><span class="pill pill-blue">實測</span><a class="voice-meta" href="https://www.reddit.com/r/singularity/comments/1y30m1o/comment/19t1fhzjco5lx/" target="_blank" rel="noopener noreferrer">Reddit · u/-batab-</a></div><p class="voice-quote">多人合併算力或有競爭力，真正瓶頸是能否取得最前沿且無限制的模型。</p></li></ul></div>
+    </div>
+  </div>
+
+  <div class="card-footer-counter">5 / 5</div>
+</article></section></div><div class="tab-panel" data-tab-panel="threads" hidden><p class="section-takeaway">本批次無高訊號項目，僅見 Agent 工具推薦與使用經驗提問，缺實測數據。</p><section class="quadrant-panel" aria-label="重要度與熱門度四象限"><div class="panel-head"><span class="panel-kicker">SIGNAL MAP</span><span class="panel-hint">點圓點直達該則卡片</span></div><svg class="editorial-svg quadrant-svg" viewBox="0 0 680 420" role="img" aria-label="今日 AI 消息重要度與熱門度四象限圖" xmlns="http://www.w3.org/2000/svg">
+  <rect x="0" y="0" width="680" height="420" rx="8" fill="#FAF8F5" stroke="#EAEAEA" stroke-width="1"/>
+  <!-- Highlight top-right quadrant (must-read) -->
+  <rect x="355.0" y="40" width="291.0" height="162.0" fill="#FBF3DB" fill-opacity="0.38"/>
+  <!-- Outer frame -->
+  <rect x="64" y="40" width="582" height="324" fill="none" stroke="#D8D6D0" stroke-width="1"/>
+  <!-- Midpoint hairlines -->
+  <line x1="355.0" y1="40" x2="355.0" y2="364" stroke="#D8D6D0" stroke-width="1" stroke-dasharray="4 4"/>
+  <line x1="64" y1="202.0" x2="646" y2="202.0" stroke="#D8D6D0" stroke-width="1" stroke-dasharray="4 4"/>
+  <!-- Quadrant titles -->
+  <text x="636" y="60" text-anchor="end" font-family="SF Pro Display, Noto Sans TC, sans-serif" font-size="11" font-weight="600" fill="#956400">必看突破（高重要 · 高熱門）</text>
+  <text x="74" y="60" text-anchor="start" font-family="SF Pro Display, Noto Sans TC, sans-serif" font-size="11" fill="#787774">低調硬核（高重要 · 低討論）</text>
+  <text x="636" y="354" text-anchor="end" font-family="SF Pro Display, Noto Sans TC, sans-serif" font-size="11" fill="#787774">社群熱議（討論兇 · 實質影響待觀察）</text>
+  <text x="74" y="354" text-anchor="start" font-family="SF Pro Display, Noto Sans TC, sans-serif" font-size="11" fill="#787774">背景動態</text>
+  <!-- Axis labels -->
+  <text x="355.0" y="404" text-anchor="middle" font-family="JetBrains Mono, SF Mono, monospace" font-size="11" fill="#55524C">熱門度 POPULARITY（跨社群真實互動） →</text>
+  <text x="20" y="202.0" text-anchor="middle" transform="rotate(-90 20 202.0)" font-family="JetBrains Mono, SF Mono, monospace" font-size="11" fill="#55524C">重要度 IMPORTANCE →</text>
+  <!-- Tick marks -->
+  <text x="64" y="380" font-family="JetBrains Mono, monospace" font-size="10" fill="#787774">0</text>
+  <text x="355.0" y="380" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="10" fill="#787774">50</text>
+  <text x="646" y="380" text-anchor="end" font-family="JetBrains Mono, monospace" font-size="10" fill="#787774">100</text>
+  <text x="56" y="48" text-anchor="end" font-family="JetBrains Mono, monospace" font-size="10" fill="#787774">100</text>
+  <text x="56" y="206.0" text-anchor="end" font-family="JetBrains Mono, monospace" font-size="10" fill="#787774">50</text>
+  <!-- Story nodes -->
+  <g class="q-dot" data-story-index="0" role="button" tabindex="0" aria-label="前往第 1 則：Hermes Agent 掌"><circle cx="261.9" cy="234.4" r="16" fill="#111111" stroke="#111111" stroke-width="1.5"/><text x="261.9" y="238.4" text-anchor="middle" font-family="JetBrains Mono, SF Mono, monospace" font-size="11" font-weight="600" fill="#FFFFFF">1</text><text x="261.9" y="211.4" text-anchor="middle" font-family="SF Pro Display, Noto Sans TC, sans-serif" font-size="10.5" fill="#2F3437">Hermes Agent 掌</text></g><g class="q-dot" data-story-index="1" role="button" tabindex="0" aria-label="前往第 2 則：徵詢真實 Agent 使用經"><circle cx="256.1" cy="273.3" r="13" fill="#FDEBEC" stroke="#9F2F2D" stroke-width="1.5"/><text x="256.1" y="277.3" text-anchor="middle" font-family="JetBrains Mono, SF Mono, monospace" font-size="11" font-weight="600" fill="#9F2F2D">2</text><text x="256.1" y="253.3" text-anchor="middle" font-family="SF Pro Display, Noto Sans TC, sans-serif" font-size="10.5" fill="#2F3437">徵詢真實 Agent 使用經</text></g>
+</svg></section><section class="cards-stage" aria-live="polite"><article class="story-card is-active" id="story-threads-0" data-index="0" data-topic="agents">
+  <header class="card-meta-row">
+    <div class="card-rank-group">
+      <span class="rank-num">#01</span>
+      <span class="topic-label">AI Agents &amp; Coding Tools</span>
+      <span class="pub-time-badge">2026-10-29 23:00</span>
+    </div>
+    <div class="score-strip" title="綜合排序分 38.2">
+      <span>重要 <strong>40</strong></span>
+      <span class="dot-sep">·</span>
+      <span>熱門 <strong>34</strong></span>
+    </div>
+  </header>
+
+  <h2 class="card-headline">作者 @itsabrarhussains 在 Threads 主張 Hermes Agent 適合想完全掌控的使用者，未附實測數據。</h2>
+  <p class="rank-reason">工具名明確，但貼文只有主張，缺實測數據。</p>
+
+  <section class="consensus-box" aria-label="社群討論風向">
+    <div class="consensus-head">
+      <span class="consensus-kicker">社群風向</span>
+      <span class="pill pill-blue">資訊觀察</span>
+    </div>
+    <p class="consensus-text">目前僅有 17 則留言數據，留言內容未提供，無法判斷正反風向。</p>
+  </section>
+
+  <div class="top1-diagram-wrap"><svg class="editorial-svg flow-svg" viewBox="0 0 640 190" role="img" aria-label="Hermes Agent 掌控度主張（未驗證）" xmlns="http://www.w3.org/2000/svg">
+  <rect x="0" y="0" width="640" height="190" rx="8" fill="#FAF8F5" stroke="#EAEAEA" stroke-width="1"/>
+  <text x="24" y="30" font-family="JetBrains Mono, monospace" font-size="10" letter-spacing="0.08em" fill="#787774">TOP #1 ARCHITECTURE &amp; IMPACT</text>
+  <text x="24" y="47" font-family="SF Pro Display, Noto Sans TC, sans-serif" font-size="13" font-weight="600" fill="#111111">Hermes Agent 掌控度主張（未驗證）</text>
+  <g><rect x="24.0" y="60" width="127.0" height="92" rx="6" fill="#FFFFFF" stroke="#D8D6D0" stroke-width="1"/><text x="36.0" y="80" font-family="JetBrains Mono, monospace" font-size="9.5" letter-spacing="0.06em" fill="#787774">01 BEFORE</text><text x="36.0" y="102" font-family="SF Pro Display, Noto Sans TC, sans-serif" font-size="13" font-weight="600" fill="#2F3437">掌控度落差假設</text><text x="36.0" y="122" font-family="SF Pro Display, Noto Sans TC, sans-serif" font-size="10.5" fill="#55524C">作者假設多數工具掌控度不足，</text><text x="36.0" y="137" font-family="SF Pro Display, Noto Sans TC, sans-serif" font-size="10.5" fill="#55524C">未列比較對象</text></g><line x1="155.0" y1="106.0" x2="174.0" y2="106.0" stroke="#787774" stroke-width="1.25"/><polyline points="169.0,102.0 174.0,106.0 169.0,110.0" fill="none" stroke="#787774" stroke-width="1.25"/><g><rect x="179.0" y="60" width="127.0" height="92" rx="6" fill="#FBF3DB" stroke="#D4B36A" stroke-width="1"/><text x="191.0" y="80" font-family="JetBrains Mono, monospace" font-size="9.5" letter-spacing="0.06em" fill="#956400">02 CHANGE</text><text x="191.0" y="102" font-family="SF Pro Display, Noto Sans TC, sans-serif" font-size="13" font-weight="600" fill="#111111">Hermes Agent 作為主</text><text x="191.0" y="122" font-family="SF Pro Display, Noto Sans TC, sans-serif" font-size="10.5" fill="#55524C">貼文主張其為 2026 年掌</text><text x="191.0" y="137" font-family="SF Pro Display, Noto Sans TC, sans-serif" font-size="10.5" fill="#55524C">控度最高的選擇</text></g><line x1="310.0" y1="106.0" x2="329.0" y2="106.0" stroke="#787774" stroke-width="1.25"/><polyline points="324.0,102.0 329.0,106.0 324.0,110.0" fill="none" stroke="#787774" stroke-width="1.25"/><g><rect x="334.0" y="60" width="127.0" height="92" rx="6" fill="#EDF3EC" stroke="#8EB492" stroke-width="1"/><text x="346.0" y="80" font-family="JetBrains Mono, monospace" font-size="9.5" letter-spacing="0.06em" fill="#346538">03 IMPACT</text><text x="346.0" y="102" font-family="SF Pro Display, Noto Sans TC, sans-serif" font-size="13" font-weight="600" fill="#111111">效能數字缺席</text><text x="346.0" y="122" font-family="SF Pro Display, Noto Sans TC, sans-serif" font-size="10.5" fill="#55524C">未附延遲、顯存或成本的實測數</text><text x="346.0" y="137" font-family="SF Pro Display, Noto Sans TC, sans-serif" font-size="10.5" fill="#55524C">據</text></g><line x1="465.0" y1="106.0" x2="484.0" y2="106.0" stroke="#787774" stroke-width="1.25"/><polyline points="479.0,102.0 484.0,106.0 479.0,110.0" fill="none" stroke="#787774" stroke-width="1.25"/><g><rect x="489.0" y="60" width="127.0" height="92" rx="6" fill="#FDEBEC" stroke="#D99A98" stroke-width="1"/><text x="501.0" y="80" font-family="JetBrains Mono, monospace" font-size="9.5" letter-spacing="0.06em" fill="#9F2F2D">04 DEBATE</text><text x="501.0" y="102" font-family="SF Pro Display, Noto Sans TC, sans-serif" font-size="13" font-weight="600" fill="#111111">社群正反尚未成形</text><text x="501.0" y="122" font-family="SF Pro Display, Noto Sans TC, sans-serif" font-size="10.5" fill="#55524C">17 則留言未提供內容，無法</text><text x="501.0" y="137" font-family="SF Pro Display, Noto Sans TC, sans-serif" font-size="10.5" fill="#55524C">判斷反對點</text></g>
+</svg></div>
+
+  <section class="sources-panel" aria-label="資料來源與原始連結">
+    <div class="sources-kicker">資料來源與原始連結</div>
+    <div class="sources-list"><a class="source-link-item" href="https://www.threads.com/@itsabrarhussains/post/DfFR8ILDFPa" target="_blank" rel="noopener noreferrer"><span class="source-plat">Threads</span><span class="source-label">Threads 144 likes / 17 則留言 / 9 轉發</span><span class="source-time">2026-10-29 23:00</span><span class="source-arrow"><svg width="11" height="11" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M3.5 8.5L8.5 3.5M8.5 3.5H4.5M8.5 3.5V7.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="square"/></svg></span></a></div>
+  </section>
+
+  <div class="waitwhat-wrap">
+    <button class="waitwhat-toggle" type="button" aria-expanded="false" aria-controls="drawer-threads-0">
+      <span class="waitwhat-label">Wait, what? 補前情提要與社群正反留言</span>
+      <span class="toggle-sign" aria-hidden="true">+</span>
+    </button>
+    <div class="waitwhat-drawer" id="drawer-threads-0" hidden>
+      <div class="drawer-block"><div class="drawer-kicker">前情提要（白話脈絡）</div><p class="drawer-text">Hermes Agent 是一個被推薦的 AI Agent 工具。貼文以「完全掌控」為主要賣點。貼文未說明其架構、授權或部署方式。</p></div>
+      <div class="drawer-block"><div class="drawer-kicker">對你的意義</div><p class="drawer-text">若掌控度屬實，可評估能否接入你現有的 MCP 與 Skills 工作流。貼文未提供延遲、顯存或成本數字，目前無法判斷部署價值。</p></div>
+      
+      
+    </div>
+  </div>
+
+  <div class="card-footer-counter">1 / 2</div>
+</article>
+<article class="story-card" id="story-threads-1" data-index="1" data-topic="agents">
+  <header class="card-meta-row">
+    <div class="card-rank-group">
+      <span class="rank-num">#02</span>
+      <span class="topic-label">AI Agents &amp; Coding Tools</span>
+      <span class="pub-time-badge">2026-09-27 22:34</span>
+    </div>
+    <div class="score-strip" title="綜合排序分 31.0">
+      <span>重要 <strong>28</strong></span>
+      <span class="dot-sep">·</span>
+      <span>熱門 <strong>33</strong></span>
+    </div>
+  </header>
+
+  <h2 class="card-headline">作者 @leyladaulet 在 Threads 徵詢真實用過的 AI Agent 經驗，問題涵蓋用途、平台與新手建議。</h2>
+  <p class="rank-reason">討論有 59 則回覆，可觀察實戰體感，但原文無具體數據。</p>
+
+  <section class="consensus-box" aria-label="社群討論風向">
+    <div class="consensus-head">
+      <span class="consensus-kicker">社群風向</span>
+      <span class="pill pill-blue">資訊觀察</span>
+    </div>
+    <p class="consensus-text">目前僅有 59 則留言數據，留言內容未提供，尚無可引用的正反觀點。</p>
+  </section>
+
+  
+
+  <section class="sources-panel" aria-label="資料來源與原始連結">
+    <div class="sources-kicker">資料來源與原始連結</div>
+    <div class="sources-list"><a class="source-link-item" href="https://www.threads.com/@leyladaulet/post/Ddy1g3ECDIX" target="_blank" rel="noopener noreferrer"><span class="source-plat">Threads</span><span class="source-label">Threads 30 likes / 59 則留言 / 0 轉發</span><span class="source-time">2026-09-27 22:34</span><span class="source-arrow"><svg width="11" height="11" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M3.5 8.5L8.5 3.5M8.5 3.5H4.5M8.5 3.5V7.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="square"/></svg></span></a></div>
+  </section>
+
+  <div class="waitwhat-wrap">
+    <button class="waitwhat-toggle" type="button" aria-expanded="false" aria-controls="drawer-threads-1">
+      <span class="waitwhat-label">Wait, what? 補前情提要與社群正反留言</span>
+      <span class="toggle-sign" aria-hidden="true">+</span>
+    </button>
+    <div class="waitwhat-drawer" id="drawer-threads-1" hidden>
+      <div class="drawer-block"><div class="drawer-kicker">前情提要（白話脈絡）</div><p class="drawer-text">作者想知道他人實際用 AI Agent 做什麼。問題包含所用平台、踩過的坑與新手建議。原文只是提問，沒有提供技術結論。</p></div>
+      <div class="drawer-block"><div class="drawer-kicker">對你的意義</div><p class="drawer-text">留言若能回收，可用來對照真實落地場景與官方宣傳的落差。目前留言內容未提供，無法直接用於工作流決策。</p></div>
+      
+      
+    </div>
+  </div>
+
+  <div class="card-footer-counter">2 / 2</div>
+</article></section></div><div class="tab-panel" data-tab-panel="instagram" hidden><p class="section-takeaway">OpenAI 以 dots 主打常駐型 Agent，但原文未附實測規格，落地前需先驗證</p><section class="quadrant-panel" aria-label="重要度與熱門度四象限"><div class="panel-head"><span class="panel-kicker">SIGNAL MAP</span><span class="panel-hint">點圓點直達該則卡片</span></div><svg class="editorial-svg quadrant-svg" viewBox="0 0 680 420" role="img" aria-label="今日 AI 消息重要度與熱門度四象限圖" xmlns="http://www.w3.org/2000/svg">
+  <rect x="0" y="0" width="680" height="420" rx="8" fill="#FAF8F5" stroke="#EAEAEA" stroke-width="1"/>
+  <!-- Highlight top-right quadrant (must-read) -->
+  <rect x="355.0" y="40" width="291.0" height="162.0" fill="#FBF3DB" fill-opacity="0.38"/>
+  <!-- Outer frame -->
+  <rect x="64" y="40" width="582" height="324" fill="none" stroke="#D8D6D0" stroke-width="1"/>
+  <!-- Midpoint hairlines -->
+  <line x1="355.0" y1="40" x2="355.0" y2="364" stroke="#D8D6D0" stroke-width="1" stroke-dasharray="4 4"/>
+  <line x1="64" y1="202.0" x2="646" y2="202.0" stroke="#D8D6D0" stroke-width="1" stroke-dasharray="4 4"/>
+  <!-- Quadrant titles -->
+  <text x="636" y="60" text-anchor="end" font-family="SF Pro Display, Noto Sans TC, sans-serif" font-size="11" font-weight="600" fill="#956400">必看突破（高重要 · 高熱門）</text>
+  <text x="74" y="60" text-anchor="start" font-family="SF Pro Display, Noto Sans TC, sans-serif" font-size="11" fill="#787774">低調硬核（高重要 · 低討論）</text>
+  <text x="636" y="354" text-anchor="end" font-family="SF Pro Display, Noto Sans TC, sans-serif" font-size="11" fill="#787774">社群熱議（討論兇 · 實質影響待觀察）</text>
+  <text x="74" y="354" text-anchor="start" font-family="SF Pro Display, Noto Sans TC, sans-serif" font-size="11" fill="#787774">背景動態</text>
+  <!-- Axis labels -->
+  <text x="355.0" y="404" text-anchor="middle" font-family="JetBrains Mono, SF Mono, monospace" font-size="11" fill="#55524C">熱門度 POPULARITY（跨社群真實互動） →</text>
+  <text x="20" y="202.0" text-anchor="middle" transform="rotate(-90 20 202.0)" font-family="JetBrains Mono, SF Mono, monospace" font-size="11" fill="#55524C">重要度 IMPORTANCE →</text>
+  <!-- Tick marks -->
+  <text x="64" y="380" font-family="JetBrains Mono, monospace" font-size="10" fill="#787774">0</text>
+  <text x="355.0" y="380" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="10" fill="#787774">50</text>
+  <text x="646" y="380" text-anchor="end" font-family="JetBrains Mono, monospace" font-size="10" fill="#787774">100</text>
+  <text x="56" y="48" text-anchor="end" font-family="JetBrains Mono, monospace" font-size="10" fill="#787774">100</text>
+  <text x="56" y="206.0" text-anchor="end" font-family="JetBrains Mono, monospace" font-size="10" fill="#787774">50</text>
+  <!-- Story nodes -->
+  <g class="q-dot" data-story-index="0" role="button" tabindex="0" aria-label="前往第 1 則：OpenAI dots 常駐"><circle cx="611.1" cy="104.8" r="16" fill="#111111" stroke="#111111" stroke-width="1.5"/><text x="611.1" y="108.8" text-anchor="middle" font-family="JetBrains Mono, SF Mono, monospace" font-size="11" font-weight="600" fill="#FFFFFF">1</text><text x="611.1" y="81.8" text-anchor="middle" font-family="SF Pro Display, Noto Sans TC, sans-serif" font-size="10.5" fill="#2F3437">OpenAI dots 常駐</text></g>
+</svg></section><section class="cards-stage" aria-live="polite"><article class="story-card is-active" id="story-instagram-0" data-index="0" data-topic="agents">
+  <header class="card-meta-row">
+    <div class="card-rank-group">
+      <span class="rank-num">#01</span>
+      <span class="topic-label">AI Agents &amp; Coding Tools</span>
+      <span class="pub-time-badge">2026-09-30 01:14</span>
+    </div>
+    <div class="score-strip" title="綜合排序分 88.5">
+      <span>重要 <strong>80</strong></span>
+      <span class="dot-sep">·</span>
+      <span>熱門 <strong>94</strong></span>
+    </div>
+  </header>
+
+  <h2 class="card-headline">OpenAI 推出 dots，由 GPT-6 Astra 驅動的常駐 Agent，可背景執行目標並串接 4,000+ 應用</h2>
+  <p class="rank-reason">常駐 Agent 產品發布，但僅見宣傳影片，缺實測數據</p>
+
+  <section class="consensus-box" aria-label="社群討論風向">
+    <div class="consensus-head">
+      <span class="consensus-kicker">社群風向</span>
+      <span class="pill pill-blue">資訊觀察</span>
+    </div>
+    <p class="consensus-text">原始資料無留言原文，目前以轉發分享為主，尚無顯著正反論戰</p>
+  </section>
+
+  <div class="top1-diagram-wrap"><svg class="editorial-svg flow-svg" viewBox="0 0 640 190" role="img" aria-label="dots 常駐 Agent 運作流程" xmlns="http://www.w3.org/2000/svg">
+  <rect x="0" y="0" width="640" height="190" rx="8" fill="#FAF8F5" stroke="#EAEAEA" stroke-width="1"/>
+  <text x="24" y="30" font-family="JetBrains Mono, monospace" font-size="10" letter-spacing="0.08em" fill="#787774">TOP #1 ARCHITECTURE &amp; IMPACT</text>
+  <text x="24" y="47" font-family="SF Pro Display, Noto Sans TC, sans-serif" font-size="13" font-weight="600" fill="#111111">dots 常駐 Agent 運作流程</text>
+  <g><rect x="24.0" y="60" width="127.0" height="92" rx="6" fill="#FFFFFF" stroke="#D8D6D0" stroke-width="1"/><text x="36.0" y="80" font-family="JetBrains Mono, monospace" font-size="9.5" letter-spacing="0.06em" fill="#787774">01 BEFORE</text><text x="36.0" y="102" font-family="SF Pro Display, Noto Sans TC, sans-serif" font-size="13" font-weight="600" fill="#2F3437">需人工持續追單</text><text x="36.0" y="122" font-family="SF Pro Display, Noto Sans TC, sans-serif" font-size="10.5" fill="#55524C">聊天式助理需每次下指令才動作</text><text x="36.0" y="137" font-family="SF Pro Display, Noto Sans TC, sans-serif" font-size="10.5" fill="#55524C">，無法背景長跑</text></g><line x1="155.0" y1="106.0" x2="174.0" y2="106.0" stroke="#787774" stroke-width="1.25"/><polyline points="169.0,102.0 174.0,106.0 169.0,110.0" fill="none" stroke="#787774" stroke-width="1.25"/><g><rect x="179.0" y="60" width="127.0" height="92" rx="6" fill="#FBF3DB" stroke="#D4B36A" stroke-width="1"/><text x="191.0" y="80" font-family="JetBrains Mono, monospace" font-size="9.5" letter-spacing="0.06em" fill="#956400">02 CHANGE</text><text x="191.0" y="102" font-family="SF Pro Display, Noto Sans TC, sans-serif" font-size="13" font-weight="600" fill="#111111">每個 dot 獨立雲端電腦</text><text x="191.0" y="122" font-family="SF Pro Display, Noto Sans TC, sans-serif" font-size="10.5" fill="#55524C">獨立雲端電腦與瀏覽器，接收目</text><text x="191.0" y="137" font-family="SF Pro Display, Noto Sans TC, sans-serif" font-size="10.5" fill="#55524C">標後持續背景執行</text></g><line x1="310.0" y1="106.0" x2="329.0" y2="106.0" stroke="#787774" stroke-width="1.25"/><polyline points="324.0,102.0 329.0,106.0 324.0,110.0" fill="none" stroke="#787774" stroke-width="1.25"/><g><rect x="334.0" y="60" width="127.0" height="92" rx="6" fill="#EDF3EC" stroke="#8EB492" stroke-width="1"/><text x="346.0" y="80" font-family="JetBrains Mono, monospace" font-size="9.5" letter-spacing="0.06em" fill="#346538">03 IMPACT</text><text x="346.0" y="102" font-family="SF Pro Display, Noto Sans TC, sans-serif" font-size="13" font-weight="600" fill="#111111">串接 4,000+ 應用程式</text><text x="346.0" y="122" font-family="SF Pro Display, Noto Sans TC, sans-serif" font-size="10.5" fill="#55524C">透過 ChatGPT 外掛連</text><text x="346.0" y="137" font-family="SF Pro Display, Noto Sans TC, sans-serif" font-size="10.5" fill="#55524C">接已選應用，可同時處理多專案</text></g><line x1="465.0" y1="106.0" x2="484.0" y2="106.0" stroke="#787774" stroke-width="1.25"/><polyline points="479.0,102.0 484.0,106.0 479.0,110.0" fill="none" stroke="#787774" stroke-width="1.25"/><g><rect x="489.0" y="60" width="127.0" height="92" rx="6" fill="#FDEBEC" stroke="#D99A98" stroke-width="1"/><text x="501.0" y="80" font-family="JetBrains Mono, monospace" font-size="9.5" letter-spacing="0.06em" fill="#9F2F2D">04 DEBATE</text><text x="501.0" y="102" font-family="SF Pro Display, Noto Sans TC, sans-serif" font-size="13" font-weight="600" fill="#111111">實測數據尚未公開</text><text x="501.0" y="122" font-family="SF Pro Display, Noto Sans TC, sans-serif" font-size="10.5" fill="#55524C">原文無實測與留言原文，主動性</text><text x="501.0" y="137" font-family="SF Pro Display, Noto Sans TC, sans-serif" font-size="10.5" fill="#55524C">與可靠度待獨立驗證</text></g>
+</svg></div>
+
+  <section class="sources-panel" aria-label="資料來源與原始連結">
+    <div class="sources-kicker">資料來源與原始連結</div>
+    <div class="sources-list"><a class="source-link-item" href="https://www.instagram.com/reel/Dd4RMfMJ7kO/" target="_blank" rel="noopener noreferrer"><span class="source-plat">IG</span><span class="source-label">instagram @openai 65,436 讚 / 779 則留言 / 452,071 次觀看</span><span class="source-time">2026-09-30 01:14</span><span class="source-arrow"><svg width="11" height="11" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M3.5 8.5L8.5 3.5M8.5 3.5H4.5M8.5 3.5V7.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="square"/></svg></span></a><a class="source-link-item" href="https://www.instagram.com/reel/Dd4WsE-Pd43/" target="_blank" rel="noopener noreferrer"><span class="source-plat">IG</span><span class="source-label">instagram @rpn 20,854 讚 / 305 則留言 / 259,061 次觀看</span><span class="source-time">2026-09-30 02:04</span><span class="source-arrow"><svg width="11" height="11" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M3.5 8.5L8.5 3.5M8.5 3.5H4.5M8.5 3.5V7.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="square"/></svg></span></a></div>
+  </section>
+
+  <div class="waitwhat-wrap">
+    <button class="waitwhat-toggle" type="button" aria-expanded="false" aria-controls="drawer-instagram-0">
+      <span class="waitwhat-label">Wait, what? 補前情提要與社群正反留言</span>
+      <span class="toggle-sign" aria-hidden="true">+</span>
+    </button>
+    <div class="waitwhat-drawer" id="drawer-instagram-0" hidden>
+      <div class="drawer-block"><div class="drawer-kicker">前情提要（白話脈絡）</div><p class="drawer-text">OpenAI 發布 dots，定位為常駐型 Agent。使用者可交付一個目標，系統會在背景持續處理。官方表示每個 dot 有自己的雲端電腦，並可透過 ChatGPT 連接的外掛操作 4,000 個以上應用程式。</p></div>
+      <div class="drawer-block"><div class="drawer-kicker">對你的意義</div><p class="drawer-text">若常駐 Agent 能穩定背景跑長任務，你的 Harness 需補上權限控管、狀態持久化與用量計費。官方未公開底層部署規格，無法從此貼文判斷推論延遲、顯存或單次成本。</p></div>
+      <div class="drawer-block"><div class="drawer-kicker">新詞快查（對照 GLOSSARY）</div><ul class="gloss-list"><li><span class="gloss-term">dots</span><span class="gloss-sep">：</span>OpenAI 的常駐 Agent 產品名，像每人一台掛機的值班助理</li></ul></div>
+      
+    </div>
+  </div>
+
+  <div class="card-footer-counter">1 / 1</div>
+</article></section></div><div class="tab-panel" data-tab-panel="hackernews" hidden><p class="section-takeaway">評測數字取自內部程式碼，外界難以獨立驗證模型表現</p><section class="quadrant-panel" aria-label="重要度與熱門度四象限"><div class="panel-head"><span class="panel-kicker">SIGNAL MAP</span><span class="panel-hint">點圓點直達該則卡片</span></div><svg class="editorial-svg quadrant-svg" viewBox="0 0 680 420" role="img" aria-label="今日 AI 消息重要度與熱門度四象限圖" xmlns="http://www.w3.org/2000/svg">
+  <rect x="0" y="0" width="680" height="420" rx="8" fill="#FAF8F5" stroke="#EAEAEA" stroke-width="1"/>
+  <!-- Highlight top-right quadrant (must-read) -->
+  <rect x="355.0" y="40" width="291.0" height="162.0" fill="#FBF3DB" fill-opacity="0.38"/>
+  <!-- Outer frame -->
+  <rect x="64" y="40" width="582" height="324" fill="none" stroke="#D8D6D0" stroke-width="1"/>
+  <!-- Midpoint hairlines -->
+  <line x1="355.0" y1="40" x2="355.0" y2="364" stroke="#D8D6D0" stroke-width="1" stroke-dasharray="4 4"/>
+  <line x1="64" y1="202.0" x2="646" y2="202.0" stroke="#D8D6D0" stroke-width="1" stroke-dasharray="4 4"/>
+  <!-- Quadrant titles -->
+  <text x="636" y="60" text-anchor="end" font-family="SF Pro Display, Noto Sans TC, sans-serif" font-size="11" font-weight="600" fill="#956400">必看突破（高重要 · 高熱門）</text>
+  <text x="74" y="60" text-anchor="start" font-family="SF Pro Display, Noto Sans TC, sans-serif" font-size="11" fill="#787774">低調硬核（高重要 · 低討論）</text>
+  <text x="636" y="354" text-anchor="end" font-family="SF Pro Display, Noto Sans TC, sans-serif" font-size="11" fill="#787774">社群熱議（討論兇 · 實質影響待觀察）</text>
+  <text x="74" y="354" text-anchor="start" font-family="SF Pro Display, Noto Sans TC, sans-serif" font-size="11" fill="#787774">背景動態</text>
+  <!-- Axis labels -->
+  <text x="355.0" y="404" text-anchor="middle" font-family="JetBrains Mono, SF Mono, monospace" font-size="11" fill="#55524C">熱門度 POPULARITY（跨社群真實互動） →</text>
+  <text x="20" y="202.0" text-anchor="middle" transform="rotate(-90 20 202.0)" font-family="JetBrains Mono, SF Mono, monospace" font-size="11" fill="#55524C">重要度 IMPORTANCE →</text>
+  <!-- Tick marks -->
+  <text x="64" y="380" font-family="JetBrains Mono, monospace" font-size="10" fill="#787774">0</text>
+  <text x="355.0" y="380" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="10" fill="#787774">50</text>
+  <text x="646" y="380" text-anchor="end" font-family="JetBrains Mono, monospace" font-size="10" fill="#787774">100</text>
+  <text x="56" y="48" text-anchor="end" font-family="JetBrains Mono, monospace" font-size="10" fill="#787774">100</text>
+  <text x="56" y="206.0" text-anchor="end" font-family="JetBrains Mono, monospace" font-size="10" fill="#787774">50</text>
+  <!-- Story nodes -->
+  <g class="q-dot" data-story-index="0" role="button" tabindex="0" aria-label="前往第 1 則：內部評測數字存疑"><circle cx="413.2" cy="85.4" r="16" fill="#111111" stroke="#111111" stroke-width="1.5"/><text x="413.2" y="89.4" text-anchor="middle" font-family="JetBrains Mono, SF Mono, monospace" font-size="11" font-weight="600" fill="#FFFFFF">1</text><text x="413.2" y="62.4" text-anchor="middle" font-family="SF Pro Display, Noto Sans TC, sans-serif" font-size="10.5" fill="#2F3437">內部評測數字存疑</text></g><g class="q-dot" data-story-index="1" role="button" tabindex="0" aria-label="前往第 2 則：本地跑 35B 的顯存門檻"><circle cx="384.1" cy="117.8" r="13" fill="#EDF3EC" stroke="#346538" stroke-width="1.5"/><text x="384.1" y="121.8" text-anchor="middle" font-family="JetBrains Mono, SF Mono, monospace" font-size="11" font-weight="600" fill="#346538">2</text><text x="384.1" y="97.8" text-anchor="middle" font-family="SF Pro Display, Noto Sans TC, sans-serif" font-size="10.5" fill="#2F3437">本地跑 35B 的顯存門檻</text></g><g class="q-dot" data-story-index="2" role="button" tabindex="0" aria-label="前往第 3 則：AI 供電 87% 來自天然"><circle cx="459.8" cy="150.2" r="13" fill="#E1F3FE" stroke="#1F6C9F" stroke-width="1.5"/><text x="459.8" y="154.2" text-anchor="middle" font-family="JetBrains Mono, SF Mono, monospace" font-size="11" font-weight="600" fill="#1F6C9F">3</text><text x="459.8" y="130.2" text-anchor="middle" font-family="SF Pro Display, Noto Sans TC, sans-serif" font-size="10.5" fill="#2F3437">AI 供電 87% 來自天然</text></g><g class="q-dot" data-story-index="3" role="button" tabindex="0" aria-label="前往第 4 則：Lean 形式化進度儀表板"><circle cx="360.8" cy="130.7" r="13" fill="#FDEBEC" stroke="#9F2F2D" stroke-width="1.5"/><text x="360.8" y="134.7" text-anchor="middle" font-family="JetBrains Mono, SF Mono, monospace" font-size="11" font-weight="600" fill="#9F2F2D">4</text><text x="360.8" y="110.7" text-anchor="middle" font-family="SF Pro Display, Noto Sans TC, sans-serif" font-size="10.5" fill="#2F3437">Lean 形式化進度儀表板</text></g>
+</svg></section><section class="cards-stage" aria-live="polite"><article class="story-card is-active" id="story-hackernews-0" data-index="0" data-topic="industry">
+  <header class="card-meta-row">
+    <div class="card-rank-group">
+      <span class="rank-num">#01</span>
+      <span class="topic-label">AI 產業與新模型發布</span>
+      <span class="pub-time-badge">2026-11-23 01:06</span>
+    </div>
+    <div class="score-strip" title="綜合排序分 75.0">
+      <span>重要 <strong>86</strong></span>
+      <span class="dot-sep">·</span>
+      <span>熱門 <strong>60</strong></span>
+    </div>
+  </header>
+
+  <h2 class="card-headline">OpenAI 發文談 Perplexity 與智能，評測數字取自內部程式碼快照</h2>
+  <p class="rank-reason">直接影響如何解讀廠商發布的模型評測數字</p>
+
+  <section class="consensus-box" aria-label="社群討論風向">
+    <div class="consensus-head">
+      <span class="consensus-kicker">社群風向</span>
+      <span class="pill pill-red">多數質疑</span>
+    </div>
+    <p class="consensus-text">社群質疑內部 held-out 資料能否證明泛化，另有人將新內部模型與 Anthropic 模型比較。</p>
+  </section>
+
+  <div class="top1-diagram-wrap"><svg class="editorial-svg flow-svg" viewBox="0 0 640 190" role="img" aria-label="內部 held-out 資料的評測數字" xmlns="http://www.w3.org/2000/svg">
+  <rect x="0" y="0" width="640" height="190" rx="8" fill="#FAF8F5" stroke="#EAEAEA" stroke-width="1"/>
+  <text x="24" y="30" font-family="JetBrains Mono, monospace" font-size="10" letter-spacing="0.08em" fill="#787774">TOP #1 ARCHITECTURE &amp; IMPACT</text>
+  <text x="24" y="47" font-family="SF Pro Display, Noto Sans TC, sans-serif" font-size="13" font-weight="600" fill="#111111">內部 held-out 資料的評測數字</text>
+  <g><rect x="24.0" y="60" width="127.0" height="92" rx="6" fill="#FFFFFF" stroke="#D8D6D0" stroke-width="1"/><text x="36.0" y="80" font-family="JetBrains Mono, monospace" font-size="9.5" letter-spacing="0.06em" fill="#787774">01 BEFORE</text><text x="36.0" y="102" font-family="SF Pro Display, Noto Sans TC, sans-serif" font-size="13" font-weight="600" fill="#2F3437">內部資料評測</text><text x="36.0" y="122" font-family="SF Pro Display, Noto Sans TC, sans-serif" font-size="10.5" fill="#55524C">held-out 資料自 G</text><text x="36.0" y="137" font-family="SF Pro Display, Noto Sans TC, sans-serif" font-size="10.5" fill="#55524C">PT-3.5 起即取自內部程</text></g><line x1="155.0" y1="106.0" x2="174.0" y2="106.0" stroke="#787774" stroke-width="1.25"/><polyline points="169.0,102.0 174.0,106.0 169.0,110.0" fill="none" stroke="#787774" stroke-width="1.25"/><g><rect x="179.0" y="60" width="127.0" height="92" rx="6" fill="#FBF3DB" stroke="#D4B36A" stroke-width="1"/><text x="191.0" y="80" font-family="JetBrains Mono, monospace" font-size="9.5" letter-spacing="0.06em" fill="#956400">02 CHANGE</text><text x="191.0" y="102" font-family="SF Pro Display, Noto Sans TC, sans-serif" font-size="13" font-weight="600" fill="#111111">固定快照報告數字</text><text x="191.0" y="122" font-family="SF Pro Display, Noto Sans TC, sans-serif" font-size="10.5" fill="#55524C">以固定快照公開報告 perp</text><text x="191.0" y="137" font-family="SF Pro Display, Noto Sans TC, sans-serif" font-size="10.5" fill="#55524C">lexity 數字</text></g><line x1="310.0" y1="106.0" x2="329.0" y2="106.0" stroke="#787774" stroke-width="1.25"/><polyline points="324.0,102.0 329.0,106.0 324.0,110.0" fill="none" stroke="#787774" stroke-width="1.25"/><g><rect x="334.0" y="60" width="127.0" height="92" rx="6" fill="#EDF3EC" stroke="#8EB492" stroke-width="1"/><text x="346.0" y="80" font-family="JetBrains Mono, monospace" font-size="9.5" letter-spacing="0.06em" fill="#346538">03 IMPACT</text><text x="346.0" y="102" font-family="SF Pro Display, Noto Sans TC, sans-serif" font-size="13" font-weight="600" fill="#111111">可見內部指標</text><text x="346.0" y="122" font-family="SF Pro Display, Noto Sans TC, sans-serif" font-size="10.5" fill="#55524C">外界可見數字，但無外部資料可</text><text x="346.0" y="137" font-family="SF Pro Display, Noto Sans TC, sans-serif" font-size="10.5" fill="#55524C">獨立驗證</text></g><line x1="465.0" y1="106.0" x2="484.0" y2="106.0" stroke="#787774" stroke-width="1.25"/><polyline points="479.0,102.0 484.0,106.0 479.0,110.0" fill="none" stroke="#787774" stroke-width="1.25"/><g><rect x="489.0" y="60" width="127.0" height="92" rx="6" fill="#FDEBEC" stroke="#D99A98" stroke-width="1"/><text x="501.0" y="80" font-family="JetBrains Mono, monospace" font-size="9.5" letter-spacing="0.06em" fill="#9F2F2D">04 DEBATE</text><text x="501.0" y="102" font-family="SF Pro Display, Noto Sans TC, sans-serif" font-size="13" font-weight="600" fill="#111111">泛化能力存疑</text><text x="501.0" y="122" font-family="SF Pro Display, Noto Sans TC, sans-serif" font-size="10.5" fill="#55524C">留言質疑內部資料能否證明下一</text><text x="501.0" y="137" font-family="SF Pro Display, Noto Sans TC, sans-serif" font-size="10.5" fill="#55524C">詞預測泛化</text></g>
+</svg></div>
+
+  <section class="sources-panel" aria-label="資料來源與原始連結">
+    <div class="sources-kicker">資料來源與原始連結</div>
+    <div class="sources-list"><a class="source-link-item is-primary-src" href="https://openai.com/index/perplexity-and-intelligence/" target="_blank" rel="noopener noreferrer"><span class="source-plat">原文</span><span class="source-label">openai.com</span><span class="source-time">2026-11-23 01:06</span><span class="source-arrow"><svg width="11" height="11" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M3.5 8.5L8.5 3.5M8.5 3.5H4.5M8.5 3.5V7.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="square"/></svg></span></a><a class="source-link-item" href="https://news.ycombinator.com/item?id=50601525" target="_blank" rel="noopener noreferrer"><span class="source-plat">HN</span><span class="source-label">HN 589▲ / 400則留言</span><span class="source-time">2026-11-23 01:06</span><span class="source-arrow"><svg width="11" height="11" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M3.5 8.5L8.5 3.5M8.5 3.5H4.5M8.5 3.5V7.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="square"/></svg></span></a></div>
+  </section>
+
+  <div class="waitwhat-wrap">
+    <button class="waitwhat-toggle" type="button" aria-expanded="false" aria-controls="drawer-hackernews-0">
+      <span class="waitwhat-label">Wait, what? 補前情提要與社群正反留言</span>
+      <span class="toggle-sign" aria-hidden="true">+</span>
+    </button>
+    <div class="waitwhat-drawer" id="drawer-hackernews-0" hidden>
+      <div class="drawer-block"><div class="drawer-kicker">前情提要（白話脈絡）</div><p class="drawer-text">OpenAI 發表題為 Perplexity and Intelligence 的文章。Perplexity 是語言模型預測下一個 token 的困惑度指標，數值越低代表預測越準。依留言引述，文中數字來自 OpenAI 內部程式碼的 held-out 資料集，且自 GPT-3.5 起持續沿用。</p></div>
+      <div class="drawer-block"><div class="drawer-kicker">對你的意義</div><p class="drawer-text">若內部評測集無法外部驗證，選模型時就不能只看廠商發布的 perplexity 數字。建議用自家 Eval 集與 Bootstrap CI 重跑比較。</p></div>
+      <div class="drawer-block"><div class="drawer-kicker">新詞快查（對照 GLOSSARY）</div><ul class="gloss-list"><li><span class="gloss-term">Perplexity（困惑度）</span><span class="gloss-sep">：</span>衡量模型猜下一個 token 的失準程度，像考試猜題的命中率反向指標</li></ul></div>
+      <div class="drawer-block"><div class="drawer-kicker">社群代表聲音</div><ul class="voice-list"><li class="voice-item"><div class="voice-head"><span class="pill pill-red">質疑</span><a class="voice-meta" href="https://news.ycombinator.com/item?id=50601957" target="_blank" rel="noopener noreferrer">HN · amluto</a></div><p class="voice-quote">用來當 held-out 的資料來自內部程式碼庫，外界很難相信它能代表模型在未知資料上的表現。</p></li><li class="voice-item"><div class="voice-head"><span class="pill pill-blue">實測</span><a class="voice-meta" href="https://news.ycombinator.com/item?id=50601855" target="_blank" rel="noopener noreferrer">HN · Leary</a></div><p class="voice-quote">有人認為內部新模型的表現，和 Anthropic 的 model 4 相當接近。</p></li></ul></div>
+    </div>
+  </div>
+
+  <div class="card-footer-counter">1 / 4</div>
+</article>
+<article class="story-card" id="story-hackernews-1" data-index="1" data-topic="models-edge">
+  <header class="card-meta-row">
+    <div class="card-rank-group">
+      <span class="rank-num">#02</span>
+      <span class="topic-label">Open-Source LLMs / VLM / Edge AI</span>
+      <span class="pub-time-badge">2026-11-23 05:01</span>
+    </div>
+    <div class="score-strip" title="綜合排序分 67.9">
+      <span>重要 <strong>76</strong></span>
+      <span class="dot-sep">·</span>
+      <span>熱門 <strong>55</strong></span>
+    </div>
+  </header>
+
+  <h2 class="card-headline">GPU 廠商發布本地 AI 入門指南，以 Inkling、Qwen 與 Unsloth 為例</h2>
+  <p class="rank-reason">直接談本地部署的顯存門檻，但內容偏入門教學</p>
+
+  <section class="consensus-box" aria-label="社群討論風向">
+    <div class="consensus-head">
+      <span class="consensus-kicker">社群風向</span>
+      <span class="pill pill-yellow">正反分歧</span>
+    </div>
+    <p class="consensus-text">留言聚焦 VRAM 門檻，有人質疑 Qwen3.6-35B q4 需要 32GB 以上顯存的說法。</p>
+  </section>
+
+  
+
+  <section class="sources-panel" aria-label="資料來源與原始連結">
+    <div class="sources-kicker">資料來源與原始連結</div>
+    <div class="sources-list"><a class="source-link-item is-primary-src" href="https://www.gpupartner.com/blog/beginners-guide-local-ai-inkling-qwen-unsloth" target="_blank" rel="noopener noreferrer"><span class="source-plat">原文</span><span class="source-label">gpupartner.com</span><span class="source-time">2026-11-23 05:01</span><span class="source-arrow"><svg width="11" height="11" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M3.5 8.5L8.5 3.5M8.5 3.5H4.5M8.5 3.5V7.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="square"/></svg></span></a><a class="source-link-item" href="https://news.ycombinator.com/item?id=50603845" target="_blank" rel="noopener noreferrer"><span class="source-plat">HN</span><span class="source-label">HN 509▲ / 215則留言</span><span class="source-time">2026-11-23 05:01</span><span class="source-arrow"><svg width="11" height="11" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M3.5 8.5L8.5 3.5M8.5 3.5H4.5M8.5 3.5V7.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="square"/></svg></span></a></div>
+  </section>
+
+  <div class="waitwhat-wrap">
+    <button class="waitwhat-toggle" type="button" aria-expanded="false" aria-controls="drawer-hackernews-1">
+      <span class="waitwhat-label">Wait, what? 補前情提要與社群正反留言</span>
+      <span class="toggle-sign" aria-hidden="true">+</span>
+    </button>
+    <div class="waitwhat-drawer" id="drawer-hackernews-1" hidden>
+      <div class="drawer-block"><div class="drawer-kicker">前情提要（白話脈絡）</div><p class="drawer-text">這是 GPU 廠商部落格的新手教學，示範如何在本地用 Qwen 與 Unsloth 跑模型。討論區集中在顯存門檻，有留言者質疑文中 Qwen3.6-35B 在 q4 量化下需要 32GB 以上 VRAM 的說法。</p></div>
+      <div class="drawer-block"><div class="drawer-kicker">對你的意義</div><p class="drawer-text">q4 量化後的實際顯存需求，決定你的筆電或工作站能否跑 35B 級模型。部署前請實測，不要只信教學文的數字。</p></div>
+      <div class="drawer-block"><div class="drawer-kicker">新詞快查（對照 GLOSSARY）</div><ul class="gloss-list"><li><span class="gloss-term">Unsloth</span><span class="gloss-sep">：</span>開源微調與量化加速框架，主打省顯存、加快訓練</li></ul></div>
+      <div class="drawer-block"><div class="drawer-kicker">社群代表聲音</div><ul class="voice-list"><li class="voice-item"><div class="voice-head"><span class="pill pill-red">質疑</span><a class="voice-meta" href="https://news.ycombinator.com/item?id=50604479" target="_blank" rel="noopener noreferrer">HN · IsTom</a></div><p class="voice-quote">文中說 Qwen3.6-35B@q4 需要 32GB 以上 VRAM，這個說法值得再查證。</p></li><li class="voice-item"><div class="voice-head"><span class="pill pill-blue">實測</span><a class="voice-meta" href="https://news.ycombinator.com/item?id=50604455" target="_blank" rel="noopener noreferrer">HN · bashhq_r</a></div><p class="voice-quote">一般筆電要跑到什麼顯存量，Qwen 才不會感覺很卡？這是多數入門者的真實問題。</p></li></ul></div>
+    </div>
+  </div>
+
+  <div class="card-footer-counter">2 / 4</div>
+</article>
+<article class="story-card" id="story-hackernews-2" data-index="2" data-topic="industry">
+  <header class="card-meta-row">
+    <div class="card-rank-group">
+      <span class="rank-num">#03</span>
+      <span class="topic-label">AI 產業與新模型發布</span>
+      <span class="pub-time-badge">2026-11-22 16:57</span>
+    </div>
+    <div class="score-strip" title="綜合排序分 67.6">
+      <span>重要 <strong>66</strong></span>
+      <span class="dot-sep">·</span>
+      <span>熱門 <strong>68</strong></span>
+    </div>
+  </header>
+
+  <h2 class="card-headline">分析估算 2028 年 Anthropic 供電 87% 來自天然氣、11% 來自煤</h2>
+  <p class="rank-reason">揭示 AI 算力背後的電力來源與成本結構</p>
+
+  <section class="consensus-box" aria-label="社群討論風向">
+    <div class="consensus-head">
+      <span class="consensus-kicker">社群風向</span>
+      <span class="pill pill-red">多數質疑</span>
+    </div>
+    <p class="consensus-text">社群聚焦能源與環境代價，也有人認為每兆瓦產出的 tokens 會持續改善。</p>
+  </section>
+
+  
+
+  <section class="sources-panel" aria-label="資料來源與原始連結">
+    <div class="sources-kicker">資料來源與原始連結</div>
+    <div class="sources-list"><a class="source-link-item is-primary-src" href="https://betterdatacenterproject.com/2026/11/16/how-ai-is-powered-a-breakdown-of-byop-and-grid-power/" target="_blank" rel="noopener noreferrer"><span class="source-plat">原文</span><span class="source-label">betterdatacenterproject.com</span><span class="source-time">2026-11-22 16:57</span><span class="source-arrow"><svg width="11" height="11" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M3.5 8.5L8.5 3.5M8.5 3.5H4.5M8.5 3.5V7.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="square"/></svg></span></a><a class="source-link-item" href="https://news.ycombinator.com/item?id=50597612" target="_blank" rel="noopener noreferrer"><span class="source-plat">HN</span><span class="source-label">HN 972▲ / 952則留言</span><span class="source-time">2026-11-22 16:57</span><span class="source-arrow"><svg width="11" height="11" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M3.5 8.5L8.5 3.5M8.5 3.5H4.5M8.5 3.5V7.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="square"/></svg></span></a></div>
+  </section>
+
+  <div class="waitwhat-wrap">
+    <button class="waitwhat-toggle" type="button" aria-expanded="false" aria-controls="drawer-hackernews-2">
+      <span class="waitwhat-label">Wait, what? 補前情提要與社群正反留言</span>
+      <span class="toggle-sign" aria-hidden="true">+</span>
+    </button>
+    <div class="waitwhat-drawer" id="drawer-hackernews-2" hidden>
+      <div class="drawer-block"><div class="drawer-kicker">前情提要（白話脈絡）</div><p class="drawer-text">BYOP 指資料中心自帶發電設施，不完全依賴公共電網。這篇文章是預測與估算，不是 Anthropic 的正式揭露。它推估 2028 年供電組合中，天然氣占 87%，煤占 11%。</p></div>
+      <div class="drawer-block"><div class="drawer-kicker">對你的意義</div><p class="drawer-text">這對你的影響是間接的：電力來源與電價會影響推論成本與區域算力的可用性。引用這類數字前，請先確認它是預測而非實際數據。</p></div>
+      <div class="drawer-block"><div class="drawer-kicker">新詞快查（對照 GLOSSARY）</div><ul class="gloss-list"><li><span class="gloss-term">BYOP（自帶電力）</span><span class="gloss-sep">：</span>資料中心自建發電，不走公共電網，像自己裝發電機</li></ul></div>
+      <div class="drawer-block"><div class="drawer-kicker">社群代表聲音</div><ul class="voice-list"><li class="voice-item"><div class="voice-head"><span class="pill pill-red">質疑</span><a class="voice-meta" href="https://news.ycombinator.com/item?id=50597746" target="_blank" rel="noopener noreferrer">HN · vrganj</a></div><p class="voice-quote">少數人為了減少對多數人的依賴，正在燃燒地球，這種做法為何還會被允許？</p></li><li class="voice-item"><div class="voice-head"><span class="pill pill-blue">實測</span><a class="voice-meta" href="https://news.ycombinator.com/item?id=50597892" target="_blank" rel="noopener noreferrer">HN · NeuralOracle</a></div><p class="voice-quote">社群總是討論哪個模型最強，卻很少討論跑這些模型燒掉了什麼資源。</p></li><li class="voice-item"><div class="voice-head"><span class="pill pill-green">支持</span><a class="voice-meta" href="https://news.ycombinator.com/item?id=50597894" target="_blank" rel="noopener noreferrer">HN · bob1029</a></div><p class="voice-quote">分散式推論很快就會讓每兆瓦產出的 tokens 大幅提升，用電量的擔憂可能會下降。</p></li></ul></div>
+    </div>
+  </div>
+
+  <div class="card-footer-counter">3 / 4</div>
+</article>
+<article class="story-card" id="story-hackernews-3" data-index="3" data-topic="agents">
+  <header class="card-meta-row">
+    <div class="card-rank-group">
+      <span class="rank-num">#04</span>
+      <span class="topic-label">AI Agents &amp; Coding Tools</span>
+      <span class="pub-time-badge">2026-11-23 07:12</span>
+    </div>
+    <div class="score-strip" title="綜合排序分 64.1">
+      <span>重要 <strong>72</strong></span>
+      <span class="dot-sep">·</span>
+      <span>熱門 <strong>51</strong></span>
+    </div>
+  </header>
+
+  <h2 class="card-headline">Alessandro Masullo 手稿的 Lean 形式化進度圖公開上線</h2>
+  <p class="rank-reason">公開追蹤 AI 參與證明工作的進展，具實證價值</p>
+
+  <section class="consensus-box" aria-label="社群討論風向">
+    <div class="consensus-head">
+      <span class="consensus-kicker">社群風向</span>
+      <span class="pill pill-yellow">正反分歧</span>
+    </div>
+    <p class="consensus-text">留言分兩派：一派期待公開追蹤 AI 證明進展，另一派要求有人類能理解解法。</p>
+  </section>
+
+  
+
+  <section class="sources-panel" aria-label="資料來源與原始連結">
+    <div class="sources-kicker">資料來源與原始連結</div>
+    <div class="sources-list"><a class="source-link-item is-primary-src" href="https://claude.ai/artifact/CtQyX8qfYAF822bgHJHHE3" target="_blank" rel="noopener noreferrer"><span class="source-plat">原文</span><span class="source-label">claude.ai</span><span class="source-time">2026-11-23 07:12</span><span class="source-arrow"><svg width="11" height="11" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M3.5 8.5L8.5 3.5M8.5 3.5H4.5M8.5 3.5V7.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="square"/></svg></span></a><a class="source-link-item" href="https://news.ycombinator.com/item?id=50605045" target="_blank" rel="noopener noreferrer"><span class="source-plat">HN</span><span class="source-label">HN 234▲ / 172則留言</span><span class="source-time">2026-11-23 07:12</span><span class="source-arrow"><svg width="11" height="11" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M3.5 8.5L8.5 3.5M8.5 3.5H4.5M8.5 3.5V7.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="square"/></svg></span></a></div>
+  </section>
+
+  <div class="waitwhat-wrap">
+    <button class="waitwhat-toggle" type="button" aria-expanded="false" aria-controls="drawer-hackernews-3">
+      <span class="waitwhat-label">Wait, what? 補前情提要與社群正反留言</span>
+      <span class="toggle-sign" aria-hidden="true">+</span>
+    </button>
+    <div class="waitwhat-drawer" id="drawer-hackernews-3" hidden>
+      <div class="drawer-block"><div class="drawer-kicker">前情提要（白話脈絡）</div><p class="drawer-text">這是 Alessandro Masullo 手稿的 Lean 形式化進度圖，以 Claude artifact 呈現。Lean 是可以機器檢查證明的程式語言。HN 首頁同時有一則 P=NP 相關貼文，留言把兩者並列討論。</p></div>
+      <div class="drawer-block"><div class="drawer-kicker">對你的意義</div><p class="drawer-text">若 AI 輔助的形式化證明能穩定運作，Agent 驗收就能從跑單元測試延伸到機器可檢查的證明。目前公開細節仍少，正確性需要自行查證。</p></div>
+      <div class="drawer-block"><div class="drawer-kicker">新詞快查（對照 GLOSSARY）</div><ul class="gloss-list"><li><span class="gloss-term">Lean 形式化</span><span class="gloss-sep">：</span>用 Lean 把數學證明寫成可機器驗證的程式，像單元測試驗證推導</li></ul></div>
+      <div class="drawer-block"><div class="drawer-kicker">社群代表聲音</div><ul class="voice-list"><li class="voice-item"><div class="voice-head"><span class="pill pill-green">支持</span><a class="voice-meta" href="https://news.ycombinator.com/item?id=50605267" target="_blank" rel="noopener noreferrer">HN · baoooooooooooo</a></div><p class="voice-quote">公開儀表板讓這類進展在社群透明可見，而不只藏在大型實驗室內部，這讓人感到樂觀。</p></li><li class="voice-item"><div class="voice-head"><span class="pill pill-blue">實測</span><a class="voice-meta" href="https://news.ycombinator.com/item?id=50605250" target="_blank" rel="noopener noreferrer">HN · taimurshasan</a></div><p class="voice-quote">機器給出解法後，下一步仍需要人類理解這個解法，這一點還沒完成。</p></li></ul></div>
+    </div>
+  </div>
+
+  <div class="card-footer-counter">4 / 4</div>
+</article></section></div><div class="tab-panel" data-tab-panel="github" hidden><p class="section-takeaway">本批重點是 Agent 工作流：只改寫慢的熱點程式並以行為比對驗證，但摘要未附實測加速數據。</p><section class="quadrant-panel" aria-label="重要度與熱門度四象限"><div class="panel-head"><span class="panel-kicker">SIGNAL MAP</span><span class="panel-hint">點圓點直達該則卡片</span></div><svg class="editorial-svg quadrant-svg" viewBox="0 0 680 420" role="img" aria-label="今日 AI 消息重要度與熱門度四象限圖" xmlns="http://www.w3.org/2000/svg">
+  <rect x="0" y="0" width="680" height="420" rx="8" fill="#FAF8F5" stroke="#EAEAEA" stroke-width="1"/>
+  <!-- Highlight top-right quadrant (must-read) -->
+  <rect x="355.0" y="40" width="291.0" height="162.0" fill="#FBF3DB" fill-opacity="0.38"/>
+  <!-- Outer frame -->
+  <rect x="64" y="40" width="582" height="324" fill="none" stroke="#D8D6D0" stroke-width="1"/>
+  <!-- Midpoint hairlines -->
+  <line x1="355.0" y1="40" x2="355.0" y2="364" stroke="#D8D6D0" stroke-width="1" stroke-dasharray="4 4"/>
+  <line x1="64" y1="202.0" x2="646" y2="202.0" stroke="#D8D6D0" stroke-width="1" stroke-dasharray="4 4"/>
+  <!-- Quadrant titles -->
+  <text x="636" y="60" text-anchor="end" font-family="SF Pro Display, Noto Sans TC, sans-serif" font-size="11" font-weight="600" fill="#956400">必看突破（高重要 · 高熱門）</text>
+  <text x="74" y="60" text-anchor="start" font-family="SF Pro Display, Noto Sans TC, sans-serif" font-size="11" fill="#787774">低調硬核（高重要 · 低討論）</text>
+  <text x="636" y="354" text-anchor="end" font-family="SF Pro Display, Noto Sans TC, sans-serif" font-size="11" fill="#787774">社群熱議（討論兇 · 實質影響待觀察）</text>
+  <text x="74" y="354" text-anchor="start" font-family="SF Pro Display, Noto Sans TC, sans-serif" font-size="11" fill="#787774">背景動態</text>
+  <!-- Axis labels -->
+  <text x="355.0" y="404" text-anchor="middle" font-family="JetBrains Mono, SF Mono, monospace" font-size="11" fill="#55524C">熱門度 POPULARITY（跨社群真實互動） →</text>
+  <text x="20" y="202.0" text-anchor="middle" transform="rotate(-90 20 202.0)" font-family="JetBrains Mono, SF Mono, monospace" font-size="11" fill="#55524C">重要度 IMPORTANCE →</text>
+  <!-- Tick marks -->
+  <text x="64" y="380" font-family="JetBrains Mono, monospace" font-size="10" fill="#787774">0</text>
+  <text x="355.0" y="380" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="10" fill="#787774">50</text>
+  <text x="646" y="380" text-anchor="end" font-family="JetBrains Mono, monospace" font-size="10" fill="#787774">100</text>
+  <text x="56" y="48" text-anchor="end" font-family="JetBrains Mono, monospace" font-size="10" fill="#787774">100</text>
+  <text x="56" y="206.0" text-anchor="end" font-family="JetBrains Mono, monospace" font-size="10" fill="#787774">50</text>
+  <!-- Story nodes -->
+  <g class="q-dot" data-story-index="0" role="button" tabindex="0" aria-label="前往第 1 則：只改熱點 5% 的 Rust"><circle cx="395.7" cy="98.3" r="16" fill="#111111" stroke="#111111" stroke-width="1.5"/><text x="395.7" y="102.3" text-anchor="middle" font-family="JetBrains Mono, SF Mono, monospace" font-size="11" font-weight="600" fill="#FFFFFF">1</text><text x="395.7" y="75.3" text-anchor="middle" font-family="SF Pro Display, Noto Sans TC, sans-serif" font-size="10.5" fill="#2F3437">只改熱點 5% 的 Rust</text></g><g class="q-dot" data-story-index="1" role="button" tabindex="0" aria-label="前往第 2 則：本機執行的個人 Agent"><circle cx="424.8" cy="111.3" r="13" fill="#EDF3EC" stroke="#346538" stroke-width="1.5"/><text x="424.8" y="115.3" text-anchor="middle" font-family="JetBrains Mono, SF Mono, monospace" font-size="11" font-weight="600" fill="#346538">2</text><text x="424.8" y="91.3" text-anchor="middle" font-family="SF Pro Display, Noto Sans TC, sans-serif" font-size="10.5" fill="#2F3437">本機執行的個人 Agent</text></g><g class="q-dot" data-story-index="2" role="button" tabindex="0" aria-label="前往第 3 則：瀏覽器版開源辦公套件加 MC"><circle cx="401.6" cy="124.2" r="13" fill="#FDEBEC" stroke="#9F2F2D" stroke-width="1.5"/><text x="401.6" y="128.2" text-anchor="middle" font-family="JetBrains Mono, SF Mono, monospace" font-size="11" font-weight="600" fill="#9F2F2D">3</text><text x="401.6" y="104.2" text-anchor="middle" font-family="SF Pro Display, Noto Sans TC, sans-serif" font-size="10.5" fill="#2F3437">瀏覽器版開源辦公套件加 MC</text></g><g class="q-dot" data-story-index="3" role="button" tabindex="0" aria-label="前往第 4 則：本機會議筆記，無會議機器人"><circle cx="407.4" cy="150.2" r="13" fill="#EDF3EC" stroke="#346538" stroke-width="1.5"/><text x="407.4" y="154.2" text-anchor="middle" font-family="JetBrains Mono, SF Mono, monospace" font-size="11" font-weight="600" fill="#346538">4</text><text x="407.4" y="130.2" text-anchor="middle" font-family="SF Pro Display, Noto Sans TC, sans-serif" font-size="10.5" fill="#2F3437">本機會議筆記，無會議機器人</text></g>
+</svg></section><section class="cards-stage" aria-live="polite"><article class="story-card is-active" id="story-github-0" data-index="0" data-topic="agents">
+  <header class="card-meta-row">
+    <div class="card-rank-group">
+      <span class="rank-num">#01</span>
+      <span class="topic-label">AI Agents &amp; Coding Tools</span>
+      <span class="pub-time-badge">2026-11-23 09:28</span>
+    </div>
+    <div class="score-strip" title="綜合排序分 72.5">
+      <span>重要 <strong>82</strong></span>
+      <span class="dot-sep">·</span>
+      <span>熱門 <strong>57</strong></span>
+    </div>
+  </header>
+
+  <h2 class="card-headline">fast-anything 開源工具剖析 Python、Node、Ruby 熱點，請 coding agent 改寫成 Rust 並驗證行為一致。</h2>
+  <p class="rank-reason">Agent 工作流實用：只重寫慢的 5%，並以行為比對驗證。</p>
+
+  <section class="consensus-box" aria-label="社群討論風向">
+    <div class="consensus-head">
+      <span class="consensus-kicker">社群風向</span>
+      <span class="pill pill-blue">資訊觀察</span>
+    </div>
+    <p class="consensus-text">目前以轉發分享為主，尚無顯著正反論戰；來源無留言資料，社群風向待觀察。</p>
+  </section>
+
+  <div class="top1-diagram-wrap"><svg class="editorial-svg flow-svg" viewBox="0 0 640 190" role="img" aria-label="只移植熱點程式的漸進式改寫流程" xmlns="http://www.w3.org/2000/svg">
+  <rect x="0" y="0" width="640" height="190" rx="8" fill="#FAF8F5" stroke="#EAEAEA" stroke-width="1"/>
+  <text x="24" y="30" font-family="JetBrains Mono, monospace" font-size="10" letter-spacing="0.08em" fill="#787774">TOP #1 ARCHITECTURE &amp; IMPACT</text>
+  <text x="24" y="47" font-family="SF Pro Display, Noto Sans TC, sans-serif" font-size="13" font-weight="600" fill="#111111">只移植熱點程式的漸進式改寫流程</text>
+  <g><rect x="24.0" y="60" width="127.0" height="92" rx="6" fill="#FFFFFF" stroke="#D8D6D0" stroke-width="1"/><text x="36.0" y="80" font-family="JetBrains Mono, monospace" font-size="9.5" letter-spacing="0.06em" fill="#787774">01 BEFORE</text><text x="36.0" y="102" font-family="SF Pro Display, Noto Sans TC, sans-serif" font-size="13" font-weight="600" fill="#2F3437">整包重寫風險高</text><text x="36.0" y="122" font-family="SF Pro Display, Noto Sans TC, sans-serif" font-size="10.5" fill="#55524C">全 app 改寫後，難逐步確</text><text x="36.0" y="137" font-family="SF Pro Display, Noto Sans TC, sans-serif" font-size="10.5" fill="#55524C">認行為是否一致</text></g><line x1="155.0" y1="106.0" x2="174.0" y2="106.0" stroke="#787774" stroke-width="1.25"/><polyline points="169.0,102.0 174.0,106.0 169.0,110.0" fill="none" stroke="#787774" stroke-width="1.25"/><g><rect x="179.0" y="60" width="127.0" height="92" rx="6" fill="#FBF3DB" stroke="#D4B36A" stroke-width="1"/><text x="191.0" y="80" font-family="JetBrains Mono, monospace" font-size="9.5" letter-spacing="0.06em" fill="#956400">02 CHANGE</text><text x="191.0" y="102" font-family="SF Pro Display, Noto Sans TC, sans-serif" font-size="13" font-weight="600" fill="#111111">只移植熱點 5%</text><text x="191.0" y="122" font-family="SF Pro Display, Noto Sans TC, sans-serif" font-size="10.5" fill="#55524C">Profiler 找出慢函式</text><text x="191.0" y="137" font-family="SF Pro Display, Noto Sans TC, sans-serif" font-size="10.5" fill="#55524C">，coding agent </text></g><line x1="310.0" y1="106.0" x2="329.0" y2="106.0" stroke="#787774" stroke-width="1.25"/><polyline points="324.0,102.0 329.0,106.0 324.0,110.0" fill="none" stroke="#787774" stroke-width="1.25"/><g><rect x="334.0" y="60" width="127.0" height="92" rx="6" fill="#EDF3EC" stroke="#8EB492" stroke-width="1"/><text x="346.0" y="80" font-family="JetBrains Mono, monospace" font-size="9.5" letter-spacing="0.06em" fill="#346538">03 IMPACT</text><text x="346.0" y="102" font-family="SF Pro Display, Noto Sans TC, sans-serif" font-size="13" font-weight="600" fill="#111111">改動範圍大幅縮小</text><text x="346.0" y="122" font-family="SF Pro Display, Noto Sans TC, sans-serif" font-size="10.5" fill="#55524C">摘要未附加速倍數，效益需自行</text><text x="346.0" y="137" font-family="SF Pro Display, Noto Sans TC, sans-serif" font-size="10.5" fill="#55524C">實測</text></g><line x1="465.0" y1="106.0" x2="484.0" y2="106.0" stroke="#787774" stroke-width="1.25"/><polyline points="479.0,102.0 484.0,106.0 479.0,110.0" fill="none" stroke="#787774" stroke-width="1.25"/><g><rect x="489.0" y="60" width="127.0" height="92" rx="6" fill="#FDEBEC" stroke="#D99A98" stroke-width="1"/><text x="501.0" y="80" font-family="JetBrains Mono, monospace" font-size="9.5" letter-spacing="0.06em" fill="#9F2F2D">04 DEBATE</text><text x="501.0" y="102" font-family="SF Pro Display, Noto Sans TC, sans-serif" font-size="13" font-weight="600" fill="#111111">行為一致性待驗證</text><text x="501.0" y="122" font-family="SF Pro Display, Noto Sans TC, sans-serif" font-size="10.5" fill="#55524C">比對依賴原始紀錄，覆蓋率與邊</text><text x="501.0" y="137" font-family="SF Pro Display, Noto Sans TC, sans-serif" font-size="10.5" fill="#55524C">界案例未知</text></g>
+</svg></div>
+
+  <section class="sources-panel" aria-label="資料來源與原始連結">
+    <div class="sources-kicker">資料來源與原始連結</div>
+    <div class="sources-list"><a class="source-link-item" href="https://github.com/EL4CTEO/fast-anything" target="_blank" rel="noopener noreferrer"><span class="source-plat">GitHub</span><span class="source-label">GitHub 2527★ / 157 forks / Rust</span><span class="source-time">2026-11-23 09:28</span><span class="source-arrow"><svg width="11" height="11" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M3.5 8.5L8.5 3.5M8.5 3.5H4.5M8.5 3.5V7.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="square"/></svg></span></a></div>
+  </section>
+
+  <div class="waitwhat-wrap">
+    <button class="waitwhat-toggle" type="button" aria-expanded="false" aria-controls="drawer-github-0">
+      <span class="waitwhat-label">Wait, what? 補前情提要與社群正反留言</span>
+      <span class="toggle-sign" aria-hidden="true">+</span>
+    </button>
+    <div class="waitwhat-drawer" id="drawer-github-0" hidden>
+      <div class="drawer-block"><div class="drawer-kicker">前情提要（白話脈絡）</div><p class="drawer-text">很多團隊想把慢的程式換成 Rust，但整包重寫風險高且耗時。fast-anything 先用 profiler 找出最耗時的函式，只移植這一小部分。移植後比對原版與新版的輸出，確認行為相同。</p></div>
+      <div class="drawer-block"><div class="drawer-kicker">對你的意義</div><p class="drawer-text">若 Agent 能自動比對原版行為，這套流程就能當成 Agent 改寫程式的驗收關卡。摘要未附加速倍數，導入前需用自己的基準測試確認效益。</p></div>
+      <div class="drawer-block"><div class="drawer-kicker">新詞快查（對照 GLOSSARY）</div><ul class="gloss-list"><li><span class="gloss-term">Profiler</span><span class="gloss-sep">：</span>像體檢儀器，量出程式哪一段最耗時間。</li></ul></div>
+      
+    </div>
+  </div>
+
+  <div class="card-footer-counter">1 / 4</div>
+</article>
+<article class="story-card" id="story-github-1" data-index="1" data-topic="models-edge">
+  <header class="card-meta-row">
+    <div class="card-rank-group">
+      <span class="rank-num">#02</span>
+      <span class="topic-label">Open-Source LLMs / VLM / Edge AI</span>
+      <span class="pub-time-badge">2026-11-23 18:10</span>
+    </div>
+    <div class="score-strip" title="綜合排序分 72.2">
+      <span>重要 <strong>78</strong></span>
+      <span class="dot-sep">·</span>
+      <span>熱門 <strong>62</strong></span>
+    </div>
+  </header>
+
+  <h2 class="card-headline">Linger 是開源個人 Agent，透過模型與 harness 協同設計，讓強大本機 AI 能在一般電腦上執行。</h2>
+  <p class="rank-reason">本地 Agent 與 harness 協同設計，直接對應邊緣部署。</p>
+
+  <section class="consensus-box" aria-label="社群討論風向">
+    <div class="consensus-head">
+      <span class="consensus-kicker">社群風向</span>
+      <span class="pill pill-blue">資訊觀察</span>
+    </div>
+    <p class="consensus-text">目前以轉發分享為主，尚無顯著正反論戰；來源無留言資料，社群風向待觀察。</p>
+  </section>
+
+  
+
+  <section class="sources-panel" aria-label="資料來源與原始連結">
+    <div class="sources-kicker">資料來源與原始連結</div>
+    <div class="sources-list"><a class="source-link-item" href="https://github.com/simplexai-labs/linger" target="_blank" rel="noopener noreferrer"><span class="source-plat">GitHub</span><span class="source-label">GitHub 4058★ / 383 forks / TypeScript</span><span class="source-time">2026-11-23 18:10</span><span class="source-arrow"><svg width="11" height="11" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M3.5 8.5L8.5 3.5M8.5 3.5H4.5M8.5 3.5V7.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="square"/></svg></span></a></div>
+  </section>
+
+  <div class="waitwhat-wrap">
+    <button class="waitwhat-toggle" type="button" aria-expanded="false" aria-controls="drawer-github-1">
+      <span class="waitwhat-label">Wait, what? 補前情提要與社群正反留言</span>
+      <span class="toggle-sign" aria-hidden="true">+</span>
+    </button>
+    <div class="waitwhat-drawer" id="drawer-github-1" hidden>
+      <div class="drawer-block"><div class="drawer-kicker">前情提要（白話脈絡）</div><p class="drawer-text">多數個人 Agent 會呼叫雲端大模型 API。Linger 的方向相反，讓模型與 harness 在個人 PC 上本地執行。摘要未提供支援的模型規格與效能數字。</p></div>
+      <div class="drawer-block"><div class="drawer-kicker">對你的意義</div><p class="drawer-text">推論延遲與顯存需求取決於採用的本地模型大小，摘要沒有附 VRAM 或 token 速度數據。若 harness 能離線運作，就能減少 API 成本與資料外流風險。</p></div>
+      
+      
+    </div>
+  </div>
+
+  <div class="card-footer-counter">2 / 4</div>
+</article>
+<article class="story-card" id="story-github-2" data-index="2" data-topic="agents">
+  <header class="card-meta-row">
+    <div class="card-rank-group">
+      <span class="rank-num">#03</span>
+      <span class="topic-label">AI Agents &amp; Coding Tools</span>
+      <span class="pub-time-badge">2026-11-23 10:37</span>
+    </div>
+    <div class="score-strip" title="綜合排序分 68.5">
+      <span>重要 <strong>74</strong></span>
+      <span class="dot-sep">·</span>
+      <span>熱門 <strong>58</strong></span>
+    </div>
+  </header>
+
+  <h2 class="card-headline">MR Office 是開源瀏覽器辦公套件，Copilot 可直接編輯真實 Word、Excel、PowerPoint 檔案，並提供 MCP 接口。</h2>
+  <p class="rank-reason">MCP 接口讓 Claude、Cursor 等 Agent 直接編輯 Office 檔案。</p>
+
+  <section class="consensus-box" aria-label="社群討論風向">
+    <div class="consensus-head">
+      <span class="consensus-kicker">社群風向</span>
+      <span class="pill pill-blue">資訊觀察</span>
+    </div>
+    <p class="consensus-text">目前以轉發分享為主，尚無顯著正反論戰；來源無留言資料，社群風向待觀察。</p>
+  </section>
+
+  
+
+  <section class="sources-panel" aria-label="資料來源與原始連結">
+    <div class="sources-kicker">資料來源與原始連結</div>
+    <div class="sources-list"><a class="source-link-item" href="https://github.com/XinaTian/MROffice" target="_blank" rel="noopener noreferrer"><span class="source-plat">GitHub</span><span class="source-label">GitHub 2605★ / 301 forks / TypeScript</span><span class="source-time">2026-11-23 10:37</span><span class="source-arrow"><svg width="11" height="11" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M3.5 8.5L8.5 3.5M8.5 3.5H4.5M8.5 3.5V7.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="square"/></svg></span></a></div>
+  </section>
+
+  <div class="waitwhat-wrap">
+    <button class="waitwhat-toggle" type="button" aria-expanded="false" aria-controls="drawer-github-2">
+      <span class="waitwhat-label">Wait, what? 補前情提要與社群正反留言</span>
+      <span class="toggle-sign" aria-hidden="true">+</span>
+    </button>
+    <div class="waitwhat-drawer" id="drawer-github-2" hidden>
+      <div class="drawer-block"><div class="drawer-kicker">前情提要（白話脈絡）</div><p class="drawer-text">專案把文件、試算表、簡報、PDF 與程式碼編輯器放進瀏覽器。內建 Copilot 可直接改寫真實 Office 格式檔案。另有 MCP server，讓外部 Agent 建立與修改這些文件。</p></div>
+      <div class="drawer-block"><div class="drawer-kicker">對你的意義</div><p class="drawer-text">對 Agent 工作流而言，文件修改可以當成 MCP 工具呼叫，省去自行處理 Office 格式的工作。摘要未說明授權條款與格式相容度，導入前需先測試。</p></div>
+      <div class="drawer-block"><div class="drawer-kicker">新詞快查（對照 GLOSSARY）</div><ul class="gloss-list"><li><span class="gloss-term">OOXML</span><span class="gloss-sep">：</span>Office 檔案的底層 XML 格式，類似網頁的 HTML。</li></ul></div>
+      
+    </div>
+  </div>
+
+  <div class="card-footer-counter">3 / 4</div>
+</article>
+<article class="story-card" id="story-github-3" data-index="3" data-topic="models-edge">
+  <header class="card-meta-row">
+    <div class="card-rank-group">
+      <span class="rank-num">#04</span>
+      <span class="topic-label">Open-Source LLMs / VLM / Edge AI</span>
+      <span class="pub-time-badge">2026-11-23 17:35</span>
+    </div>
+    <div class="score-strip" title="綜合排序分 64.1">
+      <span>重要 <strong>66</strong></span>
+      <span class="dot-sep">·</span>
+      <span>熱門 <strong>59</strong></span>
+    </div>
+  </header>
+
+  <h2 class="card-headline">Yogurt 是免費開源的會議筆記工具，不派會議機器人，筆記內容留在使用者電腦上，支援 Mac、Windows、Linux。</h2>
+  <p class="rank-reason">本地 AI 應用實例，可參考隱私與離線處理的做法。</p>
+
+  <section class="consensus-box" aria-label="社群討論風向">
+    <div class="consensus-head">
+      <span class="consensus-kicker">社群風向</span>
+      <span class="pill pill-blue">資訊觀察</span>
+    </div>
+    <p class="consensus-text">目前以轉發分享為主，尚無顯著正反論戰；來源無留言資料，社群風向待觀察。</p>
+  </section>
+
+  
+
+  <section class="sources-panel" aria-label="資料來源與原始連結">
+    <div class="sources-kicker">資料來源與原始連結</div>
+    <div class="sources-list"><a class="source-link-item" href="https://github.com/FrigadeHQ/yogurt" target="_blank" rel="noopener noreferrer"><span class="source-plat">GitHub</span><span class="source-label">GitHub 3013★ / 258 forks / TypeScript</span><span class="source-time">2026-11-23 17:35</span><span class="source-arrow"><svg width="11" height="11" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M3.5 8.5L8.5 3.5M8.5 3.5H4.5M8.5 3.5V7.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="square"/></svg></span></a></div>
+  </section>
+
+  <div class="waitwhat-wrap">
+    <button class="waitwhat-toggle" type="button" aria-expanded="false" aria-controls="drawer-github-3">
+      <span class="waitwhat-label">Wait, what? 補前情提要與社群正反留言</span>
+      <span class="toggle-sign" aria-hidden="true">+</span>
+    </button>
+    <div class="waitwhat-drawer" id="drawer-github-3" hidden>
+      <div class="drawer-block"><div class="drawer-kicker">前情提要（白話脈絡）</div><p class="drawer-text">多數會議 AI 工具會派機器人進入會議，或把錄音送到雲端處理。Yogurt 不派機器人，宣稱筆記留在本機。它定位為 Granola、Otter、Fireflies 的替代品。</p></div>
+      <div class="drawer-block"><div class="drawer-kicker">對你的意義</div><p class="drawer-text">本機運行表示推論與顯存負擔落在使用者電腦上。摘要未說明使用哪個模型，若要日常使用，需自行確認本地轉錄與摘要的品質。</p></div>
+      
+      
+    </div>
+  </div>
+
+  <div class="card-footer-counter">4 / 4</div>
+</article></section></div><div class="tab-panel" data-tab-panel="arxiv" hidden><p class="section-takeaway">今日 arXiv 僅 4 筆可用，MemOnce 記憶架構最貼近推論顯存與部署成本需求。</p><section class="quadrant-panel" aria-label="重要度與熱門度四象限"><div class="panel-head"><span class="panel-kicker">SIGNAL MAP</span><span class="panel-hint">點圓點直達該則卡片</span></div><svg class="editorial-svg quadrant-svg" viewBox="0 0 680 420" role="img" aria-label="今日 AI 消息重要度與熱門度四象限圖" xmlns="http://www.w3.org/2000/svg">
+  <rect x="0" y="0" width="680" height="420" rx="8" fill="#FAF8F5" stroke="#EAEAEA" stroke-width="1"/>
+  <!-- Highlight top-right quadrant (must-read) -->
+  <rect x="355.0" y="40" width="291.0" height="162.0" fill="#FBF3DB" fill-opacity="0.38"/>
+  <!-- Outer frame -->
+  <rect x="64" y="40" width="582" height="324" fill="none" stroke="#D8D6D0" stroke-width="1"/>
+  <!-- Midpoint hairlines -->
+  <line x1="355.0" y1="40" x2="355.0" y2="364" stroke="#D8D6D0" stroke-width="1" stroke-dasharray="4 4"/>
+  <line x1="64" y1="202.0" x2="646" y2="202.0" stroke="#D8D6D0" stroke-width="1" stroke-dasharray="4 4"/>
+  <!-- Quadrant titles -->
+  <text x="636" y="60" text-anchor="end" font-family="SF Pro Display, Noto Sans TC, sans-serif" font-size="11" font-weight="600" fill="#956400">必看突破（高重要 · 高熱門）</text>
+  <text x="74" y="60" text-anchor="start" font-family="SF Pro Display, Noto Sans TC, sans-serif" font-size="11" fill="#787774">低調硬核（高重要 · 低討論）</text>
+  <text x="636" y="354" text-anchor="end" font-family="SF Pro Display, Noto Sans TC, sans-serif" font-size="11" fill="#787774">社群熱議（討論兇 · 實質影響待觀察）</text>
+  <text x="74" y="354" text-anchor="start" font-family="SF Pro Display, Noto Sans TC, sans-serif" font-size="11" fill="#787774">背景動態</text>
+  <!-- Axis labels -->
+  <text x="355.0" y="404" text-anchor="middle" font-family="JetBrains Mono, SF Mono, monospace" font-size="11" fill="#55524C">熱門度 POPULARITY（跨社群真實互動） →</text>
+  <text x="20" y="202.0" text-anchor="middle" transform="rotate(-90 20 202.0)" font-family="JetBrains Mono, SF Mono, monospace" font-size="11" fill="#55524C">重要度 IMPORTANCE →</text>
+  <!-- Tick marks -->
+  <text x="64" y="380" font-family="JetBrains Mono, monospace" font-size="10" fill="#787774">0</text>
+  <text x="355.0" y="380" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="10" fill="#787774">50</text>
+  <text x="646" y="380" text-anchor="end" font-family="JetBrains Mono, monospace" font-size="10" fill="#787774">100</text>
+  <text x="56" y="48" text-anchor="end" font-family="JetBrains Mono, monospace" font-size="10" fill="#787774">100</text>
+  <text x="56" y="206.0" text-anchor="end" font-family="JetBrains Mono, monospace" font-size="10" fill="#787774">50</text>
+  <!-- Story nodes -->
+  <g class="q-dot" data-story-index="0" role="button" tabindex="0" aria-label="前往第 1 則：KV Cache 記憶架構"><circle cx="209.5" cy="98.3" r="16" fill="#111111" stroke="#111111" stroke-width="1.5"/><text x="209.5" y="102.3" text-anchor="middle" font-family="JetBrains Mono, SF Mono, monospace" font-size="11" font-weight="600" fill="#FFFFFF">1</text><text x="209.5" y="75.3" text-anchor="middle" font-family="SF Pro Display, Noto Sans TC, sans-serif" font-size="10.5" fill="#2F3437">KV Cache 記憶架構</text></g><g class="q-dot" data-story-index="1" role="button" tabindex="0" aria-label="前往第 2 則：世界模型穿模評測"><circle cx="209.5" cy="137.2" r="13" fill="#EDF3EC" stroke="#346538" stroke-width="1.5"/><text x="209.5" y="141.2" text-anchor="middle" font-family="JetBrains Mono, SF Mono, monospace" font-size="11" font-weight="600" fill="#346538">2</text><text x="209.5" y="117.2" text-anchor="middle" font-family="SF Pro Display, Noto Sans TC, sans-serif" font-size="10.5" fill="#2F3437">世界模型穿模評測</text></g><g class="q-dot" data-story-index="2" role="button" tabindex="0" aria-label="前往第 3 則：訓練時自動調整拓撲"><circle cx="227.5" cy="139.4" r="13" fill="#EDF3EC" stroke="#346538" stroke-width="1.5"/><text x="227.5" y="143.4" text-anchor="middle" font-family="JetBrains Mono, SF Mono, monospace" font-size="11" font-weight="600" fill="#346538">3</text><text x="227.5" y="119.4" text-anchor="middle" font-family="SF Pro Display, Noto Sans TC, sans-serif" font-size="10.5" fill="#2F3437">訓練時自動調整拓撲</text></g><g class="q-dot" data-story-index="3" role="button" tabindex="0" aria-label="前往第 4 則：無變異數線性迴歸"><circle cx="209.5" cy="234.4" r="13" fill="#EDF3EC" stroke="#346538" stroke-width="1.5"/><text x="209.5" y="238.4" text-anchor="middle" font-family="JetBrains Mono, SF Mono, monospace" font-size="11" font-weight="600" fill="#346538">4</text><text x="209.5" y="214.4" text-anchor="middle" font-family="SF Pro Display, Noto Sans TC, sans-serif" font-size="10.5" fill="#2F3437">無變異數線性迴歸</text></g>
+</svg></section><section class="cards-stage" aria-live="polite"><article class="story-card is-active" id="story-arxiv-0" data-index="0" data-topic="models-edge">
+  <header class="card-meta-row">
+    <div class="card-rank-group">
+      <span class="rank-num">#01</span>
+      <span class="topic-label">Open-Source LLMs / VLM / Edge AI</span>
+      <span class="pub-time-badge">2026-11-21 02:51</span>
+    </div>
+    <div class="score-strip" title="綜合排序分 57.5">
+      <span>重要 <strong>82</strong></span>
+      <span class="dot-sep">·</span>
+      <span>熱門 <strong>25</strong></span>
+    </div>
+  </header>
+
+  <h2 class="card-headline">MemOnce 論文提出可擴展記憶架構，目標是讓長時程 LLM 互動不必持續累積逐層 KV Cache。</h2>
+  <p class="rank-reason">直接針對長上下文顯存成長問題，與推論部署成本相關。</p>
+
+  <section class="consensus-box" aria-label="社群討論風向">
+    <div class="consensus-head">
+      <span class="consensus-kicker">社群風向</span>
+      <span class="pill pill-blue">資訊觀察</span>
+    </div>
+    <p class="consensus-text">目前以轉發分享為主，尚無顯著正反論戰；arXiv 頁面無留言，體感需等實測與復現回饋。</p>
+  </section>
+
+  <div class="top1-diagram-wrap"><svg class="editorial-svg flow-svg" viewBox="0 0 640 190" role="img" aria-label="MemOnce：KV Cache 記憶架構" xmlns="http://www.w3.org/2000/svg">
+  <rect x="0" y="0" width="640" height="190" rx="8" fill="#FAF8F5" stroke="#EAEAEA" stroke-width="1"/>
+  <text x="24" y="30" font-family="JetBrains Mono, monospace" font-size="10" letter-spacing="0.08em" fill="#787774">TOP #1 ARCHITECTURE &amp; IMPACT</text>
+  <text x="24" y="47" font-family="SF Pro Display, Noto Sans TC, sans-serif" font-size="13" font-weight="600" fill="#111111">MemOnce：KV Cache 記憶架構</text>
+  <g><rect x="24.0" y="60" width="127.0" height="92" rx="6" fill="#FFFFFF" stroke="#D8D6D0" stroke-width="1"/><text x="36.0" y="80" font-family="JetBrains Mono, monospace" font-size="9.5" letter-spacing="0.06em" fill="#787774">01 BEFORE</text><text x="36.0" y="102" font-family="SF Pro Display, Noto Sans TC, sans-serif" font-size="13" font-weight="600" fill="#2F3437">KV Cache 線性增長</text><text x="36.0" y="122" font-family="SF Pro Display, Noto Sans TC, sans-serif" font-size="10.5" fill="#55524C">上下文變長時，每層 toke</text><text x="36.0" y="137" font-family="SF Pro Display, Noto Sans TC, sans-serif" font-size="10.5" fill="#55524C">n 級 KV Cache 持</text></g><line x1="155.0" y1="106.0" x2="174.0" y2="106.0" stroke="#787774" stroke-width="1.25"/><polyline points="169.0,102.0 174.0,106.0 169.0,110.0" fill="none" stroke="#787774" stroke-width="1.25"/><g><rect x="179.0" y="60" width="127.0" height="92" rx="6" fill="#FBF3DB" stroke="#D4B36A" stroke-width="1"/><text x="191.0" y="80" font-family="JetBrains Mono, monospace" font-size="9.5" letter-spacing="0.06em" fill="#956400">02 CHANGE</text><text x="191.0" y="102" font-family="SF Pro Display, Noto Sans TC, sans-serif" font-size="13" font-weight="600" fill="#111111">可重用記憶狀態</text><text x="191.0" y="122" font-family="SF Pro Display, Noto Sans TC, sans-serif" font-size="10.5" fill="#55524C">摘要提出可重用 memory</text><text x="191.0" y="137" font-family="SF Pro Display, Noto Sans TC, sans-serif" font-size="10.5" fill="#55524C"> state 的架構，細節待</text></g><line x1="310.0" y1="106.0" x2="329.0" y2="106.0" stroke="#787774" stroke-width="1.25"/><polyline points="324.0,102.0 329.0,106.0 324.0,110.0" fill="none" stroke="#787774" stroke-width="1.25"/><g><rect x="334.0" y="60" width="127.0" height="92" rx="6" fill="#EDF3EC" stroke="#8EB492" stroke-width="1"/><text x="346.0" y="80" font-family="JetBrains Mono, monospace" font-size="9.5" letter-spacing="0.06em" fill="#346538">03 IMPACT</text><text x="346.0" y="102" font-family="SF Pro Display, Noto Sans TC, sans-serif" font-size="13" font-weight="600" fill="#111111">成效數字未在摘要</text><text x="346.0" y="122" font-family="SF Pro Display, Noto Sans TC, sans-serif" font-size="10.5" fill="#55524C">摘要未給量化結果，省多少顯存</text><text x="346.0" y="137" font-family="SF Pro Display, Noto Sans TC, sans-serif" font-size="10.5" fill="#55524C">需讀全文與實測</text></g><line x1="465.0" y1="106.0" x2="484.0" y2="106.0" stroke="#787774" stroke-width="1.25"/><polyline points="479.0,102.0 484.0,106.0 479.0,110.0" fill="none" stroke="#787774" stroke-width="1.25"/><g><rect x="489.0" y="60" width="127.0" height="92" rx="6" fill="#FDEBEC" stroke="#D99A98" stroke-width="1"/><text x="501.0" y="80" font-family="JetBrains Mono, monospace" font-size="9.5" letter-spacing="0.06em" fill="#9F2F2D">04 DEBATE</text><text x="501.0" y="102" font-family="SF Pro Display, Noto Sans TC, sans-serif" font-size="13" font-weight="600" fill="#111111">尚無社群實測</text><text x="501.0" y="122" font-family="SF Pro Display, Noto Sans TC, sans-serif" font-size="10.5" fill="#55524C">arXiv 頁面無留言，尚無</text><text x="501.0" y="137" font-family="SF Pro Display, Noto Sans TC, sans-serif" font-size="10.5" fill="#55524C">獨立復現或社群驗證</text></g>
+</svg></div>
+
+  <section class="sources-panel" aria-label="資料來源與原始連結">
+    <div class="sources-kicker">資料來源與原始連結</div>
+    <div class="sources-list"><a class="source-link-item" href="http://arxiv.org/abs/2611.27973v1" target="_blank" rel="noopener noreferrer"><span class="source-plat">arXiv</span><span class="source-label">arXiv 論文頁（無留言資料）</span><span class="source-time">2026-11-21 02:51</span><span class="source-arrow"><svg width="11" height="11" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M3.5 8.5L8.5 3.5M8.5 3.5H4.5M8.5 3.5V7.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="square"/></svg></span></a></div>
+  </section>
+
+  <div class="waitwhat-wrap">
+    <button class="waitwhat-toggle" type="button" aria-expanded="false" aria-controls="drawer-arxiv-0">
+      <span class="waitwhat-label">Wait, what? 補前情提要與社群正反留言</span>
+      <span class="toggle-sign" aria-hidden="true">+</span>
+    </button>
+    <div class="waitwhat-drawer" id="drawer-arxiv-0" hidden>
+      <div class="drawer-block"><div class="drawer-kicker">前情提要（白話脈絡）</div><p class="drawer-text">標準 Transformer 每一層都保存每個 token 的 KV Cache。對話或任務拉長後，GPU 記憶體隨上下文線性成長，計算量也隨之上升。這篇論文想改成可長期保存並重用的記憶狀態，讓後續推論不必從頭承擔全部累積成本。</p></div>
+      <div class="drawer-block"><div class="drawer-kicker">對你的意義</div><p class="drawer-text">若方法成立，長上下文 Agent 的顯存曲線會變得較平。摘要未給實測數字，目前無法判斷實際能省多少顯存或延遲。</p></div>
+      <div class="drawer-block"><div class="drawer-kicker">新詞快查（對照 GLOSSARY）</div><ul class="gloss-list"><li><span class="gloss-term">Reusable memory state（可重用記憶狀態）</span><span class="gloss-sep">：</span>像把對話先存成檔案，下次直接載入，不必整段重算</li></ul></div>
+      
+    </div>
+  </div>
+
+  <div class="card-footer-counter">1 / 4</div>
+</article>
+<article class="story-card" id="story-arxiv-1" data-index="1" data-topic="models-edge">
+  <header class="card-meta-row">
+    <div class="card-rank-group">
+      <span class="rank-num">#02</span>
+      <span class="topic-label">Open-Source LLMs / VLM / Edge AI</span>
+      <span class="pub-time-badge">2026-11-21 02:44</span>
+    </div>
+    <div class="score-strip" title="綜合排序分 50.7">
+      <span>重要 <strong>70</strong></span>
+      <span class="dot-sep">·</span>
+      <span>熱門 <strong>25</strong></span>
+    </div>
+  </header>
+
+  <h2 class="card-headline">研究團隊推出 NoPeBench，測試互動影片世界模型能否阻止物體穿透障礙，摘要指出開源模型都不可靠。</h2>
+  <p class="rank-reason">提出新評測 NoPeBench，指出開源世界模型的可靠性缺口。</p>
+
+  <section class="consensus-box" aria-label="社群討論風向">
+    <div class="consensus-head">
+      <span class="consensus-kicker">社群風向</span>
+      <span class="pill pill-blue">資訊觀察</span>
+    </div>
+    <p class="consensus-text">目前以轉發分享為主，尚無顯著正反論戰；arXiv 頁面無留言，尚無社群實測回饋。</p>
+  </section>
+
+  
+
+  <section class="sources-panel" aria-label="資料來源與原始連結">
+    <div class="sources-kicker">資料來源與原始連結</div>
+    <div class="sources-list"><a class="source-link-item" href="http://arxiv.org/abs/2611.27963v1" target="_blank" rel="noopener noreferrer"><span class="source-plat">arXiv</span><span class="source-label">arXiv 論文頁（無留言資料）</span><span class="source-time">2026-11-21 02:44</span><span class="source-arrow"><svg width="11" height="11" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M3.5 8.5L8.5 3.5M8.5 3.5H4.5M8.5 3.5V7.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="square"/></svg></span></a></div>
+  </section>
+
+  <div class="waitwhat-wrap">
+    <button class="waitwhat-toggle" type="button" aria-expanded="false" aria-controls="drawer-arxiv-1">
+      <span class="waitwhat-label">Wait, what? 補前情提要與社群正反留言</span>
+      <span class="toggle-sign" aria-hidden="true">+</span>
+    </button>
+    <div class="waitwhat-drawer" id="drawer-arxiv-1" hidden>
+      <div class="drawer-block"><div class="drawer-kicker">前情提要（白話脈絡）</div><p class="drawer-text">世界模型是會預測環境下一步變化的生成模型，常用於機器人與模擬場景。這篇論文關注的問題是物體會不會穿過牆或障礙物。作者提出 NoPeBench 評測基準，檢查現有模型在遇到實體障礙時的反應。</p></div>
+      <div class="drawer-block"><div class="drawer-kicker">對你的意義</div><p class="drawer-text">對你目前的 LLM 推論與 Agent 工作流影響有限。若未來要把影片世界模型接入模擬或機器人流程，物理一致性會成為必須驗證的項目。</p></div>
+      <div class="drawer-block"><div class="drawer-kicker">新詞快查（對照 GLOSSARY）</div><ul class="gloss-list"><li><span class="gloss-term">World Model（世界模型）</span><span class="gloss-sep">：</span>像在腦中先模擬下一步會發生什麼，例如手推杯子會不會穿過桌面</li></ul></div>
+      
+    </div>
+  </div>
+
+  <div class="card-footer-counter">2 / 4</div>
+</article>
+<article class="story-card" id="story-arxiv-2" data-index="2" data-topic="models-edge">
+  <header class="card-meta-row">
+    <div class="card-rank-group">
+      <span class="rank-num">#03</span>
+      <span class="topic-label">Open-Source LLMs / VLM / Edge AI</span>
+      <span class="pub-time-badge">2026-11-21 02:41</span>
+    </div>
+    <div class="score-strip" title="綜合排序分 47.9">
+      <span>重要 <strong>65</strong></span>
+      <span class="dot-sep">·</span>
+      <span>熱門 <strong>25</strong></span>
+    </div>
+  </header>
+
+  <h2 class="card-headline">Model Carving 提出讓 Transformer 在訓練中自行優化層內結構，質疑固定注意力與 MLP 排列的慣例。</h2>
+  <p class="rank-reason">挑戰固定 Transformer 層結構的慣例，屬架構層級的新方向。</p>
+
+  <section class="consensus-box" aria-label="社群討論風向">
+    <div class="consensus-head">
+      <span class="consensus-kicker">社群風向</span>
+      <span class="pill pill-blue">資訊觀察</span>
+    </div>
+    <p class="consensus-text">目前以轉發分享為主，尚無顯著正反論戰；arXiv 頁面無留言，尚無社群對方法可行性的討論。</p>
+  </section>
+
+  
+
+  <section class="sources-panel" aria-label="資料來源與原始連結">
+    <div class="sources-kicker">資料來源與原始連結</div>
+    <div class="sources-list"><a class="source-link-item" href="http://arxiv.org/abs/2611.27962v1" target="_blank" rel="noopener noreferrer"><span class="source-plat">arXiv</span><span class="source-label">arXiv 論文頁（無留言資料）</span><span class="source-time">2026-11-21 02:41</span><span class="source-arrow"><svg width="11" height="11" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M3.5 8.5L8.5 3.5M8.5 3.5H4.5M8.5 3.5V7.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="square"/></svg></span></a></div>
+  </section>
+
+  <div class="waitwhat-wrap">
+    <button class="waitwhat-toggle" type="button" aria-expanded="false" aria-controls="drawer-arxiv-2">
+      <span class="waitwhat-label">Wait, what? 補前情提要與社群正反留言</span>
+      <span class="toggle-sign" aria-hidden="true">+</span>
+    </button>
+    <div class="waitwhat-drawer" id="drawer-arxiv-2" hidden>
+      <div class="drawer-block"><div class="drawer-kicker">前情提要（白話脈絡）</div><p class="drawer-text">一般 Transformer 每一層都以相同順序排列注意力與 MLP 子層，權重在這個固定結構內訓練。作者認為這種統一排列是慣例，不是經過證明的最佳設計。這篇論文嘗試讓結構本身也能在訓練中被優化。</p></div>
+      <div class="drawer-block"><div class="drawer-kicker">對你的意義</div><p class="drawer-text">若結構不再固定，推論引擎與 Edge 編譯器可能需要支援新的算子組合，部署適配工作量會上升（推測）。目前摘要未提供效能數字。</p></div>
+      <div class="drawer-block"><div class="drawer-kicker">新詞快查（對照 GLOSSARY）</div><ul class="gloss-list"><li><span class="gloss-term">Topology（拓撲）</span><span class="gloss-sep">：</span>層與層之間怎麼接線的圖，類似電路板的走線方式</li></ul></div>
+      
+    </div>
+  </div>
+
+  <div class="card-footer-counter">3 / 4</div>
+</article>
+<article class="story-card" id="story-arxiv-3" data-index="3" data-topic="models-edge">
+  <header class="card-meta-row">
+    <div class="card-rank-group">
+      <span class="rank-num">#04</span>
+      <span class="topic-label">Open-Source LLMs / VLM / Edge AI</span>
+      <span class="pub-time-badge">2026-11-21 02:58</span>
+    </div>
+    <div class="score-strip" title="綜合排序分 33.9">
+      <span>重要 <strong>40</strong></span>
+      <span class="dot-sep">·</span>
+      <span>熱門 <strong>25</strong></span>
+    </div>
+  </header>
+
+  <h2 class="card-headline">論文研究無限變異數條件下的高機率線性迴歸，並提出黑箱轉換，讓有限變異數的迴歸程序可用於此情境。</h2>
+  <p class="rank-reason">純統計理論，與部署或 Agent 工作流的關聯低。</p>
+
+  <section class="consensus-box" aria-label="社群討論風向">
+    <div class="consensus-head">
+      <span class="consensus-kicker">社群風向</span>
+      <span class="pill pill-blue">資訊觀察</span>
+    </div>
+    <p class="consensus-text">目前以轉發分享為主，尚無顯著正反論戰；arXiv 頁面無留言，尚無社群討論。</p>
+  </section>
+
+  
+
+  <section class="sources-panel" aria-label="資料來源與原始連結">
+    <div class="sources-kicker">資料來源與原始連結</div>
+    <div class="sources-list"><a class="source-link-item" href="http://arxiv.org/abs/2611.27983v1" target="_blank" rel="noopener noreferrer"><span class="source-plat">arXiv</span><span class="source-label">arXiv 論文頁（無留言資料）</span><span class="source-time">2026-11-21 02:58</span><span class="source-arrow"><svg width="11" height="11" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M3.5 8.5L8.5 3.5M8.5 3.5H4.5M8.5 3.5V7.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="square"/></svg></span></a></div>
+  </section>
+
+  <div class="waitwhat-wrap">
+    <button class="waitwhat-toggle" type="button" aria-expanded="false" aria-controls="drawer-arxiv-3">
+      <span class="waitwhat-label">Wait, what? 補前情提要與社群正反留言</span>
+      <span class="toggle-sign" aria-hidden="true">+</span>
+    </button>
+    <div class="waitwhat-drawer" id="drawer-arxiv-3" hidden>
+      <div class="drawer-block"><div class="drawer-kicker">前情提要（白話脈絡）</div><p class="drawer-text">一般線性迴歸假設雜訊的變異數有限。這篇論文處理的情況是雜訊只有有限的條件 α 階矩，α 介於 1 與 2 之間，因此變異數可能無限。作者提出黑箱轉換，把原本假設有限變異數的迴歸程序改成適用於此情境。</p></div>
+      <div class="drawer-block"><div class="drawer-kicker">對你的意義</div><p class="drawer-text">目前對推論延遲、顯存與部署成本沒有直接影響。只有在你處理重尾資料的評測統計時，這類方法才可能用得上。</p></div>
+      <div class="drawer-block"><div class="drawer-kicker">新詞快查（對照 GLOSSARY）</div><ul class="gloss-list"><li><span class="gloss-term">Heavy-tailed noise（重尾雜訊）</span><span class="gloss-sep">：</span>偶爾出現極端離群值，像網路延遲偶爾飆到很高</li></ul></div>
+      
+    </div>
+  </div>
+
+  <div class="card-footer-counter">4 / 4</div>
+</article></section></div>
+    </div>
+
+    <footer class="digest-footer">
+      <div>生成時間：2026-11-23T18:56+08:00 · 整理引擎：claude (claude-haiku-5-5) · 規則：ASD-STE100 繁中 + ig-human 去 AI 腔</div>
+      <div class="status-row"><span class="status-tag st-ok">arXiv: ok</span><span class="status-tag st-ok">GitHub: ok</span><span class="status-tag st-ok">HN: ok</span><span class="status-tag st-ok">IG: ok</span><span class="status-tag st-ok">Reddit: ok</span><span class="status-tag st-ok">Threads: ok</span><span class="status-tag st-ok">X: ok</span><span class="status-tag st-muted">小紅書: optional-off</span></div>
+    </footer>
+  </main>
+
+  <nav class="thumb-bar" aria-label="單手快速操作">
+    <button class="thumb-btn thumb-nav-only" type="button" id="btnPrev">上則</button>
+    <button class="thumb-btn" type="button" id="btnToggleQuad">四象限</button>
+    <button class="thumb-btn" type="button" id="btnToggleModeMobile">全景</button>
+    <button class="thumb-btn is-primary thumb-nav-only" type="button" id="btnNext">下則</button>
+  </nav>
+
+  <script>
+    (() => {
+      const body = document.body;
+      const progressFill = document.getElementById('progressFill');
+      const topicFilterBar = document.getElementById('topicFilterBar');
+      const panelsRoot = document.getElementById('panelsRoot');
+      const panels = Array.from(document.querySelectorAll('.tab-panel'));
+      const sourceTabs = Array.from(document.querySelectorAll('.source-tab'));
+      const btnModeFocus = document.getElementById('btnModeFocus');
+      const btnModeOverview = document.getElementById('btnModeOverview');
+      const btnToggleModeMobile = document.getElementById('btnToggleModeMobile');
+      const btnToggleQuad = document.getElementById('btnToggleQuad');
+      const btnPrev = document.getElementById('btnPrev');
+      const btnNext = document.getElementById('btnNext');
+      const archiveSelect = document.getElementById('archiveSelect');
+
+      let activeTab = 'overview';
+      let activeFilter = 'all';
+      let currentIdx = 0;
+
+      function currentPanel() {
+        return panels.find(p => p.dataset.tabPanel === activeTab) || panels[0];
+      }
+
+      function panelCards() {
+        const p = currentPanel();
+        return p ? Array.from(p.querySelectorAll('.story-card')) : [];
+      }
+
+      function visibleCards() {
+        const cards = panelCards();
+        if (activeTab !== 'overview' || activeFilter === 'all') return cards;
+        return cards.filter(c => c.dataset.topic === activeFilter);
+      }
+
+      function updateProgress() {
+        const vis = visibleCards();
+        if (!vis.length) { progressFill.style.width = '0%'; return; }
+        const pct = body.classList.contains('mode-focus')
+          ? ((currentIdx + 1) / vis.length) * 100
+          : 100;
+        progressFill.style.width = pct.toFixed(1) + '%';
+      }
+
+      function renderFocusState() {
+        const cards = panelCards();
+        const vis = visibleCards();
+        if (currentIdx >= vis.length) currentIdx = Math.max(0, vis.length - 1);
+        cards.forEach(c => {
+          const inFilter = activeTab !== 'overview' || activeFilter === 'all' || c.dataset.topic === activeFilter;
+          c.style.display = body.classList.contains('mode-overview')
+            ? (inFilter ? 'block' : 'none')
+            : '';
+          c.classList.remove('is-active');
+        });
+        if (body.classList.contains('mode-focus') && vis[currentIdx]) {
+          vis[currentIdx].classList.add('is-active');
+          const counter = vis[currentIdx].querySelector('.card-footer-counter');
+          if (counter) counter.textContent = (currentIdx + 1) + ' / ' + vis.length;
+        }
+        updateProgress();
+      }
+
+      function setMode(mode) {
+        const isFocus = mode === 'focus';
+        body.classList.toggle('mode-focus', isFocus);
+        body.classList.toggle('mode-overview', !isFocus);
+        btnModeFocus.classList.toggle('is-active', isFocus);
+        btnModeOverview.classList.toggle('is-active', !isFocus);
+        btnToggleModeMobile.textContent = isFocus ? '全景' : '滑卡';
+        if (!isFocus) {
+          panels.forEach(p => p.querySelector('.quadrant-panel')?.classList.remove('is-open'));
+        }
+        renderFocusState();
+      }
+
+      function setTab(tabKey) {
+        activeTab = tabKey;
+        activeFilter = 'all';
+        currentIdx = 0;
+        sourceTabs.forEach(t => {
+          const on = t.dataset.tab === tabKey;
+          t.classList.toggle('is-active', on);
+          t.setAttribute('aria-selected', String(on));
+        });
+        panels.forEach(p => {
+          const on = p.dataset.tabPanel === tabKey;
+          p.classList.toggle('is-active', on);
+          p.hidden = !on;
+          p.querySelector('.quadrant-panel')?.classList.remove('is-open');
+        });
+        if (topicFilterBar) {
+          topicFilterBar.hidden = tabKey !== 'overview';
+          topicFilterBar.querySelectorAll('.filter-pill').forEach(p =>
+            p.classList.toggle('is-active', p.dataset.filter === 'all')
+          );
+        }
+        renderFocusState();
+      }
+
+      function goDelta(delta) {
+        const vis = visibleCards();
+        if (!vis.length) return;
+        if (!body.classList.contains('mode-focus')) setMode('focus');
+        currentIdx = (currentIdx + delta + vis.length) % vis.length;
+        currentPanel()?.querySelector('.quadrant-panel')?.classList.remove('is-open');
+        renderFocusState();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+
+      function jumpToStory(origIndex) {
+        activeFilter = 'all';
+        topicFilterBar?.querySelectorAll('.filter-pill').forEach(p =>
+          p.classList.toggle('is-active', p.dataset.filter === 'all')
+        );
+        const cards = panelCards();
+        currentIdx = Math.max(0, Math.min(cards.length - 1, origIndex));
+        currentPanel()?.querySelector('.quadrant-panel')?.classList.remove('is-open');
+        renderFocusState();
+        if (body.classList.contains('mode-overview')) {
+          cards[currentIdx]?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        } else {
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+      }
+
+      sourceTabs.forEach(tab => tab.addEventListener('click', () => setTab(tab.dataset.tab || 'overview')));
+
+      document.querySelectorAll('.waitwhat-toggle').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const drawer = document.getElementById(btn.getAttribute('aria-controls'));
+          const open = btn.getAttribute('aria-expanded') === 'true';
+          btn.setAttribute('aria-expanded', String(!open));
+          btn.querySelector('.toggle-sign').textContent = open ? '+' : '-';
+          if (drawer) drawer.hidden = open;
+        });
+      });
+
+      document.querySelectorAll('.filter-pill').forEach(pill => {
+        pill.addEventListener('click', () => {
+          activeFilter = pill.dataset.filter || 'all';
+          currentIdx = 0;
+          document.querySelectorAll('.filter-pill').forEach(p => p.classList.toggle('is-active', p === pill));
+          renderFocusState();
+        });
+      });
+
+      document.querySelectorAll('.q-dot').forEach(dot => {
+        const go = () => jumpToStory(Number(dot.dataset.storyIndex || 0));
+        dot.addEventListener('click', go);
+        dot.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); go(); } });
+      });
+
+      btnModeFocus.addEventListener('click', () => setMode('focus'));
+      btnModeOverview.addEventListener('click', () => setMode('overview'));
+      btnToggleModeMobile.addEventListener('click', () => setMode(body.classList.contains('mode-focus') ? 'overview' : 'focus'));
+      btnToggleQuad.addEventListener('click', () => {
+        const qp = currentPanel()?.querySelector('.quadrant-panel');
+        if (!qp) return;
+        if (!body.classList.contains('mode-focus')) {
+          qp.scrollIntoView({ behavior: 'smooth' });
+        } else {
+          qp.classList.toggle('is-open');
+          if (qp.classList.contains('is-open')) window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+      });
+      btnPrev.addEventListener('click', () => goDelta(-1));
+      btnNext.addEventListener('click', () => goDelta(1));
+
+      if (archiveSelect) {
+        archiveSelect.addEventListener('change', () => {
+          if (archiveSelect.value) window.location.href = archiveSelect.value;
+        });
+      }
+
+      let touchStartX = 0, touchStartY = 0;
+      panelsRoot.addEventListener('touchstart', e => {
+        touchStartX = e.changedTouches[0].clientX;
+        touchStartY = e.changedTouches[0].clientY;
+      }, { passive: true });
+      panelsRoot.addEventListener('touchend', e => {
+        if (!body.classList.contains('mode-focus')) return;
+        const dx = e.changedTouches[0].clientX - touchStartX;
+        const dy = e.changedTouches[0].clientY - touchStartY;
+        if (Math.abs(dx) > 56 && Math.abs(dx) > Math.abs(dy) * 1.4) {
+          goDelta(dx < 0 ? 1 : -1);
+        }
+      }, { passive: true });
+
+      document.addEventListener('keydown', e => {
+        if (e.target && ['INPUT', 'TEXTAREA', 'SELECT'].includes(e.target.tagName)) return;
+        if (e.key === 'ArrowRight') goDelta(1);
+        else if (e.key === 'ArrowLeft') goDelta(-1);
+        else if (e.key.toLowerCase() === 'g') setMode(body.classList.contains('mode-focus') ? 'overview' : 'focus');
+        else if (e.key.toLowerCase() === 'w') {
+          const vis = visibleCards();
+          const btn = vis[currentIdx]?.querySelector('.waitwhat-toggle');
+          if (btn) btn.click();
+        }
+      });
+
+      setMode(window.innerWidth < 768 ? 'focus' : 'overview');
+    })();
+  </script>
+</body>
+</html>

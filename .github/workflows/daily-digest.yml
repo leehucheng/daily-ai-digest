@@ -1,0 +1,107 @@
+name: Daily AI Editorial Digest
+
+on:
+  schedule:
+    # 每日台灣時間 07:30（UTC 23:30）自動執行
+    - cron: "30 23 * * *"
+  workflow_dispatch:
+    inputs:
+      llm_provider:
+        description: "LLM provider (auto=有哪把打哪把並自動備援, gemini, claude)"
+        required: false
+        default: "auto"
+        type: choice
+        options:
+          - auto
+          - gemini
+          - claude
+      topic_override:
+        description: "選填：臨時指定單一研究主題（留空則照 config/topics.yaml）"
+        required: false
+        default: ""
+      skip_notify:
+        description: "勾選則只更新網頁、不送 ntfy / Gmail 通知"
+        required: false
+        default: false
+        type: boolean
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "daily-ai-digest"
+  cancel-in-progress: false
+
+jobs:
+  build-and-notify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install Python dependencies
+        run: uv sync --python 3.12
+
+      - name: Run daily digest pipeline (fetch, synthesize, render)
+        env:
+          LLM_PROVIDER: ${{ inputs.llm_provider || 'auto' }}
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          GEMINI_MODEL: ${{ vars.GEMINI_MODEL || 'gemini-2.5-flash' }}
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          ANTHROPIC_MODEL: ${{ vars.ANTHROPIC_MODEL || 'claude-sonnet-5-5' }}
+          ANTHROPIC_FAST_MODEL: ${{ vars.ANTHROPIC_FAST_MODEL || 'claude-haiku-5-5' }}
+          SCRAPECREATORS_API_KEY: ${{ secrets.SCRAPECREATORS_API_KEY }}
+          APIFY_API_TOKEN: ${{ secrets.APIFY_API_TOKEN }}
+          DIGEST_SITE_URL: ${{ vars.DIGEST_SITE_URL || 'https://leehucheng.github.io/daily-ai-digest/' }}
+          TOPIC_OVERRIDE: ${{ inputs.topic_override }}
+        run: |
+          ARGS=(--skip-last30days --skip-notify)
+          if [ -n "$TOPIC_OVERRIDE" ]; then
+            ARGS+=(--topic-override "$TOPIC_OVERRIDE")
+          fi
+          uv run --python 3.12 python -u -m daily_digest.cli "${ARGS[@]}"
+
+      - name: Commit updated digest & seen history
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs/ data/seen.json
+          if ! git diff --cached --quiet; then
+            DATE_TW=$(TZ=Asia/Taipei date +%Y-%m-%d)
+            git commit -m "digest: publish ${DATE_TW}"
+            git push
+          else
+            echo "No changes to commit."
+          fi
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: "docs"
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
+
+      - name: Send ntfy and Gmail notifications (post-deploy)
+        if: ${{ !inputs.skip_notify }}
+        env:
+          NTFY_TOPIC: ${{ secrets.NTFY_TOPIC }}
+          NTFY_SERVER: ${{ vars.NTFY_SERVER || 'https://ntfy.sh' }}
+          GMAIL_TO: ${{ vars.GMAIL_TO || 'lee52025202@gmail.com' }}
+          GMAIL_SENDER: ${{ vars.GMAIL_SENDER || 'lee52025202@gmail.com' }}
+          GMAIL_APP_PASSWORD: ${{ secrets.GMAIL_APP_PASSWORD }}
+          DIGEST_SITE_URL: ${{ vars.DIGEST_SITE_URL || 'https://leehucheng.github.io/daily-ai-digest/' }}
+        run: |
+          DATE_TW=$(TZ=Asia/Taipei date +%Y-%m-%d)
+          uv run --python 3.12 python -u -m daily_digest.cli --notify-only "docs/archive/${DATE_TW}.json"
