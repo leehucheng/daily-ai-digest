@@ -1,0 +1,1360 @@
+{
+  "issue_date": "2026-11-25",
+  "executive_takeaway_zh": "跨 X, Reddit, IG, HN, GitHub, arXiv 共 6 個來源彙整；今日焦點集中在 GLM-5.4 循環 Transformer、Claude Code 轉向桌面 App、本地推論自動調校。",
+  "top1_diagram": {
+    "story_id": "5094532b4e2e63d2",
+    "title_zh": "GLM-5.4 以循環 Transformer 推進通用程式能力",
+    "nodes": [
+      {
+        "step": "01 BEFORE",
+        "label_zh": "固定深度堆疊",
+        "detail_zh": "標準 Transformer 靠逐層堆疊增加推理深度",
+        "tone": "neutral"
+      },
+      {
+        "step": "02 CHANGE",
+        "label_zh": "循環 Transformer 架構",
+        "detail_zh": "官方稱首次採用 loop transformer 建構通用編碼能力",
+        "tone": "change"
+      },
+      {
+        "step": "03 IMPACT",
+        "label_zh": "效果尚無公開數字",
+        "detail_zh": "文章與討論串未附基準分數，無法量化推論或程式表現",
+        "tone": "impact"
+      },
+      {
+        "step": "04 DEBATE",
+        "label_zh": "社群質疑與潛在方向",
+        "detail_zh": "留言者質疑缺基準；另有人認為潛空間循環推理是已知缺口",
+        "tone": "tension"
+      }
+    ]
+  },
+  "items": [
+    {
+      "id": "5094532b4e2e63d2",
+      "short_tag": "GLM-5.4 循環 Transformer",
+      "topic_id": "models-edge",
+      "topic_name": "Open-Source LLMs / VLM / Edge AI",
+      "published_at_display": "2026-11-23 18:06",
+      "importance_score": 88,
+      "popularity_score": 78,
+      "rank_reason_zh": "新模型架構發布，社群討論量最高",
+      "headline_zh": "智譜發布 GLM-5.4，宣稱首次採用循環 Transformer 架構以強化通用程式能力",
+      "community_consensus_zh": "社群關注新架構潛力，但普遍認為缺少基準分數，難以判斷實際表現",
+      "sentiment_tag": "mixed",
+      "sources": [
+        {
+          "platform": "hackernews",
+          "label": "HN 1170▲ / 380則留言",
+          "published_at": "2026-11-23 18:06",
+          "url": "https://news.ycombinator.com/item?id=50609685"
+        }
+      ],
+      "primary_url": "https://z.ai/blog/glm-5.4",
+      "wait_what": {
+        "premise_zh": "循環 Transformer 讓同一組層重複計算多次，不靠增加獨立層數來加深推理。GLM-5.4 官方把這個方向用在通用程式任務上。社群認為這類做法在潛空間推理（latent space looped thinking）是已被討論的缺口。",
+        "why_it_matters_to_you_zh": "若循環層能用較少參數達到相近深度，單卡顯存需求與推論成本可能下降。不過目前沒有公開基準，無法評估 TTFT 或 TPOT 的實際變化。",
+        "glossary_notes": [
+          {
+            "term": "Loop Transformer",
+            "explain_zh": "像同一台機器重複加工多次，不靠多買幾台機器加深流程"
+          }
+        ]
+      },
+      "community_voices": [
+        {
+          "stance": "con",
+          "platform": "hackernews",
+          "author": "saretup",
+          "quote_zh": "沒有基準分數，懷疑表現可能不如預期，否則官方應會列出數據",
+          "url": "https://news.ycombinator.com/item?id=50609905"
+        },
+        {
+          "stance": "nuance",
+          "platform": "hackernews",
+          "author": "eurekin",
+          "quote_zh": "此問題在 r/LocalLLaMA 已多次出現，被視為潛空間循環推理缺少的一環",
+          "url": "https://news.ycombinator.com/item?id=50610132"
+        }
+      ],
+      "composite_score": 85.2,
+      "rank": 1,
+      "source_section": "hackernews"
+    },
+    {
+      "id": "040801041267f877",
+      "short_tag": "Claude Code 轉向桌面 App",
+      "topic_id": "agents",
+      "topic_name": "AI Agents & Coding Tools",
+      "published_at_display": "2026-11-24 20:19",
+      "importance_score": 82,
+      "popularity_score": 79,
+      "rank_reason_zh": "直接影響 Agent 工作流的權限與操作方式，社群留言量高且有實際分歧。",
+      "headline_zh": "一位使用者回報，近一個月多數 Claude 工作已轉到 Claude 桌面 App，改用終端機的人變少。",
+      "community_consensus_zh": "留言多為調侃與質疑，部分使用者認為桌面 App 多一層權限反而礙事。",
+      "sentiment_tag": "mixed",
+      "sources": [
+        {
+          "platform": "reddit",
+          "label": "r/ClaudeCode 528▲ / 744則留言",
+          "published_at": "2026-11-24 20:19",
+          "url": "https://www.reddit.com/r/ClaudeCode/comments/1y4bwpm/does_anyone_still_use_claude_code_in_terminal/"
+        }
+      ],
+      "primary_url": "https://www.reddit.com/r/ClaudeCode/comments/1y4bwpm/does_anyone_still_use_claude_code_in_terminal/",
+      "wait_what": {
+        "premise_zh": "Claude Code 原本是在終端機中，於指定專案資料夾內執行的 coding agent。Claude desktop 則是桌面應用程式。使用者感覺近一個月工作重心已移到桌面端，且桌面端的控制與存取範圍似乎更大。",
+        "why_it_matters_to_you_zh": "若桌面端權限與檔案存取範圍較大，Agent 的權限邊界就需要重新檢查。終端機模式較容易限定專案範圍，這對自動化流程的安全性有實際差異。",
+        "glossary_notes": [
+          {
+            "term": "Desktop App 權限層",
+            "explain_zh": "像在 Terminal 外面再加一道門禁，工具要做的事得先過一關審核。"
+          }
+        ]
+      },
+      "community_voices": [
+        {
+          "stance": "nuance",
+          "platform": "reddit",
+          "author": "u/NoInstructionManual",
+          "quote_zh": "桌面 App 讓非技術人員覺得我在做很複雜的事，這算一種印象管理。",
+          "url": "https://www.reddit.com/r/ClaudeCode/comments/1y4bwpm/comment/19t4aga62g00w/"
+        },
+        {
+          "stance": "con",
+          "platform": "reddit",
+          "author": "u/count023",
+          "quote_zh": "一直以為桌面版是給非技術人員的降級版，不知道有人會放在主要工作流。",
+          "url": "https://www.reddit.com/r/ClaudeCode/comments/1y4bwpm/comment/19t4awtmp23ab/"
+        },
+        {
+          "stance": "con",
+          "platform": "reddit",
+          "author": "u/EyesOffCR",
+          "quote_zh": "我只用終端機。桌面 App 多了一層權限，常常擋住正常操作。",
+          "url": "https://www.reddit.com/r/ClaudeCode/comments/1y4bwpm/comment/19t4alchcnfhh/"
+        }
+      ],
+      "composite_score": 82.7,
+      "rank": 2,
+      "source_section": "reddit"
+    },
+    {
+      "id": "a70cae4c16f0fdc6",
+      "short_tag": "本地推論自動調校",
+      "topic_id": "models-edge",
+      "topic_name": "Open-Source LLMs / VLM / Edge AI",
+      "published_at_display": "2026-11-17 02:40",
+      "importance_score": 86,
+      "popularity_score": 74,
+      "rank_reason_zh": "直接對應推論延遲與部署調校，可把 Agent 接進壓測流程。",
+      "headline_zh": "sybil-solutions 釋出開源 Agent skill，讓 Agent 自動調校本地 LLM 推論速度，涵蓋 decode、投機解碼與 KV 設定。",
+      "community_consensus_zh": "目前以轉發分享為主，尚無顯著正反論戰，留言區無可引用的實測回饋。",
+      "sentiment_tag": "neutral",
+      "sources": [
+        {
+          "platform": "github",
+          "label": "GitHub 2603 stars / 238 forks",
+          "published_at": "2026-11-17 02:40",
+          "url": "https://github.com/sybil-solutions/inference-optimisation-skill"
+        }
+      ],
+      "primary_url": "https://github.com/sybil-solutions/inference-optimisation-skill",
+      "wait_what": {
+        "premise_zh": "本地跑 LLM 時，速度會受 decode、prefill、投機解碼與 KV 設定影響。過去多靠工程師手動反覆試參數。這個 skill 把試參數的迴圈交給 Agent 自動跑。",
+        "why_it_matters_to_you_zh": "TTFT 與 TPOT 的調校可以直接套用，省下手動壓測時間。不同硬體與量化組合都能跑，適合 Edge 裝置的部署流程。",
+        "glossary_notes": [
+          {
+            "term": "Hill-climbing（爬坡法）",
+            "explain_zh": "像爬山：每次只改一個參數，變快就保留，直到無法再快。"
+          },
+          {
+            "term": "Speculative decoding（投機解碼）",
+            "explain_zh": "小模型先猜多個 token，大模型一次批次驗收，類似先草稿再校稿。"
+          }
+        ]
+      },
+      "community_voices": [],
+      "composite_score": 82.2,
+      "rank": 3,
+      "source_section": "github"
+    },
+    {
+      "id": "20d604e4e7da95cb",
+      "short_tag": "ElevenLabs MCP 進 Claude",
+      "topic_id": "agents",
+      "topic_name": "AI Agents & Coding Tools",
+      "published_at_display": "2026-08-26 05:37",
+      "importance_score": 68,
+      "popularity_score": 86,
+      "rank_reason_zh": "MCP 實用整合，互動量高，但發布日期較早需留意。",
+      "headline_zh": "ElevenLabs 推出 MCP 伺服器，Claude 內可直接管理語音與對話 agent 的設定與成效。",
+      "community_consensus_zh": "社群以高讚與轉發為主，目前尚無顯著正反論戰，體感評價仍待更多實測回饋。",
+      "sentiment_tag": "mostly_positive",
+      "sources": [
+        {
+          "platform": "x",
+          "label": "X 6883 讚 / 457 轉推 / 250 回覆",
+          "published_at": "2026-08-26 05:37",
+          "url": "https://x.com/ElevenLabsDevs/status/2092365834983219575"
+        }
+      ],
+      "primary_url": "https://x.com/ElevenLabsDevs/status/2092365834983219575",
+      "wait_what": {
+        "premise_zh": "ElevenLabs 發布了自家的 MCP 伺服器，讓 Claude 能直接呼叫其平台功能。使用者可在 Claude 內查看語音與聊天 agent 的近期表現、建立新 agent、修改設定，並在上線前估算 LLM 成本。",
+        "why_it_matters_to_you_zh": "若你在 Claude 內維護語音或對話 agent，可少切換後台。成本估算功能有助於在改設定前先看到推論費用影響。",
+        "glossary_notes": []
+      },
+      "community_voices": [],
+      "composite_score": 78.0,
+      "rank": 4,
+      "source_section": "x"
+    },
+    {
+      "id": "4a5a9b50a2385544",
+      "short_tag": "Agent 並行手機測試",
+      "topic_id": "agents",
+      "topic_name": "AI Agents & Coding Tools",
+      "published_at_display": "2026-11-24 20:57",
+      "importance_score": 80,
+      "popularity_score": 71,
+      "rank_reason_zh": "Claude Code agent 實際用於手機 QA，工作流可直接參考。",
+      "headline_zh": "pierridotite 開源 mobile-agent-testers，用 GitHub 免費 runner 並行跑 20 組手機 AI 測試，涵蓋流程、翻譯與無障礙檢查。",
+      "community_consensus_zh": "目前以轉發分享為主，尚無顯著正反論戰，留言區無可引用的實測回饋。",
+      "sentiment_tag": "neutral",
+      "sources": [
+        {
+          "platform": "github",
+          "label": "GitHub 1911 stars / 189 forks",
+          "published_at": "2026-11-24 20:57",
+          "url": "https://github.com/pierridotite/mobile-agent-testers"
+        }
+      ],
+      "primary_url": "https://github.com/pierridotite/mobile-agent-testers",
+      "wait_what": {
+        "premise_zh": "手機 App 的 QA 通常要人工在多台實機上點流程。這個專案改用 Claude Code agent 在 iOS Simulator 與 Android emulator 上自動跑測試。整套流程放在 GitHub 的免費 runner 上並行執行。",
+        "why_it_matters_to_you_zh": "可以把 Agent 當成 CI 裡的測試員，自動抓流程錯誤、翻譯與版面問題。模擬器行為可能與實機不同，導入前要自行驗證。",
+        "glossary_notes": [
+          {
+            "term": "GitHub free runners",
+            "explain_zh": "GitHub 提供的免費雲端 CI 機器，類似租用臨時的測試電腦。"
+          },
+          {
+            "term": "iOS Simulator",
+            "explain_zh": "蘋果官方的軟體模擬器，等同在電腦上跑 iPhone 系統，不是實體手機。"
+          }
+        ]
+      },
+      "community_voices": [],
+      "composite_score": 77.8,
+      "rank": 5,
+      "source_section": "github"
+    },
+    {
+      "id": "3b3d28581b43d8e7",
+      "short_tag": "Claude 數學證明爭議",
+      "topic_id": "industry",
+      "topic_name": "AI 產業與新模型發布",
+      "published_at_display": "2026-11-24 23:10",
+      "importance_score": 74,
+      "popularity_score": 77,
+      "rank_reason_zh": "涉及 AI 能力宣稱的可驗證性，附件規模大，對評測可信度有直接警示。",
+      "headline_zh": "Anthropic 宣稱 Claude 解出一道古老數學題，但附上的證明長達 250,000 頁，被網友批評為 slop。",
+      "community_consensus_zh": "原始資料無留言，僅標題帶質疑語氣，尚無可引用的顯著正反論戰。",
+      "sentiment_tag": "neutral",
+      "sources": [
+        {
+          "platform": "reddit",
+          "label": "r/EverythingScience 1087▲ / 354則留言",
+          "published_at": "2026-11-24 23:10",
+          "url": "https://www.reddit.com/r/EverythingScience/comments/1y4fo9c/anthropic_says_claude_solved_an_ageold_math/"
+        }
+      ],
+      "primary_url": "https://www.reddit.com/r/EverythingScience/comments/1y4fo9c/anthropic_says_claude_solved_an_ageold_math/",
+      "wait_what": {
+        "premise_zh": "Anthropic 公開表示 Claude 解出一個長期未解的數學問題。證明文件本身達 250,000 頁。標題中的 slop 指冗長且品質低的生成內容，很難逐行審查。",
+        "why_it_matters_to_you_zh": "若證明無法被人審查，這類能力宣稱就難以用 Ground Truth 驗證。做 Eval 時，應把可獨立重現的結果與長篇生成內容分開看待。",
+        "glossary_notes": [
+          {
+            "term": "slop",
+            "explain_zh": "大量生成、看似完整但缺乏品質的內容，像用量灌出來的垃圾文字。"
+          }
+        ]
+      },
+      "community_voices": [],
+      "composite_score": 76.1,
+      "rank": 6,
+      "source_section": "reddit"
+    },
+    {
+      "id": "30d03f10571df261",
+      "short_tag": "矩陣乘法指數 2.25 預印本",
+      "topic_id": "industry",
+      "topic_name": "AI 產業與新模型發布",
+      "published_at_display": "2026-11-25 09:19",
+      "importance_score": 74,
+      "popularity_score": 69,
+      "rank_reason_zh": "理論計算突破，但尚需獨立驗證",
+      "headline_zh": "OpenAI 數學專案預印本宣稱矩陣乘法指數為 2.25，另附八項相關結果",
+      "community_consensus_zh": "社群討論證明細節與方形矩陣推廣到長方形矩陣的適用性，尚無定論",
+      "sentiment_tag": "mixed",
+      "sources": [
+        {
+          "platform": "hackernews",
+          "label": "HN 358▲ / 173則留言",
+          "published_at": "2026-11-25 09:19",
+          "url": "https://news.ycombinator.com/item?id=50637220"
+        }
+      ],
+      "primary_url": "https://github.com/openai/math/blob/main/preprints/The-matrix-multiplication-exponent-is-nine-fourths-November-24-2026/paper.pdf",
+      "wait_what": {
+        "premise_zh": "矩陣乘法指數 omega 描述兩個 n 乘 n 矩陣相乘所需的計算量級。預印本標題宣稱 omega 為 2.25。留言者指出論文另附 8 項相關結果，並稱其為精確值而非下界。",
+        "why_it_matters_to_you_zh": "此理論結果短期不會直接改變 GPU 核心或推論引擎。若未來能轉成可實作演算法，才會影響 attention 與 Linear 層的計算成本。",
+        "glossary_notes": [
+          {
+            "term": "omega (matrix multiplication exponent)",
+            "explain_zh": "衡量矩陣相乘理論速度的指數，數字越小代表演算法越快"
+          }
+        ]
+      },
+      "community_voices": [
+        {
+          "stance": "nuance",
+          "platform": "hackernews",
+          "author": "mmoskal",
+          "quote_zh": "作者指出論文另有 8 項結果，並主張 omega 精確為 2.25，而非只是下界",
+          "url": "https://news.ycombinator.com/item?id=50637238"
+        },
+        {
+          "stance": "nuance",
+          "platform": "hackernews",
+          "author": "vlovich123",
+          "quote_zh": "摘要只提方形矩陣，留言者想確認結果能否推廣到長方形矩陣",
+          "url": "https://news.ycombinator.com/item?id=50637395"
+        }
+      ],
+      "composite_score": 72.5,
+      "rank": 7,
+      "source_section": "hackernews"
+    },
+    {
+      "id": "38487f414c254a10",
+      "short_tag": "閉源教師蒸餾長程策略",
+      "topic_id": "agents",
+      "topic_name": "AI Agents & Coding Tools",
+      "published_at_display": "2026-11-25 02:58",
+      "importance_score": 84,
+      "popularity_score": 46,
+      "rank_reason_zh": "直接關係 Agent 訓練成本，且處理閉源教師推理不可見的實務限制。",
+      "headline_zh": "CoT-Proxy 提出跨格式遷移方法，從閉源教師模型蒸餾長程推理策略。",
+      "community_consensus_zh": "目前以轉發分享為主，尚無顯著正反論戰，arXiv 頁面也無留言可供比對。",
+      "sentiment_tag": "neutral",
+      "sources": [
+        {
+          "platform": "arxiv",
+          "label": "arXiv 摘要頁（無互動數據）",
+          "published_at": "2026-11-25 02:58",
+          "url": "http://arxiv.org/abs/2611.33148v1"
+        }
+      ],
+      "primary_url": "http://arxiv.org/abs/2611.33148v1",
+      "wait_what": {
+        "premise_zh": "長程 Agent 通常靠強化學習，或用更強模型的軌跡做微調。這些軌跡同時含教師的 chain-of-thought 與動作。最強教師多為閉源模型，其 chain-of-thought 藏在 API 後面。",
+        "why_it_matters_to_you_zh": "若拿不到教師的推理過程，跨格式方法可能讓蒸餾更省成本。實際需要的輸入格式與效果，需讀原文確認。",
+        "glossary_notes": [
+          {
+            "term": "Cross-Format Transfer",
+            "explain_zh": "像把筆記換成另一種格式，仍保留可用的重點。"
+          }
+        ]
+      },
+      "community_voices": [],
+      "composite_score": 68.6,
+      "rank": 8,
+      "source_section": "arxiv"
+    }
+  ],
+  "sections": [
+    {
+      "source": "x",
+      "label": "X",
+      "takeaway_zh": "Coding agent 開始依任務難度分流模型，省成本成為工具層的新戰場。",
+      "top_diagram": {
+        "story_id": "fb0b1daae67b3c6c",
+        "title_zh": "LiteLLM 分流 coding agent 任務",
+        "nodes": [
+          {
+            "step": "01 BEFORE",
+            "label_zh": "全部任務走高階模型",
+            "detail_zh": "簡單 coding 任務也付高階模型價格",
+            "tone": "neutral"
+          },
+          {
+            "step": "02 CHANGE",
+            "label_zh": "Switchyard 自動分流",
+            "detail_zh": "依任務複雜度切換便宜快模型或前沿模型",
+            "tone": "change"
+          },
+          {
+            "step": "03 IMPACT",
+            "label_zh": "減少無謂的高階呼叫",
+            "detail_zh": "簡單任務改走快速低價模型，降低成本",
+            "tone": "impact"
+          },
+          {
+            "step": "04 DEBATE",
+            "label_zh": "路由判準待驗證",
+            "detail_zh": "未見公開的實測成本數據與分流準確率",
+            "tone": "tension"
+          }
+        ]
+      },
+      "items": [
+        {
+          "id": "20d604e4e7da95cb",
+          "short_tag": "ElevenLabs MCP 進 Claude",
+          "topic_id": "agents",
+          "topic_name": "AI Agents & Coding Tools",
+          "published_at_display": "2026-08-26 05:37",
+          "importance_score": 68,
+          "popularity_score": 86,
+          "rank_reason_zh": "MCP 實用整合，互動量高，但發布日期較早需留意。",
+          "headline_zh": "ElevenLabs 推出 MCP 伺服器，Claude 內可直接管理語音與對話 agent 的設定與成效。",
+          "community_consensus_zh": "社群以高讚與轉發為主，目前尚無顯著正反論戰，體感評價仍待更多實測回饋。",
+          "sentiment_tag": "mostly_positive",
+          "sources": [
+            {
+              "platform": "x",
+              "label": "X 6883 讚 / 457 轉推 / 250 回覆",
+              "published_at": "2026-08-26 05:37",
+              "url": "https://x.com/ElevenLabsDevs/status/2092365834983219575"
+            }
+          ],
+          "primary_url": "https://x.com/ElevenLabsDevs/status/2092365834983219575",
+          "wait_what": {
+            "premise_zh": "ElevenLabs 發布了自家的 MCP 伺服器，讓 Claude 能直接呼叫其平台功能。使用者可在 Claude 內查看語音與聊天 agent 的近期表現、建立新 agent、修改設定，並在上線前估算 LLM 成本。",
+            "why_it_matters_to_you_zh": "若你在 Claude 內維護語音或對話 agent，可少切換後台。成本估算功能有助於在改設定前先看到推論費用影響。",
+            "glossary_notes": []
+          },
+          "community_voices": [],
+          "composite_score": 78.0,
+          "rank": 1,
+          "source_section": "x"
+        },
+        {
+          "id": "fb0b1daae67b3c6c",
+          "short_tag": "Coding agent 自動分流",
+          "topic_id": "agents",
+          "topic_name": "AI Agents & Coding Tools",
+          "published_at_display": "2026-11-25 08:49",
+          "importance_score": 80,
+          "popularity_score": 39,
+          "rank_reason_zh": "直接影響 coding agent 的模型成本與路由，今日新發布。",
+          "headline_zh": "LiteLLM 整合 NVIDIA NeMo Switchyard Router，為 coding agent 自動分流簡單與複雜任務到不同模型。",
+          "community_consensus_zh": "目前以轉發分享為主，尚無顯著正反論戰，實測成本與路由品質仍待驗證。",
+          "sentiment_tag": "neutral",
+          "sources": [
+            {
+              "platform": "x",
+              "label": "X 13 讚 / 3 轉推 / 7 回覆",
+              "published_at": "2026-11-25 08:49",
+              "url": "https://x.com/LiteLLM/status/2125391269694501214"
+            }
+          ],
+          "primary_url": "https://x.com/LiteLLM/status/2125391269694501214",
+          "wait_what": {
+            "premise_zh": "LiteLLM 是常見的模型代理層，可統一呼叫多家模型。NVIDIA NeMo Switchyard Router 是一個自動路由器，會先判斷任務難度，再決定送給哪個模型。此次它已整合進 LiteLLM，用於 coding agent 場景。",
+            "why_it_matters_to_you_zh": "若你的 Agent 同時跑大量簡單工具呼叫與少量複雜推理，分流能降低前沿模型的呼叫次數。接入時需確認分流判準，避免複雜任務被錯送到便宜模型。",
+            "glossary_notes": [
+              {
+                "term": "Switchyard Router",
+                "explain_zh": "像交通分流員，先看任務難度再把車導向不同車道的模型。"
+              }
+            ]
+          },
+          "community_voices": [],
+          "composite_score": 63.1,
+          "rank": 2,
+          "source_section": "x"
+        },
+        {
+          "id": "5ae81d1ebdcc8ce3",
+          "short_tag": "Grok Bot 委派訂閱 CLI",
+          "topic_id": "agents",
+          "topic_name": "AI Agents & Coding Tools",
+          "published_at_display": "2026-11-25 12:34",
+          "importance_score": 55,
+          "popularity_score": 25,
+          "rank_reason_zh": "跨訂閱委派有實用性，但資訊量少且無實測數據。",
+          "headline_zh": "Grok Bot 可透過桌面登入與 CLI，把任務委派給已訂閱的 ChatGPT、Codex 與 Claude。",
+          "community_consensus_zh": "目前以轉發分享為主，尚無顯著正反論戰，發文者指出仍有不少使用者詢問此功能。",
+          "sentiment_tag": "neutral",
+          "sources": [
+            {
+              "platform": "x",
+              "label": "X 4 讚 / 1 轉推 / 0 回覆",
+              "published_at": "2026-11-25 12:34",
+              "url": "https://x.com/cradrrat/status/2125447951963373829"
+            }
+          ],
+          "primary_url": "https://x.com/cradrrat/status/2125447951963373829",
+          "wait_what": {
+            "premise_zh": "Grok Bot 可使用電腦端已登入的 ChatGPT、Codex 或 Claude 帳號。它透過 CLI 把任務送出，並把結果回傳到 Bots 聊天室。此做法不需要額外 API 金鑰。",
+            "why_it_matters_to_you_zh": "若能穩定運作，可把 Codex 或 Claude Code 的工作流接進 Grok 聊天介面。但它依賴桌面登入狀態，使用前需確認服務條款與帳號權限。",
+            "glossary_notes": []
+          },
+          "community_voices": [],
+          "composite_score": 42.5,
+          "rank": 3,
+          "source_section": "x"
+        }
+      ]
+    },
+    {
+      "source": "reddit",
+      "label": "Reddit",
+      "takeaway_zh": "Claude Code 使用者開始從終端機轉向桌面 App，權限層成為主要保留點。",
+      "top_diagram": {
+        "story_id": "040801041267f877",
+        "title_zh": "Claude Code 從終端機轉向桌面 App",
+        "nodes": [
+          {
+            "step": "01 BEFORE",
+            "label_zh": "終端機單一專案流程",
+            "detail_zh": "在指定專案資料夾用終端機跑 Claude Code",
+            "tone": "neutral"
+          },
+          {
+            "step": "02 CHANGE",
+            "label_zh": "改用桌面 App 操作",
+            "detail_zh": "Claude desktop 權限與存取範圍看起來變大",
+            "tone": "change"
+          },
+          {
+            "step": "03 IMPACT",
+            "label_zh": "多數工作移到桌面端",
+            "detail_zh": "使用者自述近月大半任務已轉移，無量化數據",
+            "tone": "impact"
+          },
+          {
+            "step": "04 DEBATE",
+            "label_zh": "額外權限層擋路",
+            "detail_zh": "部分使用者說 App 多一層權限，妨礙工作",
+            "tone": "tension"
+          }
+        ]
+      },
+      "items": [
+        {
+          "id": "040801041267f877",
+          "short_tag": "Claude Code 轉向桌面 App",
+          "topic_id": "agents",
+          "topic_name": "AI Agents & Coding Tools",
+          "published_at_display": "2026-11-24 20:19",
+          "importance_score": 82,
+          "popularity_score": 79,
+          "rank_reason_zh": "直接影響 Agent 工作流的權限與操作方式，社群留言量高且有實際分歧。",
+          "headline_zh": "一位使用者回報，近一個月多數 Claude 工作已轉到 Claude 桌面 App，改用終端機的人變少。",
+          "community_consensus_zh": "留言多為調侃與質疑，部分使用者認為桌面 App 多一層權限反而礙事。",
+          "sentiment_tag": "mixed",
+          "sources": [
+            {
+              "platform": "reddit",
+              "label": "r/ClaudeCode 528▲ / 744則留言",
+              "published_at": "2026-11-24 20:19",
+              "url": "https://www.reddit.com/r/ClaudeCode/comments/1y4bwpm/does_anyone_still_use_claude_code_in_terminal/"
+            }
+          ],
+          "primary_url": "https://www.reddit.com/r/ClaudeCode/comments/1y4bwpm/does_anyone_still_use_claude_code_in_terminal/",
+          "wait_what": {
+            "premise_zh": "Claude Code 原本是在終端機中，於指定專案資料夾內執行的 coding agent。Claude desktop 則是桌面應用程式。使用者感覺近一個月工作重心已移到桌面端，且桌面端的控制與存取範圍似乎更大。",
+            "why_it_matters_to_you_zh": "若桌面端權限與檔案存取範圍較大，Agent 的權限邊界就需要重新檢查。終端機模式較容易限定專案範圍，這對自動化流程的安全性有實際差異。",
+            "glossary_notes": [
+              {
+                "term": "Desktop App 權限層",
+                "explain_zh": "像在 Terminal 外面再加一道門禁，工具要做的事得先過一關審核。"
+              }
+            ]
+          },
+          "community_voices": [
+            {
+              "stance": "nuance",
+              "platform": "reddit",
+              "author": "u/NoInstructionManual",
+              "quote_zh": "桌面 App 讓非技術人員覺得我在做很複雜的事，這算一種印象管理。",
+              "url": "https://www.reddit.com/r/ClaudeCode/comments/1y4bwpm/comment/19t4aga62g00w/"
+            },
+            {
+              "stance": "con",
+              "platform": "reddit",
+              "author": "u/count023",
+              "quote_zh": "一直以為桌面版是給非技術人員的降級版，不知道有人會放在主要工作流。",
+              "url": "https://www.reddit.com/r/ClaudeCode/comments/1y4bwpm/comment/19t4awtmp23ab/"
+            },
+            {
+              "stance": "con",
+              "platform": "reddit",
+              "author": "u/EyesOffCR",
+              "quote_zh": "我只用終端機。桌面 App 多了一層權限，常常擋住正常操作。",
+              "url": "https://www.reddit.com/r/ClaudeCode/comments/1y4bwpm/comment/19t4alchcnfhh/"
+            }
+          ],
+          "composite_score": 82.7,
+          "rank": 1,
+          "source_section": "reddit"
+        },
+        {
+          "id": "3b3d28581b43d8e7",
+          "short_tag": "Claude 數學證明爭議",
+          "topic_id": "industry",
+          "topic_name": "AI 產業與新模型發布",
+          "published_at_display": "2026-11-24 23:10",
+          "importance_score": 74,
+          "popularity_score": 77,
+          "rank_reason_zh": "涉及 AI 能力宣稱的可驗證性，附件規模大，對評測可信度有直接警示。",
+          "headline_zh": "Anthropic 宣稱 Claude 解出一道古老數學題，但附上的證明長達 250,000 頁，被網友批評為 slop。",
+          "community_consensus_zh": "原始資料無留言，僅標題帶質疑語氣，尚無可引用的顯著正反論戰。",
+          "sentiment_tag": "neutral",
+          "sources": [
+            {
+              "platform": "reddit",
+              "label": "r/EverythingScience 1087▲ / 354則留言",
+              "published_at": "2026-11-24 23:10",
+              "url": "https://www.reddit.com/r/EverythingScience/comments/1y4fo9c/anthropic_says_claude_solved_an_ageold_math/"
+            }
+          ],
+          "primary_url": "https://www.reddit.com/r/EverythingScience/comments/1y4fo9c/anthropic_says_claude_solved_an_ageold_math/",
+          "wait_what": {
+            "premise_zh": "Anthropic 公開表示 Claude 解出一個長期未解的數學問題。證明文件本身達 250,000 頁。標題中的 slop 指冗長且品質低的生成內容，很難逐行審查。",
+            "why_it_matters_to_you_zh": "若證明無法被人審查，這類能力宣稱就難以用 Ground Truth 驗證。做 Eval 時，應把可獨立重現的結果與長篇生成內容分開看待。",
+            "glossary_notes": [
+              {
+                "term": "slop",
+                "explain_zh": "大量生成、看似完整但缺乏品質的內容，像用量灌出來的垃圾文字。"
+              }
+            ]
+          },
+          "community_voices": [],
+          "composite_score": 76.1,
+          "rank": 2,
+          "source_section": "reddit"
+        }
+      ]
+    },
+    {
+      "source": "instagram",
+      "label": "IG",
+      "takeaway_zh": "今日 IG 候選多為觀點或提問，無可落地的技術訊號。",
+      "top_diagram": {
+        "story_id": "3f07c5bd4cdcb703",
+        "title_zh": "雄心專案規模化的阻力鏈",
+        "nodes": [
+          {
+            "step": "01 BEFORE",
+            "label_zh": "規模化遇到勸退理由",
+            "detail_zh": "專案跨入未有人做過的規模時，阻力接連出現",
+            "tone": "neutral"
+          },
+          {
+            "step": "02 CHANGE",
+            "label_zh": "以克服問題視為必經之路",
+            "detail_zh": "Altman 認為看似不合理的阻礙，本來就是規模化的一部分",
+            "tone": "change"
+          },
+          {
+            "step": "03 IMPACT",
+            "label_zh": "無實測結果可引用",
+            "detail_zh": "原始資料只有觀點摘要，沒有數據、產品或效能結果",
+            "tone": "impact"
+          },
+          {
+            "step": "04 DEBATE",
+            "label_zh": "無留言可觀察反對聲音",
+            "detail_zh": "原始資料未附留言，無法判斷社群是否認同或反駁",
+            "tone": "tension"
+          }
+        ]
+      },
+      "items": [
+        {
+          "id": "3f07c5bd4cdcb703",
+          "short_tag": "Altman 談規模化阻力",
+          "topic_id": "industry",
+          "topic_name": "AI 產業與新模型發布",
+          "published_at_display": "2026-11-25 05:31",
+          "importance_score": 35,
+          "popularity_score": 33,
+          "rank_reason_zh": "OpenAI 高層觀點短片，無技術數據，僅供組織與策略參考。",
+          "headline_zh": "OpenAI 執行長 Sam Altman 在 IG 短片談雄心型專案的規模化難題，內容為觀點而非新技術發布。",
+          "community_consensus_zh": "原始資料未附留言內容，目前以轉發分享為主，尚無顯著正反論戰。",
+          "sentiment_tag": "neutral",
+          "sources": [
+            {
+              "platform": "instagram",
+              "label": "Instagram 讚數與觀看數未提供 / 7 則留言",
+              "published_at": "2026-11-25 05:31",
+              "url": "https://www.instagram.com/reel/DgI7IAsuLf5/"
+            }
+          ],
+          "primary_url": "https://www.instagram.com/reel/DgI7IAsuLf5/",
+          "wait_what": {
+            "premise_zh": "Sam Altman 是 OpenAI 共同創辦人兼執行長。這支短片摘要他的一個觀點：要做前人沒做過的規模，常會先遇到一連串看似不合理的阻礙。短片沒有提到具體產品、模型或技術數據。",
+            "why_it_matters_to_you_zh": "內容屬於管理與策略觀點，對推論延遲、顯存或部署成本沒有直接影響。若你在規劃大型 Agent 系統的擴充階段，可把它當作團隊心態的參考，不宜當作技術依據。",
+            "glossary_notes": []
+          },
+          "community_voices": [],
+          "composite_score": 34.4,
+          "rank": 1,
+          "source_section": "instagram"
+        }
+      ]
+    },
+    {
+      "source": "hackernews",
+      "label": "HN",
+      "takeaway_zh": "開源模型與 Agent 工具是今日焦點，但多數新聞缺少實測數據",
+      "top_diagram": {
+        "story_id": "5094532b4e2e63d2",
+        "title_zh": "GLM-5.4 以循環 Transformer 推進通用程式能力",
+        "nodes": [
+          {
+            "step": "01 BEFORE",
+            "label_zh": "固定深度堆疊",
+            "detail_zh": "標準 Transformer 靠逐層堆疊增加推理深度",
+            "tone": "neutral"
+          },
+          {
+            "step": "02 CHANGE",
+            "label_zh": "循環 Transformer 架構",
+            "detail_zh": "官方稱首次採用 loop transformer 建構通用編碼能力",
+            "tone": "change"
+          },
+          {
+            "step": "03 IMPACT",
+            "label_zh": "效果尚無公開數字",
+            "detail_zh": "文章與討論串未附基準分數，無法量化推論或程式表現",
+            "tone": "impact"
+          },
+          {
+            "step": "04 DEBATE",
+            "label_zh": "社群質疑與潛在方向",
+            "detail_zh": "留言者質疑缺基準；另有人認為潛空間循環推理是已知缺口",
+            "tone": "tension"
+          }
+        ]
+      },
+      "items": [
+        {
+          "id": "5094532b4e2e63d2",
+          "short_tag": "GLM-5.4 循環 Transformer",
+          "topic_id": "models-edge",
+          "topic_name": "Open-Source LLMs / VLM / Edge AI",
+          "published_at_display": "2026-11-23 18:06",
+          "importance_score": 88,
+          "popularity_score": 78,
+          "rank_reason_zh": "新模型架構發布，社群討論量最高",
+          "headline_zh": "智譜發布 GLM-5.4，宣稱首次採用循環 Transformer 架構以強化通用程式能力",
+          "community_consensus_zh": "社群關注新架構潛力，但普遍認為缺少基準分數，難以判斷實際表現",
+          "sentiment_tag": "mixed",
+          "sources": [
+            {
+              "platform": "hackernews",
+              "label": "HN 1170▲ / 380則留言",
+              "published_at": "2026-11-23 18:06",
+              "url": "https://news.ycombinator.com/item?id=50609685"
+            }
+          ],
+          "primary_url": "https://z.ai/blog/glm-5.4",
+          "wait_what": {
+            "premise_zh": "循環 Transformer 讓同一組層重複計算多次，不靠增加獨立層數來加深推理。GLM-5.4 官方把這個方向用在通用程式任務上。社群認為這類做法在潛空間推理（latent space looped thinking）是已被討論的缺口。",
+            "why_it_matters_to_you_zh": "若循環層能用較少參數達到相近深度，單卡顯存需求與推論成本可能下降。不過目前沒有公開基準，無法評估 TTFT 或 TPOT 的實際變化。",
+            "glossary_notes": [
+              {
+                "term": "Loop Transformer",
+                "explain_zh": "像同一台機器重複加工多次，不靠多買幾台機器加深流程"
+              }
+            ]
+          },
+          "community_voices": [
+            {
+              "stance": "con",
+              "platform": "hackernews",
+              "author": "saretup",
+              "quote_zh": "沒有基準分數，懷疑表現可能不如預期，否則官方應會列出數據",
+              "url": "https://news.ycombinator.com/item?id=50609905"
+            },
+            {
+              "stance": "nuance",
+              "platform": "hackernews",
+              "author": "eurekin",
+              "quote_zh": "此問題在 r/LocalLLaMA 已多次出現，被視為潛空間循環推理缺少的一環",
+              "url": "https://news.ycombinator.com/item?id=50610132"
+            }
+          ],
+          "composite_score": 85.2,
+          "rank": 1,
+          "source_section": "hackernews"
+        },
+        {
+          "id": "30d03f10571df261",
+          "short_tag": "矩陣乘法指數 2.25 預印本",
+          "topic_id": "industry",
+          "topic_name": "AI 產業與新模型發布",
+          "published_at_display": "2026-11-25 09:19",
+          "importance_score": 74,
+          "popularity_score": 69,
+          "rank_reason_zh": "理論計算突破，但尚需獨立驗證",
+          "headline_zh": "OpenAI 數學專案預印本宣稱矩陣乘法指數為 2.25，另附八項相關結果",
+          "community_consensus_zh": "社群討論證明細節與方形矩陣推廣到長方形矩陣的適用性，尚無定論",
+          "sentiment_tag": "mixed",
+          "sources": [
+            {
+              "platform": "hackernews",
+              "label": "HN 358▲ / 173則留言",
+              "published_at": "2026-11-25 09:19",
+              "url": "https://news.ycombinator.com/item?id=50637220"
+            }
+          ],
+          "primary_url": "https://github.com/openai/math/blob/main/preprints/The-matrix-multiplication-exponent-is-nine-fourths-November-24-2026/paper.pdf",
+          "wait_what": {
+            "premise_zh": "矩陣乘法指數 omega 描述兩個 n 乘 n 矩陣相乘所需的計算量級。預印本標題宣稱 omega 為 2.25。留言者指出論文另附 8 項相關結果，並稱其為精確值而非下界。",
+            "why_it_matters_to_you_zh": "此理論結果短期不會直接改變 GPU 核心或推論引擎。若未來能轉成可實作演算法，才會影響 attention 與 Linear 層的計算成本。",
+            "glossary_notes": [
+              {
+                "term": "omega (matrix multiplication exponent)",
+                "explain_zh": "衡量矩陣相乘理論速度的指數，數字越小代表演算法越快"
+              }
+            ]
+          },
+          "community_voices": [
+            {
+              "stance": "nuance",
+              "platform": "hackernews",
+              "author": "mmoskal",
+              "quote_zh": "作者指出論文另有 8 項結果，並主張 omega 精確為 2.25，而非只是下界",
+              "url": "https://news.ycombinator.com/item?id=50637238"
+            },
+            {
+              "stance": "nuance",
+              "platform": "hackernews",
+              "author": "vlovich123",
+              "quote_zh": "摘要只提方形矩陣，留言者想確認結果能否推廣到長方形矩陣",
+              "url": "https://news.ycombinator.com/item?id=50637395"
+            }
+          ],
+          "composite_score": 72.5,
+          "rank": 2,
+          "source_section": "hackernews"
+        },
+        {
+          "id": "5e51eda1ac97c96b",
+          "short_tag": "微軟 Code Red 與 SRE AI",
+          "topic_id": "agents",
+          "topic_name": "AI Agents & Coding Tools",
+          "published_at_display": "2026-11-25 01:07",
+          "importance_score": 72,
+          "popularity_score": 69,
+          "rank_reason_zh": "大型雲服務事故後，官方承諾導入 AI 協助診斷",
+          "headline_zh": "微軟因歷史性服務中斷宣布 Code Red，目標一小時內恢復並導入 AI 代理協助診斷",
+          "community_consensus_zh": "社群多認為 Code Red 是內部流程事件，AI 代理的效果仍待觀察",
+          "sentiment_tag": "mixed",
+          "sources": [
+            {
+              "platform": "hackernews",
+              "label": "HN 236▲ / 218則留言",
+              "published_at": "2026-11-25 01:07",
+              "url": "https://news.ycombinator.com/item?id=50631157"
+            }
+          ],
+          "primary_url": "https://www.reuters.com/business/microsoft-declares-code-red-after-historic-outage-internal-memos-show-2026-11-24/",
+          "wait_what": {
+            "premise_zh": "Code Red 是微軟內部最高等級的應變動員，依內部備忘錄啟動。此次事故後，公司設定未來事件需在一小時內恢復服務的目標。同時計畫用 AI 代理協助工程師分析系統健康資料。",
+            "why_it_matters_to_you_zh": "若把 AI 代理用在 SRE 告警分流與根因分析，需要同時評估誤判率與權限邊界。實際效果取決於代理能否讀取足夠的 observability 資料。",
+            "glossary_notes": [
+              {
+                "term": "SRE",
+                "explain_zh": "站點可靠性工程，負責系統穩定與事故處理的維運角色"
+              }
+            ]
+          },
+          "community_voices": [
+            {
+              "stance": "nuance",
+              "platform": "hackernews",
+              "author": "alephnerd",
+              "quote_zh": "Code Red 在微軟是高層推動流程改革的訊號，標題對不熟悉內部語境的讀者有誤導",
+              "url": "https://news.ycombinator.com/item?id=50631363"
+            },
+            {
+              "stance": "nuance",
+              "platform": "hackernews",
+              "author": "steve1977",
+              "quote_zh": "作者質疑微軟資源充足，為何要等事故後才規劃用 AI 協助診斷系統健康狀況",
+              "url": "https://news.ycombinator.com/item?id=50631613"
+            }
+          ],
+          "composite_score": 72.4,
+          "rank": 3,
+          "source_section": "hackernews"
+        },
+        {
+          "id": "49db83e253edbf07",
+          "short_tag": "Versine MCP 收付款",
+          "topic_id": "agents",
+          "topic_name": "AI Agents & Coding Tools",
+          "published_at_display": "2026-11-25 04:44",
+          "importance_score": 68,
+          "popularity_score": 71,
+          "rank_reason_zh": "MCP 工具可直接操作金流，值得留意權限設計",
+          "headline_zh": "Versine 以 YC F26 身分推出 MCP 工具，讓 AI 代理可收發款項",
+          "community_consensus_zh": "社群認為概念有潛力，但擔心大型支付平台快速複製，且營收模式尚未說明",
+          "sentiment_tag": "mixed",
+          "sources": [
+            {
+              "platform": "hackernews",
+              "label": "HN 80▲ / 64則留言",
+              "published_at": "2026-11-25 04:44",
+              "url": "https://news.ycombinator.com/item?id=50634426"
+            }
+          ],
+          "primary_url": "https://news.ycombinator.com/item?id=50634426",
+          "wait_what": {
+            "premise_zh": "Versine 是 YC F26 批次的新創，發布 Launch HN 公告。產品以 MCP 協議讓 AI 代理收發款項。留言中有人關心營收模式，也有人認為 Cash App 與 Venmo 可能跟進。",
+            "why_it_matters_to_you_zh": "若 Agent 能呼叫金流工具，必須設計每筆交易的人工確認與權限上限。直接把付款 API 暴露給 LLM 會放大錯誤呼叫的風險。",
+            "glossary_notes": [
+              {
+                "term": "Launch HN",
+                "explain_zh": "YC 新創在 Hacker News 上的首發公告貼文"
+              }
+            ]
+          },
+          "community_voices": [
+            {
+              "stance": "pro",
+              "platform": "hackernews",
+              "author": "moecables",
+              "quote_zh": "能用 AI 真正搬動資金，概念可行，但大型支付平台很可能快速跟進",
+              "url": "https://news.ycombinator.com/item?id=50634560"
+            },
+            {
+              "stance": "nuance",
+              "platform": "hackernews",
+              "author": "Oras",
+              "quote_zh": "擔心每家支付平台都會複製，但多方請款的落地頁顯示產品有可能做出差異",
+              "url": "https://news.ycombinator.com/item?id=50634792"
+            }
+          ],
+          "composite_score": 71.1,
+          "rank": 4,
+          "source_section": "hackernews"
+        },
+        {
+          "id": "3c6728c1bfd19879",
+          "short_tag": "GPT-6 蛋白質設計能力",
+          "topic_id": "industry",
+          "topic_name": "AI 產業與新模型發布",
+          "published_at_display": "2026-11-25 05:02",
+          "importance_score": 64,
+          "popularity_score": 63,
+          "rank_reason_zh": "新模型生醫能力宣稱，但驗證方式仍不清楚",
+          "headline_zh": "OpenAI 宣稱 GPT-6 模型具備內建蛋白質設計能力，實驗細節待公開",
+          "community_consensus_zh": "社群關注如何在無濕實驗下驗證設計結果，也有人把話題連到生物安全政策",
+          "sentiment_tag": "mixed",
+          "sources": [
+            {
+              "platform": "hackernews",
+              "label": "HN 223▲ / 69則留言",
+              "published_at": "2026-11-25 05:02",
+              "url": "https://news.ycombinator.com/item?id=50634658"
+            }
+          ],
+          "primary_url": "https://openai.com/index/gpt-6-models-demonstrate-intrinsic-protein-design-capabilities/",
+          "wait_what": {
+            "premise_zh": "蛋白質設計是用模型生成新的胺基酸序列，使其摺疊成預期結構或功能。OpenAI 稱 GPT-6 模型具備此類內建能力。留言者指出，設計結果通常要經過實驗室合成與測試才能確認。",
+            "why_it_matters_to_you_zh": "此類能力目前不影響推論部署，但顯示通用模型正延伸到專業領域。工程端若要引用類似輸出，需要建立獨立的驗證管線與評測集。",
+            "glossary_notes": [
+              {
+                "term": "Protein design",
+                "explain_zh": "讓模型生成新蛋白質序列，類似用生成模型寫出新程式，但輸出需實驗驗證"
+              }
+            ]
+          },
+          "community_voices": [
+            {
+              "stance": "nuance",
+              "platform": "hackernews",
+              "author": "infralog77",
+              "quote_zh": "在不培養實驗體的情況下，如何檢驗模型設計的蛋白質，是這則新聞最大的疑問",
+              "url": "https://news.ycombinator.com/item?id=50635319"
+            },
+            {
+              "stance": "nuance",
+              "platform": "hackernews",
+              "author": "trilogic",
+              "quote_zh": "留言者提到開源生物模型可選，並表示 ChatGPT 的安全過濾常誤擋，希望有公開比較",
+              "url": "https://news.ycombinator.com/item?id=50635749"
+            }
+          ],
+          "composite_score": 64.2,
+          "rank": 5,
+          "source_section": "hackernews"
+        }
+      ]
+    },
+    {
+      "source": "github",
+      "label": "GitHub",
+      "takeaway_zh": "本批 GitHub 候選僅兩則有實戰價值：本地推論自動調校與 Agent 並行手機測試。",
+      "top_diagram": {
+        "story_id": "a70cae4c16f0fdc6",
+        "title_zh": "Agent 自動爬坡調校本地推論速度",
+        "nodes": [
+          {
+            "step": "01 BEFORE",
+            "label_zh": "手動調參耗時",
+            "detail_zh": "工程師需逐一試 decode、prefill、KV 等參數組合",
+            "tone": "neutral"
+          },
+          {
+            "step": "02 CHANGE",
+            "label_zh": "Agent Skill 爬坡迴圈",
+            "detail_zh": "Agent 每次改一項設定，保留有進步的改動",
+            "tone": "change"
+          },
+          {
+            "step": "03 IMPACT",
+            "label_zh": "可量化的速度改善",
+            "detail_zh": "本批資料未附實測數字，需看 repo 的 benchmark 紀錄",
+            "tone": "impact"
+          },
+          {
+            "step": "04 DEBATE",
+            "label_zh": "泛用性待驗證",
+            "detail_zh": "號稱支援任意硬體與量化，實際增益需自行測",
+            "tone": "tension"
+          }
+        ]
+      },
+      "items": [
+        {
+          "id": "a70cae4c16f0fdc6",
+          "short_tag": "本地推論自動調校",
+          "topic_id": "models-edge",
+          "topic_name": "Open-Source LLMs / VLM / Edge AI",
+          "published_at_display": "2026-11-17 02:40",
+          "importance_score": 86,
+          "popularity_score": 74,
+          "rank_reason_zh": "直接對應推論延遲與部署調校，可把 Agent 接進壓測流程。",
+          "headline_zh": "sybil-solutions 釋出開源 Agent skill，讓 Agent 自動調校本地 LLM 推論速度，涵蓋 decode、投機解碼與 KV 設定。",
+          "community_consensus_zh": "目前以轉發分享為主，尚無顯著正反論戰，留言區無可引用的實測回饋。",
+          "sentiment_tag": "neutral",
+          "sources": [
+            {
+              "platform": "github",
+              "label": "GitHub 2603 stars / 238 forks",
+              "published_at": "2026-11-17 02:40",
+              "url": "https://github.com/sybil-solutions/inference-optimisation-skill"
+            }
+          ],
+          "primary_url": "https://github.com/sybil-solutions/inference-optimisation-skill",
+          "wait_what": {
+            "premise_zh": "本地跑 LLM 時，速度會受 decode、prefill、投機解碼與 KV 設定影響。過去多靠工程師手動反覆試參數。這個 skill 把試參數的迴圈交給 Agent 自動跑。",
+            "why_it_matters_to_you_zh": "TTFT 與 TPOT 的調校可以直接套用，省下手動壓測時間。不同硬體與量化組合都能跑，適合 Edge 裝置的部署流程。",
+            "glossary_notes": [
+              {
+                "term": "Hill-climbing（爬坡法）",
+                "explain_zh": "像爬山：每次只改一個參數，變快就保留，直到無法再快。"
+              },
+              {
+                "term": "Speculative decoding（投機解碼）",
+                "explain_zh": "小模型先猜多個 token，大模型一次批次驗收，類似先草稿再校稿。"
+              }
+            ]
+          },
+          "community_voices": [],
+          "composite_score": 82.2,
+          "rank": 1,
+          "source_section": "github"
+        },
+        {
+          "id": "4a5a9b50a2385544",
+          "short_tag": "Agent 並行手機測試",
+          "topic_id": "agents",
+          "topic_name": "AI Agents & Coding Tools",
+          "published_at_display": "2026-11-24 20:57",
+          "importance_score": 80,
+          "popularity_score": 71,
+          "rank_reason_zh": "Claude Code agent 實際用於手機 QA，工作流可直接參考。",
+          "headline_zh": "pierridotite 開源 mobile-agent-testers，用 GitHub 免費 runner 並行跑 20 組手機 AI 測試，涵蓋流程、翻譯與無障礙檢查。",
+          "community_consensus_zh": "目前以轉發分享為主，尚無顯著正反論戰，留言區無可引用的實測回饋。",
+          "sentiment_tag": "neutral",
+          "sources": [
+            {
+              "platform": "github",
+              "label": "GitHub 1911 stars / 189 forks",
+              "published_at": "2026-11-24 20:57",
+              "url": "https://github.com/pierridotite/mobile-agent-testers"
+            }
+          ],
+          "primary_url": "https://github.com/pierridotite/mobile-agent-testers",
+          "wait_what": {
+            "premise_zh": "手機 App 的 QA 通常要人工在多台實機上點流程。這個專案改用 Claude Code agent 在 iOS Simulator 與 Android emulator 上自動跑測試。整套流程放在 GitHub 的免費 runner 上並行執行。",
+            "why_it_matters_to_you_zh": "可以把 Agent 當成 CI 裡的測試員，自動抓流程錯誤、翻譯與版面問題。模擬器行為可能與實機不同，導入前要自行驗證。",
+            "glossary_notes": [
+              {
+                "term": "GitHub free runners",
+                "explain_zh": "GitHub 提供的免費雲端 CI 機器，類似租用臨時的測試電腦。"
+              },
+              {
+                "term": "iOS Simulator",
+                "explain_zh": "蘋果官方的軟體模擬器，等同在電腦上跑 iPhone 系統，不是實體手機。"
+              }
+            ]
+          },
+          "community_voices": [],
+          "composite_score": 77.8,
+          "rank": 2,
+          "source_section": "github"
+        }
+      ]
+    },
+    {
+      "source": "arxiv",
+      "label": "arXiv",
+      "takeaway_zh": "今日 arXiv 訊號集中在 VLM 與 Agent 蒸餾，皆為論文階段，尚無實測與社群驗證。",
+      "top_diagram": {
+        "story_id": "38487f414c254a10",
+        "title_zh": "閉源教師蒸餾長程策略流程",
+        "nodes": [
+          {
+            "step": "01 BEFORE",
+            "label_zh": "教師推理過程不可見",
+            "detail_zh": "最強教師多為閉源，chain-of-thought 藏在 API 後",
+            "tone": "neutral"
+          },
+          {
+            "step": "02 CHANGE",
+            "label_zh": "跨格式遷移方法",
+            "detail_zh": "CoT-Proxy 提出跨格式轉移，細節需讀原文",
+            "tone": "change"
+          },
+          {
+            "step": "03 IMPACT",
+            "label_zh": "目標是較省成本的蒸餾",
+            "detail_zh": "摘要只述動機，未見具體省下多少數字",
+            "tone": "impact"
+          },
+          {
+            "step": "04 DEBATE",
+            "label_zh": "尚無獨立複現與實測",
+            "detail_zh": "社群無留言，成效與限制仍待驗證",
+            "tone": "tension"
+          }
+        ]
+      },
+      "items": [
+        {
+          "id": "38487f414c254a10",
+          "short_tag": "閉源教師蒸餾長程策略",
+          "topic_id": "agents",
+          "topic_name": "AI Agents & Coding Tools",
+          "published_at_display": "2026-11-25 02:58",
+          "importance_score": 84,
+          "popularity_score": 46,
+          "rank_reason_zh": "直接關係 Agent 訓練成本，且處理閉源教師推理不可見的實務限制。",
+          "headline_zh": "CoT-Proxy 提出跨格式遷移方法，從閉源教師模型蒸餾長程推理策略。",
+          "community_consensus_zh": "目前以轉發分享為主，尚無顯著正反論戰，arXiv 頁面也無留言可供比對。",
+          "sentiment_tag": "neutral",
+          "sources": [
+            {
+              "platform": "arxiv",
+              "label": "arXiv 摘要頁（無互動數據）",
+              "published_at": "2026-11-25 02:58",
+              "url": "http://arxiv.org/abs/2611.33148v1"
+            }
+          ],
+          "primary_url": "http://arxiv.org/abs/2611.33148v1",
+          "wait_what": {
+            "premise_zh": "長程 Agent 通常靠強化學習，或用更強模型的軌跡做微調。這些軌跡同時含教師的 chain-of-thought 與動作。最強教師多為閉源模型，其 chain-of-thought 藏在 API 後面。",
+            "why_it_matters_to_you_zh": "若拿不到教師的推理過程，跨格式方法可能讓蒸餾更省成本。實際需要的輸入格式與效果，需讀原文確認。",
+            "glossary_notes": [
+              {
+                "term": "Cross-Format Transfer",
+                "explain_zh": "像把筆記換成另一種格式，仍保留可用的重點。"
+              }
+            ]
+          },
+          "community_voices": [],
+          "composite_score": 68.6,
+          "rank": 1,
+          "source_section": "arxiv"
+        },
+        {
+          "id": "32187ffd8419c7c8",
+          "short_tag": "影音對話字幕加說話者",
+          "topic_id": "models-edge",
+          "topic_name": "Open-Source LLMs / VLM / Edge AI",
+          "published_at_display": "2026-11-25 02:59",
+          "importance_score": 80,
+          "popularity_score": 46,
+          "rank_reason_zh": "同一模型處理轉寫、時間戳與視覺描述，與 VLM 影片理解的實務需求直接相關。",
+          "headline_zh": "DiaCap 以單一 audiovisual LLM 同時產出逐句轉寫、時間戳與說話者外觀描述。",
+          "community_consensus_zh": "目前以轉發分享為主，尚無顯著正反論戰，arXiv 頁面也無留言可供比對。",
+          "sentiment_tag": "neutral",
+          "sources": [
+            {
+              "platform": "arxiv",
+              "label": "arXiv 摘要頁（無互動數據）",
+              "published_at": "2026-11-25 02:59",
+              "url": "http://arxiv.org/abs/2611.33153v1"
+            }
+          ],
+          "primary_url": "http://arxiv.org/abs/2611.33153v1",
+          "wait_what": {
+            "premise_zh": "影片字幕通常只給文字，不標示誰在何時說話。Diarization 是判斷說話者的任務，時間點與說話者判斷彼此牽動。作者因此把兩者放進同一個模型。",
+            "why_it_matters_to_you_zh": "若單一模型同時完成轉寫與說話者定位，部署管線可少串接多個模組，對延遲與維運有利。實際表現仍需看論文的評測數字。",
+            "glossary_notes": [
+              {
+                "term": "Audiovisual Diarization",
+                "explain_zh": "結合畫面與聲音，判斷每句話是誰說的。"
+              }
+            ]
+          },
+          "community_voices": [],
+          "composite_score": 66.0,
+          "rank": 2,
+          "source_section": "arxiv"
+        },
+        {
+          "id": "e1c81eb8875d55a7",
+          "short_tag": "單一策略跨多款機器人",
+          "topic_id": "models-edge",
+          "topic_name": "Open-Source LLMs / VLM / Edge AI",
+          "published_at_display": "2026-11-25 02:59",
+          "importance_score": 74,
+          "popularity_score": 46,
+          "rank_reason_zh": "探討單一策略跨機體部署，與 Edge 端多裝置維護成本相關。",
+          "headline_zh": "OmniAct 主張用單一策略控制多種機器人，並依各機器人能力調整動作。",
+          "community_consensus_zh": "目前以轉發分享為主，尚無顯著正反論戰，arXiv 頁面也無留言可供比對。",
+          "sentiment_tag": "neutral",
+          "sources": [
+            {
+              "platform": "arxiv",
+              "label": "arXiv 摘要頁（無互動數據）",
+              "published_at": "2026-11-25 02:59",
+              "url": "http://arxiv.org/abs/2611.33158v1"
+            }
+          ],
+          "primary_url": "http://arxiv.org/abs/2611.33158v1",
+          "wait_what": {
+            "premise_zh": "單一策略控制多種機器人時，任務知識要能跨機體轉移。既有做法靠共享動作表示。作者指出，這些表示未必能反映機器人形態差異。",
+            "why_it_matters_to_you_zh": "若單一策略可跨機體使用，每台機器人各自訓練的維護成本可能下降。是否適用於特定 Edge 硬體，需看論文的實驗設定。",
+            "glossary_notes": [
+              {
+                "term": "Embodiment",
+                "explain_zh": "指機器人的硬體本體，如手臂結構與關節數。"
+              }
+            ]
+          },
+          "community_voices": [],
+          "composite_score": 62.6,
+          "rank": 3,
+          "source_section": "arxiv"
+        },
+        {
+          "id": "7ef65bf9e9275ec0",
+          "short_tag": "生醫 VLM 學文章結構",
+          "topic_id": "models-edge",
+          "topic_name": "Open-Source LLMs / VLM / Edge AI",
+          "published_at_display": "2026-11-25 02:59",
+          "importance_score": 68,
+          "popularity_score": 46,
+          "rank_reason_zh": "提出不靠堆疊資料量的擴充思路，對生醫 VLM 訓練有參考價值。",
+          "headline_zh": "BioLoom 嘗試用科學文章的結構學習，擴大生醫視覺語言模型的訓練效益。",
+          "community_consensus_zh": "目前以轉發分享為主，尚無顯著正反論戰，arXiv 頁面也無留言可供比對。",
+          "sentiment_tag": "neutral",
+          "sources": [
+            {
+              "platform": "arxiv",
+              "label": "arXiv 摘要頁（無互動數據）",
+              "published_at": "2026-11-25 02:59",
+              "url": "http://arxiv.org/abs/2611.33151v1"
+            }
+          ],
+          "primary_url": "http://arxiv.org/abs/2611.33151v1",
+          "wait_what": {
+            "premise_zh": "生醫視覺語言模型常靠擴大圖文資料來提升效果。作者認為科學文章本身的結構，能提供更豐富的表示學習資料。這是一種不以資料量為主的擴充思路。",
+            "why_it_matters_to_you_zh": "若方法有效，對取得資料成本高的領域，等於多了一條不靠堆量的路線。對部署端的推論成本影響，摘要未提及。",
+            "glossary_notes": [
+              {
+                "term": "Contrastive Pretraining",
+                "explain_zh": "讓配對的圖與文在向量空間靠近，不配對的則拉遠。"
+              }
+            ]
+          },
+          "community_voices": [],
+          "composite_score": 59.3,
+          "rank": 4,
+          "source_section": "arxiv"
+        },
+        {
+          "id": "3d693a4675638d6c",
+          "short_tag": "多視角一致的材質估計",
+          "topic_id": "models-edge",
+          "topic_name": "Open-Source LLMs / VLM / Edge AI",
+          "published_at_display": "2026-11-25 02:59",
+          "importance_score": 60,
+          "popularity_score": 46,
+          "rank_reason_zh": "處理多視角材質與光照分解的一致性問題，屬電腦視覺基礎研究。",
+          "headline_zh": "PointX 改以查詢表面點的方式，估計多視角一致的場景內在屬性。",
+          "community_consensus_zh": "目前以轉發分享為主，尚無顯著正反論戰，arXiv 頁面也無留言可供比對。",
+          "sentiment_tag": "neutral",
+          "sources": [
+            {
+              "platform": "arxiv",
+              "label": "arXiv 摘要頁（無互動數據）",
+              "published_at": "2026-11-25 02:59",
+              "url": "http://arxiv.org/abs/2611.33157v1"
+            }
+          ],
+          "primary_url": "http://arxiv.org/abs/2611.33157v1",
+          "wait_what": {
+            "premise_zh": "場景外觀由反照率、粗糙度、金屬度與法線決定。從影像反推這些內在屬性有歧義。逐像素預測時，同一表面點在不同視角會得到不同分解。",
+            "why_it_matters_to_you_zh": "若多視角一致性成立，3D 重建或材質編輯的結果會更穩定。對 Edge 推論成本的影響，目前摘要未提及。",
+            "glossary_notes": [
+              {
+                "term": "Intrinsics（內在分解）",
+                "explain_zh": "把影像拆成材質與光照，類似從成品還原食材與火候。"
+              }
+            ]
+          },
+          "community_voices": [],
+          "composite_score": 54.8,
+          "rank": 5,
+          "source_section": "arxiv"
+        }
+      ]
+    }
+  ],
+  "meta": {
+    "generated_at": "2026-11-25T13:33+08:00",
+    "llm_provider": "claude",
+    "llm_model": "claude-haiku-5-5",
+    "failover_count": 6,
+    "source_status": {
+      "hackernews": "ok",
+      "reddit": "ok",
+      "threads": "no-results",
+      "instagram": "ok",
+      "github": "ok",
+      "arxiv": "ok",
+      "x": "ok",
+      "xiaohongshu": "optional-off"
+    },
+    "section_errors": [],
+    "raw_candidate_count": 42,
+    "total_curated_count": 18
+  }
+}

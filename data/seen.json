@@ -4,10 +4,20 @@
     "first_seen": "2026-11-23",
     "headline": "發文團隊宣稱在 AMD GPU 真實生產流量下，P90 輸出達 1,129 tps。"
   },
+  "040801041267f877": {
+    "engagement": 2388.0,
+    "first_seen": "2026-11-25",
+    "headline": "一位使用者回報，近一個月多數 Claude 工作已轉到 Claude 桌面 App，改用終端機的人變少。"
+  },
   "1ef82d58dab628de2ba": {
     "engagement": 100.0,
     "first_seen": "2026-11-24",
     "headline": "一則 r/AIBubble 貼文指稱，部分公司在 Claude 調價前取消訂閱方案。"
+  },
+  "20d604e4e7da95cb": {
+    "engagement": 5474.3,
+    "first_seen": "2026-11-25",
+    "headline": "ElevenLabs 推出 MCP 伺服器，Claude 內可直接管理語音與對話 agent 的設定與成效。"
   },
   "21bd17a4fa38d338": {
     "engagement": 1.0,
@@ -34,6 +44,21 @@
     "first_seen": "2026-11-23",
     "headline": "fast-anything 開源工具剖析 Python、Node、Ruby 熱點，請 coding agent 改寫成 Rust 並驗證行為一致。"
   },
+  "30d03f10571df261": {
+    "engagement": 790.5,
+    "first_seen": "2026-11-25",
+    "headline": "OpenAI 數學專案預印本宣稱矩陣乘法指數為 2.25，另附八項相關結果"
+  },
+  "32187ffd8419c7c8": {
+    "engagement": 55.0,
+    "first_seen": "2026-11-25",
+    "headline": "DiaCap 以單一 audiovisual LLM 同時產出逐句轉寫、時間戳與說話者外觀描述。"
+  },
+  "38487f414c254a10": {
+    "engagement": 55.0,
+    "first_seen": "2026-11-25",
+    "headline": "CoT-Proxy 提出跨格式遷移方法，從閉源教師模型蒸餾長程推理策略。"
+  },
   "38c61351fe0dc3e7": {
     "engagement": 3352.0,
     "first_seen": "2026-11-23",
@@ -44,15 +69,45 @@
     "first_seen": "2026-11-24",
     "headline": "研究指出 GRPO 對胸部 X 光報告生成的影像異常辨識提升有限，提出強化視覺表徵的方法"
   },
+  "3b3d28581b43d8e7": {
+    "engagement": 1972.0,
+    "first_seen": "2026-11-25",
+    "headline": "Anthropic 宣稱 Claude 解出一道古老數學題，但附上的證明長達 250,000 頁，被網友批評為 slop。"
+  },
   "3c39bae5426aed85": {
     "engagement": 2194.5,
     "first_seen": "2026-11-24",
     "headline": "r/webdev 熱門貼文批評，社群作品多為商用 AI 產品的展示，失去原本的創作樂趣。"
   },
+  "3c6728c1bfd19879": {
+    "engagement": 395.5,
+    "first_seen": "2026-11-25",
+    "headline": "OpenAI 宣稱 GPT-6 模型具備內建蛋白質設計能力，實驗細節待公開"
+  },
+  "3d693a4675638d6c": {
+    "engagement": 55.0,
+    "first_seen": "2026-11-25",
+    "headline": "PointX 改以查詢表面點的方式，估計多視角一致的場景內在屬性。"
+  },
+  "3f07c5bd4cdcb703": {
+    "engagement": 11.375,
+    "first_seen": "2026-11-25",
+    "headline": "OpenAI 執行長 Sam Altman 在 IG 短片談雄心型專案的規模化難題，內容為觀點而非新技術發布。"
+  },
   "41743dc9b9a9d596": {
     "engagement": 2436.5,
     "first_seen": "2026-11-23",
     "headline": "一家約 400 人的科技公司收到通知，Anthropic 方案漲約 10 倍，一週內要改用其他模型。"
+  },
+  "49db83e253edbf07": {
+    "engagement": 920.5,
+    "first_seen": "2026-11-25",
+    "headline": "Versine 以 YC F26 身分推出 MCP 工具，讓 AI 代理可收發款項"
+  },
+  "4a5a9b50a2385544": {
+    "engagement": 955.5,
+    "first_seen": "2026-11-25",
+    "headline": "pierridotite 開源 mobile-agent-testers，用 GitHub 免費 runner 並行跑 20 組手機 AI 測試，涵蓋流程、翻譯與無障礙檢查。"
   },
   "4eebbb4ad21ab769": {
     "engagement": 2029.0,
@@ -64,6 +119,11 @@
     "first_seen": "2026-11-23",
     "headline": "GPU 廠商發布本地 AI 入門指南，以 Inkling、Qwen 與 Unsloth 為例"
   },
+  "5094532b4e2e63d2": {
+    "engagement": 2120.0,
+    "first_seen": "2026-11-25",
+    "headline": "智譜發布 GLM-5.4，宣稱首次採用循環 Transformer 架構以強化通用程式能力"
+  },
   "5119506436cca9e8": {
     "engagement": 447.85,
     "first_seen": "2026-11-24",
@@ -74,6 +134,11 @@
     "first_seen": "2026-11-23",
     "headline": "MemOnce 論文提出可擴展記憶架構，目標是讓長時程 LLM 互動不必持續累積逐層 KV Cache。"
   },
+  "5ae81d1ebdcc8ce3": {
+    "engagement": 3.9000000000000004,
+    "first_seen": "2026-11-25",
+    "headline": "Grok Bot 可透過桌面登入與 CLI，把任務委派給已訂閱的 ChatGPT、Codex 與 Claude。"
+  },
   "5bbf15bfd07b4747": {
     "engagement": 55.0,
     "first_seen": "2026-11-24",
@@ -83,6 +148,11 @@
     "engagement": 159.0,
     "first_seen": "2026-11-24",
     "headline": "Dragos 發布 AI 供應鏈安全文章，主題為以 canary tokens 進行的偵測與發現。"
+  },
+  "5e51eda1ac97c96b": {
+    "engagement": 781.0,
+    "first_seen": "2026-11-25",
+    "headline": "微軟因歷史性服務中斷宣布 Code Red，目標一小時內恢復並導入 AI 代理協助診斷"
   },
   "61b42f71d21332e8": {
     "engagement": 55.0,
@@ -119,6 +189,11 @@
     "first_seen": "2026-11-24",
     "headline": "Anthropic formal-math 倉庫公開 VP ≠ VNP 形式化成果，標題宣稱適用所有體。"
   },
+  "7ef65bf9e9275ec0": {
+    "engagement": 55.0,
+    "first_seen": "2026-11-25",
+    "headline": "BioLoom 嘗試用科學文章的結構學習，擴大生醫視覺語言模型的訓練效益。"
+  },
   "8129f68e260304e7": {
     "engagement": 4407.0,
     "first_seen": "2026-11-24",
@@ -138,6 +213,11 @@
     "engagement": 55.0,
     "first_seen": "2026-11-24",
     "headline": "研究提出級聯架構，結合交叉注意力引導的 Mamba 與 CNN，分割膠質瘤術前與術後影像"
+  },
+  "a70cae4c16f0fdc6": {
+    "engagement": 1301.5,
+    "first_seen": "2026-11-25",
+    "headline": "sybil-solutions 釋出開源 Agent skill，讓 Agent 自動調校本地 LLM 推論速度，涵蓋 decode、投機解碼與 KV 設定。"
   },
   "aa1d58e13b83257c": {
     "engagement": 1618.5,
@@ -209,6 +289,11 @@
     "first_seen": "2026-11-24",
     "headline": "Nari Labs 發布 Qwen3.8-27B 的 NariQ 量化版，GGUF 檔約 10 GB，宣稱品質接近 BF16。"
   },
+  "e1c81eb8875d55a7": {
+    "engagement": 55.0,
+    "first_seen": "2026-11-25",
+    "headline": "OmniAct 主張用單一策略控制多種機器人，並依各機器人能力調整動作。"
+  },
   "e5c7e54028737f43": {
     "engagement": 1557.5,
     "first_seen": "2026-11-23",
@@ -218,6 +303,11 @@
     "engagement": 43799.275,
     "first_seen": "2026-11-23",
     "headline": "OpenAI 推出 dots，由 GPT-6 Astra 驅動的常駐 Agent，可背景執行目標並串接 4,000+ 應用"
+  },
+  "fb0b1daae67b3c6c": {
+    "engagement": 23.725,
+    "first_seen": "2026-11-25",
+    "headline": "LiteLLM 整合 NVIDIA NeMo Switchyard Router，為 coding agent 自動分流簡單與複雜任務到不同模型。"
   },
   "ff57b46864701ebe": {
     "engagement": 132.925,
