@@ -436,3 +436,28 @@ def test_social_recency_filter_drops_old_ig_and_threads():
     assert "ig-old" not in ids
     assert "th-old" not in ids
     assert "ig-new" in ids and "hn-new" in ids
+
+
+def test_archive_pages_can_navigate_back_and_forth_between_dates(tmp_path: Path):
+    cfg = load_config()
+    docs_dir = tmp_path / "docs"
+
+    d1 = compute_final_ranking(_sample_digest(), cfg)
+    d1["issue_date"] = "2026-11-23"
+    write_digest_site(d1, cfg, docs_dir)
+
+    d2 = compute_final_ranking(_sample_digest(), cfg)
+    d2["issue_date"] = "2026-11-25"
+    write_digest_site(d2, cfg, docs_dir)
+
+    old_html = (docs_dir / "archive" / "2026-11-23.html").read_text(encoding="utf-8")
+    new_html = (docs_dir / "index.html").read_text(encoding="utf-8")
+
+    # Previously archived 2026-11-23 page must include 2026-11-25 option and keep 2026-11-23 selected
+    assert 'value="2026-11-25.html"' in old_html
+    assert 'value="2026-11-23.html" selected' in old_html
+    assert 'data-current-date="2026-11-23"' in old_html
+    # Runtime fetch hydration to ./index.json for future dates
+    assert "./index.json" in old_html
+    assert 'value="archive/2026-11-23.html"' in new_html
+    assert 'data-current-date="2026-11-25"' in new_html

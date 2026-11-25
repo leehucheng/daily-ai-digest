@@ -335,7 +335,7 @@ def render_digest_html(
         sel = " selected" if d == str(digest.get("issue_date", "")) else ""
         archive_opts.append(f'<option value="{escape(href)}"{sel}>{escape(d)}</option>')
     archive_select = (
-        f'<select class="archive-select" id="archiveSelect" aria-label="切換歷史期數">'
+        f'<select class="archive-select" id="archiveSelect" data-current-date="{issue_date}" aria-label="切換歷史期數">'
         f'{"".join(archive_opts)}</select>'
         if archive_opts
         else ""
@@ -1149,6 +1149,25 @@ def render_digest_html(
       btnNext.addEventListener('click', () => goDelta(1));
 
       if (archiveSelect) {{
+        const inArchive = window.location.pathname.includes('/archive/');
+        const currentDate = archiveSelect.dataset.currentDate || '';
+        const indexJsonUrl = inArchive ? './index.json' : './archive/index.json';
+        if (window.location.protocol.startsWith('http')) {{
+          fetch(indexJsonUrl, {{ cache: 'no-cache' }})
+            .then(r => (r.ok ? r.json() : null))
+            .then(data => {{
+              if (!data || !Array.isArray(data.dates) || !data.dates.length) return;
+              archiveSelect.innerHTML = '';
+              data.dates.slice(0, 30).forEach(d => {{
+                const opt = document.createElement('option');
+                opt.value = inArchive ? (d + '.html') : ('archive/' + d + '.html');
+                opt.textContent = d;
+                if (d === currentDate) opt.selected = true;
+                archiveSelect.appendChild(opt);
+              }});
+            }})
+            .catch(() => {{}});
+        }}
         archiveSelect.addEventListener('change', () => {{
           if (archiveSelect.value) window.location.href = archiveSelect.value;
         }});
@@ -1193,13 +1212,15 @@ def write_digest_site(
     cfg: DigestConfig,
     docs_dir: Path,
 ) -> tuple[Path, Path]:
-    """Write docs/index.html, docs/archive/YYYY-MM-DD.html, and docs/archive/index.json."""
+    """Write docs/index.html, docs/archive/*.html, and docs/archive/index.json."""
     issue_date = str(digest.get("issue_date", "latest"))
     archive_dir = docs_dir / "archive"
     archive_dir.mkdir(parents=True, exist_ok=True)
 
     existing_dates = sorted(
-        {p.stem for p in archive_dir.glob("????-??-??.html")} | {issue_date},
+        {p.stem for p in archive_dir.glob("????-??-??.html")}
+        | {p.stem for p in archive_dir.glob("????-??-??.json")}
+        | {issue_date},
         reverse=True,
     )
 
@@ -1218,4 +1239,18 @@ def write_digest_site(
         json.dumps(digest, ensure_ascii=False, indent=2) + "\n",
         encoding="utf-8",
     )
+
+    # Refresh previously archived HTML pages so their <select> options stay complete even offline
+    for json_file in archive_dir.glob("????-??-??.json"):
+        if json_file.stem == issue_date:
+            continue
+        try:
+            past_digest = json.loads(json_file.read_text(encoding="utf-8"))
+            past_html = render_digest_html(
+                past_digest, cfg, archive_dates=existing_dates, is_archive_page=True
+            )
+            (archive_dir / f"{json_file.stem}.html").write_text(past_html, encoding="utf-8")
+        except Exception:
+            continue
+
     return index_path, archive_path
