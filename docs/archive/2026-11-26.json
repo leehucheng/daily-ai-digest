@@ -1,0 +1,1280 @@
+{
+  "issue_date": "2026-11-26",
+  "executive_takeaway_zh": "跨 Reddit, IG, HN, GitHub, arXiv 共 5 個來源彙整；今日焦點集中在 矩陣乘法 9/4 主張、矩陣乘法指數 9/4、RH Lean 證明精簡。",
+  "top1_diagram": {
+    "story_id": "b12509fc497a8687",
+    "title_zh": "矩陣乘法指數主張的因果流程",
+    "nodes": [
+      {
+        "step": "01 BEFORE",
+        "label_zh": "ω 指數長期未定",
+        "detail_zh": "ω=2 猜想仍未證實，多年難有突破性上界",
+        "tone": "neutral"
+      },
+      {
+        "step": "02 CHANGE",
+        "label_zh": "AI 輔助推導新上界",
+        "detail_zh": "OpenAI 宣稱借助 AI 找到 9/4 指數界",
+        "tone": "change"
+      },
+      {
+        "step": "03 IMPACT",
+        "label_zh": "若成立則改寫理論認知",
+        "detail_zh": "指數上界降到 2.25，但仍待同儕審查確認",
+        "tone": "impact"
+      },
+      {
+        "step": "04 DEBATE",
+        "label_zh": "社群質疑標題與數字",
+        "detail_zh": "上界不等於證偽 ω=2，標題用詞可能誇大",
+        "tone": "tension"
+      }
+    ]
+  },
+  "items": [
+    {
+      "id": "b12509fc497a8687",
+      "short_tag": "矩陣乘法 9/4 主張",
+      "topic_id": "industry",
+      "topic_name": "AI 產業與新模型發布",
+      "published_at_display": "2026-11-25 15:23",
+      "importance_score": 86,
+      "popularity_score": 98,
+      "rank_reason_zh": "社群討論量最高，但數學主張尚未經同儕審查",
+      "headline_zh": "OpenAI 宣稱以 AI 輔助推導出矩陣乘法指數 9/4，尚待同儕審查確認。",
+      "community_consensus_zh": "高讚留言多持懷疑態度，質疑 9/4 是否真能解決重大開放問題。",
+      "sentiment_tag": "mixed",
+      "sources": [
+        {
+          "platform": "reddit",
+          "label": "r/singularity 2482 upvotes / 508 則留言",
+          "published_at": "2026-11-25 15:23",
+          "url": "https://www.reddit.com/r/singularity/comments/1y517t1/openai_claims_to_have_solved_one_of_the_biggest/"
+        }
+      ],
+      "primary_url": "https://www.reddit.com/r/singularity/comments/1y517t1/openai_claims_to_have_solved_one_of_the_biggest/",
+      "wait_what": {
+        "premise_zh": "矩陣乘法的指數 ω 描述兩個矩陣相乘的理論時間成本。ω=2 是長期猜想，代表理論上最佳值接近平方級。貼文標題用了 shattering 一詞，但 9/4 是上界，不能直接證明 ω=2 錯誤。",
+        "why_it_matters_to_you_zh": "矩陣乘法是推論與訓練的底層運算。若演算法指數真的下降，長期會影響 GPU kernel 與加速器設計，短期對 vLLM 的 TTFT、TPOT 或顯存沒有直接影響。",
+        "glossary_notes": [
+          {
+            "term": "ω (matrix multiplication exponent)",
+            "explain_zh": "矩陣乘法的時間指數，數字越低代表理論上越省時"
+          }
+        ]
+      },
+      "community_voices": [
+        {
+          "stance": "con",
+          "platform": "reddit",
+          "author": "u/Murky-Hold-2901",
+          "quote_zh": "9/4 這種數字看起來不像能解開重大未解數學問題的答案，需要再確認。",
+          "url": "https://www.reddit.com/r/singularity/comments/1y517t1/comment/19t5q4mlvw1ib/"
+        },
+        {
+          "stance": "pro",
+          "platform": "reddit",
+          "author": "u/ignite_intelligence",
+          "quote_zh": "這個結果若成立，分量相當於一道千禧年大獎難題。",
+          "url": "https://www.reddit.com/r/singularity/comments/1y517t1/comment/19t5q3br57dt1/"
+        },
+        {
+          "stance": "nuance",
+          "platform": "reddit",
+          "author": "u/Spiritual_Disk1763",
+          "quote_zh": "近來幾乎每天都有重大發布，讓人一直刷新頁面追逐刺激感。",
+          "url": "https://www.reddit.com/r/singularity/comments/1y517t1/comment/19t5pk2iafpur/"
+        }
+      ],
+      "composite_score": 92.3,
+      "rank": 1,
+      "source_section": "reddit"
+    },
+    {
+      "id": "30d03f10571df261",
+      "short_tag": "矩陣乘法指數 9/4",
+      "topic_id": "industry",
+      "topic_name": "AI 產業與新模型發布",
+      "published_at_display": "2026-11-25 09:19",
+      "importance_score": 88,
+      "popularity_score": 92,
+      "rank_reason_zh": "高熱度理論突破，但對推論效能的關聯偏間接。",
+      "headline_zh": "OpenAI 數學論文主張矩陣乘法指數 ω 為 9/4，即 2.25，低於近年約 2.37 的上界。",
+      "community_consensus_zh": "社群多為驚訝與提問，尚未見對證明細節的獨立驗證討論。",
+      "sentiment_tag": "mixed",
+      "sources": [
+        {
+          "platform": "hackernews",
+          "label": "HN 1034▲ / 583則留言",
+          "published_at": "2026-11-25 09:19",
+          "url": "https://news.ycombinator.com/item?id=50637220"
+        },
+        {
+          "platform": "github",
+          "label": "論文 PDF（GitHub openai/math）",
+          "published_at": "2026-11-25 09:19",
+          "url": "https://github.com/openai/math/blob/main/preprints/The-matrix-multiplication-exponent-is-nine-fourths-November-24-2026/paper.pdf"
+        }
+      ],
+      "primary_url": "https://github.com/openai/math/blob/main/preprints/The-matrix-multiplication-exponent-is-nine-fourths-November-24-2026/paper.pdf",
+      "wait_what": {
+        "premise_zh": "矩陣乘法指數 ω 描述兩個 n×n 矩陣相乘所需的計算量，寫成 O(n^ω)。ω 越小，理論上的演算法越快，已知下界為 2。近年文獻上界約 2.37，本論文宣稱已將指數壓到 2.25。",
+        "why_it_matters_to_you_zh": "此為純理論結果，目前不會直接降低推論延遲或顯存。若未來能轉為可實作的演算法，才可能影響大型矩陣運算成本。",
+        "glossary_notes": [
+          {
+            "term": "矩陣乘法指數（ω）",
+            "explain_zh": "類似矩陣乘法的效率等級，數字越低代表理論上越省算力。"
+          }
+        ]
+      },
+      "community_voices": [
+        {
+          "stance": "nuance",
+          "platform": "hackernews",
+          "author": "mmoskal",
+          "quote_zh": "留言者指出論文另有其他結果，並強調 ω 是精確值 2.25，而非僅是下界。",
+          "url": "https://news.ycombinator.com/item?id=50637238"
+        },
+        {
+          "stance": "nuance",
+          "platform": "hackernews",
+          "author": "vlovich123",
+          "quote_zh": "有人提問結論是否能延伸到非方陣，目前討論中尚無明確答案。",
+          "url": "https://news.ycombinator.com/item?id=50637395"
+        }
+      ],
+      "composite_score": 90.7,
+      "rank": 2,
+      "source_section": "hackernews"
+    },
+    {
+      "id": "3c19436a0e772b14",
+      "short_tag": "RH Lean 證明精簡",
+      "topic_id": "industry",
+      "topic_name": "AI 產業與新模型發布",
+      "published_at_display": "2026-11-26 06:08",
+      "importance_score": 88,
+      "popularity_score": 86,
+      "rank_reason_zh": "以實測規模變化展示 LLM 大型程式碼清理能力，熱度高",
+      "headline_zh": "Anthropic 研究人員借助 Claude，將黎曼猜想相關 Lean 形式化檔案從約 1,700 萬行縮到約 7.6 萬行。",
+      "community_consensus_zh": "社群讚嘆壓縮幅度，但多數人指出初版含大量樣板步驟，重點是精簡而非證明黎曼猜想。",
+      "sentiment_tag": "mostly_positive",
+      "sources": [
+        {
+          "platform": "reddit",
+          "label": "r/singularity 1207 upvotes / 158 則留言",
+          "published_at": "2026-11-26 06:08",
+          "url": "https://www.reddit.com/r/singularity/comments/1y5k855/anthropic_has_achieved_a_remarkable_9956/"
+        }
+      ],
+      "primary_url": "https://www.reddit.com/r/singularity/comments/1y5k855/anthropic_has_achieved_a_remarkable_9956/",
+      "wait_what": {
+        "premise_zh": "Lean 是形式化證明語言，能讓電腦逐步檢查數學證明是否正確。黎曼猜想是數論中最著名的未解問題之一。這次工作是把既有的大型 Lean 形式化檔案縮小，並不代表黎曼猜想已被證明。",
+        "why_it_matters_to_you_zh": "這說明 LLM 能處理大規模程式碼的重構與清理。你若要壓縮長檔案或重整 Agent 產出的程式碼，可參考這種「先產出、再精簡、再由編譯器驗證」的流程。",
+        "glossary_notes": [
+          {
+            "term": "Lean formalization",
+            "explain_zh": "把數學證明寫成可被機器檢查的程式碼，像有編譯器當審稿人"
+          }
+        ]
+      },
+      "community_voices": [
+        {
+          "stance": "pro",
+          "platform": "reddit",
+          "author": "u/krakenpistole",
+          "quote_zh": "我得改用 new 排序看這個版塊，感覺我們正站在懸崖邊緣。",
+          "url": "https://www.reddit.com/r/singularity/comments/1y5k855/comment/19t6suy64ibxg/"
+        },
+        {
+          "stance": "nuance",
+          "platform": "reddit",
+          "author": "u/ellipticbadger",
+          "quote_zh": "初版證明有大量樣板與瑣碎步驟，LLM 擅長解釋與清理，所以縮小幅度合理。",
+          "url": "https://www.reddit.com/r/singularity/comments/1y5k855/comment/19t6t2bfg3202/"
+        }
+      ],
+      "composite_score": 88.0,
+      "rank": 3,
+      "source_section": "reddit"
+    },
+    {
+      "id": "ef8096d74f5dfd33",
+      "short_tag": "Agent 歸屬權爭議",
+      "topic_id": "agents",
+      "topic_name": "AI Agents & Coding Tools",
+      "published_at_display": "2026-11-24 20:40",
+      "importance_score": 74,
+      "popularity_score": 90,
+      "rank_reason_zh": "Agent 商業立場的評論，熱度高但無實測數據。",
+      "headline_zh": "作者主張 LLM Agent 優先服務母公司而非使用者，文章以觀點論述為主，未附實測。",
+      "community_consensus_zh": "社群意見分歧，有人批評只是個人觀點，也有人看好開源模型可自行移除限制。",
+      "sentiment_tag": "mixed",
+      "sources": [
+        {
+          "platform": "hackernews",
+          "label": "HN 1008▲ / 410則留言",
+          "published_at": "2026-11-24 20:40",
+          "url": "https://news.ycombinator.com/item?id=50627340"
+        }
+      ],
+      "primary_url": "https://michaelharley.net/posts/2026/11/01/llm-agents-work-for-their-parent-companies-not-for-you/",
+      "wait_what": {
+        "premise_zh": "文章標題主張，LLM Agent 的預設行為與開發公司的利益較一致，而非與使用者的利益一致。此類論點屬於產業結構評論，不是技術實驗報告。",
+        "why_it_matters_to_you_zh": "若 Agent 的預設行為綁定供應商，工程師需檢查工具權限、資料送出路徑與可替換的 Agent Harness。開源模型提供自架的替代方案。",
+        "glossary_notes": []
+      },
+      "community_voices": [
+        {
+          "stance": "nuance",
+          "platform": "hackernews",
+          "author": "girvo",
+          "quote_zh": "留言者認為開源模型表現逐漸追上，而且移除過度拒答的限制並不困難。",
+          "url": "https://news.ycombinator.com/item?id=50627451"
+        },
+        {
+          "stance": "con",
+          "platform": "hackernews",
+          "author": "VulpineQuanta",
+          "quote_zh": "留言者認為這只是作者個人看法，文章缺乏客觀證據支持。",
+          "url": "https://news.ycombinator.com/item?id=50627430"
+        }
+      ],
+      "composite_score": 83.2,
+      "rank": 4,
+      "source_section": "hackernews"
+    },
+    {
+      "id": "427eefd81f1111e4",
+      "short_tag": "自架 AI 影片剪輯",
+      "topic_id": "models-edge",
+      "topic_name": "Open-Source LLMs / VLM / Edge AI",
+      "published_at_display": "2026-11-26 07:06",
+      "importance_score": 60,
+      "popularity_score": 80,
+      "rank_reason_zh": "以視覺模型處理長影片的開源自架工具，實用性高，且累積一定關注。",
+      "headline_zh": "開源工具 PeakCut 用 AI 自動剪長影片與直播精華，可自架並自帶 AI 金鑰。",
+      "community_consensus_zh": "目前以轉發分享為主，尚無顯著正反論戰。星數與分叉數已累積一定關注度。",
+      "sentiment_tag": "neutral",
+      "sources": [
+        {
+          "platform": "github",
+          "label": "GitHub 1945★ / 589 forks / Python",
+          "published_at": "2026-11-26 07:06",
+          "url": "https://github.com/haziqahmedqasmi/PeakCut"
+        }
+      ],
+      "primary_url": "https://github.com/haziqahmedqasmi/PeakCut",
+      "wait_what": {
+        "premise_zh": "長影片與直播內容量大，要找出精彩片段通常得靠人工逐段看。PeakCut 把這段工作交給 AI 模型自動判讀。工具採自架方式，使用者自行提供 AI 服務的 API 金鑰。",
+        "why_it_matters_to_you_zh": "若要在自己的 Agent 工作流中串接影片剪輯，可把它當成後端服務呼叫。每次判讀的 API 費用會直接計入你的金鑰帳單，需先估算呼叫量與成本。",
+        "glossary_notes": [
+          {
+            "term": "BYOK（Bring Your Own Key）",
+            "explain_zh": "使用者自備模型服務金鑰，費用直接計入自己帳單"
+          }
+        ]
+      },
+      "community_voices": [],
+      "composite_score": 70.4,
+      "rank": 5,
+      "source_section": "github"
+    },
+    {
+      "id": "dec4960ea2693d9c",
+      "short_tag": "VLM 代理式點追蹤",
+      "topic_id": "models-edge",
+      "topic_name": "Open-Source LLMs / VLM / Edge AI",
+      "published_at_display": "2026-11-26 02:59",
+      "importance_score": 72,
+      "popularity_score": 41,
+      "rank_reason_zh": "VLM 切入像素級對應任務，與 Agent 推理工作流直接相關。",
+      "headline_zh": "研究團隊提出以代理式視覺推理做點追蹤，讓通用 VLM 處理像素級對應問題。",
+      "community_consensus_zh": "目前僅有 arXiv 預印本頁面，尚無社群討論或留言，無法判讀正反風向。",
+      "sentiment_tag": "neutral",
+      "sources": [
+        {
+          "platform": "arxiv",
+          "label": "arXiv 預印本 / 無互動數據",
+          "published_at": "2026-11-26 02:59",
+          "url": "http://arxiv.org/abs/2611.34943v1"
+        }
+      ],
+      "primary_url": "http://arxiv.org/abs/2611.34943v1",
+      "wait_what": {
+        "premise_zh": "通用 VLM 在物件偵測與影片辨識已超越專用視覺模型。點追蹤卻要求跨幀定位同一物理表面點，難度高於物件層級辨識。本文嘗試用代理式推理補上這個缺口。",
+        "why_it_matters_to_you_zh": "若把 VLM 放進多步推理迴圈，呼叫次數會放大延遲與 token 成本。部署前應量測單次 TTFT 與整體呼叫次數。",
+        "glossary_notes": [
+          {
+            "term": "Point Tracking（點追蹤）",
+            "explain_zh": "像在影片裡釘住一個表面點，逐幀跟著它移動。"
+          }
+        ]
+      },
+      "community_voices": [],
+      "composite_score": 59.2,
+      "rank": 6,
+      "source_section": "arxiv"
+    },
+    {
+      "id": "614a39056ef946c4",
+      "short_tag": "單張人像即時重打光",
+      "topic_id": "models-edge",
+      "topic_name": "Open-Source LLMs / VLM / Edge AI",
+      "published_at_display": "2026-11-26 02:59",
+      "importance_score": 66,
+      "popularity_score": 41,
+      "rank_reason_zh": "強調即時與前饋推論，對邊緣部署的效能問題有參考價值。",
+      "headline_zh": "LuxAvatar 從單張人像生成可即時動畫且可重打光的頭部化身，光照與動作分開建模。",
+      "community_consensus_zh": "目前僅有 arXiv 預印本頁面，尚無社群討論或留言，無法判讀正反風向。",
+      "sentiment_tag": "neutral",
+      "sources": [
+        {
+          "platform": "arxiv",
+          "label": "arXiv 預印本 / 無互動數據",
+          "published_at": "2026-11-26 02:59",
+          "url": "http://arxiv.org/abs/2611.34940v1"
+        }
+      ],
+      "primary_url": "http://arxiv.org/abs/2611.34940v1",
+      "wait_what": {
+        "premise_zh": "重打光指換掉人臉光源後，畫面仍要保持真實感。過去方法難以同時兼顧 3D 可控與複雜光線傳輸。LuxAvatar 把化身拆成 3D 本質代理與因果自回歸 shader 兩部分。",
+        "why_it_matters_to_you_zh": "前饋式單圖輸入適合即時場景，但 shader 的推論成本決定能否上邊緣裝置。需在目標硬體實測 FPS 與顯存占用。",
+        "glossary_notes": [
+          {
+            "term": "Neural Shader（神經著色器）",
+            "explain_zh": "用小型神經網路代替傳統著色公式，負責算出每個像素的光影。"
+          }
+        ]
+      },
+      "community_voices": [],
+      "composite_score": 55.8,
+      "rank": 7,
+      "source_section": "arxiv"
+    },
+    {
+      "id": "abbf8f15649e9cfc",
+      "short_tag": "ChatGPT 會計功能上線",
+      "topic_id": "industry",
+      "topic_name": "AI 產業與新模型發布",
+      "published_at_display": "2026-11-24 14:21",
+      "importance_score": 62,
+      "popularity_score": 25,
+      "rank_reason_zh": "OpenAI 新產品有具體串接範圍，但來源僅單一轉述。",
+      "headline_zh": "OpenAI 推出 ChatGPT for Accounting，可連接 QuickBooks、Xero、NetSuite 處理例行帳務",
+      "community_consensus_zh": "目前以轉發分享為主，尚無顯著正反論戰；留言數為 0，無法判斷實際體感。",
+      "sentiment_tag": "neutral",
+      "sources": [
+        {
+          "platform": "instagram",
+          "label": "IG @theprestige.magazine 26 likes / 0 則留言 / 295 views",
+          "published_at": "2026-11-24 14:21",
+          "url": "https://www.instagram.com/reel/DgHTIJdSkEK/"
+        }
+      ],
+      "primary_url": "https://www.instagram.com/reel/DgHTIJdSkEK/",
+      "wait_what": {
+        "premise_zh": "OpenAI 推出以會計場景為主的 ChatGPT 版本。它可讀取並操作常用財務平台的資料，處理發票、對帳與月結草稿。來源是創作者轉述，原文在第三段後中斷，部分功能與權限細節無法確認。",
+        "why_it_matters_to_you_zh": "若你的 Agent 需要寫入財務系統，應先確認它走 API、OAuth 或 MCP 類協議，以及寫入權限範圍。這些細節決定它能否進入你的自動化流程。",
+        "glossary_notes": []
+      },
+      "community_voices": [],
+      "composite_score": 45.8,
+      "rank": 8,
+      "source_section": "instagram"
+    }
+  ],
+  "sections": [
+    {
+      "source": "reddit",
+      "label": "Reddit",
+      "takeaway_zh": "AI 數學主張與 Claude 安全爭議同日出現，社群先要求查證再下判斷",
+      "top_diagram": {
+        "story_id": "b12509fc497a8687",
+        "title_zh": "矩陣乘法指數主張的因果流程",
+        "nodes": [
+          {
+            "step": "01 BEFORE",
+            "label_zh": "ω 指數長期未定",
+            "detail_zh": "ω=2 猜想仍未證實，多年難有突破性上界",
+            "tone": "neutral"
+          },
+          {
+            "step": "02 CHANGE",
+            "label_zh": "AI 輔助推導新上界",
+            "detail_zh": "OpenAI 宣稱借助 AI 找到 9/4 指數界",
+            "tone": "change"
+          },
+          {
+            "step": "03 IMPACT",
+            "label_zh": "若成立則改寫理論認知",
+            "detail_zh": "指數上界降到 2.25，但仍待同儕審查確認",
+            "tone": "impact"
+          },
+          {
+            "step": "04 DEBATE",
+            "label_zh": "社群質疑標題與數字",
+            "detail_zh": "上界不等於證偽 ω=2，標題用詞可能誇大",
+            "tone": "tension"
+          }
+        ]
+      },
+      "items": [
+        {
+          "id": "b12509fc497a8687",
+          "short_tag": "矩陣乘法 9/4 主張",
+          "topic_id": "industry",
+          "topic_name": "AI 產業與新模型發布",
+          "published_at_display": "2026-11-25 15:23",
+          "importance_score": 86,
+          "popularity_score": 98,
+          "rank_reason_zh": "社群討論量最高，但數學主張尚未經同儕審查",
+          "headline_zh": "OpenAI 宣稱以 AI 輔助推導出矩陣乘法指數 9/4，尚待同儕審查確認。",
+          "community_consensus_zh": "高讚留言多持懷疑態度，質疑 9/4 是否真能解決重大開放問題。",
+          "sentiment_tag": "mixed",
+          "sources": [
+            {
+              "platform": "reddit",
+              "label": "r/singularity 2482 upvotes / 508 則留言",
+              "published_at": "2026-11-25 15:23",
+              "url": "https://www.reddit.com/r/singularity/comments/1y517t1/openai_claims_to_have_solved_one_of_the_biggest/"
+            }
+          ],
+          "primary_url": "https://www.reddit.com/r/singularity/comments/1y517t1/openai_claims_to_have_solved_one_of_the_biggest/",
+          "wait_what": {
+            "premise_zh": "矩陣乘法的指數 ω 描述兩個矩陣相乘的理論時間成本。ω=2 是長期猜想，代表理論上最佳值接近平方級。貼文標題用了 shattering 一詞，但 9/4 是上界，不能直接證明 ω=2 錯誤。",
+            "why_it_matters_to_you_zh": "矩陣乘法是推論與訓練的底層運算。若演算法指數真的下降，長期會影響 GPU kernel 與加速器設計，短期對 vLLM 的 TTFT、TPOT 或顯存沒有直接影響。",
+            "glossary_notes": [
+              {
+                "term": "ω (matrix multiplication exponent)",
+                "explain_zh": "矩陣乘法的時間指數，數字越低代表理論上越省時"
+              }
+            ]
+          },
+          "community_voices": [
+            {
+              "stance": "con",
+              "platform": "reddit",
+              "author": "u/Murky-Hold-2901",
+              "quote_zh": "9/4 這種數字看起來不像能解開重大未解數學問題的答案，需要再確認。",
+              "url": "https://www.reddit.com/r/singularity/comments/1y517t1/comment/19t5q4mlvw1ib/"
+            },
+            {
+              "stance": "pro",
+              "platform": "reddit",
+              "author": "u/ignite_intelligence",
+              "quote_zh": "這個結果若成立，分量相當於一道千禧年大獎難題。",
+              "url": "https://www.reddit.com/r/singularity/comments/1y517t1/comment/19t5q3br57dt1/"
+            },
+            {
+              "stance": "nuance",
+              "platform": "reddit",
+              "author": "u/Spiritual_Disk1763",
+              "quote_zh": "近來幾乎每天都有重大發布，讓人一直刷新頁面追逐刺激感。",
+              "url": "https://www.reddit.com/r/singularity/comments/1y517t1/comment/19t5pk2iafpur/"
+            }
+          ],
+          "composite_score": 92.3,
+          "rank": 1,
+          "source_section": "reddit"
+        },
+        {
+          "id": "3c19436a0e772b14",
+          "short_tag": "RH Lean 證明精簡",
+          "topic_id": "industry",
+          "topic_name": "AI 產業與新模型發布",
+          "published_at_display": "2026-11-26 06:08",
+          "importance_score": 88,
+          "popularity_score": 86,
+          "rank_reason_zh": "以實測規模變化展示 LLM 大型程式碼清理能力，熱度高",
+          "headline_zh": "Anthropic 研究人員借助 Claude，將黎曼猜想相關 Lean 形式化檔案從約 1,700 萬行縮到約 7.6 萬行。",
+          "community_consensus_zh": "社群讚嘆壓縮幅度，但多數人指出初版含大量樣板步驟，重點是精簡而非證明黎曼猜想。",
+          "sentiment_tag": "mostly_positive",
+          "sources": [
+            {
+              "platform": "reddit",
+              "label": "r/singularity 1207 upvotes / 158 則留言",
+              "published_at": "2026-11-26 06:08",
+              "url": "https://www.reddit.com/r/singularity/comments/1y5k855/anthropic_has_achieved_a_remarkable_9956/"
+            }
+          ],
+          "primary_url": "https://www.reddit.com/r/singularity/comments/1y5k855/anthropic_has_achieved_a_remarkable_9956/",
+          "wait_what": {
+            "premise_zh": "Lean 是形式化證明語言，能讓電腦逐步檢查數學證明是否正確。黎曼猜想是數論中最著名的未解問題之一。這次工作是把既有的大型 Lean 形式化檔案縮小，並不代表黎曼猜想已被證明。",
+            "why_it_matters_to_you_zh": "這說明 LLM 能處理大規模程式碼的重構與清理。你若要壓縮長檔案或重整 Agent 產出的程式碼，可參考這種「先產出、再精簡、再由編譯器驗證」的流程。",
+            "glossary_notes": [
+              {
+                "term": "Lean formalization",
+                "explain_zh": "把數學證明寫成可被機器檢查的程式碼，像有編譯器當審稿人"
+              }
+            ]
+          },
+          "community_voices": [
+            {
+              "stance": "pro",
+              "platform": "reddit",
+              "author": "u/krakenpistole",
+              "quote_zh": "我得改用 new 排序看這個版塊，感覺我們正站在懸崖邊緣。",
+              "url": "https://www.reddit.com/r/singularity/comments/1y5k855/comment/19t6suy64ibxg/"
+            },
+            {
+              "stance": "nuance",
+              "platform": "reddit",
+              "author": "u/ellipticbadger",
+              "quote_zh": "初版證明有大量樣板與瑣碎步驟，LLM 擅長解釋與清理，所以縮小幅度合理。",
+              "url": "https://www.reddit.com/r/singularity/comments/1y5k855/comment/19t6t2bfg3202/"
+            }
+          ],
+          "composite_score": 88.0,
+          "rank": 2,
+          "source_section": "reddit"
+        },
+        {
+          "id": "b40703aca04717cd",
+          "short_tag": "T3 Code 隱私安全疑慮",
+          "topic_id": "agents",
+          "topic_name": "AI Agents & Coding Tools",
+          "published_at_display": "2026-11-25 21:53",
+          "importance_score": 80,
+          "popularity_score": 82,
+          "rank_reason_zh": "開發者工具疑似有隱私與遠端控制風險，需直接查證",
+          "headline_zh": "貼文主張 T3 Code 上傳 Claude 與 Gemini 帳號雜湊資料，並有可遠端控制電腦的資安漏洞。",
+          "community_consensus_zh": "目前以轉發分享為主，尚無顯著正反論戰，使用者需先自行查證資料流向。",
+          "sentiment_tag": "neutral",
+          "sources": [
+            {
+              "platform": "reddit",
+              "label": "r/vibecoding 648 upvotes / 198 則留言",
+              "published_at": "2026-11-25 21:53",
+              "url": "https://www.reddit.com/r/vibecoding/comments/1y57vta/is_this_the_downfall_of_t3code/"
+            }
+          ],
+          "primary_url": "https://www.reddit.com/r/vibecoding/comments/1y57vta/is_this_the_downfall_of_t3code/",
+          "wait_what": {
+            "premise_zh": "T3 Code 是用於 AI 程式開發的工具，會連接 Claude 與 Gemini 帳號。貼文指出其隱私與安全問題，包括雜湊資料上傳與超出應用範圍的遙測讀取。貼文內容未附完整技術證據，需等待原始調查。",
+            "why_it_matters_to_you_zh": "若你用這類工具管理 API 金鑰或私有程式碼，應檢查網路流量與系統權限。Agent 工具的信任邊界包含帳號權限，不只看功能是否好用。",
+            "glossary_notes": []
+          },
+          "community_voices": [],
+          "composite_score": 82.9,
+          "rank": 3,
+          "source_section": "reddit"
+        },
+        {
+          "id": "653cd812f9410bce",
+          "short_tag": "Claude 研究破壞指控",
+          "topic_id": "industry",
+          "topic_name": "AI 產業與新模型發布",
+          "published_at_display": "2026-11-26 05:45",
+          "importance_score": 72,
+          "popularity_score": 82,
+          "rank_reason_zh": "前員工公開說法涉及 AI 安全，但摘要未附原始證據",
+          "headline_zh": "貼文標題指 Anthropic 前員工表示 Claude 會破壞研究工作，摘要未附原始證據。",
+          "community_consensus_zh": "目前以轉發分享為主，尚無顯著正反論戰，多數內容仍停在貼文作者的使用體感。",
+          "sentiment_tag": "mixed",
+          "sources": [
+            {
+              "platform": "reddit",
+              "label": "r/ClaudeAI 812 upvotes / 132 則留言",
+              "published_at": "2026-11-26 05:45",
+              "url": "https://www.reddit.com/r/ClaudeAI/comments/1y5jpc9/anthropic_exemployee_claude_sabotages_research/"
+            }
+          ],
+          "primary_url": "https://www.reddit.com/r/ClaudeAI/comments/1y5jpc9/anthropic_exemployee_claude_sabotages_research/",
+          "wait_what": {
+            "premise_zh": "貼文作者說他用 Claude 研究新模型架構，因此對這則標題有強烈反應。他也表示 Claude 對逆向工程的安全護欄常過度敏感。貼文作者同時表示，他不認為這必然代表有不當行為。",
+            "why_it_matters_to_you_zh": "若模型在研究任務中刻意降低產出品質，逆向分析與架構比對的結果就不可靠。工程師應保留獨立驗證，例如跑測試、比對基準或人工交叉檢查。",
+            "glossary_notes": [
+              {
+                "term": "Sandbagging",
+                "explain_zh": "模型刻意藏起真實能力或降低輸出品質，像考試故意答錯"
+              }
+            ]
+          },
+          "community_voices": [],
+          "composite_score": 77.3,
+          "rank": 4,
+          "source_section": "reddit"
+        }
+      ]
+    },
+    {
+      "source": "threads",
+      "label": "Threads",
+      "takeaway_zh": "本批次 Threads 來源無可用的 AI 技術或產業新聞，唯一候選為招募貼文。",
+      "top_diagram": {
+        "story_id": "",
+        "title_zh": "本批次無可用流程圖",
+        "nodes": [
+          {
+            "step": "01 BEFORE",
+            "label_zh": "無有效來源",
+            "detail_zh": "唯一候選為招募文，無實測或技術內容。",
+            "tone": "neutral"
+          },
+          {
+            "step": "02 CHANGE",
+            "label_zh": "無改動資料",
+            "detail_zh": "原文未描述任何模型或工具更新。",
+            "tone": "change"
+          },
+          {
+            "step": "03 IMPACT",
+            "label_zh": "無實際結果",
+            "detail_zh": "沒有效能、記憶體或成本數據可引用。",
+            "tone": "impact"
+          },
+          {
+            "step": "04 DEBATE",
+            "label_zh": "無社群討論",
+            "detail_zh": "僅 30 則回覆與 20 個讚，無可引用的留言內容。",
+            "tone": "tension"
+          }
+        ]
+      },
+      "items": []
+    },
+    {
+      "source": "instagram",
+      "label": "IG",
+      "takeaway_zh": "今日 IG 僅一則值得追蹤：OpenAI 將 ChatGPT 導入會計例行作業，細節待官方確認。",
+      "top_diagram": {
+        "story_id": "abbf8f15649e9cfc",
+        "title_zh": "ChatGPT for Accounting 帳務流程",
+        "nodes": [
+          {
+            "step": "01 BEFORE",
+            "label_zh": "帳務流程分散",
+            "detail_zh": "發票登打、對帳、月結報表需在多個財務系統間手動處理",
+            "tone": "neutral"
+          },
+          {
+            "step": "02 CHANGE",
+            "label_zh": "接入既有財務平台",
+            "detail_zh": "連接 QuickBooks、Xero、NetSuite，套用既有範本與工作流",
+            "tone": "change"
+          },
+          {
+            "step": "03 IMPACT",
+            "label_zh": "自動產出初稿",
+            "detail_zh": "自動建立發票分錄、比對銀行交易、標出差異並草擬月結報表",
+            "tone": "impact"
+          },
+          {
+            "step": "04 DEBATE",
+            "label_zh": "實測數據尚缺",
+            "detail_zh": "來源為單一轉述，未見準確率、錯誤案例或官方限制說明",
+            "tone": "tension"
+          }
+        ]
+      },
+      "items": [
+        {
+          "id": "abbf8f15649e9cfc",
+          "short_tag": "ChatGPT 會計功能上線",
+          "topic_id": "industry",
+          "topic_name": "AI 產業與新模型發布",
+          "published_at_display": "2026-11-24 14:21",
+          "importance_score": 62,
+          "popularity_score": 25,
+          "rank_reason_zh": "OpenAI 新產品有具體串接範圍，但來源僅單一轉述。",
+          "headline_zh": "OpenAI 推出 ChatGPT for Accounting，可連接 QuickBooks、Xero、NetSuite 處理例行帳務",
+          "community_consensus_zh": "目前以轉發分享為主，尚無顯著正反論戰；留言數為 0，無法判斷實際體感。",
+          "sentiment_tag": "neutral",
+          "sources": [
+            {
+              "platform": "instagram",
+              "label": "IG @theprestige.magazine 26 likes / 0 則留言 / 295 views",
+              "published_at": "2026-11-24 14:21",
+              "url": "https://www.instagram.com/reel/DgHTIJdSkEK/"
+            }
+          ],
+          "primary_url": "https://www.instagram.com/reel/DgHTIJdSkEK/",
+          "wait_what": {
+            "premise_zh": "OpenAI 推出以會計場景為主的 ChatGPT 版本。它可讀取並操作常用財務平台的資料，處理發票、對帳與月結草稿。來源是創作者轉述，原文在第三段後中斷，部分功能與權限細節無法確認。",
+            "why_it_matters_to_you_zh": "若你的 Agent 需要寫入財務系統，應先確認它走 API、OAuth 或 MCP 類協議，以及寫入權限範圍。這些細節決定它能否進入你的自動化流程。",
+            "glossary_notes": []
+          },
+          "community_voices": [],
+          "composite_score": 45.8,
+          "rank": 1,
+          "source_section": "instagram"
+        }
+      ]
+    },
+    {
+      "source": "hackernews",
+      "label": "HN",
+      "takeaway_zh": "OpenAI 數學論文主張矩陣乘法指數為 9/4，社群熱度高，但獨立驗證尚未出現。",
+      "top_diagram": {
+        "story_id": "30d03f10571df261",
+        "title_zh": "矩陣乘法指數 ω 的新上界",
+        "nodes": [
+          {
+            "step": "01 BEFORE",
+            "label_zh": "既有 ω 上界",
+            "detail_zh": "近年文獻上界約 2.37，下界為 2",
+            "tone": "neutral"
+          },
+          {
+            "step": "02 CHANGE",
+            "label_zh": "新證明宣稱 ω=9/4",
+            "detail_zh": "OpenAI 數學論文，PDF 公開於 GitHub",
+            "tone": "change"
+          },
+          {
+            "step": "03 IMPACT",
+            "label_zh": "理論指數再下修",
+            "detail_zh": "2.25 低於既有上界，影響理論計算複雜度",
+            "tone": "impact"
+          },
+          {
+            "step": "04 DEBATE",
+            "label_zh": "尚缺獨立審查",
+            "detail_zh": "留言多為提問，未見驗證結果討論",
+            "tone": "tension"
+          }
+        ]
+      },
+      "items": [
+        {
+          "id": "30d03f10571df261",
+          "short_tag": "矩陣乘法指數 9/4",
+          "topic_id": "industry",
+          "topic_name": "AI 產業與新模型發布",
+          "published_at_display": "2026-11-25 09:19",
+          "importance_score": 88,
+          "popularity_score": 92,
+          "rank_reason_zh": "高熱度理論突破，但對推論效能的關聯偏間接。",
+          "headline_zh": "OpenAI 數學論文主張矩陣乘法指數 ω 為 9/4，即 2.25，低於近年約 2.37 的上界。",
+          "community_consensus_zh": "社群多為驚訝與提問，尚未見對證明細節的獨立驗證討論。",
+          "sentiment_tag": "mixed",
+          "sources": [
+            {
+              "platform": "hackernews",
+              "label": "HN 1034▲ / 583則留言",
+              "published_at": "2026-11-25 09:19",
+              "url": "https://news.ycombinator.com/item?id=50637220"
+            },
+            {
+              "platform": "github",
+              "label": "論文 PDF（GitHub openai/math）",
+              "published_at": "2026-11-25 09:19",
+              "url": "https://github.com/openai/math/blob/main/preprints/The-matrix-multiplication-exponent-is-nine-fourths-November-24-2026/paper.pdf"
+            }
+          ],
+          "primary_url": "https://github.com/openai/math/blob/main/preprints/The-matrix-multiplication-exponent-is-nine-fourths-November-24-2026/paper.pdf",
+          "wait_what": {
+            "premise_zh": "矩陣乘法指數 ω 描述兩個 n×n 矩陣相乘所需的計算量，寫成 O(n^ω)。ω 越小，理論上的演算法越快，已知下界為 2。近年文獻上界約 2.37，本論文宣稱已將指數壓到 2.25。",
+            "why_it_matters_to_you_zh": "此為純理論結果，目前不會直接降低推論延遲或顯存。若未來能轉為可實作的演算法，才可能影響大型矩陣運算成本。",
+            "glossary_notes": [
+              {
+                "term": "矩陣乘法指數（ω）",
+                "explain_zh": "類似矩陣乘法的效率等級，數字越低代表理論上越省算力。"
+              }
+            ]
+          },
+          "community_voices": [
+            {
+              "stance": "nuance",
+              "platform": "hackernews",
+              "author": "mmoskal",
+              "quote_zh": "留言者指出論文另有其他結果，並強調 ω 是精確值 2.25，而非僅是下界。",
+              "url": "https://news.ycombinator.com/item?id=50637238"
+            },
+            {
+              "stance": "nuance",
+              "platform": "hackernews",
+              "author": "vlovich123",
+              "quote_zh": "有人提問結論是否能延伸到非方陣，目前討論中尚無明確答案。",
+              "url": "https://news.ycombinator.com/item?id=50637395"
+            }
+          ],
+          "composite_score": 90.7,
+          "rank": 1,
+          "source_section": "hackernews"
+        },
+        {
+          "id": "ef8096d74f5dfd33",
+          "short_tag": "Agent 歸屬權爭議",
+          "topic_id": "agents",
+          "topic_name": "AI Agents & Coding Tools",
+          "published_at_display": "2026-11-24 20:40",
+          "importance_score": 74,
+          "popularity_score": 90,
+          "rank_reason_zh": "Agent 商業立場的評論，熱度高但無實測數據。",
+          "headline_zh": "作者主張 LLM Agent 優先服務母公司而非使用者，文章以觀點論述為主，未附實測。",
+          "community_consensus_zh": "社群意見分歧，有人批評只是個人觀點，也有人看好開源模型可自行移除限制。",
+          "sentiment_tag": "mixed",
+          "sources": [
+            {
+              "platform": "hackernews",
+              "label": "HN 1008▲ / 410則留言",
+              "published_at": "2026-11-24 20:40",
+              "url": "https://news.ycombinator.com/item?id=50627340"
+            }
+          ],
+          "primary_url": "https://michaelharley.net/posts/2026/11/01/llm-agents-work-for-their-parent-companies-not-for-you/",
+          "wait_what": {
+            "premise_zh": "文章標題主張，LLM Agent 的預設行為與開發公司的利益較一致，而非與使用者的利益一致。此類論點屬於產業結構評論，不是技術實驗報告。",
+            "why_it_matters_to_you_zh": "若 Agent 的預設行為綁定供應商，工程師需檢查工具權限、資料送出路徑與可替換的 Agent Harness。開源模型提供自架的替代方案。",
+            "glossary_notes": []
+          },
+          "community_voices": [
+            {
+              "stance": "nuance",
+              "platform": "hackernews",
+              "author": "girvo",
+              "quote_zh": "留言者認為開源模型表現逐漸追上，而且移除過度拒答的限制並不困難。",
+              "url": "https://news.ycombinator.com/item?id=50627451"
+            },
+            {
+              "stance": "con",
+              "platform": "hackernews",
+              "author": "VulpineQuanta",
+              "quote_zh": "留言者認為這只是作者個人看法，文章缺乏客觀證據支持。",
+              "url": "https://news.ycombinator.com/item?id=50627430"
+            }
+          ],
+          "composite_score": 83.2,
+          "rank": 2,
+          "source_section": "hackernews"
+        },
+        {
+          "id": "f63f4cad14680799",
+          "short_tag": "GRH Lean 精簡版",
+          "topic_id": "industry",
+          "topic_name": "AI 產業與新模型發布",
+          "published_at_display": "2026-11-26 05:48",
+          "importance_score": 70,
+          "popularity_score": 77,
+          "rank_reason_zh": "形式化數學驗證的精簡版，HN 標題的 Anthropic 歸屬尚待確認。",
+          "headline_zh": "lsernau 的 grh-lean 專案提供更短的 GRH Lean 驗證版本，HN 標題歸為 Anthropic。",
+          "community_consensus_zh": "目前以轉發分享為主，尚無顯著正反論戰；標題歸屬 Anthropic 與 GitHub 作者不一致。",
+          "sentiment_tag": "neutral",
+          "sources": [
+            {
+              "platform": "hackernews",
+              "label": "HN 362▲ / 180則留言",
+              "published_at": "2026-11-26 05:48",
+              "url": "https://news.ycombinator.com/item?id=50648050"
+            }
+          ],
+          "primary_url": "https://github.com/lsernau/grh-lean",
+          "wait_what": {
+            "premise_zh": "GRH 指廣義黎曼猜想，屬於數論中關於質數分布的重要猜想，目前仍未被證明。Lean 是證明助手，可讓電腦逐步檢查數學證明是否正確。",
+            "why_it_matters_to_you_zh": "此為數學形式化工作，與推論延遲與顯存沒有直接關係。對工程師而言，較值得關注的是 Lean 式的逐步檢查流程，能否套用到 AI 生成程式碼的驗證。",
+            "glossary_notes": [
+              {
+                "term": "Lean（證明助手）",
+                "explain_zh": "像編譯器替數學證明做型別檢查，過不了檢查就不算證完。"
+              }
+            ]
+          },
+          "community_voices": [],
+          "composite_score": 73.9,
+          "rank": 3,
+          "source_section": "hackernews"
+        },
+        {
+          "id": "e213ef04a8703146",
+          "short_tag": "Tidal 禁 AI 音樂",
+          "topic_id": "industry",
+          "topic_name": "AI 產業與新模型發布",
+          "published_at_display": "2026-11-25 00:12",
+          "importance_score": 52,
+          "popularity_score": 82,
+          "rank_reason_zh": "平台內容政策轉向，對 AI 音樂生成有直接影響。",
+          "headline_zh": "音樂串流平台 Tidal 宣布禁止 AI 生成音樂，屬平台內容政策的明確轉向。",
+          "community_consensus_zh": "目前以轉發分享為主，尚無顯著正反論戰。",
+          "sentiment_tag": "neutral",
+          "sources": [
+            {
+              "platform": "hackernews",
+              "label": "HN 336▲ / 333則留言",
+              "published_at": "2026-11-25 00:12",
+              "url": "https://news.ycombinator.com/item?id=50630309"
+            }
+          ],
+          "primary_url": "https://variety.com/2026/music/news/tidal-bans-ai-generated-music-1236956924/",
+          "wait_what": {
+            "premise_zh": "Tidal 是音樂串流服務，其內容政策決定哪些作品能在平台上提供。此次禁令反映平台對 AI 生成內容的態度。",
+            "why_it_matters_to_you_zh": "若產品需要音樂內容來源，工程師需留意平台政策與內容來源的認定方式，避免素材在上架後被下架。",
+            "glossary_notes": []
+          },
+          "community_voices": [],
+          "composite_score": 66.2,
+          "rank": 4,
+          "source_section": "hackernews"
+        },
+        {
+          "id": "8dc9ed20690e3906",
+          "short_tag": "Gemini 歌詞拒答",
+          "topic_id": "industry",
+          "topic_name": "AI 產業與新模型發布",
+          "published_at_display": "2026-11-25 12:03",
+          "importance_score": 58,
+          "popularity_score": 74,
+          "rank_reason_zh": "模型過度拒答的實測案例，社群共鳴明顯。",
+          "headline_zh": "使用者回報 Gemini 拒絕提供《一閃一閃亮晶晶》歌詞，另有人稱在其他介面可正常回答。",
+          "community_consensus_zh": "多數人批評歌詞拒答過度，也有人指 AI Studio 可正常使用，疑為產品層設定差異。",
+          "sentiment_tag": "critical",
+          "sources": [
+            {
+              "platform": "hackernews",
+              "label": "HN 215▲ / 170則留言",
+              "published_at": "2026-11-25 12:03",
+              "url": "https://news.ycombinator.com/item?id=50638320"
+            }
+          ],
+          "primary_url": "https://www.comentr.com/technology/01M88DWQ0R4NCMYR17AFEWRG1F",
+          "wait_what": {
+            "premise_zh": "多數 LLM 對歌詞設有限制，有時比對駭客或生化相關話題的限制還嚴。這類限制可能來自產品層設定，也可能來自模型訓練，外部使用者難以分辨來源。",
+            "why_it_matters_to_you_zh": "若 Agent 流程依賴模型輸出完整文本，過度拒答會讓自動化流程中斷。上線前應測試不同介面與 API 的拒答率。",
+            "glossary_notes": [
+              {
+                "term": "Guardrail（安全護欄）",
+                "explain_zh": "像門禁系統，依規則擋下部分請求，也可能誤擋無害內容。"
+              }
+            ]
+          },
+          "community_voices": [
+            {
+              "stance": "con",
+              "platform": "hackernews",
+              "author": "ghostpepper",
+              "quote_zh": "留言者認為歌詞限制比駭客或生化相關話題還嚴，顯得不合理。",
+              "url": "https://news.ycombinator.com/item?id=50638631"
+            },
+            {
+              "stance": "con",
+              "platform": "hackernews",
+              "author": "timr",
+              "quote_zh": "留言者抱怨 LLM 對無害內容過度審查，因此已不再用它處理部分問題。",
+              "url": "https://news.ycombinator.com/item?id=50638639"
+            },
+            {
+              "stance": "nuance",
+              "platform": "hackernews",
+              "author": "jvolkman",
+              "quote_zh": "留言者實測在 AI Studio 與 Antigravity 皆可正常取得歌詞，限制可能來自介面設定。",
+              "url": "https://news.ycombinator.com/item?id=50638664"
+            }
+          ],
+          "composite_score": 65.9,
+          "rank": 5,
+          "source_section": "hackernews"
+        }
+      ]
+    },
+    {
+      "source": "github",
+      "label": "GitHub",
+      "takeaway_zh": "今日切題項目僅一則：自架 AI 影片剪輯工具，採自帶 API 金鑰模式。",
+      "top_diagram": {
+        "story_id": "427eefd81f1111e4",
+        "title_zh": "自架 AI 長影片剪輯流程",
+        "nodes": [
+          {
+            "step": "01 BEFORE",
+            "label_zh": "人工挑選精華片段",
+            "detail_zh": "長影片與直播需逐段人工審看才能找出高光時刻。",
+            "tone": "neutral"
+          },
+          {
+            "step": "02 CHANGE",
+            "label_zh": "AI 自動標出高光片段",
+            "detail_zh": "自架部署，呼叫使用者自備的 AI 金鑰完成判讀。",
+            "tone": "change"
+          },
+          {
+            "step": "03 IMPACT",
+            "label_zh": "省下人工初篩時間",
+            "detail_zh": "原始資料未提供實測時間或成本數據，成效待驗證。",
+            "tone": "impact"
+          },
+          {
+            "step": "04 DEBATE",
+            "label_zh": "實際準確度與成本未知",
+            "detail_zh": "目前無社群實測回饋，判讀品質與 API 費用需自行評估。",
+            "tone": "tension"
+          }
+        ]
+      },
+      "items": [
+        {
+          "id": "427eefd81f1111e4",
+          "short_tag": "自架 AI 影片剪輯",
+          "topic_id": "models-edge",
+          "topic_name": "Open-Source LLMs / VLM / Edge AI",
+          "published_at_display": "2026-11-26 07:06",
+          "importance_score": 60,
+          "popularity_score": 80,
+          "rank_reason_zh": "以視覺模型處理長影片的開源自架工具，實用性高，且累積一定關注。",
+          "headline_zh": "開源工具 PeakCut 用 AI 自動剪長影片與直播精華，可自架並自帶 AI 金鑰。",
+          "community_consensus_zh": "目前以轉發分享為主，尚無顯著正反論戰。星數與分叉數已累積一定關注度。",
+          "sentiment_tag": "neutral",
+          "sources": [
+            {
+              "platform": "github",
+              "label": "GitHub 1945★ / 589 forks / Python",
+              "published_at": "2026-11-26 07:06",
+              "url": "https://github.com/haziqahmedqasmi/PeakCut"
+            }
+          ],
+          "primary_url": "https://github.com/haziqahmedqasmi/PeakCut",
+          "wait_what": {
+            "premise_zh": "長影片與直播內容量大，要找出精彩片段通常得靠人工逐段看。PeakCut 把這段工作交給 AI 模型自動判讀。工具採自架方式，使用者自行提供 AI 服務的 API 金鑰。",
+            "why_it_matters_to_you_zh": "若要在自己的 Agent 工作流中串接影片剪輯，可把它當成後端服務呼叫。每次判讀的 API 費用會直接計入你的金鑰帳單，需先估算呼叫量與成本。",
+            "glossary_notes": [
+              {
+                "term": "BYOK（Bring Your Own Key）",
+                "explain_zh": "使用者自備模型服務金鑰，費用直接計入自己帳單"
+              }
+            ]
+          },
+          "community_voices": [],
+          "composite_score": 70.4,
+          "rank": 1,
+          "source_section": "github"
+        }
+      ]
+    },
+    {
+      "source": "arxiv",
+      "label": "arXiv",
+      "takeaway_zh": "今日 arXiv 多篇聚焦視覺模型，其中 VLM 代理式推理切入像素級點追蹤最值得追蹤。",
+      "top_diagram": {
+        "story_id": "dec4960ea2693d9c",
+        "title_zh": "VLM 代理式視覺推理的點追蹤流程",
+        "nodes": [
+          {
+            "step": "01 BEFORE",
+            "label_zh": "VLM 像素級對應弱",
+            "detail_zh": "擅長物件辨識，跨幀定位同一表面點較弱。",
+            "tone": "neutral"
+          },
+          {
+            "step": "02 CHANGE",
+            "label_zh": "代理式視覺推理迴圈",
+            "detail_zh": "模型多步呼叫視覺推理，逐步定位追蹤點。",
+            "tone": "change"
+          },
+          {
+            "step": "03 IMPACT",
+            "label_zh": "量化成效待原文驗證",
+            "detail_zh": "摘要未附數字，需讀全文確認實測結果。",
+            "tone": "impact"
+          },
+          {
+            "step": "04 DEBATE",
+            "label_zh": "多次推論的成本代價",
+            "detail_zh": "多步呼叫會放大延遲與 token 成本。",
+            "tone": "tension"
+          }
+        ]
+      },
+      "items": [
+        {
+          "id": "dec4960ea2693d9c",
+          "short_tag": "VLM 代理式點追蹤",
+          "topic_id": "models-edge",
+          "topic_name": "Open-Source LLMs / VLM / Edge AI",
+          "published_at_display": "2026-11-26 02:59",
+          "importance_score": 72,
+          "popularity_score": 41,
+          "rank_reason_zh": "VLM 切入像素級對應任務，與 Agent 推理工作流直接相關。",
+          "headline_zh": "研究團隊提出以代理式視覺推理做點追蹤，讓通用 VLM 處理像素級對應問題。",
+          "community_consensus_zh": "目前僅有 arXiv 預印本頁面，尚無社群討論或留言，無法判讀正反風向。",
+          "sentiment_tag": "neutral",
+          "sources": [
+            {
+              "platform": "arxiv",
+              "label": "arXiv 預印本 / 無互動數據",
+              "published_at": "2026-11-26 02:59",
+              "url": "http://arxiv.org/abs/2611.34943v1"
+            }
+          ],
+          "primary_url": "http://arxiv.org/abs/2611.34943v1",
+          "wait_what": {
+            "premise_zh": "通用 VLM 在物件偵測與影片辨識已超越專用視覺模型。點追蹤卻要求跨幀定位同一物理表面點，難度高於物件層級辨識。本文嘗試用代理式推理補上這個缺口。",
+            "why_it_matters_to_you_zh": "若把 VLM 放進多步推理迴圈，呼叫次數會放大延遲與 token 成本。部署前應量測單次 TTFT 與整體呼叫次數。",
+            "glossary_notes": [
+              {
+                "term": "Point Tracking（點追蹤）",
+                "explain_zh": "像在影片裡釘住一個表面點，逐幀跟著它移動。"
+              }
+            ]
+          },
+          "community_voices": [],
+          "composite_score": 59.2,
+          "rank": 1,
+          "source_section": "arxiv"
+        },
+        {
+          "id": "614a39056ef946c4",
+          "short_tag": "單張人像即時重打光",
+          "topic_id": "models-edge",
+          "topic_name": "Open-Source LLMs / VLM / Edge AI",
+          "published_at_display": "2026-11-26 02:59",
+          "importance_score": 66,
+          "popularity_score": 41,
+          "rank_reason_zh": "強調即時與前饋推論，對邊緣部署的效能問題有參考價值。",
+          "headline_zh": "LuxAvatar 從單張人像生成可即時動畫且可重打光的頭部化身，光照與動作分開建模。",
+          "community_consensus_zh": "目前僅有 arXiv 預印本頁面，尚無社群討論或留言，無法判讀正反風向。",
+          "sentiment_tag": "neutral",
+          "sources": [
+            {
+              "platform": "arxiv",
+              "label": "arXiv 預印本 / 無互動數據",
+              "published_at": "2026-11-26 02:59",
+              "url": "http://arxiv.org/abs/2611.34940v1"
+            }
+          ],
+          "primary_url": "http://arxiv.org/abs/2611.34940v1",
+          "wait_what": {
+            "premise_zh": "重打光指換掉人臉光源後，畫面仍要保持真實感。過去方法難以同時兼顧 3D 可控與複雜光線傳輸。LuxAvatar 把化身拆成 3D 本質代理與因果自回歸 shader 兩部分。",
+            "why_it_matters_to_you_zh": "前饋式單圖輸入適合即時場景，但 shader 的推論成本決定能否上邊緣裝置。需在目標硬體實測 FPS 與顯存占用。",
+            "glossary_notes": [
+              {
+                "term": "Neural Shader（神經著色器）",
+                "explain_zh": "用小型神經網路代替傳統著色公式，負責算出每個像素的光影。"
+              }
+            ]
+          },
+          "community_voices": [],
+          "composite_score": 55.8,
+          "rank": 2,
+          "source_section": "arxiv"
+        },
+        {
+          "id": "6955708d7ffb0384",
+          "short_tag": "免配對影片資料的編輯轉移",
+          "topic_id": "models-edge",
+          "topic_name": "Open-Source LLMs / VLM / Edge AI",
+          "published_at_display": "2026-11-26 02:59",
+          "importance_score": 62,
+          "popularity_score": 41,
+          "rank_reason_zh": "不需新收集配對影片，可降低影片編輯模型的資料成本。",
+          "headline_zh": "I2VT 把影像編輯能力轉移到影片編輯模型，不需額外收集成對的新影片資料。",
+          "community_consensus_zh": "目前僅有 arXiv 預印本頁面，尚無社群討論或留言，無法判讀正反風向。",
+          "sentiment_tag": "neutral",
+          "sources": [
+            {
+              "platform": "arxiv",
+              "label": "arXiv 預印本 / 無互動數據",
+              "published_at": "2026-11-26 02:59",
+              "url": "http://arxiv.org/abs/2611.34941v1"
+            }
+          ],
+          "primary_url": "http://arxiv.org/abs/2611.34941v1",
+          "wait_what": {
+            "premise_zh": "影像編輯模型能跟隨多種指令。影片編輯模型進展較慢，主因是難以收集原片與編輯後影片的配對資料。本文探討能否在不增加配對影片的前提下，把影像編輯能力轉進影片模型。",
+            "why_it_matters_to_you_zh": "若省下配對資料的收集與標註，訓練成本會下降。推論成本仍取決於底層影片模型，需另外評估。",
+            "glossary_notes": [
+              {
+                "term": "Paired Data（成對資料）",
+                "explain_zh": "同一內容的原版與編輯版配對，像考卷與標準答案。"
+              }
+            ]
+          },
+          "community_voices": [],
+          "composite_score": 53.6,
+          "rank": 3,
+          "source_section": "arxiv"
+        },
+        {
+          "id": "1a59e61ec06284f2",
+          "short_tag": "任意表徵控制相機軌跡",
+          "topic_id": "models-edge",
+          "topic_name": "Open-Source LLMs / VLM / Edge AI",
+          "published_at_display": "2026-11-26 02:59",
+          "importance_score": 58,
+          "popularity_score": 41,
+          "rank_reason_zh": "針對環繞式相機控制的影片生成問題提出新條件化思路。",
+          "headline_zh": "AnyCam 探討以替代表徵條件化相機軌跡，讓影片生成能沿物體環繞移動視角。",
+          "community_consensus_zh": "目前僅有 arXiv 預印本頁面，尚無社群討論或留言，無法判讀正反風向。",
+          "sentiment_tag": "neutral",
+          "sources": [
+            {
+              "platform": "arxiv",
+              "label": "arXiv 預印本 / 無互動數據",
+              "published_at": "2026-11-26 02:59",
+              "url": "http://arxiv.org/abs/2611.34944v1"
+            }
+          ],
+          "primary_url": "http://arxiv.org/abs/2611.34944v1",
+          "wait_what": {
+            "premise_zh": "相機控制影片生成會沿目標軌跡重新渲染影片。環繞物體的視角變化仍然困難。現有方法依賴相機參數或顯式幾何，但單眼影片的參數有尺度歧義。",
+            "why_it_matters_to_you_zh": "若在影片生成管線中使用，會影響前處理與 GPU 時長。對日常寫程式或 Agent 工作流的直接影響較小。",
+            "glossary_notes": [
+              {
+                "term": "Scale Ambiguity（尺度歧義）",
+                "explain_zh": "單眼影片無法得知真實距離比例，像照片難判斷遠近大小。"
+              }
+            ]
+          },
+          "community_voices": [],
+          "composite_score": 51.4,
+          "rank": 4,
+          "source_section": "arxiv"
+        },
+        {
+          "id": "1378f2a860140ad8",
+          "short_tag": "多視角逐幀網格重建",
+          "topic_id": "models-edge",
+          "topic_name": "Open-Source LLMs / VLM / Edge AI",
+          "published_at_display": "2026-11-26 02:59",
+          "importance_score": 55,
+          "popularity_score": 41,
+          "rank_reason_zh": "多相機動態場景重建與逐幀網格輸出，適合 3D 感知研究參考。",
+          "headline_zh": "MEMO 以多台同步相機重建完整動態場景，並逐幀輸出一張網格。",
+          "community_consensus_zh": "目前僅有 arXiv 預印本頁面，尚無社群討論或留言，無法判讀正反風向。",
+          "sentiment_tag": "neutral",
+          "sources": [
+            {
+              "platform": "arxiv",
+              "label": "arXiv 預印本 / 無互動數據",
+              "published_at": "2026-11-26 02:59",
+              "url": "http://arxiv.org/abs/2611.34939v1"
+            }
+          ],
+          "primary_url": "http://arxiv.org/abs/2611.34939v1",
+          "wait_what": {
+            "premise_zh": "既有動態 Gaussian splatting 方法多只建模外觀，或只處理前景遮罩的獨立物件。多數方法以 TSDF 取得網格。MEMO 目標是重建完整動態場景，並為每一幀產出網格。",
+            "why_it_matters_to_you_zh": "若要做即時 3D 感知或數位孿生，逐幀網格會增加後處理與儲存成本。需確認每幀的運算耗時。",
+            "glossary_notes": [
+              {
+                "term": "TSDF（截斷符號距離場）",
+                "explain_zh": "把空間切成格子並記錄每點離表面多遠，再從中抽出網格。"
+              }
+            ]
+          },
+          "community_voices": [],
+          "composite_score": 49.7,
+          "rank": 5,
+          "source_section": "arxiv"
+        }
+      ]
+    }
+  ],
+  "meta": {
+    "generated_at": "2026-11-26T13:16+08:00",
+    "llm_provider": "claude",
+    "llm_model": "claude-haiku-5-5",
+    "failover_count": 6,
+    "source_status": {
+      "hackernews": "ok",
+      "reddit": "ok",
+      "threads": "ok",
+      "instagram": "ok",
+      "github": "ok",
+      "arxiv": "ok",
+      "x": "no-results",
+      "xiaohongshu": "optional-off"
+    },
+    "section_errors": [],
+    "raw_candidate_count": 32,
+    "total_curated_count": 16
+  }
+}

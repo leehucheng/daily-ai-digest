@@ -9,6 +9,16 @@
     "first_seen": "2026-11-25",
     "headline": "一位使用者回報，近一個月多數 Claude 工作已轉到 Claude 桌面 App，改用終端機的人變少。"
   },
+  "1378f2a860140ad8": {
+    "engagement": 55.0,
+    "first_seen": "2026-11-26",
+    "headline": "MEMO 以多台同步相機重建完整動態場景，並逐幀輸出一張網格。"
+  },
+  "1a59e61ec06284f2": {
+    "engagement": 55.0,
+    "first_seen": "2026-11-26",
+    "headline": "AnyCam 探討以替代表徵條件化相機軌跡，讓影片生成能沿物體環繞移動視角。"
+  },
   "1ef82d58dab628de2ba": {
     "engagement": 100.0,
     "first_seen": "2026-11-24",
@@ -45,9 +55,9 @@
     "headline": "fast-anything 開源工具剖析 Python、Node、Ruby 熱點，請 coding agent 改寫成 Rust 並驗證行為一致。"
   },
   "30d03f10571df261": {
-    "engagement": 790.5,
-    "first_seen": "2026-11-25",
-    "headline": "OpenAI 數學專案預印本宣稱矩陣乘法指數為 2.25，另附八項相關結果"
+    "engagement": 2491.5,
+    "first_seen": "2026-11-26",
+    "headline": "OpenAI 數學論文主張矩陣乘法指數 ω 為 9/4，即 2.25，低於近年約 2.37 的上界。"
   },
   "32187ffd8419c7c8": {
     "engagement": 55.0,
@@ -74,6 +84,11 @@
     "first_seen": "2026-11-25",
     "headline": "Anthropic 宣稱 Claude 解出一道古老數學題，但附上的證明長達 250,000 頁，被網友批評為 slop。"
   },
+  "3c19436a0e772b14": {
+    "engagement": 1602.0,
+    "first_seen": "2026-11-26",
+    "headline": "Anthropic 研究人員借助 Claude，將黎曼猜想相關 Lean 形式化檔案從約 1,700 萬行縮到約 7.6 萬行。"
+  },
   "3c39bae5426aed85": {
     "engagement": 2194.5,
     "first_seen": "2026-11-24",
@@ -98,6 +113,11 @@
     "engagement": 2436.5,
     "first_seen": "2026-11-23",
     "headline": "一家約 400 人的科技公司收到通知，Anthropic 方案漲約 10 倍，一週內要改用其他模型。"
+  },
+  "427eefd81f1111e4": {
+    "engagement": 972.5,
+    "first_seen": "2026-11-26",
+    "headline": "開源工具 PeakCut 用 AI 自動剪長影片與直播精華，可自架並自帶 AI 金鑰。"
   },
   "49db83e253edbf07": {
     "engagement": 920.5,
@@ -154,10 +174,25 @@
     "first_seen": "2026-11-25",
     "headline": "微軟因歷史性服務中斷宣布 Code Red，目標一小時內恢復並導入 AI 代理協助診斷"
   },
+  "614a39056ef946c4": {
+    "engagement": 55.0,
+    "first_seen": "2026-11-26",
+    "headline": "LuxAvatar 從單張人像生成可即時動畫且可重打光的頭部化身，光照與動作分開建模。"
+  },
   "61b42f71d21332e8": {
     "engagement": 55.0,
     "first_seen": "2026-11-23",
     "headline": "論文研究無限變異數條件下的高機率線性迴歸，並提出黑箱轉換，讓有限變異數的迴歸程序可用於此情境。"
+  },
+  "653cd812f9410bce": {
+    "engagement": 1142.0,
+    "first_seen": "2026-11-26",
+    "headline": "貼文標題指 Anthropic 前員工表示 Claude 會破壞研究工作，摘要未附原始證據。"
+  },
+  "6955708d7ffb0384": {
+    "engagement": 55.0,
+    "first_seen": "2026-11-26",
+    "headline": "I2VT 把影像編輯能力轉移到影片編輯模型，不需額外收集成對的新影片資料。"
   },
   "6b20a453be132eaa": {
     "engagement": 115.375,
@@ -209,6 +244,11 @@
     "first_seen": "2026-11-23",
     "headline": "研究團隊推出 NoPeBench，測試互動影片世界模型能否阻止物體穿透障礙，摘要指出開源模型都不可靠。"
   },
+  "8dc9ed20690e3906": {
+    "engagement": 640.0,
+    "first_seen": "2026-11-26",
+    "headline": "使用者回報 Gemini 拒絕提供《一閃一閃亮晶晶》歌詞，另有人稱在其他介面可正常回答。"
+  },
   "a432c3d9bf2d7b02": {
     "engagement": 55.0,
     "first_seen": "2026-11-24",
@@ -224,6 +264,11 @@
     "first_seen": "2026-11-23",
     "headline": "一家新創聲稱 AI Agent 從零設計出新 CPU 架構，矽晶片前模擬顯示能效比高 4.59 倍。"
   },
+  "abbf8f15649e9cfc": {
+    "engagement": 16.900000000000002,
+    "first_seen": "2026-11-26",
+    "headline": "OpenAI 推出 ChatGPT for Accounting，可連接 QuickBooks、Xero、NetSuite 處理例行帳務"
+  },
   "ac6cc1e459d7d719": {
     "engagement": 584.6750000000001,
     "first_seen": "2026-11-23",
@@ -234,10 +279,20 @@
     "first_seen": "2026-11-23",
     "headline": "Yogurt 是免費開源的會議筆記工具，不派會議機器人，筆記內容留在使用者電腦上，支援 Mac、Windows、Linux。"
   },
+  "b12509fc497a8687": {
+    "engagement": 3752.0,
+    "first_seen": "2026-11-26",
+    "headline": "OpenAI 宣稱以 AI 輔助推導出矩陣乘法指數 9/4，尚待同儕審查確認。"
+  },
   "b3a8fee96b1c0022": {
     "engagement": 2089.1,
     "first_seen": "2026-11-24",
     "headline": "IG 貼文稱 OpenAI 推出 GPT-6.2 雙版本 Astra 與 Sol，目標轉向知識工作"
+  },
+  "b40703aca04717cd": {
+    "engagement": 1143.0,
+    "first_seen": "2026-11-26",
+    "headline": "貼文主張 T3 Code 上傳 Claude 與 Gemini 帳號雜湊資料，並有可遠端控制電腦的資安漏洞。"
   },
   "b8d42fd4c18b5ac8": {
     "engagement": 40.95,
@@ -284,6 +339,11 @@
     "first_seen": "2026-11-23",
     "headline": "OpenAI 發文談 Perplexity 與智能，評測數字取自內部程式碼快照"
   },
+  "dec4960ea2693d9c": {
+    "engagement": 55.0,
+    "first_seen": "2026-11-26",
+    "headline": "研究團隊提出以代理式視覺推理做點追蹤，讓通用 VLM 處理像素級對應問題。"
+  },
   "df08ab47e08b1ed0": {
     "engagement": 212.5,
     "first_seen": "2026-11-24",
@@ -294,6 +354,11 @@
     "first_seen": "2026-11-25",
     "headline": "OmniAct 主張用單一策略控制多種機器人，並依各機器人能力調整動作。"
   },
+  "e213ef04a8703146": {
+    "engagement": 1168.5,
+    "first_seen": "2026-11-26",
+    "headline": "音樂串流平台 Tidal 宣布禁止 AI 生成音樂，屬平台內容政策的明確轉向。"
+  },
   "e5c7e54028737f43": {
     "engagement": 1557.5,
     "first_seen": "2026-11-23",
@@ -303,6 +368,16 @@
     "engagement": 43799.275,
     "first_seen": "2026-11-23",
     "headline": "OpenAI 推出 dots，由 GPT-6 Astra 驅動的常駐 Agent，可背景執行目標並串接 4,000+ 應用"
+  },
+  "ef8096d74f5dfd33": {
+    "engagement": 2033.0,
+    "first_seen": "2026-11-26",
+    "headline": "作者主張 LLM Agent 優先服務母公司而非使用者，文章以觀點論述為主，未附實測。"
+  },
+  "f63f4cad14680799": {
+    "engagement": 812.0,
+    "first_seen": "2026-11-26",
+    "headline": "lsernau 的 grh-lean 專案提供更短的 GRH Lean 驗證版本，HN 標題歸為 Anthropic。"
   },
   "fb0b1daae67b3c6c": {
     "engagement": 23.725,
