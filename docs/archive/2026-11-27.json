@@ -1,0 +1,1103 @@
+{
+  "issue_date": "2026-11-27",
+  "executive_takeaway_zh": "跨 Reddit, HN, GitHub, arXiv 共 4 個來源彙整；今日焦點集中在 Claude 做無障礙遊戲庫、Google MCP 伺服器、AMD 版 llama.cpp 分支。",
+  "top1_diagram": {
+    "story_id": "506b0608171fd8ed",
+    "title_zh": "Claude 協作做出無障礙遊戲庫",
+    "nodes": [
+      {
+        "step": "01 BEFORE",
+        "label_zh": "標準手把門檻過高",
+        "detail_zh": "手部功能喪失者無法操作一般遊戲",
+        "tone": "neutral"
+      },
+      {
+        "step": "02 CHANGE",
+        "label_zh": "Claude 生成瀏覽器小遊戲",
+        "detail_zh": "改用雙開關或空白鍵與 Enter 操作",
+        "tone": "change"
+      },
+      {
+        "step": "03 IMPACT",
+        "label_zh": "弟弟可自行玩迷你高爾夫",
+        "detail_zh": "無程式背景的作者耗時兩年多完成",
+        "tone": "impact"
+      },
+      {
+        "step": "04 DEBATE",
+        "label_zh": "單一案例，長期維護未知",
+        "detail_zh": "原文未提供可擴展性或維護成本數據",
+        "tone": "tension"
+      }
+    ]
+  },
+  "items": [
+    {
+      "id": "506b0608171fd8ed",
+      "short_tag": "Claude 做無障礙遊戲庫",
+      "topic_id": "agents",
+      "topic_name": "AI Agents & Coding Tools",
+      "published_at_display": "2026-11-26 21:35",
+      "importance_score": 80,
+      "popularity_score": 92,
+      "rank_reason_zh": "真實工程案例，展示 Claude 在非工程師手中的長期交付。",
+      "headline_zh": "一位無程式背景的作者花兩年多用 Claude 做出小遊戲庫，供因病無法用手的弟弟操作。",
+      "community_consensus_zh": "留言以感動與致謝為主，有人提議為他開發更多遊戲，尚無顯著正反論戰。",
+      "sentiment_tag": "mostly_positive",
+      "sources": [
+        {
+          "platform": "reddit",
+          "label": "r/ClaudeAI 2286▲ / 94則留言",
+          "published_at": "2026-11-26 21:35",
+          "url": "https://www.reddit.com/r/ClaudeAI/comments/1y61dgi/over_two_years_and_with_no_programming_background/"
+        }
+      ],
+      "primary_url": "https://www.reddit.com/r/ClaudeAI/comments/1y61dgi/over_two_years_and_with_no_programming_background/",
+      "wait_what": {
+        "premise_zh": "作者的弟弟 Ben 因罕見疾病失去手部功能，無法使用一般遊戲手把。作者用 Claude 在瀏覽器中做出小遊戲，玩家只需兩個開關或空白鍵與 Enter 鍵即可操作。",
+        "why_it_matters_to_you_zh": "對日常 Agent 工作流的意義：非工程師可靠長期 Claude 協作交付可用的 Web 應用。單鍵或雙開關的輸入設計也能直接沿用到其他無障礙專案。",
+        "glossary_notes": [
+          {
+            "term": "Two-switch input",
+            "explain_zh": "雙開關輸入，類似用兩個按鈕取代整副搖桿操作。"
+          }
+        ]
+      },
+      "community_voices": [
+        {
+          "stance": "pro",
+          "platform": "reddit",
+          "author": "u/Wonderful-Stand-2404",
+          "quote_zh": "希望有人能為 Ben 開發更多遊戲，讓他擁有龐大的遊戲庫。",
+          "url": "https://www.reddit.com/r/ClaudeAI/comments/1y61dgi/comment/19t82qm1ig7gg/"
+        },
+        {
+          "stance": "pro",
+          "platform": "reddit",
+          "author": "u/Hairy_Bumhole",
+          "quote_zh": "作者的努力讓弟弟受惠，多數留言是讚賞與感謝。",
+          "url": "https://www.reddit.com/r/ClaudeAI/comments/1y61dgi/comment/19t7ytyjy91vn/"
+        }
+      ],
+      "composite_score": 87.5,
+      "rank": 1,
+      "source_section": "reddit"
+    },
+    {
+      "id": "6f6a6b07f17a726f",
+      "short_tag": "Google MCP 伺服器",
+      "topic_id": "agents",
+      "topic_name": "AI Agents & Coding Tools",
+      "published_at_display": "2026-11-26 17:44",
+      "importance_score": 84,
+      "popularity_score": 82,
+      "rank_reason_zh": "Agent 改走 Google MCP 存取，但 Gmail MCP 不能寄信",
+      "headline_zh": "Google 將要求 AI Agent 改走其 MCP 伺服器存取 Workspace，但 Gmail MCP 無法寄信。",
+      "community_consensus_zh": "社群擔心 MCP 變成必經路徑，也有人認為換服務的摩擦會變大。",
+      "sentiment_tag": "critical",
+      "sources": [
+        {
+          "platform": "hackernews",
+          "label": "HN 294▲ / 249則留言",
+          "published_at": "2026-11-26 17:44",
+          "url": "https://news.ycombinator.com/item?id=50653477"
+        }
+      ],
+      "primary_url": "https://techstackups.com/articles/google-workspace-ai-agents-mcp/",
+      "wait_what": {
+        "premise_zh": "MCP 是 Agent 呼叫外部工具的標準協議，服務商把功能包成 MCP 伺服器後，Agent 就能統一存取。這篇指出 Google 將 Workspace 能力包成 MCP 伺服器，但 Gmail 那一組介面不支援寄送信件，功能範圍不對稱。",
+        "why_it_matters_to_you_zh": "若你的 Agent 工作流要接 Gmail，寄信功能要另找路徑或自建工具，不能假設 MCP 介面提供完整功能。",
+        "glossary_notes": []
+      },
+      "community_voices": [
+        {
+          "stance": "con",
+          "platform": "hackernews",
+          "author": "roccoliiva",
+          "quote_zh": "Agent 流量改走 MCP 變成必經路徑，但工具存取方式仍不清楚，容易讓 Agent 誤判自己能做什麼。",
+          "url": "https://news.ycombinator.com/item?id=50653914"
+        },
+        {
+          "stance": "con",
+          "platform": "hackernews",
+          "author": "Den_VR",
+          "quote_zh": "他原本透過 OpenAI 與 Gemini 操作 Google Workspace，這次改動的摩擦大到足以讓他考慮離開 Google 服務。",
+          "url": "https://news.ycombinator.com/item?id=50653988"
+        }
+      ],
+      "composite_score": 85.2,
+      "rank": 2,
+      "source_section": "hackernews"
+    },
+    {
+      "id": "1d45997e4997625f",
+      "short_tag": "AMD 版 llama.cpp 分支",
+      "topic_id": "models-edge",
+      "topic_name": "Open-Source LLMs / VLM / Edge AI",
+      "published_at_display": "2026-11-27 01:11",
+      "importance_score": 86,
+      "popularity_score": 76,
+      "rank_reason_zh": "AMD GPU 專用推論分支，社群回報解碼與預填速度明顯提升",
+      "headline_zh": "社群開發者推出 AMD 專用 llama.cpp 分支，針對特定 GPU 做優化。",
+      "community_consensus_zh": "有人實測 7900XTX 速度明顯提升，也有人質疑輸出品質未經驗證。",
+      "sentiment_tag": "mixed",
+      "sources": [
+        {
+          "platform": "hackernews",
+          "label": "HN 312▲ / 76則留言",
+          "published_at": "2026-11-27 01:11",
+          "url": "https://news.ycombinator.com/item?id=50657265"
+        }
+      ],
+      "primary_url": "https://devnull.land/amd-specific-llama-cpp",
+      "wait_what": {
+        "premise_zh": "llama.cpp 是在消費級硬體跑本地模型的常用推論引擎，預設後端對多數 GPU 都是通用實作。不同 GPU 的最佳化深度不同，因此社群常自行 fork 做硬體專用調校。這篇屬於 AMD 專用分支。",
+        "why_it_matters_to_you_zh": "若你在 AMD 卡上跑本地 LLM，decode 與 prefill 速度會直接影響 TTFT 與 TPOT，也影響同樣 context 能否在顯存內跑完。採用前請用自己的 prompt 做開環壓測比對。",
+        "glossary_notes": [
+          {
+            "term": "ROCm/HIP",
+            "explain_zh": "AMD 的 GPU 運算框架，功能上相當於 AMD 卡的 CUDA 對應層。"
+          }
+        ]
+      },
+      "community_voices": [
+        {
+          "stance": "pro",
+          "platform": "hackernews",
+          "author": "rsolva",
+          "quote_zh": "作者自述借助 Claude 改寫 llama.cpp，讓 Inkling 2 Mini 在 7900XTX 上跑得更快，decode 與 prefill 都有明顯進步。",
+          "url": "https://news.ycombinator.com/item?id=50657417"
+        },
+        {
+          "stance": "nuance",
+          "platform": "hackernews",
+          "author": "pixelesque",
+          "quote_zh": "想知道這些加速有沒有檢查輸出品質，因為非零溫度下 token 本來就有隨機性，只看速度不夠。",
+          "url": "https://news.ycombinator.com/item?id=50657386"
+        },
+        {
+          "stance": "nuance",
+          "platform": "hackernews",
+          "author": "woadwarrior01",
+          "quote_zh": "有人提到 llama.cpp 已透過 Hugging Face 收購歸屬 NVIDIA，但留言未附來源，尚未證實。",
+          "url": "https://news.ycombinator.com/item?id=50657426"
+        }
+      ],
+      "composite_score": 83.1,
+      "rank": 3,
+      "source_section": "hackernews"
+    },
+    {
+      "id": "244a3e8cb4f170fa",
+      "short_tag": "GPT-6.2 用量收緊",
+      "topic_id": "industry",
+      "topic_name": "AI 產業與新模型發布",
+      "published_at_display": "2026-11-26 11:36",
+      "importance_score": 80,
+      "popularity_score": 84,
+      "rank_reason_zh": "模型用量上限被調降，影響 Agent 排程與成本預估",
+      "headline_zh": "OpenAI 調降 GPT-6.2 用量，Astra 觸頂速度快 40%，Sol 快 25%。",
+      "community_consensus_zh": "社群認為模型本來就不便宜，對此次限量的說法半信半疑，有人轉向 Gemini。",
+      "sentiment_tag": "critical",
+      "sources": [
+        {
+          "platform": "hackernews",
+          "label": "HN 475▲ / 263則留言",
+          "published_at": "2026-11-26 11:36",
+          "url": "https://news.ycombinator.com/item?id=50651117"
+        }
+      ],
+      "primary_url": "https://twitter.com/thsottiaux/status/2125784147889393806",
+      "wait_what": {
+        "premise_zh": "GPT-6.2 有 Astra 與 Sol 兩個變體，各自有使用上限（依標題判斷）。OpenAI 這次縮短了額度，讓同樣的使用量更快撞到限制。原始資料未附官方完整公告，細節需點入原文確認。",
+        "why_it_matters_to_you_zh": "若你的 Agent 流程依賴這些模型，額度撞頂變快會影響批次任務與長 context 工作的排程與成本預估。",
+        "glossary_notes": []
+      },
+      "community_voices": [
+        {
+          "stance": "con",
+          "platform": "hackernews",
+          "author": "rspeele",
+          "quote_zh": "這些模型原本就只是普通但便宜，現在發現它們本來就不該便宜，令人懷疑 OpenAI 的定價策略。",
+          "url": "https://news.ycombinator.com/item?id=50651399"
+        },
+        {
+          "stance": "con",
+          "platform": "hackernews",
+          "author": "_s_a_m_",
+          "quote_zh": "質疑「計費錯誤」的說法，認為是變相加價，並提到 Google 促銷方案與 Gemini 可作替代。",
+          "url": "https://news.ycombinator.com/item?id=50651429"
+        },
+        {
+          "stance": "nuance",
+          "platform": "hackernews",
+          "author": "derac",
+          "quote_zh": "質疑為何選在感恩節前發布，也質疑為何這件事沒有更早被注意到。",
+          "url": "https://news.ycombinator.com/item?id=50651406"
+        }
+      ],
+      "composite_score": 82.6,
+      "rank": 4,
+      "source_section": "hackernews"
+    },
+    {
+      "id": "037020c00b794a34",
+      "short_tag": "AI 生成內容社群反感",
+      "topic_id": "agents",
+      "topic_name": "AI Agents & Coding Tools",
+      "published_at_display": "2026-11-27 05:47",
+      "importance_score": 70,
+      "popularity_score": 92,
+      "rank_reason_zh": "反映 AI 生成內容的社群反感，對審查標準有參考價值。",
+      "headline_zh": "原文作者抱怨 AI 生成的粗糙作品越來越多，重點是缺乏投入與在意，而非程式碼本身。",
+      "community_consensus_zh": "留言兩極，部分程式設計師認為 AI 有幫助，也有人批評 AI 生成內容充斥，分歧明顯。",
+      "sentiment_tag": "mixed",
+      "sources": [
+        {
+          "platform": "reddit",
+          "label": "r/hatethissmug 644▲ / 706則留言",
+          "published_at": "2026-11-27 05:47",
+          "url": "https://www.reddit.com/r/hatethissmug/comments/1y6cnj6/i_hate_vibecoded_slop_and_how_normalized_its/"
+        }
+      ],
+      "primary_url": "https://www.reddit.com/r/hatethissmug/comments/1y6cnj6/i_hate_vibecoded_slop_and_how_normalized_its/",
+      "wait_what": {
+        "premise_zh": "原文作者自稱不是程式設計師，批評社群越來越能接受 AI 生成的粗糙作品。作者的批評重點是作品缺乏投入，而非程式碼品質。",
+        "why_it_matters_to_you_zh": "對工作流的意義：AI 產出的程式碼與內容品質落差大，你審查 AI 產出時需要明確的驗收標準。留言中也有程式設計師表示 AI 確實降低了日常工作負擔。",
+        "glossary_notes": [
+          {
+            "term": "Vibecoded slop",
+            "explain_zh": "只靠 AI 快速生成、缺乏檢查的粗糙產物，類似流水線的廢品。"
+          }
+        ]
+      },
+      "community_voices": [
+        {
+          "stance": "pro",
+          "platform": "reddit",
+          "author": "u/Nyxiereal",
+          "quote_zh": "程式設計師表示 AI 讓工作更輕鬆，並認為多數程式設計師對 AI 持中立或支持態度。",
+          "url": "https://www.reddit.com/r/hatethissmug/comments/1y6cnj6/comment/19t8k8ygrky11/"
+        },
+        {
+          "stance": "con",
+          "platform": "reddit",
+          "author": "u/Individual-Ad4311",
+          "quote_zh": "遊戲實況影片的腳本與剪輯疑似由 Claude 生成，內容同質化，讓觀眾感到反感。",
+          "url": "https://www.reddit.com/r/hatethissmug/comments/1y6cnj6/comment/19t8k6r9aqq10/"
+        },
+        {
+          "stance": "nuance",
+          "platform": "reddit",
+          "author": "u/The_Ultimate_Ducker",
+          "quote_zh": "回覆者以程式碼品質作比喻批評，但原文說明不在意程式品質，論點有前後矛盾。",
+          "url": "https://www.reddit.com/r/hatethissmug/comments/1y6cnj6/comment/19t8kh2egma11/"
+        }
+      ],
+      "composite_score": 81.9,
+      "rank": 5,
+      "source_section": "reddit"
+    },
+    {
+      "id": "de37ba9f4e662f9a",
+      "short_tag": "純 CPU 本地推論伺服器",
+      "topic_id": "models-edge",
+      "topic_name": "Open-Source LLMs / VLM / Edge AI",
+      "published_at_display": "2026-11-27 13:06",
+      "importance_score": 78,
+      "popularity_score": 82,
+      "rank_reason_zh": "切中無 GPU 的 Edge 部署需求，但效能數據尚未驗證。",
+      "headline_zh": "開源推論工具 openset-llm 宣稱可在純 CPU、8 GB RAM 環境跑本地 LLM，並提供 OpenAI 相容伺服器。",
+      "community_consensus_zh": "目前以轉發分享為主，尚無顯著正反論戰，缺少第三方實測數據可供比對。",
+      "sentiment_tag": "neutral",
+      "sources": [
+        {
+          "platform": "github",
+          "label": "GitHub 1814 stars / 174 forks",
+          "published_at": "2026-11-27 13:06",
+          "url": "https://github.com/opensetlabs/openset-llm"
+        }
+      ],
+      "primary_url": "https://github.com/opensetlabs/openset-llm",
+      "wait_what": {
+        "premise_zh": "本地 LLM 推論速度通常取決於 GPU 的 VRAM 與記憶體頻寬。純 CPU 方案改靠系統記憶體與 CPU 運算撐起推論，門檻較低但速度較難預期。本案屬於這類方案，並以 OpenAI API 格式對外提供服務。",
+        "why_it_matters_to_you_zh": "若 Edge 裝置沒有獨立 GPU，這類工具可當低成本的推論替代方案。要判斷能否用於 Agent 迴圈，仍需實測 TTFT 與 TPOT。",
+        "glossary_notes": [
+          {
+            "term": "OpenAI-compatible server",
+            "explain_zh": "仿 OpenAI API 格式的本地服務，改 base URL 即可接。"
+          }
+        ]
+      },
+      "community_voices": [],
+      "composite_score": 81.4,
+      "rank": 6,
+      "source_section": "github"
+    },
+    {
+      "id": "dc69597abec1a000",
+      "short_tag": "Photoshop AI 功能爭議",
+      "topic_id": "industry",
+      "topic_name": "AI 產業與新模型發布",
+      "published_at_display": "2026-11-26 05:18",
+      "importance_score": 72,
+      "popularity_score": 90,
+      "rank_reason_zh": "高熱度新聞，攝影師被警告暫勿更新 Photoshop 的 AI 功能",
+      "headline_zh": "報導指 NYT 警告攝影師暫勿更新 Photoshop，原因為新增 AI 功能。",
+      "community_consensus_zh": "目前以轉發分享為主，尚無顯著正反論戰（原始留言資料未收錄，無法判讀風向）。",
+      "sentiment_tag": "neutral",
+      "sources": [
+        {
+          "platform": "hackernews",
+          "label": "HN 661▲ / 525則留言",
+          "published_at": "2026-11-26 05:18",
+          "url": "https://news.ycombinator.com/item?id=50647673"
+        }
+      ],
+      "primary_url": "https://www.theverge.com/ai-artificial-intelligence/1041227/the-new-york-times-warns-photographers-not-to-update-photoshop-over-ai-features",
+      "wait_what": {
+        "premise_zh": "Adobe Photoshop 近期加入 AI 相關功能。依 The Verge 報導，NYT 向攝影師提出暫勿更新的建議。原始資料未附完整理由，報導指向 AI 功能的風險，需點入原文確認細節。",
+        "why_it_matters_to_you_zh": "若你的影像流程使用 Photoshop，更新前先確認 AI 功能的授權條款與版本回退方式，避免素材處理流程中斷。",
+        "glossary_notes": []
+      },
+      "community_voices": [],
+      "composite_score": 80.9,
+      "rank": 7,
+      "source_section": "hackernews"
+    },
+    {
+      "id": "00882cfc5e59202e",
+      "short_tag": "AE通訊頻譜遷移",
+      "topic_id": "models-edge",
+      "topic_name": "Open-Source LLMs / VLM / Edge AI",
+      "published_at_display": "2026-11-26 02:59",
+      "importance_score": 62,
+      "popularity_score": 54,
+      "rank_reason_zh": "端側無線通訊的 AI 原生研究，有遷移學習與失配量化議題",
+      "headline_zh": "arXiv 論文量化自編碼器無線通訊對通道模型失配的敏感度，並探討以遷移學習調整頻譜適應",
+      "community_consensus_zh": "目前以轉發分享為主，尚無顯著正反論戰（arXiv 無留言資料）",
+      "sentiment_tag": "neutral",
+      "sources": [
+        {
+          "platform": "arxiv",
+          "label": "arXiv 預印本 2611.34942v1 / 無留言",
+          "published_at": "2026-11-26 02:59",
+          "url": "http://arxiv.org/abs/2611.34942v1"
+        }
+      ],
+      "primary_url": "http://arxiv.org/abs/2611.34942v1",
+      "wait_what": {
+        "premise_zh": "傳統無線通訊把調變、編碼、偵測拆成多個獨立模組。這篇論文改用一組收發端一起訓練的自編碼器，直接學整段傳輸流程。模型若在某個通道模型上訓練，換到不同通道時效果可能下降，因此論文研究這種失配的敏感度。",
+        "why_it_matters_to_you_zh": "若自編碼器只能在訓練通道上可用，部署到新頻段時就要重新訓練，會增加算力與資料成本。遷移學習若能用少量資料調整，對邊緣設備的更新成本有參考價值。",
+        "glossary_notes": [
+          {
+            "term": "Autoencoder 通訊",
+            "explain_zh": "把發送端編碼與接收端解碼當成一組一起訓練的神經網路"
+          },
+          {
+            "term": "Transfer learning",
+            "explain_zh": "把舊環境訓練好的模型，用少量新資料微調到新環境"
+          }
+        ]
+      },
+      "community_voices": [],
+      "composite_score": 59.6,
+      "rank": 8,
+      "source_section": "arxiv"
+    }
+  ],
+  "sections": [
+    {
+      "source": "reddit",
+      "label": "Reddit",
+      "takeaway_zh": "今日 Reddit 訊號：非工程師用 Claude 做出無障礙遊戲庫受好評，AI 科學宣稱仍缺獨立驗證。",
+      "top_diagram": {
+        "story_id": "506b0608171fd8ed",
+        "title_zh": "Claude 協作做出無障礙遊戲庫",
+        "nodes": [
+          {
+            "step": "01 BEFORE",
+            "label_zh": "標準手把門檻過高",
+            "detail_zh": "手部功能喪失者無法操作一般遊戲",
+            "tone": "neutral"
+          },
+          {
+            "step": "02 CHANGE",
+            "label_zh": "Claude 生成瀏覽器小遊戲",
+            "detail_zh": "改用雙開關或空白鍵與 Enter 操作",
+            "tone": "change"
+          },
+          {
+            "step": "03 IMPACT",
+            "label_zh": "弟弟可自行玩迷你高爾夫",
+            "detail_zh": "無程式背景的作者耗時兩年多完成",
+            "tone": "impact"
+          },
+          {
+            "step": "04 DEBATE",
+            "label_zh": "單一案例，長期維護未知",
+            "detail_zh": "原文未提供可擴展性或維護成本數據",
+            "tone": "tension"
+          }
+        ]
+      },
+      "items": [
+        {
+          "id": "506b0608171fd8ed",
+          "short_tag": "Claude 做無障礙遊戲庫",
+          "topic_id": "agents",
+          "topic_name": "AI Agents & Coding Tools",
+          "published_at_display": "2026-11-26 21:35",
+          "importance_score": 80,
+          "popularity_score": 92,
+          "rank_reason_zh": "真實工程案例，展示 Claude 在非工程師手中的長期交付。",
+          "headline_zh": "一位無程式背景的作者花兩年多用 Claude 做出小遊戲庫，供因病無法用手的弟弟操作。",
+          "community_consensus_zh": "留言以感動與致謝為主，有人提議為他開發更多遊戲，尚無顯著正反論戰。",
+          "sentiment_tag": "mostly_positive",
+          "sources": [
+            {
+              "platform": "reddit",
+              "label": "r/ClaudeAI 2286▲ / 94則留言",
+              "published_at": "2026-11-26 21:35",
+              "url": "https://www.reddit.com/r/ClaudeAI/comments/1y61dgi/over_two_years_and_with_no_programming_background/"
+            }
+          ],
+          "primary_url": "https://www.reddit.com/r/ClaudeAI/comments/1y61dgi/over_two_years_and_with_no_programming_background/",
+          "wait_what": {
+            "premise_zh": "作者的弟弟 Ben 因罕見疾病失去手部功能，無法使用一般遊戲手把。作者用 Claude 在瀏覽器中做出小遊戲，玩家只需兩個開關或空白鍵與 Enter 鍵即可操作。",
+            "why_it_matters_to_you_zh": "對日常 Agent 工作流的意義：非工程師可靠長期 Claude 協作交付可用的 Web 應用。單鍵或雙開關的輸入設計也能直接沿用到其他無障礙專案。",
+            "glossary_notes": [
+              {
+                "term": "Two-switch input",
+                "explain_zh": "雙開關輸入，類似用兩個按鈕取代整副搖桿操作。"
+              }
+            ]
+          },
+          "community_voices": [
+            {
+              "stance": "pro",
+              "platform": "reddit",
+              "author": "u/Wonderful-Stand-2404",
+              "quote_zh": "希望有人能為 Ben 開發更多遊戲，讓他擁有龐大的遊戲庫。",
+              "url": "https://www.reddit.com/r/ClaudeAI/comments/1y61dgi/comment/19t82qm1ig7gg/"
+            },
+            {
+              "stance": "pro",
+              "platform": "reddit",
+              "author": "u/Hairy_Bumhole",
+              "quote_zh": "作者的努力讓弟弟受惠，多數留言是讚賞與感謝。",
+              "url": "https://www.reddit.com/r/ClaudeAI/comments/1y61dgi/comment/19t7ytyjy91vn/"
+            }
+          ],
+          "composite_score": 87.5,
+          "rank": 1,
+          "source_section": "reddit"
+        },
+        {
+          "id": "037020c00b794a34",
+          "short_tag": "AI 生成內容社群反感",
+          "topic_id": "agents",
+          "topic_name": "AI Agents & Coding Tools",
+          "published_at_display": "2026-11-27 05:47",
+          "importance_score": 70,
+          "popularity_score": 92,
+          "rank_reason_zh": "反映 AI 生成內容的社群反感，對審查標準有參考價值。",
+          "headline_zh": "原文作者抱怨 AI 生成的粗糙作品越來越多，重點是缺乏投入與在意，而非程式碼本身。",
+          "community_consensus_zh": "留言兩極，部分程式設計師認為 AI 有幫助，也有人批評 AI 生成內容充斥，分歧明顯。",
+          "sentiment_tag": "mixed",
+          "sources": [
+            {
+              "platform": "reddit",
+              "label": "r/hatethissmug 644▲ / 706則留言",
+              "published_at": "2026-11-27 05:47",
+              "url": "https://www.reddit.com/r/hatethissmug/comments/1y6cnj6/i_hate_vibecoded_slop_and_how_normalized_its/"
+            }
+          ],
+          "primary_url": "https://www.reddit.com/r/hatethissmug/comments/1y6cnj6/i_hate_vibecoded_slop_and_how_normalized_its/",
+          "wait_what": {
+            "premise_zh": "原文作者自稱不是程式設計師，批評社群越來越能接受 AI 生成的粗糙作品。作者的批評重點是作品缺乏投入，而非程式碼品質。",
+            "why_it_matters_to_you_zh": "對工作流的意義：AI 產出的程式碼與內容品質落差大，你審查 AI 產出時需要明確的驗收標準。留言中也有程式設計師表示 AI 確實降低了日常工作負擔。",
+            "glossary_notes": [
+              {
+                "term": "Vibecoded slop",
+                "explain_zh": "只靠 AI 快速生成、缺乏檢查的粗糙產物，類似流水線的廢品。"
+              }
+            ]
+          },
+          "community_voices": [
+            {
+              "stance": "pro",
+              "platform": "reddit",
+              "author": "u/Nyxiereal",
+              "quote_zh": "程式設計師表示 AI 讓工作更輕鬆，並認為多數程式設計師對 AI 持中立或支持態度。",
+              "url": "https://www.reddit.com/r/hatethissmug/comments/1y6cnj6/comment/19t8k8ygrky11/"
+            },
+            {
+              "stance": "con",
+              "platform": "reddit",
+              "author": "u/Individual-Ad4311",
+              "quote_zh": "遊戲實況影片的腳本與剪輯疑似由 Claude 生成，內容同質化，讓觀眾感到反感。",
+              "url": "https://www.reddit.com/r/hatethissmug/comments/1y6cnj6/comment/19t8k6r9aqq10/"
+            },
+            {
+              "stance": "nuance",
+              "platform": "reddit",
+              "author": "u/The_Ultimate_Ducker",
+              "quote_zh": "回覆者以程式碼品質作比喻批評，但原文說明不在意程式品質，論點有前後矛盾。",
+              "url": "https://www.reddit.com/r/hatethissmug/comments/1y6cnj6/comment/19t8kh2egma11/"
+            }
+          ],
+          "composite_score": 81.9,
+          "rank": 2,
+          "source_section": "reddit"
+        },
+        {
+          "id": "1eed13ab3759f44f",
+          "short_tag": "GPT-6 Astra 量子重力宣稱",
+          "topic_id": "industry",
+          "topic_name": "AI 產業與新模型發布",
+          "published_at_display": "2026-11-26 14:32",
+          "importance_score": 60,
+          "popularity_score": 96,
+          "rank_reason_zh": "高互動的 AI 科學宣稱，但證據薄弱，需保持距離。",
+          "headline_zh": "社群討論 GPT-6 Astra 參與一篇量子重力理論論文，目前僅見摘要與宣稱，尚無獨立驗證。",
+          "community_consensus_zh": "留言以懷疑為主，有人引用 r/Physics 規則指 LLM 無法貢獻新物理，也有人稱作者可信。",
+          "sentiment_tag": "critical",
+          "sources": [
+            {
+              "platform": "reddit",
+              "label": "r/singularity 1976▲ / 575則留言",
+              "published_at": "2026-11-26 14:32",
+              "url": "https://www.reddit.com/r/singularity/comments/1y5u48p/openai_and_gpt6_astra_just_tackled_physics_holy/"
+            }
+          ],
+          "primary_url": "https://www.reddit.com/r/singularity/comments/1y5u48p/openai_and_gpt6_astra_just_tackled_physics_holy/",
+          "wait_what": {
+            "premise_zh": "帖文標題宣稱 OpenAI 的 GPT-6 Astra 協助處理量子重力問題，試圖統一廣義相對論與量子力學。目前能看到的是一篇論文摘要與社群轉述，沒有獨立的同行審查結果。",
+            "why_it_matters_to_you_zh": "對推論延遲、顯存與工作流的直接影響很低。這是需要同行審查的科學宣稱，不是可部署的工具更新，建議等正式論文與獨立驗證出現後再評估。",
+            "glossary_notes": [
+              {
+                "term": "Background independent quantization",
+                "explain_zh": "不依賴固定時空背景的重力量子化，類似不靠固定座標系做計算。"
+              }
+            ]
+          },
+          "community_voices": [
+            {
+              "stance": "con",
+              "platform": "reddit",
+              "author": "u/Striking_Leave_4614",
+              "quote_zh": "引用 r/Physics 第 7 條規則：LLM 不能產出新物理，也難以正確檢查新理論。",
+              "url": "https://www.reddit.com/r/singularity/comments/1y5u48p/comment/19t7hrsoklvj4/"
+            },
+            {
+              "stance": "nuance",
+              "platform": "reddit",
+              "author": "u/VastSight",
+              "quote_zh": "作者貼出摘要，內容符合預期，但社群仍需等完整論文才能判斷其正確性。",
+              "url": "https://www.reddit.com/r/singularity/comments/1y5u48p/comment/19t7g5kqfivhd/"
+            },
+            {
+              "stance": "pro",
+              "platform": "reddit",
+              "author": "u/No-Dot5162",
+              "quote_zh": "有人查證作者為史丹佛領域知名學者，認為值得期待，但這不等於理論已被驗證。",
+              "url": "https://www.reddit.com/r/singularity/comments/1y5u48p/comment/19t7ff0lqydi9/"
+            }
+          ],
+          "composite_score": 77.0,
+          "rank": 3,
+          "source_section": "reddit"
+        }
+      ]
+    },
+    {
+      "source": "threads",
+      "label": "Threads",
+      "takeaway_zh": "本來源僅 1 則且為產品宣傳貼文，無實測數據，今日無有效訊號。",
+      "top_diagram": {
+        "story_id": null,
+        "title_zh": "本批次無有效頭條",
+        "nodes": [
+          {
+            "step": "01 BEFORE",
+            "label_zh": "候選不足",
+            "detail_zh": "原始資料僅 1 則，且未達收錄標準。",
+            "tone": "neutral"
+          },
+          {
+            "step": "02 CHANGE",
+            "label_zh": "過濾宣傳文",
+            "detail_zh": "貼文為產品宣傳，無架構或實作細節。",
+            "tone": "change"
+          },
+          {
+            "step": "03 IMPACT",
+            "label_zh": "今日不收錄",
+            "detail_zh": "無可驗證的效能、成本或工作流數據。",
+            "tone": "impact"
+          },
+          {
+            "step": "04 DEBATE",
+            "label_zh": "社群無討論",
+            "detail_zh": "僅 1 讚、1 則回覆，無留言論戰。",
+            "tone": "tension"
+          }
+        ]
+      },
+      "items": []
+    },
+    {
+      "source": "hackernews",
+      "label": "HN",
+      "takeaway_zh": "本地推論加速與 Agent 工具權限受限同時浮現，實用性才是社群焦點。",
+      "top_diagram": {
+        "story_id": "1d45997e4997625f",
+        "title_zh": "AMD 專用 llama.cpp 分支的加速路徑",
+        "nodes": [
+          {
+            "step": "01 BEFORE",
+            "label_zh": "通用 llama.cpp 後端",
+            "detail_zh": "各家 GPU 共用路徑，AMD 卡未必發揮全部效能",
+            "tone": "neutral"
+          },
+          {
+            "step": "02 CHANGE",
+            "label_zh": "AMD 專用分支",
+            "detail_zh": "針對 AMD GPU 調整推論路徑與核心程式",
+            "tone": "change"
+          },
+          {
+            "step": "03 IMPACT",
+            "label_zh": "decode 與 prefill 變快",
+            "detail_zh": "留言者實測 7900XTX 明顯加速，尚無公開數字",
+            "tone": "impact"
+          },
+          {
+            "step": "04 DEBATE",
+            "label_zh": "速度與輸出品質待驗證",
+            "detail_zh": "有人質疑加速後輸出是否變差，且未見公開評測",
+            "tone": "tension"
+          }
+        ]
+      },
+      "items": [
+        {
+          "id": "6f6a6b07f17a726f",
+          "short_tag": "Google MCP 伺服器",
+          "topic_id": "agents",
+          "topic_name": "AI Agents & Coding Tools",
+          "published_at_display": "2026-11-26 17:44",
+          "importance_score": 84,
+          "popularity_score": 82,
+          "rank_reason_zh": "Agent 改走 Google MCP 存取，但 Gmail MCP 不能寄信",
+          "headline_zh": "Google 將要求 AI Agent 改走其 MCP 伺服器存取 Workspace，但 Gmail MCP 無法寄信。",
+          "community_consensus_zh": "社群擔心 MCP 變成必經路徑，也有人認為換服務的摩擦會變大。",
+          "sentiment_tag": "critical",
+          "sources": [
+            {
+              "platform": "hackernews",
+              "label": "HN 294▲ / 249則留言",
+              "published_at": "2026-11-26 17:44",
+              "url": "https://news.ycombinator.com/item?id=50653477"
+            }
+          ],
+          "primary_url": "https://techstackups.com/articles/google-workspace-ai-agents-mcp/",
+          "wait_what": {
+            "premise_zh": "MCP 是 Agent 呼叫外部工具的標準協議，服務商把功能包成 MCP 伺服器後，Agent 就能統一存取。這篇指出 Google 將 Workspace 能力包成 MCP 伺服器，但 Gmail 那一組介面不支援寄送信件，功能範圍不對稱。",
+            "why_it_matters_to_you_zh": "若你的 Agent 工作流要接 Gmail，寄信功能要另找路徑或自建工具，不能假設 MCP 介面提供完整功能。",
+            "glossary_notes": []
+          },
+          "community_voices": [
+            {
+              "stance": "con",
+              "platform": "hackernews",
+              "author": "roccoliiva",
+              "quote_zh": "Agent 流量改走 MCP 變成必經路徑，但工具存取方式仍不清楚，容易讓 Agent 誤判自己能做什麼。",
+              "url": "https://news.ycombinator.com/item?id=50653914"
+            },
+            {
+              "stance": "con",
+              "platform": "hackernews",
+              "author": "Den_VR",
+              "quote_zh": "他原本透過 OpenAI 與 Gemini 操作 Google Workspace，這次改動的摩擦大到足以讓他考慮離開 Google 服務。",
+              "url": "https://news.ycombinator.com/item?id=50653988"
+            }
+          ],
+          "composite_score": 85.2,
+          "rank": 1,
+          "source_section": "hackernews"
+        },
+        {
+          "id": "1d45997e4997625f",
+          "short_tag": "AMD 版 llama.cpp 分支",
+          "topic_id": "models-edge",
+          "topic_name": "Open-Source LLMs / VLM / Edge AI",
+          "published_at_display": "2026-11-27 01:11",
+          "importance_score": 86,
+          "popularity_score": 76,
+          "rank_reason_zh": "AMD GPU 專用推論分支，社群回報解碼與預填速度明顯提升",
+          "headline_zh": "社群開發者推出 AMD 專用 llama.cpp 分支，針對特定 GPU 做優化。",
+          "community_consensus_zh": "有人實測 7900XTX 速度明顯提升，也有人質疑輸出品質未經驗證。",
+          "sentiment_tag": "mixed",
+          "sources": [
+            {
+              "platform": "hackernews",
+              "label": "HN 312▲ / 76則留言",
+              "published_at": "2026-11-27 01:11",
+              "url": "https://news.ycombinator.com/item?id=50657265"
+            }
+          ],
+          "primary_url": "https://devnull.land/amd-specific-llama-cpp",
+          "wait_what": {
+            "premise_zh": "llama.cpp 是在消費級硬體跑本地模型的常用推論引擎，預設後端對多數 GPU 都是通用實作。不同 GPU 的最佳化深度不同，因此社群常自行 fork 做硬體專用調校。這篇屬於 AMD 專用分支。",
+            "why_it_matters_to_you_zh": "若你在 AMD 卡上跑本地 LLM，decode 與 prefill 速度會直接影響 TTFT 與 TPOT，也影響同樣 context 能否在顯存內跑完。採用前請用自己的 prompt 做開環壓測比對。",
+            "glossary_notes": [
+              {
+                "term": "ROCm/HIP",
+                "explain_zh": "AMD 的 GPU 運算框架，功能上相當於 AMD 卡的 CUDA 對應層。"
+              }
+            ]
+          },
+          "community_voices": [
+            {
+              "stance": "pro",
+              "platform": "hackernews",
+              "author": "rsolva",
+              "quote_zh": "作者自述借助 Claude 改寫 llama.cpp，讓 Inkling 2 Mini 在 7900XTX 上跑得更快，decode 與 prefill 都有明顯進步。",
+              "url": "https://news.ycombinator.com/item?id=50657417"
+            },
+            {
+              "stance": "nuance",
+              "platform": "hackernews",
+              "author": "pixelesque",
+              "quote_zh": "想知道這些加速有沒有檢查輸出品質，因為非零溫度下 token 本來就有隨機性，只看速度不夠。",
+              "url": "https://news.ycombinator.com/item?id=50657386"
+            },
+            {
+              "stance": "nuance",
+              "platform": "hackernews",
+              "author": "woadwarrior01",
+              "quote_zh": "有人提到 llama.cpp 已透過 Hugging Face 收購歸屬 NVIDIA，但留言未附來源，尚未證實。",
+              "url": "https://news.ycombinator.com/item?id=50657426"
+            }
+          ],
+          "composite_score": 83.1,
+          "rank": 2,
+          "source_section": "hackernews"
+        },
+        {
+          "id": "244a3e8cb4f170fa",
+          "short_tag": "GPT-6.2 用量收緊",
+          "topic_id": "industry",
+          "topic_name": "AI 產業與新模型發布",
+          "published_at_display": "2026-11-26 11:36",
+          "importance_score": 80,
+          "popularity_score": 84,
+          "rank_reason_zh": "模型用量上限被調降，影響 Agent 排程與成本預估",
+          "headline_zh": "OpenAI 調降 GPT-6.2 用量，Astra 觸頂速度快 40%，Sol 快 25%。",
+          "community_consensus_zh": "社群認為模型本來就不便宜，對此次限量的說法半信半疑，有人轉向 Gemini。",
+          "sentiment_tag": "critical",
+          "sources": [
+            {
+              "platform": "hackernews",
+              "label": "HN 475▲ / 263則留言",
+              "published_at": "2026-11-26 11:36",
+              "url": "https://news.ycombinator.com/item?id=50651117"
+            }
+          ],
+          "primary_url": "https://twitter.com/thsottiaux/status/2125784147889393806",
+          "wait_what": {
+            "premise_zh": "GPT-6.2 有 Astra 與 Sol 兩個變體，各自有使用上限（依標題判斷）。OpenAI 這次縮短了額度，讓同樣的使用量更快撞到限制。原始資料未附官方完整公告，細節需點入原文確認。",
+            "why_it_matters_to_you_zh": "若你的 Agent 流程依賴這些模型，額度撞頂變快會影響批次任務與長 context 工作的排程與成本預估。",
+            "glossary_notes": []
+          },
+          "community_voices": [
+            {
+              "stance": "con",
+              "platform": "hackernews",
+              "author": "rspeele",
+              "quote_zh": "這些模型原本就只是普通但便宜，現在發現它們本來就不該便宜，令人懷疑 OpenAI 的定價策略。",
+              "url": "https://news.ycombinator.com/item?id=50651399"
+            },
+            {
+              "stance": "con",
+              "platform": "hackernews",
+              "author": "_s_a_m_",
+              "quote_zh": "質疑「計費錯誤」的說法，認為是變相加價，並提到 Google 促銷方案與 Gemini 可作替代。",
+              "url": "https://news.ycombinator.com/item?id=50651429"
+            },
+            {
+              "stance": "nuance",
+              "platform": "hackernews",
+              "author": "derac",
+              "quote_zh": "質疑為何選在感恩節前發布，也質疑為何這件事沒有更早被注意到。",
+              "url": "https://news.ycombinator.com/item?id=50651406"
+            }
+          ],
+          "composite_score": 82.6,
+          "rank": 3,
+          "source_section": "hackernews"
+        },
+        {
+          "id": "dc69597abec1a000",
+          "short_tag": "Photoshop AI 功能爭議",
+          "topic_id": "industry",
+          "topic_name": "AI 產業與新模型發布",
+          "published_at_display": "2026-11-26 05:18",
+          "importance_score": 72,
+          "popularity_score": 90,
+          "rank_reason_zh": "高熱度新聞，攝影師被警告暫勿更新 Photoshop 的 AI 功能",
+          "headline_zh": "報導指 NYT 警告攝影師暫勿更新 Photoshop，原因為新增 AI 功能。",
+          "community_consensus_zh": "目前以轉發分享為主，尚無顯著正反論戰（原始留言資料未收錄，無法判讀風向）。",
+          "sentiment_tag": "neutral",
+          "sources": [
+            {
+              "platform": "hackernews",
+              "label": "HN 661▲ / 525則留言",
+              "published_at": "2026-11-26 05:18",
+              "url": "https://news.ycombinator.com/item?id=50647673"
+            }
+          ],
+          "primary_url": "https://www.theverge.com/ai-artificial-intelligence/1041227/the-new-york-times-warns-photographers-not-to-update-photoshop-over-ai-features",
+          "wait_what": {
+            "premise_zh": "Adobe Photoshop 近期加入 AI 相關功能。依 The Verge 報導，NYT 向攝影師提出暫勿更新的建議。原始資料未附完整理由，報導指向 AI 功能的風險，需點入原文確認細節。",
+            "why_it_matters_to_you_zh": "若你的影像流程使用 Photoshop，更新前先確認 AI 功能的授權條款與版本回退方式，避免素材處理流程中斷。",
+            "glossary_notes": []
+          },
+          "community_voices": [],
+          "composite_score": 80.9,
+          "rank": 4,
+          "source_section": "hackernews"
+        },
+        {
+          "id": "82a13b62ffcbeb2a",
+          "short_tag": "OpenAI 成本控管推測",
+          "topic_id": "industry",
+          "topic_name": "AI 產業與新模型發布",
+          "published_at_display": "2026-11-26 15:33",
+          "importance_score": 70,
+          "popularity_score": 84,
+          "rank_reason_zh": "作者推論成本控制，社群討論泡沫與重置額度減少",
+          "headline_zh": "部落格推論 OpenAI 進入成本控管模式，社群指重置額度次數大幅減少。",
+          "community_consensus_zh": "社群多半認為這是營運壓力的跡象，也有人質疑 AI 服務成本是否本來就太高。",
+          "sentiment_tag": "critical",
+          "sources": [
+            {
+              "platform": "hackernews",
+              "label": "HN 308▲ / 316則留言",
+              "published_at": "2026-11-26 15:33",
+              "url": "https://news.ycombinator.com/item?id=50652527"
+            }
+          ],
+          "primary_url": "https://micjm.com/blog/openai-is-in-cost-control-mode/",
+          "wait_what": {
+            "premise_zh": "重置額度（reset）是服務商在用量撞限後補發的額外配額。這篇部落格主張 OpenAI 近期收緊成本，理由包括 GPT-6.2 上市後評價不佳，以及重置次數減少。內容屬於推論，未附內部數據。",
+            "why_it_matters_to_you_zh": "若你的開發流程依賴 API 或訂閱額度，服務商收緊額度會直接影響規劃，也提醒不要把單一供應商當成穩定成本基準。",
+            "glossary_notes": [
+              {
+                "term": "reset（額度重置）",
+                "explain_zh": "用量撞限後補發的一次性配額，類似 rate limit 的緩衝墊。"
+              }
+            ]
+          },
+          "community_voices": [
+            {
+              "stance": "nuance",
+              "platform": "hackernews",
+              "author": "voxgen",
+              "quote_zh": "重置次數大幅減少，本週有一次重置只給 Business 方案，作者猜測可能是在測試客戶的遷移意願。",
+              "url": "https://news.ycombinator.com/item?id=50658660"
+            },
+            {
+              "stance": "con",
+              "platform": "hackernews",
+              "author": "howard941",
+              "quote_zh": "泡沫破裂可能像海明威描寫破產一樣，先是慢慢發生，接著突然發生。",
+              "url": "https://news.ycombinator.com/item?id=50657449"
+            },
+            {
+              "stance": "con",
+              "platform": "hackernews",
+              "author": "tgbaggio",
+              "quote_zh": "有人質疑，使用 AI 的成本是否已經高到難以負擔。",
+              "url": "https://news.ycombinator.com/item?id=50652877"
+            }
+          ],
+          "composite_score": 77.1,
+          "rank": 5,
+          "source_section": "hackernews"
+        }
+      ]
+    },
+    {
+      "source": "github",
+      "label": "GitHub",
+      "takeaway_zh": "純 CPU 本地 LLM 推論工具上架，主打 8 GB RAM 與 OpenAI 相容介面。",
+      "top_diagram": {
+        "story_id": "de37ba9f4e662f9a",
+        "title_zh": "純 CPU 本地推論的部署路徑",
+        "nodes": [
+          {
+            "step": "01 BEFORE",
+            "label_zh": "依賴 GPU 推論",
+            "detail_zh": "本地跑 LLM 通常需獨立 GPU 與足夠 VRAM",
+            "tone": "neutral"
+          },
+          {
+            "step": "02 CHANGE",
+            "label_zh": "純 CPU 推論伺服器",
+            "detail_zh": "單機 8 GB RAM，提供 OpenAI 相容 API",
+            "tone": "change"
+          },
+          {
+            "step": "03 IMPACT",
+            "label_zh": "README 宣稱可直接運行",
+            "detail_zh": "無 GPU 也能啟動，實際速度待第三方實測",
+            "tone": "impact"
+          },
+          {
+            "step": "04 DEBATE",
+            "label_zh": "效能數據未獨立驗證",
+            "detail_zh": "來源無 benchmark，TTFT 與 TPOT 未知",
+            "tone": "tension"
+          }
+        ]
+      },
+      "items": [
+        {
+          "id": "de37ba9f4e662f9a",
+          "short_tag": "純 CPU 本地推論伺服器",
+          "topic_id": "models-edge",
+          "topic_name": "Open-Source LLMs / VLM / Edge AI",
+          "published_at_display": "2026-11-27 13:06",
+          "importance_score": 78,
+          "popularity_score": 82,
+          "rank_reason_zh": "切中無 GPU 的 Edge 部署需求，但效能數據尚未驗證。",
+          "headline_zh": "開源推論工具 openset-llm 宣稱可在純 CPU、8 GB RAM 環境跑本地 LLM，並提供 OpenAI 相容伺服器。",
+          "community_consensus_zh": "目前以轉發分享為主，尚無顯著正反論戰，缺少第三方實測數據可供比對。",
+          "sentiment_tag": "neutral",
+          "sources": [
+            {
+              "platform": "github",
+              "label": "GitHub 1814 stars / 174 forks",
+              "published_at": "2026-11-27 13:06",
+              "url": "https://github.com/opensetlabs/openset-llm"
+            }
+          ],
+          "primary_url": "https://github.com/opensetlabs/openset-llm",
+          "wait_what": {
+            "premise_zh": "本地 LLM 推論速度通常取決於 GPU 的 VRAM 與記憶體頻寬。純 CPU 方案改靠系統記憶體與 CPU 運算撐起推論，門檻較低但速度較難預期。本案屬於這類方案，並以 OpenAI API 格式對外提供服務。",
+            "why_it_matters_to_you_zh": "若 Edge 裝置沒有獨立 GPU，這類工具可當低成本的推論替代方案。要判斷能否用於 Agent 迴圈，仍需實測 TTFT 與 TPOT。",
+            "glossary_notes": [
+              {
+                "term": "OpenAI-compatible server",
+                "explain_zh": "仿 OpenAI API 格式的本地服務，改 base URL 即可接。"
+              }
+            ]
+          },
+          "community_voices": [],
+          "composite_score": 81.4,
+          "rank": 1,
+          "source_section": "github"
+        }
+      ]
+    },
+    {
+      "source": "arxiv",
+      "label": "arXiv",
+      "takeaway_zh": "端到端自編碼器通訊對通道模型失配敏感，遷移學習是調整頻譜的候選做法。",
+      "top_diagram": {
+        "story_id": "00882cfc5e59202e",
+        "title_zh": "自編碼器通訊的頻譜遷移流程",
+        "nodes": [
+          {
+            "step": "01 BEFORE",
+            "label_zh": "通道失配風險",
+            "detail_zh": "模型在訓練通道表現好，換通道就可能失準",
+            "tone": "neutral"
+          },
+          {
+            "step": "02 CHANGE",
+            "label_zh": "遷移學習調整",
+            "detail_zh": "以遷移學習讓收發端自編碼器適應新頻譜條件",
+            "tone": "change"
+          },
+          {
+            "step": "03 IMPACT",
+            "label_zh": "敏感度有量化",
+            "detail_zh": "論文量化訓練與測試失配的敏感度，具體數值需看全文",
+            "tone": "impact"
+          },
+          {
+            "step": "04 DEBATE",
+            "label_zh": "實用性待驗證",
+            "detail_zh": "摘要未見實機或完整基準結果，尚無社群檢驗",
+            "tone": "tension"
+          }
+        ]
+      },
+      "items": [
+        {
+          "id": "00882cfc5e59202e",
+          "short_tag": "AE通訊頻譜遷移",
+          "topic_id": "models-edge",
+          "topic_name": "Open-Source LLMs / VLM / Edge AI",
+          "published_at_display": "2026-11-26 02:59",
+          "importance_score": 62,
+          "popularity_score": 54,
+          "rank_reason_zh": "端側無線通訊的 AI 原生研究，有遷移學習與失配量化議題",
+          "headline_zh": "arXiv 論文量化自編碼器無線通訊對通道模型失配的敏感度，並探討以遷移學習調整頻譜適應",
+          "community_consensus_zh": "目前以轉發分享為主，尚無顯著正反論戰（arXiv 無留言資料）",
+          "sentiment_tag": "neutral",
+          "sources": [
+            {
+              "platform": "arxiv",
+              "label": "arXiv 預印本 2611.34942v1 / 無留言",
+              "published_at": "2026-11-26 02:59",
+              "url": "http://arxiv.org/abs/2611.34942v1"
+            }
+          ],
+          "primary_url": "http://arxiv.org/abs/2611.34942v1",
+          "wait_what": {
+            "premise_zh": "傳統無線通訊把調變、編碼、偵測拆成多個獨立模組。這篇論文改用一組收發端一起訓練的自編碼器，直接學整段傳輸流程。模型若在某個通道模型上訓練，換到不同通道時效果可能下降，因此論文研究這種失配的敏感度。",
+            "why_it_matters_to_you_zh": "若自編碼器只能在訓練通道上可用，部署到新頻段時就要重新訓練，會增加算力與資料成本。遷移學習若能用少量資料調整，對邊緣設備的更新成本有參考價值。",
+            "glossary_notes": [
+              {
+                "term": "Autoencoder 通訊",
+                "explain_zh": "把發送端編碼與接收端解碼當成一組一起訓練的神經網路"
+              },
+              {
+                "term": "Transfer learning",
+                "explain_zh": "把舊環境訓練好的模型，用少量新資料微調到新環境"
+              }
+            ]
+          },
+          "community_voices": [],
+          "composite_score": 59.6,
+          "rank": 1,
+          "source_section": "arxiv"
+        }
+      ]
+    }
+  ],
+  "meta": {
+    "generated_at": "2026-11-27T13:14+08:00",
+    "llm_provider": "claude",
+    "llm_model": "claude-haiku-5-5",
+    "failover_count": 5,
+    "source_status": {
+      "hackernews": "ok",
+      "reddit": "ok",
+      "threads": "ok",
+      "instagram": "ok",
+      "github": "ok",
+      "arxiv": "ok",
+      "x": "no-results",
+      "xiaohongshu": "optional-off"
+    },
+    "section_errors": [],
+    "raw_candidate_count": 24,
+    "total_curated_count": 10
+  }
+}

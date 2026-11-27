@@ -1,8 +1,18 @@
 {
+  "00882cfc5e59202e": {
+    "engagement": 55.0,
+    "first_seen": "2026-11-27",
+    "headline": "arXiv 論文量化自編碼器無線通訊對通道模型失配的敏感度，並探討以遷移學習調整頻譜適應"
+  },
   "020ffbf7d0681286": {
     "engagement": 154.05,
     "first_seen": "2026-11-23",
     "headline": "發文團隊宣稱在 AMD GPU 真實生產流量下，P90 輸出達 1,129 tps。"
+  },
+  "037020c00b794a34": {
+    "engagement": 2409.0,
+    "first_seen": "2026-11-27",
+    "headline": "原文作者抱怨 AI 生成的粗糙作品越來越多，重點是缺乏投入與在意，而非程式碼本身。"
   },
   "040801041267f877": {
     "engagement": 2388.0,
@@ -18,6 +28,16 @@
     "engagement": 55.0,
     "first_seen": "2026-11-26",
     "headline": "AnyCam 探討以替代表徵條件化相機軌跡，讓影片生成能沿物體環繞移動視角。"
+  },
+  "1d45997e4997625f": {
+    "engagement": 502.0,
+    "first_seen": "2026-11-27",
+    "headline": "社群開發者推出 AMD 專用 llama.cpp 分支，針對特定 GPU 做優化。"
+  },
+  "1eed13ab3759f44f": {
+    "engagement": 3413.5,
+    "first_seen": "2026-11-27",
+    "headline": "社群討論 GPT-6 Astra 參與一篇量子重力理論論文，目前僅見摘要與宣稱，尚無獨立驗證。"
   },
   "1ef82d58dab628de2ba": {
     "engagement": 100.0,
@@ -43,6 +63,11 @@
     "engagement": 1504.0,
     "first_seen": "2026-11-24",
     "headline": "lastbook 開源專案提供離線知識 AI，附地圖與影片，目標用於緊急求生與重建情境。"
+  },
+  "244a3e8cb4f170fa": {
+    "engagement": 1132.5,
+    "first_seen": "2026-11-27",
+    "headline": "OpenAI 調降 GPT-6.2 用量，Astra 觸頂速度快 40%，Sol 快 25%。"
   },
   "30b5340b789cf329": {
     "engagement": 1012.5,
@@ -139,6 +164,11 @@
     "first_seen": "2026-11-23",
     "headline": "GPU 廠商發布本地 AI 入門指南，以 Inkling、Qwen 與 Unsloth 為例"
   },
+  "506b0608171fd8ed": {
+    "engagement": 2521.0,
+    "first_seen": "2026-11-27",
+    "headline": "一位無程式背景的作者花兩年多用 Claude 做出小遊戲庫，供因病無法用手的弟弟操作。"
+  },
   "5094532b4e2e63d2": {
     "engagement": 2120.0,
     "first_seen": "2026-11-25",
@@ -204,6 +234,11 @@
     "first_seen": "2026-11-23",
     "headline": "Model Carving 提出讓 Transformer 在訓練中自行優化層內結構，質疑固定注意力與 MLP 排列的慣例。"
   },
+  "6f6a6b07f17a726f": {
+    "engagement": 916.5,
+    "first_seen": "2026-11-27",
+    "headline": "Google 將要求 AI Agent 改走其 MCP 伺服器存取 Workspace，但 Gmail MCP 無法寄信。"
+  },
   "7679c60c5d1ac888": {
     "engagement": 1302.5,
     "first_seen": "2026-11-23",
@@ -233,6 +268,11 @@
     "engagement": 4407.0,
     "first_seen": "2026-11-24",
     "headline": "rust-anything 提供逐段把應用程式改寫成 Rust 的流程，每一步都比對原程式的行為紀錄。"
+  },
+  "82a13b62ffcbeb2a": {
+    "engagement": 1098.0,
+    "first_seen": "2026-11-27",
+    "headline": "部落格推論 OpenAI 進入成本控管模式，社群指重置額度次數大幅減少。"
   },
   "83ee462b64ac9d88": {
     "engagement": 991.0,
@@ -333,6 +373,16 @@
     "engagement": 615.0,
     "first_seen": "2026-11-24",
     "headline": "pequalnp.com 公開一組 Agent swarm 嘗試解 P vs NP，並以圖表顯示進度。"
+  },
+  "dc69597abec1a000": {
+    "engagement": 1973.5,
+    "first_seen": "2026-11-27",
+    "headline": "報導指 NYT 警告攝影師暫勿更新 Photoshop，原因為新增 AI 功能。"
+  },
+  "de37ba9f4e662f9a": {
+    "engagement": 907.0,
+    "first_seen": "2026-11-27",
+    "headline": "開源推論工具 openset-llm 宣稱可在純 CPU、8 GB RAM 環境跑本地 LLM，並提供 OpenAI 相容伺服器。"
   },
   "de5cd1a6d51dc917": {
     "engagement": 1589.0,
