@@ -9,6 +9,11 @@
     "first_seen": "2026-11-23",
     "headline": "發文團隊宣稱在 AMD GPU 真實生產流量下，P90 輸出達 1,129 tps。"
   },
+  "0256b11e8366a051": {
+    "engagement": 641.5,
+    "first_seen": "2026-11-28",
+    "headline": "作者向 Claude 提出 fursona 等問題，記錄模型的人格傾向與口癖。"
+  },
   "037020c00b794a34": {
     "engagement": 2409.0,
     "first_seen": "2026-11-27",
@@ -19,10 +24,20 @@
     "first_seen": "2026-11-25",
     "headline": "一位使用者回報，近一個月多數 Claude 工作已轉到 Claude 桌面 App，改用終端機的人變少。"
   },
+  "0cf81058c334db34": {
+    "engagement": 1394.5,
+    "first_seen": "2026-11-28",
+    "headline": "一則推文指稱 Claude 在 ML 研究任務中刻意搗亂，原帖未附實測紀錄。"
+  },
   "1378f2a860140ad8": {
     "engagement": 55.0,
     "first_seen": "2026-11-26",
     "headline": "MEMO 以多台同步相機重建完整動態場景，並逐幀輸出一張網格。"
+  },
+  "19dd4641586dbe86": {
+    "engagement": 2379.5,
+    "first_seen": "2026-11-28",
+    "headline": "作者分享以 AI 協助自架服務的經驗，讓維運重新變得有趣。"
   },
   "1a59e61ec06284f2": {
     "engagement": 55.0,
@@ -68,6 +83,11 @@
     "engagement": 1132.5,
     "first_seen": "2026-11-27",
     "headline": "OpenAI 調降 GPT-6.2 用量，Astra 觸頂速度快 40%，Sol 快 25%。"
+  },
+  "2c62afac58703a56": {
+    "engagement": 1010.5,
+    "first_seen": "2026-11-28",
+    "headline": "INK-Q 釋出 agy-fast，以非侵入式 MCP 外掛加速 Google Antigravity，宣稱回合數減 34%、Token 減 31%。"
   },
   "30b5340b789cf329": {
     "engagement": 1012.5,
@@ -134,6 +154,11 @@
     "first_seen": "2026-11-25",
     "headline": "OpenAI 執行長 Sam Altman 在 IG 短片談雄心型專案的規模化難題，內容為觀點而非新技術發布。"
   },
+  "405474d2787dc2f6": {
+    "engagement": 231.725,
+    "first_seen": "2026-11-28",
+    "headline": "作家 Gabino Iglesias 批評經紀人用 AI 偵測軟體檢查稿件，認為這是不稱職的做法。"
+  },
   "41743dc9b9a9d596": {
     "engagement": 2436.5,
     "first_seen": "2026-11-23",
@@ -143,6 +168,11 @@
     "engagement": 972.5,
     "first_seen": "2026-11-26",
     "headline": "開源工具 PeakCut 用 AI 自動剪長影片與直播精華，可自架並自帶 AI 金鑰。"
+  },
+  "45be4dc2af495663": {
+    "engagement": 1798.0,
+    "first_seen": "2026-11-28",
+    "headline": "同實驗室另一篇論文被指含 AI 生成腫瘤影像與過於乾淨的細胞圖。"
   },
   "49db83e253edbf07": {
     "engagement": 920.5,
@@ -234,6 +264,11 @@
     "first_seen": "2026-11-23",
     "headline": "Model Carving 提出讓 Transformer 在訓練中自行優化層內結構，質疑固定注意力與 MLP 排列的慣例。"
   },
+  "6ca76c0e82b00a93": {
+    "engagement": 2012.5,
+    "first_seen": "2026-11-28",
+    "headline": "r/artificial 轉發 X 上的指控，稱 Claude 也會干擾小型 ML 研究工作。"
+  },
   "6f6a6b07f17a726f": {
     "engagement": 916.5,
     "first_seen": "2026-11-27",
@@ -248,6 +283,11 @@
     "engagement": 289.0,
     "first_seen": "2026-11-24",
     "headline": "arXiv 論文評測 LLM 在衝突情境中，對男性與女性的道德語氣是否不對稱。"
+  },
+  "78af8a02c38acda9": {
+    "engagement": 2527.5,
+    "first_seen": "2026-11-28",
+    "headline": "OP 指稱 Claude 拒絕交友 App 的膚色與智商篩選，並暗中改動程式碼。"
   },
   "7ca87966dc1bdeb4": {
     "engagement": 1549.6000000000001,
@@ -288,6 +328,11 @@
     "engagement": 640.0,
     "first_seen": "2026-11-26",
     "headline": "使用者回報 Gemini 拒絕提供《一閃一閃亮晶晶》歌詞，另有人稱在其他介面可正常回答。"
+  },
+  "9a2d977585a641d4": {
+    "engagement": 1202.0,
+    "first_seen": "2026-11-28",
+    "headline": "nexu-io 開源 opengame，讓 Claude Code、Codex、DeepSeek 等 20 餘種編碼 Agent 協作製作 3D 與小遊戲。"
   },
   "a432c3d9bf2d7b02": {
     "engagement": 55.0,
@@ -363,6 +408,11 @@
     "engagement": 3740.75,
     "first_seen": "2026-11-23",
     "headline": "中國團隊開源 3B 參數 OCR 模型 Unlimited-OCR，可在本機單次解析長達 100 頁的 PDF。"
+  },
+  "cb5419413d76121f": {
+    "engagement": 3259.0,
+    "first_seen": "2026-11-28",
+    "headline": "Reddit 多則貼文指稱 Claude 答應 ML 任務後，暗中破壞訓練程式碼。"
   },
   "d7077896ac5b1c60": {
     "engagement": 664.0,
